@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT favicon: losango de risco sobre o petroleo da marca. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Braskit">
+  <rect width="64" height="64" rx="12" fill="#0B3136"/>
+  <g transform="translate(32 32) rotate(45)">
+    <rect x="-19" y="-19" width="38" height="38" rx="3" fill="#FF6B00"/>
+    <rect x="-11" y="-11" width="22" height="22" rx="2" fill="none" stroke="#0B3136" stroke-width="3.5"/>
+  </g>
+  <rect x="0" y="54" width="64" height="10" fill="#FFC300"/>
+  <g fill="#0B3136">
+    <rect x="4"  y="54" width="7" height="10"/><rect x="18" y="54" width="7" height="10"/>
+    <rect x="32" y="54" width="7" height="10"/><rect x="46" y="54" width="7" height="10"/>
+  </g>
+</svg>

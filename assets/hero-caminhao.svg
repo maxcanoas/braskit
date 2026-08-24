@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT — camada de frente do hero: caminhão-tanque de perfil na pista,
+     com contraluz do pôr do sol. Silhueta lateral porque é o ângulo em que o
+     veículo é reconhecido de imediato. Fundo transparente. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Caminhão-tanque de cargas perigosas na rodovia">
+  <defs>
+    <linearGradient id="corpo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#20484E"/>
+      <stop offset=".42" stop-color="#0E3036"/>
+      <stop offset="1"   stop-color="#04161A"/>
+    </linearGradient>
+    <linearGradient id="cabine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#1B4148"/>
+      <stop offset="1"   stop-color="#051A1F"/>
+    </linearGradient>
+    <radialGradient id="sombraPista" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#020D10" stop-opacity=".72"/>
+      <stop offset="1"   stop-color="#020D10" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="faroleto" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#FFE7B4" stop-opacity=".85"/>
+      <stop offset=".45" stop-color="#FFC300" stop-opacity=".3"/>
+      <stop offset="1"   stop-color="#FFC300" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra sob o veículo -->
+  <ellipse cx="1290" cy="884" rx="300" ry="26" fill="url(#sombraPista)"/>
+
+  <!-- Semirreboque: o tanque -->
+  <!-- Casco cilíndrico -->
+  <rect x="1046" y="792" width="366" height="74" rx="37" fill="url(#corpo)"/>
+  <!-- Calota traseira -->
+  <ellipse cx="1050" cy="829" rx="13" ry="37" fill="#092329"/>
+  <!-- Aros de reforço -->
+  <g stroke="#123840" stroke-width="3" opacity=".85">
+    <path d="M1128 795v68"/><path d="M1212 795v68"/><path d="M1296 795v68"/>
+  </g>
+  <!-- Bocal superior -->
+  <rect x="1206" y="782" width="46" height="12" rx="5" fill="#0C2C33"/>
+  <!-- Contraluz no topo do tanque -->
+  <path d="M1064 795h334" fill="none" stroke="#FF9A3C" stroke-width="5" stroke-linecap="round" opacity=".72"/>
+
+  <!-- Chassi e para-choque traseiro -->
+  <rect x="1040" y="866" width="392" height="12" rx="4" fill="#061D22"/>
+  <rect x="1034" y="856" width="14" height="26" rx="3" fill="#0A272D"/>
+  <rect x="1034" y="862" width="14" height="6" fill="#E2231A" opacity=".8"/>
+
+  <!-- Painel laranja de segurança (nº de risco / nº ONU) -->
+  <g transform="translate(1062 812)">
+    <rect width="70" height="30" rx="3" fill="#FF6B00" stroke="#120A02" stroke-width="3"/>
+    <line x1="0" y1="15" x2="70" y2="15" stroke="#120A02" stroke-width="3"/>
+    <text x="35" y="11.5" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#120A02" text-anchor="middle">33</text>
+    <text x="35" y="26.5" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#120A02" text-anchor="middle">1203</text>
+  </g>
+
+  <!-- Losango de risco na lateral do tanque -->
+  <g transform="translate(1246 829) rotate(45)">
+    <rect x="-23" y="-23" width="46" height="46" fill="#E2231A" stroke="#F6F8F8" stroke-width="2.5"/>
+    <path d="M-1 5q-10-9-3-17 .8 6 5.4 7.4-2.3-8 3-12.6 3 10.6 10 13.6 3.8 6.8-2.3 12.2z" fill="#FFF0D8"/>
+  </g>
+
+  <!-- Cavalo mecânico -->
+  <!-- Traseira do chassi do cavalo -->
+  <rect x="1412" y="838" width="96" height="34" rx="5" fill="#07222899"/>
+  <!-- Cabine -->
+  <path fill="url(#cabine)" d="M1440 866V790q0-14 14-14h56q10 0 14 9l24 47q3 6 3 12v22z"/>
+  <!-- Vidro, iluminado pelo poente -->
+  <path fill="#FF9A3C" opacity=".34" d="M1516 786l20 41h-32v-41z"/>
+  <path fill="#8CC3CC" opacity=".22" d="M1456 784h46v42h-46z"/>
+  <!-- Contraluz no teto da cabine -->
+  <path d="M1442 780h68" fill="none" stroke="#FF9A3C" stroke-width="4.5" stroke-linecap="round" opacity=".8"/>
+  <!-- Defletor de ar -->
+  <path d="M1440 776q22-16 60-8" fill="none" stroke="#123840" stroke-width="7" stroke-linecap="round"/>
+  <!-- Para-choque e farol -->
+  <rect x="1536" y="850" width="14" height="22" rx="3" fill="#0A272D"/>
+  <circle cx="1552" cy="852" r="30" fill="url(#faroleto)"/>
+  <rect x="1538" y="846" width="12" height="9" rx="2" fill="#FFE7B4"/>
+
+  <!-- Rodas -->
+  <g fill="#04161A">
+    <circle cx="1122" cy="878" r="27"/><circle cx="1180" cy="878" r="27"/>
+    <circle cx="1330" cy="878" r="27"/>
+    <circle cx="1452" cy="878" r="29"/><circle cx="1516" cy="878" r="29"/>
+  </g>
+  <g fill="none" stroke="#17434A" stroke-width="3">
+    <circle cx="1122" cy="878" r="12"/><circle cx="1180" cy="878" r="12"/>
+    <circle cx="1330" cy="878" r="12"/>
+    <circle cx="1452" cy="878" r="13"/><circle cx="1516" cy="878" r="13"/>
+  </g>
+
+  <!-- Faixa refletiva zebrada na saia do tanque -->
+  <g opacity=".85">
+    <rect x="1060" y="856" width="16" height="8" fill="#FFC300"/>
+    <rect x="1092" y="856" width="16" height="8" fill="#FFC300"/>
+    <rect x="1224" y="856" width="16" height="8" fill="#FFC300"/>
+    <rect x="1256" y="856" width="16" height="8" fill="#FFC300"/>
+    <rect x="1364" y="856" width="16" height="8" fill="#FFC300"/>
+    <rect x="1396" y="856" width="16" height="8" fill="#FFC300"/>
+  </g>
+
+  <!-- Poeira levantada atrás do conjunto -->
+  <ellipse cx="1010" cy="874" rx="90" ry="15" fill="#123840" opacity=".3"/>
+</svg>

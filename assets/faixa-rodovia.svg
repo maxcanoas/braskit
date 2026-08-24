@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT — fundo da 1ª faixa parallax: rodovia aberta ao entardecer. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 760" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Rodovia aberta ao entardecer">
+  <defs>
+    <linearGradient id="fCeu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#04161B"/>
+      <stop offset=".34" stop-color="#0A2B32"/>
+      <stop offset=".58" stop-color="#1B4A4C"/>
+      <stop offset=".72" stop-color="#7A421A"/>
+      <stop offset=".82" stop-color="#D4691A"/>
+      <stop offset=".86" stop-color="#FF9A3C"/>
+      <stop offset=".87" stop-color="#0B2C32"/>
+      <stop offset="1"   stop-color="#03151A"/>
+    </linearGradient>
+    <radialGradient id="fSol" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#FFCF92" stop-opacity=".8"/>
+      <stop offset=".5"  stop-color="#FF8A2B" stop-opacity=".3"/>
+      <stop offset="1"   stop-color="#FF6B00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="760" fill="url(#fCeu)"/>
+  <circle cx="700" cy="650" r="240" fill="url(#fSol)"/>
+
+  <!-- Nuvens em faixas -->
+  <g fill="#04191F" opacity=".3">
+    <ellipse cx="1300" cy="500" rx="520" ry="13"/>
+    <ellipse cx="450"  cy="452" rx="420" ry="11"/>
+    <ellipse cx="1080" cy="392" rx="480" ry="10"/>
+    <ellipse cx="300"  cy="336" rx="330" ry="9"/>
+  </g>
+
+  <!-- Serra no horizonte -->
+  <path fill="#04181D" d="M0 660 L0 630 L180 604 L340 628 L520 596 L700 624 L880 600 L1060 626 L1250 598 L1440 622 L1640 602 L1830 624 L1920 610 L1920 660 Z"/>
+
+  <!-- Asfalto, com ponto de fuga alto à esquerda do centro -->
+  <path fill="#061C21" d="M860 662 L2260 760 L-340 760 Z"/>
+  <g opacity=".62">
+    <polygon fill="#E9F2F2" points="859,662 861,662 236,760 150,760"/>
+    <polygon fill="#E9F2F2" points="859,662 861,662 1600,760 1690,760"/>
+  </g>
+  <g fill="#FFC300" opacity=".85">
+    <polygon points="857,678 863,678 865,692 855,692"/>
+    <polygon points="853,706 867,706 872,730 848,730"/>
+    <polygon points="845,744 875,744 882,760 838,760"/>
+  </g>
+
+  <!-- Postes de iluminação -->
+  <g stroke="#07222899" stroke-linecap="round" fill="none">
+    <g stroke-width="7"><path d="M1740 760 V612"/><path d="M1740 612 q0-18 -30-21"/></g>
+    <g stroke-width="5"><path d="M1400 742 V638"/><path d="M1400 638 q0-13 -22-15"/></g>
+    <g stroke-width="3"><path d="M1180 716 V654"/><path d="M1180 654 q0-9 -15-10"/></g>
+  </g>
+  <g fill="#FFC300" opacity=".45">
+    <circle cx="1708" cy="589" r="6"/><circle cx="1376" cy="621" r="4"/><circle cx="1163" cy="643" r="3"/>
+  </g>
+
+  <!-- Véu escuro: garante contraste para a frase de impacto -->
+  <rect width="1920" height="760" fill="#03161B" opacity=".52"/>
+</svg>

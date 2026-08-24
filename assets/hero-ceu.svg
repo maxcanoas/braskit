@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT — camada de fundo do hero: céu de fim de tarde e horizonte.
+     Horizonte posicionado em y=762, mesmo ponto de fuga de hero-estrada.svg. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Céu de fim de tarde sobre a rodovia">
+  <defs>
+    <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#03141A"/>
+      <stop offset=".28"  stop-color="#082A31"/>
+      <stop offset=".52"  stop-color="#0F4046"/>
+      <stop offset=".68"  stop-color="#2C5754"/>
+      <stop offset=".79"  stop-color="#8A4A16"/>
+      <stop offset=".89"  stop-color="#D96F1C"/>
+      <stop offset=".97"  stop-color="#FF9A3C"/>
+      <stop offset="1"    stop-color="#FFB765"/>
+    </linearGradient>
+    <radialGradient id="sol" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#FFE0AE" stop-opacity=".92"/>
+      <stop offset=".38" stop-color="#FF9A3C" stop-opacity=".42"/>
+      <stop offset=".72" stop-color="#FF6B00" stop-opacity=".14"/>
+      <stop offset="1"   stop-color="#FF6B00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="morro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#06232A"/>
+      <stop offset="1" stop-color="#04171C"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#ceu)"/>
+
+  <!-- Sol baixo, difuso -->
+  <circle cx="1210" cy="742" r="330" fill="url(#sol)"/>
+  <circle cx="1210" cy="748" r="46" fill="#FFD9A0" opacity=".55"/>
+
+  <!-- Faixas de nuvem: elipses achatadas, cada vez mais tênues em direção ao topo -->
+  <g fill="#03181E">
+    <ellipse cx="430"  cy="640" rx="470" ry="19" opacity=".34"/>
+    <ellipse cx="1180" cy="612" rx="560" ry="15" opacity=".26"/>
+    <ellipse cx="760"  cy="560" rx="620" ry="14" opacity=".22"/>
+    <ellipse cx="1560" cy="520" rx="430" ry="12" opacity=".18"/>
+    <ellipse cx="300"  cy="470" rx="380" ry="11" opacity=".15"/>
+    <ellipse cx="1080" cy="418" rx="520" ry="10" opacity=".12"/>
+  </g>
+
+  <!-- Nuvens iluminadas por baixo, junto ao horizonte -->
+  <g fill="#FF8A2B" opacity=".2">
+    <ellipse cx="620"  cy="700" rx="330" ry="9"/>
+    <ellipse cx="1450" cy="690" rx="290" ry="8"/>
+  </g>
+
+  <!-- Serra distante, logo acima da linha do horizonte -->
+  <path fill="url(#morro)" d="M0 762 L0 726 L140 700 L268 722 L392 686 L520 716 L648 694 L788 724 L900 706 L1010 728 L1140 700 L1284 726 L1420 698 L1560 722 L1700 702 L1830 724 L1920 708 L1920 762 Z"/>
+
+  <!-- Vegetação rasteira na linha do horizonte -->
+  <rect x="0" y="756" width="1920" height="10" fill="#03161B" opacity=".85"/>
+</svg>

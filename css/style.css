@@ -1,0 +1,1951 @@
+/* ==========================================================================
+   BRASKIT | folha de estilo do site
+   Tema da marca, parallax, animacoes e componentes proprios.
+
+   Arquitetura da cascata: css/tw.css traz os utilitarios compilados no build
+   (dentro de @layer). Este arquivo e carregado depois e fica fora de @layer,
+   portanto as regras daqui vencem as de la, que e o comportamento desejado
+   para tema e componentes. Estilos de ELEMENTO ficam dentro de @layer base
+   para nao brigarem com os utilitarios.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS DA MARCA
+   Espelham o tema do build do Tailwind e ficam disponiveis como var() para
+   o CSS proprio.
+   -------------------------------------------------------------------------- */
+:root {
+  --petroleo-950: #062226;
+  --petroleo-900: #0b3136;
+  --petroleo-800: #0f3b3f;
+  --petroleo-700: #155e63;
+  --hazmat-500: #ff6b00;
+  --hazmat-400: #ff8a2b;
+  --alerta-400: #ffc300;
+  --perigo-500: #e2231a;
+  --neutro-50: #f6f8f8;
+  --neutro-900: #101617;
+
+  /* Cor exata amostrada do logo original da empresa */
+  --braskit-logo: #0d2f39;
+
+  --fonte-titulo: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --fonte-corpo: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+
+  --altura-header: 88px;
+  --ease-saida: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Textura de ruido: evita que os fundos escuros fiquem chapados */
+  --ruido: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23r)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o header fixo ao pular para uma ancora */
+    scroll-padding-top: var(--altura-header);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--petroleo-950);
+    color: var(--neutro-900);
+    font-family: var(--fonte-corpo);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  ::selection {
+    background: var(--hazmat-500);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--hazmat-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Barra de rolagem discreta, no tom da marca */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: var(--petroleo-950); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--petroleo-700);
+    border-radius: 99px;
+    border: 3px solid var(--petroleo-950);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--hazmat-500); }
+}
+
+/* Impede que a largura total estoure em qualquer breakpoint */
+img, svg, video, iframe { max-width: 100%; }
+
+/* --------------------------------------------------------------------------
+   3. TIPOGRAFIA DE APOIO
+   -------------------------------------------------------------------------- */
+.titulo-secao {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+.olho {
+  font-family: var(--fonte-corpo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Numero dos contadores */
+.numero-contador {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   4. LINGUAGEM VISUAL: zebrado, losango de risco, texturas
+   -------------------------------------------------------------------------- */
+
+/* Faixa zebrada diagonal (rotulo de carga perigosa), usada como divisor */
+.faixa-zebrada {
+  height: 6px;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--alerta-400) 0,
+    var(--alerta-400) 14px,
+    #111 14px,
+    #111 28px
+  );
+}
+
+.faixa-zebrada-fina { height: 4px; }
+
+/* Losango de risco: quadrado rotacionado, como o rotulo de risco da ONU */
+.losango {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  transform: rotate(45deg);
+  flex: none;
+}
+
+.losango-cheio {
+  background: currentColor;
+  border-color: currentColor;
+}
+
+/* Losango decorativo grande, de fundo. A rotacao fica em rotate, separada de
+   transform, porque o parallax escreve em transform e apagaria o giro. */
+.losango-deco {
+  position: absolute;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  rotate: 45deg;
+  pointer-events: none;
+}
+
+/* Textura de ruido sobre fundos escuros */
+.textura-ruido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--ruido);
+  opacity: 0.035;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Cartao escuro padrao */
+.cartao-escuro {
+  background: color-mix(in srgb, var(--petroleo-800) 92%, #000);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: var(--radius-box);
+  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
+    box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.cartao-escuro:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  box-shadow: 0 22px 48px -22px rgb(0 0 0 / 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   5. PROFUNDIDADE 3D
+   O palco (.cena-3d) define o ponto de fuga; os filhos com [data-tilt]
+   inclinam alguns graus seguindo o mouse, com um brilho que acompanha o
+   cursor. O efeito so roda em tela grande, com mouse de verdade e sem
+   movimento reduzido (ver js/main.js). No toque nada muda: os cartoes
+   mantem o hover padrao.
+   -------------------------------------------------------------------------- */
+.cena-3d { perspective: 1100px; }
+
+.tilt-3d {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.tilt-3d.is-inclinando {
+  transition: none;
+  will-change: transform;
+}
+
+/* Brilho que segue o cursor. As coordenadas chegam por variavel, do JS. */
+.tilt-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  background: radial-gradient(
+    620px circle at var(--brilho-x, 50%) var(--brilho-y, 50%),
+    rgb(255 255 255 / 0.09),
+    transparent 46%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tilt-3d:hover::before { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   6. PARALLAX
+   Todo o movimento e feito por transform (translate3d) a partir de um unico
+   requestAnimationFrame em js/main.js. Nada de background-attachment: fixed,
+   que nao funciona no iOS e trava a composicao no Chrome.
+   -------------------------------------------------------------------------- */
+.palco-parallax {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* As camadas de foto vem dentro de um <picture>, que escolhe o recorte
+   vertical no celular. Quem posiciona e a propria <img>, absoluta: o
+   <picture> precisa sumir do layout para nao virar item de flex do hero nem
+   da faixa. */
+.palco-parallax > picture,
+.faixa-parallax > picture {
+  display: contents;
+}
+
+.camada-parallax {
+  position: absolute;
+  inset: -12% 0 -12% 0; /* folga vertical para o deslocamento nao revelar borda */
+  width: 100%;
+  height: 124%;
+  object-fit: cover;
+  object-position: center bottom;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+/* Faixas parallax intermediarias (secoes full-bleed com frase de impacto) */
+.faixa-parallax {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.faixa-parallax__fundo {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Veu escuro sobre o fundo da faixa. Garante leitura do texto tanto sobre os
+   SVGs quanto sobre as fotos que vao substitui-los. */
+.faixa-parallax::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgb(6 34 38 / 0.55),
+    rgb(6 34 38 / 0.32) 45%,
+    rgb(6 34 38 / 0.62)
+  );
+  pointer-events: none;
+}
+
+/* Elementos com deslocamento sutil, declarados via data-parallax="0.08" */
+[data-parallax] { will-change: transform; }
+
+/* --------------------------------------------------------------------------
+   7. SCROLL REVEAL
+   O estado e alternado por classe propria (.is-visible), nunca por
+   utilitario do Tailwind: este arquivo esta fora de @layer e venceria.
+   -------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-saida), transform 0.7s var(--ease-saida);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Variantes laterais, para blocos em duas colunas */
+[data-reveal="esquerda"] { transform: translateX(-32px); }
+[data-reveal="direita"]  { transform: translateX(32px); }
+[data-reveal="escala"]   { transform: scale(0.94); }
+
+/* --------------------------------------------------------------------------
+   8. ANIMACOES
+   -------------------------------------------------------------------------- */
+@keyframes pulso-suave {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+@keyframes halo-whatsapp {
+  0%   { box-shadow: 0 0 0 0 rgb(255 107 0 / 0.55); }
+  70%  { box-shadow: 0 0 0 16px rgb(255 107 0 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(255 107 0 / 0); }
+}
+
+@keyframes desce-indicador {
+  0%   { transform: translateY(0);    opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes sobe-linha {
+  from { transform: translateY(105%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes brilho-diagonal {
+  from { transform: translateX(-120%) skewX(-18deg); }
+  to   { transform: translateX(320%)  skewX(-18deg); }
+}
+
+.ponto-pulsante {
+  animation: pulso-suave 2.4s ease-in-out infinite;
+}
+
+.indicador-scroll span {
+  animation: desce-indicador 1.9s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   9. HERO
+   -------------------------------------------------------------------------- */
+.hero-braskit {
+  min-height: 100svh;
+  background: linear-gradient(180deg, #0a2b32 0%, var(--petroleo-950) 100%);
+}
+
+.titulo-hero {
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.92;
+}
+
+/* Cada linha do H1 entra de baixo, mascarada, num efeito de revelacao */
+.linha-mascara {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.linha-mascara > span {
+  display: block;
+  animation: sobe-linha 0.9s var(--ease-saida) both;
+}
+
+.linha-mascara:nth-child(1) > span { animation-delay: 0.15s; }
+.linha-mascara:nth-child(2) > span { animation-delay: 0.28s; }
+.linha-mascara:nth-child(3) > span { animation-delay: 0.41s; }
+
+/* --------------------------------------------------------------------------
+   10. BOTOES
+   -------------------------------------------------------------------------- */
+
+/* Brilho diagonal no hover */
+.btn-brilho {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-brilho::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.28),
+    transparent
+  );
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-brilho:hover::after {
+  animation: brilho-diagonal 0.75s ease-out;
+}
+
+/* Preenchimento deslizante (botoes com contorno) */
+.btn-preenche {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-preenche::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hazmat-500);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.38s var(--ease-saida);
+  z-index: -1;
+}
+
+.btn-preenche:hover::before { transform: scaleX(1); }
+.btn-preenche:hover { border-color: var(--hazmat-500); color: #fff; }
+
+/* --------------------------------------------------------------------------
+   11. MARQUEE DE NORMAS (CSS puro, pausa no hover)
+   -------------------------------------------------------------------------- */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  /* Esmaece as pontas para a faixa nao cortar bruscamente */
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__trilho {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+
+.marquee:hover .marquee__trilho { animation-play-state: paused; }
+
+.marquee__item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 2rem;
+  white-space: nowrap;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   12. CARDS DE PRODUTO: tratamento duotone das fotos
+   As fotos originais foram feitas no deposito, com prateleiras e papelao ao
+   fundo. Em repouso a foto vira monocromatica na cor da categoria, com
+   brilho quente ao centro e vinheta: o fundo some e os 34 cards leem como um
+   conjunto so. No hover a foto recupera a cor natural e o cliente ve o
+   produto de verdade. Feito com filtros, e nao mix-blend-mode, porque as
+   fotos sao escuras e com blend o produto sumia junto com o fundo.
+   -------------------------------------------------------------------------- */
+.produto-midia {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cat-cor, var(--petroleo-800));
+}
+
+.produto-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(1.12) contrast(1.16) sepia(0.62)
+          hue-rotate(-16deg) saturate(2.5);
+  transition: filter 0.45s ease, transform 0.5s var(--ease-saida);
+}
+
+/* Vinheta: tira o aspecto chapado das bordas */
+.produto-midia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(105% 105% at 50% 42%, transparent 48%, rgb(6 34 38 / 0.52) 100%);
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.produto-card:hover .produto-foto,
+.produto-card:focus-within .produto-foto {
+  filter: contrast(1.04) saturate(1.05);
+  transform: scale(1.06);
+}
+
+.produto-card:hover .produto-midia::after,
+.produto-card:focus-within .produto-midia::after {
+  opacity: 0.3;
+}
+
+/* Na janela de detalhe a foto ja aparece natural: ali o objetivo e examinar
+   o produto. */
+.produto-midia--natural { background: var(--petroleo-900); }
+
+.produto-midia--natural .produto-foto {
+  filter: contrast(1.05) saturate(1.04);
+}
+
+/* Na janela a foto ocupa a coluna inteira, sem o quadrado do grid. Regra
+   propria porque este arquivo esta fora de @layer e venceria o utilitario. */
+@media (min-width: 768px) {
+  .produto-midia--natural {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 100%;
+  }
+}
+
+.produto-midia--natural::after {
+  background: radial-gradient(105% 105% at 50% 50%, transparent 58%, rgb(6 34 38 / 0.4) 100%);
+}
+
+/* Variante usada fora do grid do catalogo (ex.: secao Sobre): mesmo
+   tratamento, reagindo ao hover do proprio bloco. */
+.produto-midia--descobre:hover .produto-foto,
+.produto-midia--descobre:focus-within .produto-foto {
+  filter: contrast(1.04) saturate(1.05);
+  transform: scale(1.04);
+}
+
+.produto-midia--descobre:hover::after,
+.produto-midia--descobre:focus-within::after {
+  opacity: 0.3;
+}
+
+/* Permite proporcoes diferentes do quadrado padrao */
+.produto-midia--larga { aspect-ratio: 4 / 3; }
+
+/* Entrada em cascata do grid, reexecutada a cada troca de filtro */
+@keyframes entra-card {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.produto-card--entrando {
+  animation: entra-card 0.5s var(--ease-saida) both;
+}
+
+/* --------------------------------------------------------------------------
+   13. HEADER STICKY
+   -------------------------------------------------------------------------- */
+.header-braskit {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+
+.header-braskit.is-fixo {
+  background-color: color-mix(in srgb, var(--petroleo-900) 95%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: 0 10px 34px -18px rgb(0 0 0 / 0.9);
+  border-bottom: 1px solid rgb(255 255 255 / 0.07);
+}
+
+/* Sublinhado que cresce a partir da esquerda nos links da navegacao */
+.link-nav {
+  position: relative;
+  padding-block: 0.35rem;
+  transition: color 0.25s ease;
+}
+
+.link-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--hazmat-500);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease-saida);
+}
+
+.link-nav:hover::after,
+.link-nav:focus-visible::after,
+.link-nav.is-ativo::after { transform: scaleX(1); }
+
+/* --------------------------------------------------------------------------
+   14. MENU MOBILE (tela cheia)
+   -------------------------------------------------------------------------- */
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  /* Abaixo do header (z-80): o botao de fechar vive dentro do header e
+     precisa continuar visivel e clicavel com o menu aberto. */
+  z-index: 75;
+  background: linear-gradient(160deg, var(--petroleo-900) 0%, var(--petroleo-950) 100%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-saida),
+    visibility 0.35s;
+}
+
+.menu-mobile.is-aberto {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.menu-mobile__item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s var(--ease-saida), transform 0.45s var(--ease-saida);
+}
+
+.menu-mobile.is-aberto .menu-mobile__item {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cascata dos itens do menu */
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(1) { transition-delay: 0.10s; }
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(2) { transition-delay: 0.16s; }
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(3) { transition-delay: 0.22s; }
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(4) { transition-delay: 0.28s; }
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(5) { transition-delay: 0.34s; }
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(6) { transition-delay: 0.40s; }
+.menu-mobile.is-aberto .menu-mobile__item:nth-child(7) { transition-delay: 0.46s; }
+
+/* Trava a rolagem do fundo com o menu aberto */
+body.sem-rolagem { overflow: hidden; }
+
+/* Icone hamburguer que vira X */
+.hamburguer span {
+  display: block;
+  height: 2px;
+  width: 26px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.32s var(--ease-saida), opacity 0.2s ease;
+}
+
+.hamburguer span + span { margin-top: 6px; }
+.hamburguer.is-ativo span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburguer.is-ativo span:nth-child(2) { opacity: 0; }
+.hamburguer.is-ativo span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --------------------------------------------------------------------------
+   15. ELEMENTOS FLUTUANTES E AVISOS
+   -------------------------------------------------------------------------- */
+
+/* Voltar ao topo */
+.btn-topo {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-saida), visibility 0.3s;
+}
+
+.btn-topo.is-visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* WhatsApp flutuante */
+.btn-whatsapp { animation: halo-whatsapp 2.8s ease-out infinite; }
+.btn-whatsapp:hover { animation-play-state: paused; }
+
+/* Avisos do formulario */
+.aviso-area {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: min(92vw, 22rem);
+  pointer-events: none;
+}
+
+.aviso {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.5);
+  animation: aviso-entra 0.35s var(--ease-saida);
+}
+
+.aviso--ok   { background: #0f7a3d; }
+.aviso--erro { background: var(--perigo-500); }
+
+@keyframes aviso-entra {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+/* --------------------------------------------------------------------------
+   16. FAQ (details nativo, sem framework)
+   -------------------------------------------------------------------------- */
+.faq-item {
+  background: color-mix(in srgb, var(--petroleo-800) 90%, #000);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: var(--radius-box);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.faq-item[open],
+.faq-item:hover {
+  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
+}
+
+.faq-item__titulo {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 1.15rem 3.4rem 1.15rem 1.5rem;
+  font-family: var(--fonte-corpo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  user-select: none;
+}
+
+.faq-item__titulo::-webkit-details-marker { display: none; }
+
+/* Sinal de mais que gira e vira um X quando o item abre */
+.faq-item__titulo::after {
+  content: "+";
+  position: absolute;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--hazmat-500);
+  transition: transform 0.3s var(--ease-saida);
+}
+
+.faq-item[open] .faq-item__titulo::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item__corpo {
+  padding: 0 1.5rem 1.35rem;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.65);
+}
+
+.faq-item[open] .faq-item__corpo {
+  animation: faq-abre 0.35s var(--ease-saida);
+}
+
+@keyframes faq-abre {
+  from { opacity: 0; transform: translateY(-4px); }
+}
+
+/* --------------------------------------------------------------------------
+   17. FORMULARIO E MAPA
+   -------------------------------------------------------------------------- */
+.campo-escuro {
+  width: 100%;
+  /* background-color, e nao o atalho background: o atalho zera a imagem de
+     fundo, e e nela que mora a seta do <select> logo abaixo. */
+  background-color: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: var(--radius-field);
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-family: var(--fonte-corpo);
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+
+  /* Quem desenha o menu do <select>, o cursor e o preenchimento automatico e
+     o sistema, nao a pagina. Sem esta linha o menu abre claro e as opcoes
+     herdam o branco do campo: texto branco no fundo branco. */
+  color-scheme: dark;
+}
+
+.campo-escuro::placeholder { color: rgb(255 255 255 / 0.38); }
+
+.campo-escuro:focus {
+  outline: none;
+  border-color: var(--hazmat-500);
+  background-color: rgb(255 255 255 / 0.07);
+}
+
+/* Reforco para os navegadores que ainda ignoram color-scheme no menu. */
+.campo-escuro option {
+  background-color: var(--petroleo-900);
+  color: #e8f1f1;
+}
+
+/* A seta nativa nasce escura e some no campo escuro. Troca pela nossa, no
+   laranja da marca, com folga a direita para o texto nao passar por baixo. */
+select.campo-escuro {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 2.6rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff6b00' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.85rem;
+  cursor: pointer;
+}
+
+.campo-escuro:user-invalid {
+  border-color: var(--perigo-500);
+}
+
+/* Moldura do mapa: harmoniza o embed colorido com o tema escuro */
+.moldura-mapa {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-box);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: var(--petroleo-800);
+}
+
+.moldura-mapa iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  filter: grayscale(0.28) contrast(1.04) brightness(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   18. GRADE DE APOIO
+   -------------------------------------------------------------------------- */
+.container-braskit {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.secao {
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+  position: relative;
+}
+
+.secao-escura {
+  background: var(--petroleo-900);
+  color: #e8f1f1;
+  position: relative;
+  overflow: hidden;
+}
+
+.secao-escura-profunda { background: var(--petroleo-950); }
+
+.secao-clara {
+  background: var(--neutro-50);
+  color: var(--neutro-900);
+}
+
+/* --------------------------------------------------------------------------
+   19. ITEM DE CHECKLIST (composicao do kit) E CARD DE CATEGORIA
+   -------------------------------------------------------------------------- */
+.item-kit {
+  border: 1px solid rgb(16 22 23 / 0.1);
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.item-kit:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
+  box-shadow: 0 14px 30px -16px rgb(6 34 38 / 0.35);
+}
+
+.item-kit__icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--petroleo-900);
+  color: var(--hazmat-500);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.item-kit:hover .item-kit__icone {
+  background: var(--hazmat-500);
+  color: #fff;
+}
+
+.item-kit__nome {
+  font-family: var(--fonte-corpo);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.4;
+  color: var(--neutro-900);
+}
+
+.item-kit__desc {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgb(16 22 23 / 0.55);
+}
+
+/* Card de categoria do catalogo */
+.card-categoria {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: var(--radius-box);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background: color-mix(in srgb, var(--petroleo-800) 90%, #000);
+  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-categoria:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--hazmat-500) 60%, transparent);
+  box-shadow: 0 20px 42px -22px rgb(0 0 0 / 0.8);
+}
+
+.card-categoria__icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.65rem;
+  background: rgb(255 107 0 / 0.12);
+  color: var(--hazmat-500);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-categoria:hover .card-categoria__icone {
+  background: var(--hazmat-500);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   20. QUEM ATENDEMOS E ONDE ATENDEMOS
+   -------------------------------------------------------------------------- */
+.segmento-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.75rem;
+  background: #fff;
+  border: 1px solid rgb(16 22 23 / 0.1);
+  border-radius: var(--radius-box);
+  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.segmento-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
+  box-shadow: 0 18px 38px -20px rgb(6 34 38 / 0.4);
+}
+
+.segmento-card__icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.65rem;
+  background: var(--petroleo-900);
+  color: var(--hazmat-500);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.segmento-card:hover .segmento-card__icone {
+  background: var(--hazmat-500);
+  color: #fff;
+}
+
+.segmento-card__titulo {
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.35;
+  color: var(--neutro-900);
+  margin-bottom: 0.5rem;
+}
+
+.segmento-card__texto {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgb(16 22 23 / 0.6);
+}
+
+/* Chips de cidade da secao Onde Atendemos */
+.cidade-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 99px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background: rgb(255 255 255 / 0.04);
+  color: rgb(255 255 255 / 0.8);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: border-color 0.25s ease, background-color 0.25s ease,
+    transform 0.25s var(--ease-saida);
+}
+
+.cidade-chip:hover {
+  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  background: rgb(255 255 255 / 0.07);
+  transform: translateY(-1px);
+}
+
+.cidade-chip--sede {
+  border-color: color-mix(in srgb, var(--hazmat-500) 70%, transparent);
+  background: rgb(255 107 0 / 0.12);
+  color: #fff;
+}
+
+.cidade-chip__nota {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--hazmat-500);
+}
+
+/* --------------------------------------------------------------------------
+   21. CATALOGO: barra de filtros, chips, busca e cards
+   -------------------------------------------------------------------------- */
+.filtros-sticky {
+  position: sticky;
+  top: 62px;
+  z-index: 40;
+  background: color-mix(in srgb, #fff 94%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgb(16 22 23 / 0.09);
+}
+
+@media (max-width: 640px) {
+  .filtros-sticky { top: 56px; }
+}
+
+.chip-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  border: 1px solid rgb(16 22 23 / 0.14);
+  background: #fff;
+  color: rgb(16 22 23 / 0.72);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, transform 0.25s var(--ease-saida);
+}
+
+.chip-filtro:hover {
+  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  color: var(--neutro-900);
+  transform: translateY(-1px);
+}
+
+.chip-filtro.is-ativo {
+  background: var(--hazmat-500);
+  border-color: var(--hazmat-500);
+  color: #fff;
+}
+
+.chip-filtro__contagem {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+/* A regua de categorias rola na horizontal no celular. A barra de rolagem
+   nativa polui o conjunto, entao fica escondida: o corte dos chips ja
+   sinaliza que ha mais conteudo ao lado. */
+.chips-rolagem {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chips-rolagem::-webkit-scrollbar { display: none; }
+
+/* Campo de busca */
+.campo-busca {
+  width: 100%;
+  padding: 0.65rem 1rem 0.65rem 2.6rem;
+  border-radius: var(--radius-field);
+  border: 1px solid rgb(16 22 23 / 0.14);
+  background: #fff;
+  font-family: var(--fonte-corpo);
+  font-size: 0.875rem;
+  color: var(--neutro-900);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.campo-busca::placeholder { color: rgb(16 22 23 / 0.4); }
+
+.campo-busca:focus {
+  outline: none;
+  border-color: var(--hazmat-500);
+  box-shadow: 0 0 0 3px rgb(255 107 0 / 0.14);
+}
+
+/* Card do produto no grid */
+.produto-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-box);
+  border: 1px solid rgb(16 22 23 / 0.1);
+  background: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   22. JANELA DE DETALHE DO PRODUTO (dialog nativo)
+   O dialog ocupa a tela inteira de forma transparente; a caixa fica no
+   centro e o formulario de fundo, com method="dialog", fecha ao clique
+   fora. O ::backdrop escurece a pagina por tras.
+   -------------------------------------------------------------------------- */
+.janela-produto {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100dvh;
+  border: 0;
+  padding: 1rem;
+  background: transparent;
+}
+
+.janela-produto[open] {
+  display: grid;
+  place-items: center;
+}
+
+.janela-produto::backdrop {
+  background: rgb(6 34 38 / 0.82);
+  backdrop-filter: blur(3px);
+}
+
+.janela-produto[open] .janela-produto__caixa {
+  animation: janela-entra 0.32s var(--ease-saida);
+}
+
+@keyframes janela-entra {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+}
+
+.janela-produto__caixa {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 56rem);
+  max-height: 90dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: var(--radius-box);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: var(--petroleo-900);
+  color: #e8f1f1;
+  box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.8);
+}
+
+/* Sem min-width: 0 as colunas do grid crescem ate o tamanho minimo do
+   conteudo e estouram a caixa, jogando a foto por cima do texto. */
+.janela-produto__caixa .grid > * { min-width: 0; }
+
+/* Botao invisivel que cobre a area fora da caixa e fecha a janela */
+.janela-produto__fundo {
+  position: absolute;
+  inset: 0;
+}
+
+.janela-produto__fundo button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  font-size: 0;
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   23. ORÇAMENTO POR SELEÇÃO
+   O seletor de cada card, a bandeja fixa e a janela da lista.
+
+   Regra de cor da seção: o kit mínimo obrigatório fala em petróleo (é norma,
+   não é escolha) e o que a pessoa marcou fala no laranja da marca. Dentro da
+   janela escura, o obrigatório troca o petróleo pelo amarelo de alerta, que
+   é o mesmo da faixa zebrada e sobrevive ao fundo.
+   -------------------------------------------------------------------------- */
+
+/* Seletor no rodapé do card ----------------------------------------------- */
+.selecao {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-field);
+  border: 1px solid rgb(16 22 23 / 0.14);
+  background: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--neutro-900);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+label.selecao { cursor: pointer; }
+
+label.selecao:hover {
+  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+}
+
+/* O campo sai de vista, mas continua sendo ele quem guarda o estado e quem
+   recebe o teclado. O anel de foco aparece na caixinha ao lado. */
+.selecao__campo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.selecao__caixa {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 0.4rem;
+  border: 2px solid rgb(16 22 23 / 0.2);
+  background: #fff;
+  color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.selecao__caixa svg { width: 0.8rem; height: 0.8rem; }
+
+.selecao__campo:checked + .selecao__caixa,
+.selecao__caixa.is-marcada {
+  background: var(--hazmat-500);
+  border-color: var(--hazmat-500);
+  color: #fff;
+}
+
+.selecao__campo:focus-visible + .selecao__caixa {
+  outline: 2px solid var(--hazmat-500);
+  outline-offset: 3px;
+}
+
+.selecao.is-marcado {
+  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
+  background: color-mix(in srgb, var(--hazmat-500) 7%, #fff);
+}
+
+.selecao__texto { flex: 1; }
+
+.selecao__texto small {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgb(16 22 23 / 0.5);
+}
+
+/* Kit mínimo: sem controle nenhum, porque não há o que decidir aqui. */
+.selecao--fixa {
+  border-color: rgb(11 49 54 / 0.18);
+  background: color-mix(in srgb, var(--petroleo-900) 5%, #fff);
+}
+
+.selecao--fixa .selecao__caixa.is-marcada {
+  background: var(--petroleo-800);
+  border-color: var(--petroleo-800);
+}
+
+.selecao__cadeado {
+  flex: none;
+  color: rgb(16 22 23 / 0.35);
+}
+
+.selecao__cadeado svg { width: 0.95rem; height: 0.95rem; }
+
+/* Card que já está na lista */
+.produto-card.is-selecionado {
+  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  box-shadow: 0 14px 34px -22px rgb(255 107 0 / 0.75);
+}
+
+.produto-card.is-fixo {
+  border-color: rgb(11 49 54 / 0.3);
+  box-shadow: 0 14px 34px -22px rgb(11 49 54 / 0.7);
+}
+
+/* Botão de seleção da janela de detalhe ------------------------------------ */
+.botao-selecao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--radius-field);
+  border: 1px solid transparent;
+  background: var(--hazmat-500);
+  color: #fff;
+  font-family: var(--fonte-corpo);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.botao-selecao svg { width: 1.05rem; height: 1.05rem; flex: none; }
+.botao-selecao:hover { background: var(--hazmat-400); }
+
+.botao-selecao.is-dentro {
+  background: color-mix(in srgb, var(--hazmat-500) 16%, transparent);
+  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  color: var(--hazmat-400);
+}
+
+.botao-selecao.is-dentro:hover {
+  background: color-mix(in srgb, var(--hazmat-500) 26%, transparent);
+  color: #fff;
+}
+
+.botao-selecao:disabled {
+  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(255 255 255 / 0.16);
+  border-style: dashed;
+  color: rgb(255 255 255 / 0.7);
+  cursor: default;
+}
+
+/* Bandeja fixa ------------------------------------------------------------- */
+.bandeja {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 75; /* acima dos flutuantes (70) e abaixo do header (80) */
+  background: color-mix(in srgb, var(--petroleo-950) 94%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 -18px 40px -24px rgb(0 0 0 / 0.9);
+  transform: translateY(110%);
+  transition: transform 0.4s var(--ease-saida);
+}
+
+.bandeja.is-visivel { transform: none; }
+
+.bandeja__interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.bandeja__resumo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+  border: 0;
+  border-radius: 99px;
+  background: transparent;
+  color: #fff;
+  font-family: var(--fonte-corpo);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.bandeja__resumo:hover { background: rgb(255 255 255 / 0.07); }
+
+.bandeja__selo {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.85rem;
+  background: var(--hazmat-500);
+  color: #fff;
+}
+
+.bandeja__selo svg { width: 1.25rem; height: 1.25rem; }
+
+.bandeja__texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.bandeja__texto strong {
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bandeja__texto small {
+  overflow: hidden;
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.55);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bandeja__minis {
+  display: flex;
+  align-items: center;
+  padding-left: 0.4rem;
+}
+
+.bandeja__minis img,
+.bandeja__mais {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.6rem;
+  border: 2px solid var(--petroleo-950);
+  background: var(--petroleo-800);
+  object-fit: cover;
+}
+
+.bandeja__minis > * + * { margin-left: -0.6rem; }
+
+.bandeja__mais {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bandeja__enviar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius-field);
+  background: var(--hazmat-500);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.25s ease;
+}
+
+.bandeja__enviar:hover { background: var(--hazmat-400); }
+
+/* Pulso ao entrar um item novo: confirma a ação sem precisar de aviso. */
+@keyframes bandeja-pulso {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+
+.bandeja.is-pulsando .bandeja__selo {
+  animation: bandeja-pulso 0.5s var(--ease-saida);
+}
+
+/* Com a bandeja na tela o rodapé ganha folga e os flutuantes saem da frente:
+   o botão da bandeja já faz o papel do WhatsApp redondo. */
+body.com-bandeja { padding-bottom: 5.5rem; }
+body.com-bandeja .btn-whatsapp { display: none; }
+body.com-bandeja .btn-topo { bottom: 6.75rem; }
+body.com-bandeja .aviso-area { bottom: 6.75rem; }
+
+/* Janela da lista ---------------------------------------------------------- */
+.janela-orcamento__caixa {
+  display: flex;
+  width: min(94vw, 44rem);
+  max-height: min(88dvh, 46rem);
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.janela-orcamento__topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.6rem 1.6rem 1.2rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.09);
+}
+
+.janela-orcamento__olho {
+  margin-bottom: 0.4rem;
+  font-family: var(--fonte-titulo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--hazmat-500);
+}
+
+.janela-orcamento__resumo {
+  margin-top: 0.55rem;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.55);
+}
+
+.janela-orcamento__fechar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 99px;
+  background: transparent;
+  color: rgb(255 255 255 / 0.7);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.janela-orcamento__fechar:hover {
+  border-color: var(--hazmat-500);
+  background: var(--hazmat-500);
+  color: #fff;
+}
+
+.janela-orcamento__corpo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.4rem 1.6rem;
+}
+
+.janela-orcamento__corpo:focus { outline: none; }
+
+.grupo-orcamento + .grupo-orcamento { margin-top: 1.7rem; }
+
+.grupo-orcamento__titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  color: rgb(255 255 255 / 0.62);
+}
+
+.grupo-orcamento__contagem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding-inline: 0.35rem;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 0.1);
+  font-family: var(--fonte-corpo);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.grupo-orcamento__apoio {
+  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.45);
+}
+
+.grupo-orcamento__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+.linha-orcamento {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr auto auto;
+  grid-template-areas: "foto info qtd fim";
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 0.03);
+}
+
+/* Amarelo translúcido sobre o petróleo vira verde-oliva, então o destaque do
+   item obrigatório fica só na borda e no cadeado. */
+.linha-orcamento--fixa {
+  border-color: color-mix(in srgb, var(--alerta-400) 32%, transparent);
+  background: rgb(255 255 255 / 0.055);
+}
+
+.linha-orcamento__foto {
+  grid-area: foto;
+  width: 3.25rem;
+  height: 3.25rem;
+  align-self: start;
+  border-radius: 0.55rem;
+  background: var(--petroleo-800);
+  object-fit: cover;
+}
+
+.linha-orcamento__info {
+  grid-area: info;
+  min-width: 0;
+}
+
+.linha-orcamento__nome {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.linha-orcamento__cat {
+  margin-top: 0.15rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgb(255 255 255 / 0.42);
+}
+
+.linha-orcamento__remover,
+.linha-orcamento__cadeado {
+  grid-area: fim;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 99px;
+}
+
+.linha-orcamento__remover {
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background: transparent;
+  color: rgb(255 255 255 / 0.55);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.linha-orcamento__remover:hover {
+  border-color: var(--perigo-500);
+  background: color-mix(in srgb, var(--perigo-500) 20%, transparent);
+  color: #fff;
+}
+
+.linha-orcamento__remover svg { width: 0.85rem; height: 0.85rem; }
+
+.linha-orcamento__cadeado { color: color-mix(in srgb, var(--alerta-400) 80%, #fff); }
+.linha-orcamento__cadeado svg { width: 1rem; height: 1rem; }
+
+.contador-qtd {
+  grid-area: qtd;
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.2rem;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 99px;
+  background: rgb(255 255 255 / 0.04);
+}
+
+.contador-qtd__botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0;
+  border-radius: 99px;
+  background: transparent;
+  color: rgb(255 255 255 / 0.8);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contador-qtd__botao:hover:not(:disabled) {
+  background: var(--hazmat-500);
+  color: #fff;
+}
+
+.contador-qtd__botao:disabled { opacity: 0.28; cursor: default; }
+.contador-qtd__botao svg { width: 0.8rem; height: 0.8rem; }
+
+.contador-qtd__valor {
+  width: 2rem;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--fonte-corpo);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.orcamento-vazio {
+  margin-top: 1.2rem;
+  padding: 1.1rem;
+  border: 1px dashed rgb(255 255 255 / 0.16);
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.janela-orcamento__rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.1rem 1.6rem;
+  padding-bottom: max(1.1rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(255 255 255 / 0.09);
+  background: color-mix(in srgb, var(--petroleo-950) 55%, transparent);
+}
+
+.janela-orcamento__enviar {
+  display: inline-flex;
+  flex: 1;
+  min-width: 13rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--radius-field);
+  background: var(--hazmat-500);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.25s ease;
+}
+
+.janela-orcamento__enviar:hover { background: var(--hazmat-400); }
+
+.janela-orcamento__limpar {
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: var(--radius-field);
+  background: transparent;
+  color: rgb(255 255 255 / 0.7);
+  font-family: var(--fonte-corpo);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.janela-orcamento__limpar:hover:not(:disabled) {
+  border-color: rgb(255 255 255 / 0.4);
+  color: #fff;
+}
+
+.janela-orcamento__limpar:disabled { opacity: 0.4; cursor: default; }
+
+.janela-orcamento__nota {
+  flex-basis: 100%;
+  font-size: 0.7rem;
+  color: rgb(255 255 255 / 0.35);
+}
+
+@media (max-width: 900px) {
+  .bandeja__minis { display: none; }
+}
+
+@media (max-width: 560px) {
+  .bandeja__interno { gap: 0.5rem; }
+  .bandeja__resumo { gap: 0.6rem; padding-right: 0.4rem; }
+  .bandeja__selo { width: 2.2rem; height: 2.2rem; border-radius: 0.7rem; }
+  .bandeja__selo svg { width: 1.05rem; height: 1.05rem; }
+  .bandeja__texto strong { font-size: 1.1rem; }
+  .bandeja__texto small { font-size: 0.68rem; }
+  .bandeja__enviar { padding: 0.7rem 1rem; font-size: 0.8125rem; }
+  /* Trechos de texto que só cabem em tela grande: no celular a bandeja fica
+     com "Enviar" e "ver e ajustar a lista", sem reticências. */
+  .so-largo { display: none; }
+
+  .linha-orcamento {
+    grid-template-columns: 3.25rem 1fr auto;
+    grid-template-areas:
+      "foto info fim"
+      "foto qtd  qtd";
+    row-gap: 0.55rem;
+  }
+
+  .contador-qtd { justify-self: start; }
+
+  .janela-orcamento__topo,
+  .janela-orcamento__corpo,
+  .janela-orcamento__rodape { padding-inline: 1.1rem; }
+}
+
+/* --------------------------------------------------------------------------
+   24. RESPONSIVO
+   -------------------------------------------------------------------------- */
+
+/* Abaixo de 1024px o parallax e desligado (ver js/main.js): as camadas
+   viram fundo estatico, sem custo de composicao em aparelhos moveis. */
+@media (max-width: 1023px) {
+  .camada-parallax,
+  .faixa-parallax__fundo,
+  [data-parallax] {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .camada-parallax {
+    inset: 0;
+    height: 100%;
+  }
+
+  .faixa-parallax__fundo {
+    top: 0;
+    height: 100%;
+  }
+
+  .marquee__item { font-size: 1.15rem; padding-inline: 1.25rem; }
+}
+
+@media (max-width: 640px) {
+  :root { --altura-header: 72px; }
+  .secao { padding-block: clamp(3rem, 12vw, 4.5rem); }
+}
+
+/* --------------------------------------------------------------------------
+   25. MOVIMENTO REDUZIDO
+   Quem pediu menos movimento recebe a pagina inteira estatica: sem parallax,
+   sem reveal, sem marquee, sem tilt e sem pulso. O conteudo continua 100%
+   acessivel.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .camada-parallax,
+  .faixa-parallax__fundo,
+  [data-parallax],
+  .tilt-3d {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .camada-parallax { inset: 0; height: 100%; }
+  .faixa-parallax__fundo { top: 0; height: 100%; }
+
+  .marquee__trilho { animation: none; transform: none; }
+  .linha-mascara > span { animation: none; }
+  .produto-card--entrando { animation: none; }
+}
+
+/* --------------------------------------------------------------------------
+   26. IMPRESSAO
+   -------------------------------------------------------------------------- */
+@media print {
+  .btn-topo,
+  .btn-whatsapp,
+  .menu-mobile,
+  .aviso-area,
+  .bandeja,
+  .indicador-scroll { display: none !important; }
+
+  body { background: #fff !important; color: #000 !important; }
+  body.com-bandeja { padding-bottom: 0 !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}

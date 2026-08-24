@@ -1,0 +1,4 @@
+Coloque aqui as fotos de ambiente geradas no Gemini, com os nomes exatos:
+faixa-rodovia.jpg, faixa-noturna.jpg, sobre-kit.jpg e, se optar pelo hero em
+modo foto, hero-rodovia.jpg. Os prompts estao em gemini-prompts-imagens.txt,
+na raiz do projeto.

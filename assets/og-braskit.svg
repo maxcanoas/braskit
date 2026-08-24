@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT — imagem de compartilhamento (Open Graph), 1200x630. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Braskit — Kit para Transporte de Cargas Perigosas">
+  <defs>
+    <linearGradient id="ogBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"   stop-color="#0B3136"/>
+      <stop offset=".62" stop-color="#062226"/>
+      <stop offset="1"   stop-color="#03161A"/>
+    </linearGradient>
+    <radialGradient id="ogGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FF6B00" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#FF6B00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <circle cx="980" cy="500" r="360" fill="url(#ogGlow)"/>
+
+  <!-- Losangos decorativos -->
+  <g stroke="#FFFFFF" stroke-opacity=".08" fill="none">
+    <rect x="900" y="90"  width="150" height="150" transform="rotate(45 975 165)"/>
+    <rect x="1020" y="300" width="110" height="110" transform="rotate(45 1075 355)"/>
+  </g>
+
+  <!-- Marca -->
+  <text x="80" y="250" font-family="Arial Narrow, Arial, sans-serif" font-size="128" font-weight="bold" fill="#FFFFFF" letter-spacing="-2">BRAS<tspan fill="#FF6B00">KIT</tspan></text>
+  <text x="84" y="292" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#8FB3B3" letter-spacing="4.5">KIT PARA TRANSPORTE DE CARGAS PERIGOSAS</text>
+
+  <!-- Chamada -->
+  <text x="80" y="404" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="bold" fill="#FFFFFF">SEGURANÇA QUE ACOMPANHA</text>
+  <text x="80" y="470" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="bold" fill="#FF6B00">CADA QUILÔMETRO</text>
+  <text x="80" y="524" font-family="Arial, sans-serif" font-size="25" fill="#B9D1D1">Kits, EPIs e sinalização dentro das normas CONTRAN e ABNT</text>
+  <text x="80" y="566" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#FFC300">Canoas/RS · há mais de 30 anos</text>
+
+  <!-- Faixa zebrada inferior -->
+  <rect x="0" y="606" width="1200" height="24" fill="#FFC300"/>
+  <g fill="#101617">
+    <rect x="0"    y="606" width="30" height="24"/><rect x="60"  y="606" width="30" height="24"/>
+    <rect x="120"  y="606" width="30" height="24"/><rect x="180" y="606" width="30" height="24"/>
+    <rect x="240"  y="606" width="30" height="24"/><rect x="300" y="606" width="30" height="24"/>
+    <rect x="360"  y="606" width="30" height="24"/><rect x="420" y="606" width="30" height="24"/>
+    <rect x="480"  y="606" width="30" height="24"/><rect x="540" y="606" width="30" height="24"/>
+    <rect x="600"  y="606" width="30" height="24"/><rect x="660" y="606" width="30" height="24"/>
+    <rect x="720"  y="606" width="30" height="24"/><rect x="780" y="606" width="30" height="24"/>
+    <rect x="840"  y="606" width="30" height="24"/><rect x="900" y="606" width="30" height="24"/>
+    <rect x="960"  y="606" width="30" height="24"/><rect x="1020" y="606" width="30" height="24"/>
+    <rect x="1080" y="606" width="30" height="24"/><rect x="1140" y="606" width="30" height="24"/>
+  </g>
+</svg>

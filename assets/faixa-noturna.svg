@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT — fundo da 2ª faixa parallax: comboio noturno, tons frios. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 760" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Comboio de caminhões em rodovia à noite">
+  <defs>
+    <linearGradient id="nCeu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#020C10"/>
+      <stop offset=".42" stop-color="#05202A"/>
+      <stop offset=".72" stop-color="#0A3038"/>
+      <stop offset=".80" stop-color="#123F44"/>
+      <stop offset=".81" stop-color="#04161B"/>
+      <stop offset="1"   stop-color="#020D11"/>
+    </linearGradient>
+    <radialGradient id="farol" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#FFE9BE" stop-opacity=".85"/>
+      <stop offset=".4"  stop-color="#FFC300" stop-opacity=".22"/>
+      <stop offset="1"   stop-color="#FFC300" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="760" fill="url(#nCeu)"/>
+
+  <!-- Estrelas discretas -->
+  <g fill="#CFE6E6">
+    <circle cx="240"  cy="96"  r="1.6" opacity=".55"/><circle cx="520"  cy="150" r="1.2" opacity=".4"/>
+    <circle cx="880"  cy="70"  r="1.8" opacity=".6"/> <circle cx="1180" cy="132" r="1.3" opacity=".45"/>
+    <circle cx="1480" cy="86"  r="1.5" opacity=".5"/> <circle cx="1720" cy="164" r="1.2" opacity=".38"/>
+    <circle cx="380"  cy="220" r="1.1" opacity=".32"/><circle cx="1320" cy="242" r="1.1" opacity=".3"/>
+  </g>
+
+  <!-- Serra ao fundo -->
+  <path fill="#03151A" d="M0 612 L0 578 L200 552 L390 580 L580 548 L790 578 L980 552 L1180 580 L1390 550 L1600 578 L1800 556 L1920 574 L1920 612 Z"/>
+
+  <!-- Pista -->
+  <path fill="#04171C" d="M980 616 L2320 760 L-360 760 Z"/>
+  <g opacity=".5">
+    <polygon fill="#B9CFCF" points="979,616 981,616 300,760 210,760"/>
+    <polygon fill="#B9CFCF" points="979,616 981,616 1740,760 1830,760"/>
+  </g>
+  <g fill="#FFC300" opacity=".6">
+    <polygon points="977,636 983,636 985,654 975,654"/>
+    <polygon points="972,672 988,672 993,700 967,700"/>
+    <polygon points="963,718 997,718 1004,760 956,760"/>
+  </g>
+
+  <!-- Comboio: silhuetas em profundidade, com lanternas acesas -->
+  <g>
+    <circle cx="1240" cy="668" r="52" fill="url(#farol)"/>
+    <rect x="1176" y="596" width="132" height="76" rx="8" fill="#02181D"/>
+    <rect x="1176" y="662" width="132" height="8" fill="#E2231A" opacity=".75"/>
+    <rect x="1188" y="606" width="108" height="6" fill="#FF6B00" opacity=".5"/>
+  </g>
+  <g opacity=".82">
+    <circle cx="820" cy="650" r="38" fill="url(#farol)"/>
+    <rect x="774" y="602" width="94" height="52" rx="6" fill="#031A20"/>
+    <rect x="774" y="646" width="94" height="6" fill="#E2231A" opacity=".6"/>
+  </g>
+  <g opacity=".6">
+    <rect x="1420" y="592" width="70" height="38" rx="5" fill="#031A20"/>
+    <rect x="1420" y="624" width="70" height="5" fill="#E2231A" opacity=".5"/>
+  </g>
+
+  <!-- Véu para leitura do texto sobreposto -->
+  <rect width="1920" height="760" fill="#021216" opacity=".46"/>
+</svg>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: linear-gradient(140deg, #0a2b32 0%, #062226 70%, #051b1f 100%);
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", system-ui, sans-serif;
+    color: #fff; position: relative;
+  }
+  .losango {
+    position: absolute; border: 2px solid rgba(255,255,255,.10);
+    transform: rotate(45deg); border-radius: 10px;
+  }
+  .losango--cheio {
+    background: rgba(255,107,0,.12);
+    border-color: rgba(255,107,0,.55);
+  }
+  .conteudo { position: absolute; left: 84px; top: 118px; }
+  .marca { position: relative; display: inline-block; }
+  .marca__texto {
+    font-weight: bold; font-size: 168px; line-height: .9;
+    letter-spacing: -4px; transform: scaleX(.84); transform-origin: left;
+    display: inline-block; white-space: nowrap;
+  }
+  .marca__texto b { color: #FF6B00; font-weight: bold; }
+  .marca svg.infinito {
+    position: absolute; top: -46px; right: 46px; width: 120px; color: rgba(255,255,255,.9);
+  }
+  .sub {
+    margin-top: 26px; font-size: 26px; letter-spacing: 7px; font-weight: 600;
+    color: rgba(255,255,255,.72); text-transform: uppercase;
+  }
+  .chips { position: absolute; left: 84px; bottom: 96px; display: flex; gap: 14px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1.5px solid rgba(255,255,255,.22); border-radius: 999px;
+    padding: 12px 24px; font-size: 22px; font-weight: 600;
+    color: rgba(255,255,255,.9); background: rgba(255,255,255,.05);
+  }
+  .chip i {
+    width: 10px; height: 10px; background: #FF6B00; transform: rotate(45deg);
+    display: inline-block;
+  }
+  .zebra {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 18px;
+    background: repeating-linear-gradient(45deg, #FFC300 0, #FFC300 26px, #111 26px, #111 52px);
+  }
+</style>
+</head>
+<body>
+  <div class="losango" style="width:340px;height:340px;right:60px;top:60px;"></div>
+  <div class="losango losango--cheio" style="width:210px;height:210px;right:125px;top:125px;border-radius:6px;"></div>
+  <div class="losango" style="width:120px;height:120px;right:-30px;bottom:110px;"></div>
+
+  <div class="conteudo">
+    <div class="marca">
+      <span class="marca__texto">BRAS<b>KIT</b></span>
+      <svg class="infinito" viewBox="0 0 52 26" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
+        <path d="M24 13C18 4.5 6 4.5 6 13c0 8.5 12 8.5 18 0 6-8.5 18-8.5 22-3"/>
+        <path d="M46 10c2.5 5-2 11.5-8 11.5-5 0-10-3.5-14-8.5" stroke-dasharray="4 3.4"/>
+      </svg>
+    </div>
+    <div class="sub">Kit para transporte de cargas perigosas</div>
+  </div>
+
+  <div class="chips">
+    <span class="chip"><i></i> CONTRAN e ABNT</span>
+    <span class="chip"><i></i> Canoas/RS</span>
+    <span class="chip"><i></i> Envio para todo o RS</span>
+  </div>
+
+  <div class="zebra"></div>
+</body>
+</html>

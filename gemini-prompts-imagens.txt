@@ -1,0 +1,165 @@
+BRASKIT | PROMPTS DE IMAGEM PARA O GEMINI
+==========================================
+
+Como usar: cada bloco abaixo gera UMA imagem. Copie o texto em ingles do bloco,
+cole no Gemini, gere, escolha a melhor variacao e salve com o nome de arquivo
+indicado, dentro de assets/img/. O site reconhece os nomes sozinho, sem mexer
+em codigo.
+
+Sao SETE arquivos: quatro para tela larga e tres recortes verticais, que o
+site usa no celular. Sem os verticais o celular mostra so um quarto da largura
+da foto panoramica, ampliado.
+
+Regras que valem para todas:
+- Gere na maior resolucao possivel e recorte na proporcao indicada.
+- O Gemini entrega no maximo cerca de 1408 px no lado maior. Para chegar aos
+  tamanhos ideais da tabela, gere na proporcao certa e passe um upscale de 2x
+  depois. Sem upscale, use a coluna "minimo" da tabela: ja cobre bem telas de
+  ate 1440 px, que sao a maioria.
+- Depois de gerar, comprima em https://squoosh.app com qualidade em torno de
+  80 e respeite o peso alvo. As fotos anteriores tinham quase 900 KB para so
+  1376 px de largura, o que e qualidade alta demais e pesa no 4G.
+- Se aparecer qualquer texto, letreiro ou logotipo legivel na imagem, gere de
+  novo. Placas de sinalizacao laranja podem aparecer, mas sem numeros nitidos
+  inventados.
+- As fotos de PRODUTO do catalogo sao reais e nao devem ser trocadas por
+  imagem gerada. Estes prompts cobrem apenas as fotos de ambiente.
+- O recorte vertical NAO e a foto larga cortada: um corte vira um close sem
+  composicao. Gere de novo, com o prompt vertical, que ja pede o assunto mais
+  para baixo e ceu livre em cima, onde entra o titulo.
+
+TABELA DE TAMANHOS
+                                  proporcao   ideal        minimo      peso
+  hero-rodovia.jpg                16:9        2400x1350    2000x1125   380 KB
+  hero-rodovia-mobile.jpg          9:16       1080x1920     768x1366   220 KB
+  faixa-rodovia.jpg               12:5        2400x1000    1680x700    320 KB
+  faixa-rodovia-mobile.jpg         4:5        1080x1350     864x1080   200 KB
+  faixa-noturna.jpg               12:5        2400x1000    1680x700    320 KB
+  faixa-noturna-mobile.jpg         4:5        1080x1350     864x1080   200 KB
+  sobre-kit.jpg                    4:3        1600x1200    1200x900    280 KB
+
+A identidade visual do site: azul petroleo escuro (#0B3136), laranja de
+seguranca (#FF6B00) e amarelo de alerta (#FFC300). Os prompts ja pedem essa
+paleta na luz e nos objetos.
+
+
+1) assets/img/hero-rodovia.jpg
+Proporcao: 16:9 (2400 x 1350)
+Onde aparece: hero da pagina inicial, em tela larga e no celular deitado
+
+PROMPT:
+Epic cinematic photograph of a Brazilian highway at golden hour, camera low
+near the asphalt on the right shoulder. A tanker truck approaches on the
+right lane with headlights on, orange hazard placard visible on the bumper,
+slightly off center to the right, leaving generous negative space on the left
+side of the frame for text overlay. Dramatic sky in deep petrol blue with
+warm orange sunset light, long shadows across the lanes, atmospheric haze.
+Photorealistic, high dynamic range, full frame camera look, 35mm lens, no
+visible text, no logos, no readable license plate, no people in focus.
+
+
+2) assets/img/hero-rodovia-mobile.jpg
+Proporcao: 9:16 vertical (1080 x 1920)
+Onde aparece: mesmo hero, em celular e tablet em pe
+
+PROMPT:
+Epic cinematic vertical photograph of a Brazilian highway at golden hour,
+portrait orientation, camera low near the asphalt. A tanker truck approaches
+head on, centered and placed in the lower third of the frame, headlights on,
+orange hazard placard visible on the bumper. The upper two thirds are a
+dramatic sky in deep petrol blue with warm orange sunset light, mostly empty
+and uncluttered, leaving room for a headline over it. Road lines leading the
+eye from the bottom edge to the truck, atmospheric haze, long shadows.
+Photorealistic, high dynamic range, full frame camera look, 35mm lens, no
+visible text, no logos, no readable license plate, no people in focus.
+
+
+3) assets/img/faixa-rodovia.jpg
+Proporcao: panoramica 12:5 (2400 x 1000)
+Onde aparece: faixa parallax "Mais de 30 anos protegendo quem esta na estrada"
+
+PROMPT:
+Cinematic wide photograph of a Brazilian highway at dusk, seen from a low
+roadside angle. A modern white semi truck with an orange hazard placard on the
+front bumper drives away into the distance, motion slightly blurred. Deep teal
+blue twilight sky fading to warm orange on the horizon, road surface with
+subtle reflections, guardrail and vegetation silhouettes on the edges. Color
+palette dominated by dark petrol blue tones with warm orange highlights.
+Moody, professional, high dynamic range, shot on a full frame camera with a
+35mm lens, photorealistic, no visible text, no logos, no license plate
+characters, no people in focus.
+
+
+4) assets/img/faixa-rodovia-mobile.jpg
+Proporcao: 4:5 vertical (1080 x 1350)
+Onde aparece: mesma faixa, abaixo de 640 px de largura
+
+PROMPT:
+Cinematic vertical photograph of a Brazilian highway at dusk, portrait
+orientation, low roadside angle close to the asphalt. A modern white semi
+truck with an orange hazard placard drives away into the distance, centered in
+the frame and small, motion slightly blurred, with the road converging toward
+it from the bottom edge. Deep teal blue twilight sky filling the upper half
+and fading to warm orange near the horizon. Guardrail and vegetation
+silhouettes framing the sides. Moody, professional, high dynamic range,
+photorealistic, no visible text, no logos, no license plate characters, no
+people in focus.
+
+
+5) assets/img/faixa-noturna.jpg
+Proporcao: panoramica 12:5 (2400 x 1000)
+Onde aparece: faixa "Kit fora da norma e risco e multa" e topo do catalogo
+
+PROMPT:
+Night photograph of a Brazilian highway emergency scene setup, no accident:
+reflective safety cones with orange and white stripes placed on the asphalt in
+a receding line, a folded warning triangle, and the silhouette of a parked
+truck with hazard lights glowing far in the background. Long exposure feel,
+red and white light trails from distant traffic on the left. Very dark petrol
+blue night atmosphere, the cones catching the headlights and glowing bright
+orange, shallow depth of field on the first cone. Photorealistic, cinematic,
+high contrast, no visible text, no logos, no people.
+
+
+6) assets/img/faixa-noturna-mobile.jpg
+Proporcao: 4:5 vertical (1080 x 1350)
+Onde aparece: mesma faixa e topo do catalogo, abaixo de 640 px de largura
+
+PROMPT:
+Night vertical photograph of a Brazilian highway emergency scene setup,
+portrait orientation, no accident: reflective safety cones with orange and
+white stripes lined up on the asphalt from the bottom edge toward the center
+of the frame, a folded warning triangle beside them, and the silhouette of a
+parked truck with hazard lights glowing in the upper third. Very dark petrol
+blue night atmosphere, the cones catching the headlights and glowing bright
+orange, red light trails from distant traffic. Shallow depth of field on the
+nearest cone. Photorealistic, cinematic, high contrast, no visible text, no
+logos, no people.
+
+
+7) assets/img/sobre-kit.jpg
+Proporcao: 4:3 (1600 x 1200)
+Onde aparece: foto grande da secao Sobre, em qualquer largura de tela (a
+caixa e 4:3 sempre, por isso esta foto nao precisa de versao vertical). Troque
+por foto real da fachada ou da equipe quando existir.
+
+PROMPT:
+Professional still life photograph of a complete road emergency kit for
+dangerous goods transport, four by three framing, neatly arranged on a dark
+workbench: a heavy canvas duffel bag, an ABC fire extinguisher, two orange
+flexible traffic cones, rubber wheel chocks, safety gloves, a reflective vest,
+a flashlight and a small shovel. Warm workshop lighting from the upper left,
+dark petrol blue background wall slightly out of focus, orange items popping
+against the dark scene. Organized, clean, catalog quality product photography,
+photorealistic, sharp details, no visible brand names, no text, no people.
+
+
+DICA FINAL
+Depois de salvar os sete arquivos, abra o site e role a pagina inteira, uma
+vez no computador e uma vez no celular. Se alguma foto vier clara demais e
+atrapalhar a leitura do texto branco, gere de novo pedindo "darker, moodier,
+underexposed by one stop" no fim do prompt.
+
+Se um arquivo faltar, o site nao quebra: a reserva desce sozinha do recorte
+vertical para a foto panoramica e, se ela tambem faltar, para o SVG. Ou seja,
+da para subir as fotos aos poucos.

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BRASKIT — camada média do hero: rodovia em perspectiva.
+     Ponto de fuga em (960, 762), o mesmo horizonte de hero-ceu.svg.
+     O topo é transparente para deixar o céu aparecer por trás. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Rodovia em perspectiva">
+  <defs>
+    <linearGradient id="asfalto" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#14383D"/>
+      <stop offset=".22" stop-color="#0E2C31"/>
+      <stop offset="1"   stop-color="#061A1E"/>
+    </linearGradient>
+    <linearGradient id="acostamento" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#123036"/>
+      <stop offset="1"   stop-color="#05171B"/>
+    </linearGradient>
+    <!-- As faixas somem perto do ponto de fuga, evitando aspecto de "leque" -->
+    <linearGradient id="esmaece" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1"   stop-color="#fff" stop-opacity=".95"/>
+    </linearGradient>
+    <mask id="mascaraFaixas">
+      <rect x="0" y="762" width="1920" height="318" fill="url(#esmaece)"/>
+    </mask>
+  </defs>
+
+  <!-- Terreno dos dois lados -->
+  <path fill="url(#acostamento)" d="M0 762 H1920 V1080 H0 Z"/>
+
+  <!-- Leito da pista -->
+  <path fill="url(#asfalto)" d="M960 762 L2170 1080 L-250 1080 Z"/>
+
+  <g mask="url(#mascaraFaixas)">
+    <!-- Bordas contínuas da pista -->
+    <polygon fill="#E9F2F2" opacity=".72" points="959,762 961,762 -56,1080 -105,1080"/>
+    <polygon fill="#E9F2F2" opacity=".72" points="959,762 961,762 1976,1080 2025,1080"/>
+
+    <!-- Faixa central tracejada, com segmentos crescendo em perspectiva -->
+    <g fill="#FFC300" opacity=".9">
+      <polygon points="957.7,790 962.3,790 963.5,805 956.5,805"/>
+      <polygon points="955.3,820 964.7,820 966.8,845 953.2,845"/>
+      <polygon points="951.8,862 968.2,862 971.3,900 948.7,900"/>
+      <polygon points="946.7,925 973.3,925 978.2,985 941.8,985"/>
+      <polygon points="939.3,1015 980.7,1015 986,1080 934,1080"/>
+    </g>
+  </g>
+
+  <!-- Guarda-corpo à esquerda -->
+  <g stroke="#1C4A50" stroke-linecap="round" opacity=".9">
+    <path d="M930 768 L560 830 L120 1000" stroke-width="4" fill="none"/>
+    <g stroke-width="3">
+      <path d="M905 772 v10"/><path d="M840 783 v14"/><path d="M745 799 v20"/>
+      <path d="M610 822 v29"/><path d="M430 890 v44"/><path d="M210 966 v62"/>
+    </g>
+  </g>
+
+  <!-- Postes de iluminação à direita, decrescendo até o horizonte -->
+  <g stroke="#0B282E" stroke-linecap="round" fill="none">
+    <g stroke-width="9"><path d="M1810 1080 V742"/><path d="M1810 742 q0 -26 -40 -30"/></g>
+    <g stroke-width="6"><path d="M1420 1010 V790"/><path d="M1420 790 q0 -18 -28 -21"/></g>
+    <g stroke-width="4"><path d="M1210 946 V818"/><path d="M1210 818 q0 -12 -19 -14"/></g>
+    <g stroke-width="3"><path d="M1090 900 V836"/><path d="M1090 836 q0 -8 -13 -9"/></g>
+  </g>
+  <g fill="#FFC300" opacity=".5">
+    <circle cx="1768" cy="713" r="7"/><circle cx="1390" cy="770" r="5"/>
+    <circle cx="1189" cy="805" r="3.5"/><circle cx="1075" cy="828" r="2.5"/>
+  </g>
+
+  <!-- Escurecimento inferior: assenta a estrada e dá contraste ao texto -->
+  <rect x="0" y="900" width="1920" height="180" fill="#03151A" opacity=".38"/>
+</svg>
