@@ -4,3 +4,12 @@ build/compile.html
 build/screens/
 build/relatorio.json
 # build/baseline.json e versionado: e a prova do "antes" no RELATORIO.md
+
+# Material comercial: uso interno, nunca vai para o repositorio.
+# O guia de negociacao tem pisos, margens e taticas; a proposta e documento
+# de negociacao em aberto. Os arquivos continuam no disco, so nao sao
+# versionados -- e ja foram removidos do historico com git filter-branch.
+comercial/
+
+# Backup do estado anterior. O historico do git ja cumpre esse papel.
+backup-original-2026-08-21.zip
