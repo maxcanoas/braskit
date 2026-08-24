@@ -270,8 +270,13 @@ img, svg, video, iframe { max-width: 100%; }
 .secao-clara .bg-petroleo-900,
 .secao-clara .bg-petroleo-800,
 .secao-clara .secao-escura,
-.secao-clara .cartao-escuro {
+.secao-clara .cartao-escuro,
+.secao-clara .card-categoria {
   --laranja-legivel: var(--hazmat-500);
+}
+
+.secao-clara .card-categoria.card-categoria--acao {
+  --laranja-legivel: #b34900;
 }
 
 /* O olho aparece onze vezes entre as duas paginas. Em laranja, era a maior
@@ -1121,6 +1126,180 @@ select.campo-escuro {
 }
 
 /* --------------------------------------------------------------------------
+   GRADE DE CATEGORIAS
+   Assimetrica de proposito. O kit completo -- o carro-chefe, que estava na
+   ultima posicao -- ocupa quatro celulas e abre a grade; os outros sete
+   ladrilhos se acomodam em volta, e a ultima celula e a chamada do catalogo.
+   Doze celulas, nenhuma vazia.
+   -------------------------------------------------------------------------- */
+.grade-categorias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--esp-xs);
+}
+
+@media (min-width: 1024px) {
+  .grade-categorias { grid-template-columns: repeat(4, 1fr); }
+  .card-categoria.card-categoria--destaque { grid-column: span 2; grid-row: span 2; }
+}
+
+.grade-categorias > .card-categoria { min-height: 9.5rem; }
+
+.card-categoria.card-categoria--destaque {
+  background: color-mix(in srgb, var(--petroleo-700) 58%, var(--petroleo-950));
+  padding: var(--esp-l);
+}
+
+.card-categoria.card-categoria--destaque:hover {
+  background: color-mix(in srgb, var(--petroleo-700) 78%, var(--petroleo-950));
+}
+
+.card-categoria.card-categoria--destaque .card-categoria__titulo { font-size: var(--txt-titulo); }
+.card-categoria.card-categoria--destaque .card-categoria__icone svg { width: 12rem; height: 12rem; }
+.card-categoria.card-categoria--destaque .card-categoria__contagem strong { font-size: 2.25rem; }
+
+/* A celula de chamada nao e categoria: e saida. Fica vazada. */
+.card-categoria.card-categoria--acao {
+  background: none;
+  border: 1px solid var(--estrutura-clara);
+  justify-content: flex-end;
+}
+
+.card-categoria.card-categoria--acao .card-categoria__titulo { color: var(--neutro-900); }
+.card-categoria.card-categoria--acao .card-categoria__contagem { color: rgb(16 22 23 / 0.6); }
+.card-categoria.card-categoria--acao:hover { background: rgb(16 22 23 / 0.04); }
+
+/* Divisor entre os dois movimentos de uma mesma secao. Nao e borda de caixa:
+   e uma pausa, com o losango da marca no meio. */
+.divisor-secao {
+  position: relative;
+  height: 0;
+  margin-block: var(--esp-2xl);
+  border: 0;
+  border-top: 1px solid var(--estrutura-clara);
+}
+
+.divisor-secao::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 4rem;
+  border-top: 2px solid var(--petroleo-900);
+}
+
+/* --------------------------------------------------------------------------
+   LISTA DE SEGMENTOS E BLOCO DE ALCANCE
+   Nascem da fusao de "Quem atendemos" com "Onde atendemos".
+   -------------------------------------------------------------------------- */
+.lista-segmentos {
+  display: grid;
+  gap: var(--esp-m);
+}
+
+.subtitulo-bloco {
+  margin-bottom: var(--esp-s);
+  font-family: var(--fonte-corpo);
+  font-size: var(--txt-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-olho);
+  color: rgb(16 22 23 / 0.6);
+}
+
+/* O chip de cidade nasceu para secao escura; aqui ele passa para o claro. */
+.secao-clara .cidade-chip {
+  border-color: var(--estrutura-clara);
+  background: #fff;
+  color: rgb(16 22 23 / 0.78);
+}
+
+.secao-clara .cidade-chip:hover { border-color: var(--petroleo-700); }
+
+.secao-clara .cidade-chip--sede {
+  border-color: transparent;
+  background: var(--petroleo-900);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   TIRA DE DADOS
+   Substitui a barra de contadores. Grade assimetrica de proposito: o endereco
+   e o dado que mais importa e ocupa mais espaco; os outros tres dividem o
+   resto. Nada aqui e animado -- sao fatos, nao numeros subindo.
+   -------------------------------------------------------------------------- */
+.tira-dados {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-box);
+  background: var(--petroleo-800);
+  box-shadow: 0 28px 60px -34px rgb(0 0 0 / 0.75);
+}
+
+.tira-dados__grade {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .tira-dados__grade { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .tira-dados__grade { grid-template-columns: 1.35fr 1fr 1fr 1.1fr; }
+}
+
+.tira-dados__item {
+  padding: var(--esp-m) var(--esp-m) calc(var(--esp-m) + 0.15rem);
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.tira-dados__item:first-child { border-top: 0; }
+
+@media (min-width: 640px) {
+  .tira-dados__item:nth-child(2) { border-top: 0; }
+  .tira-dados__item:nth-child(2n) { border-left: 1px solid rgb(255 255 255 / 0.08); }
+}
+
+@media (min-width: 1024px) {
+  .tira-dados__item { border-top: 0; }
+  .tira-dados__item + .tira-dados__item { border-left: 1px solid rgb(255 255 255 / 0.08); }
+}
+
+.tira-dados__rotulo {
+  font-size: var(--txt-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-olho);
+  color: rgb(255 255 255 / 0.55);
+}
+
+.tira-dados__valor {
+  margin-top: var(--esp-2xs);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-sub);
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: var(--track-titulo);
+  color: #fff;
+}
+
+.tira-dados__valor--normas { color: var(--alerta-400); }
+
+.tira-dados__extra {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--fonte-corpo);
+  font-size: var(--txt-micro);
+  font-weight: 400;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: normal;
+  color: rgb(255 255 255 / 0.62);
+}
+
+/* --------------------------------------------------------------------------
    18. GRADE DE APOIO
    -------------------------------------------------------------------------- */
 .container-braskit {
@@ -1260,7 +1439,7 @@ select.campo-escuro {
   font-family: var(--fonte-titulo);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--hazmat-500);
+  color: var(--laranja-legivel);
   vertical-align: -0.12em;
   margin-right: 0.15rem;
   font-variant-numeric: tabular-nums;

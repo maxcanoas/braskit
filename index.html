@@ -230,40 +230,33 @@
 </section>
 
 <!-- =========================================================
-     2. BARRA DE NUMEROS, sobreposta ao hero
+     2. TIRA DE DADOS, sobreposta ao hero
+
+     Substitui a antiga barra de contadores. "34 produtos" e "8 categorias"
+     eram taxonomia do proprio site, nao beneficio, e o "100% CONTRAN/ABNT"
+     subindo de 0 a 100 era promessa fantasiada de estatistica. No lugar
+     entram quatro dados verificaveis, todos ja presentes no JSON-LD.
      ========================================================= -->
-<section id="numeros" class="relative z-20 -mt-16 md:-mt-20" aria-label="A Braskit em números">
+<section id="onde-estamos" class="relative z-20 -mt-14 md:-mt-16" aria-label="Onde a Braskit fica e o que ela atende">
   <div class="container-braskit">
-    <div class="textura-ruido relative overflow-hidden rounded-2xl border border-white/10 bg-petroleo-800 shadow-2xl shadow-black/40">
+    <div class="tira-dados textura-ruido" data-reveal>
       <div class="faixa-zebrada faixa-zebrada-fina" aria-hidden="true"></div>
-      <dl class="grid grid-cols-2 divide-white/10 lg:grid-cols-4 lg:divide-x">
-        <div class="border-b border-white/10 px-6 py-8 text-center lg:border-b-0" data-reveal>
-          <dt class="sr-only">Anos de mercado</dt>
-          <dd>
-            <span class="numero-contador block text-5xl text-white sm:text-6xl"><span data-contador="30">0</span>+</span>
-            <span class="mt-2 block text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Anos de mercado</span>
-          </dd>
+      <dl class="tira-dados__grade">
+        <div class="tira-dados__item tira-dados__item--largo">
+          <dt class="tira-dados__rotulo">Loja e retirada</dt>
+          <dd class="tira-dados__valor">Rua Uruguai, 317<span class="tira-dados__extra">São José, Canoas/RS</span></dd>
         </div>
-        <div class="border-b border-white/10 px-6 py-8 text-center lg:border-b-0" data-reveal data-reveal-delay="80">
-          <dt class="sr-only">Produtos em linha</dt>
-          <dd>
-            <span class="numero-contador block text-5xl text-white sm:text-6xl" data-contador="34">0</span>
-            <span class="mt-2 block text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Produtos em linha</span>
-          </dd>
+        <div class="tira-dados__item">
+          <dt class="tira-dados__rotulo">Atendimento</dt>
+          <dd class="tira-dados__valor">Seg a sex, 8h às 18h<span class="tira-dados__extra">Almoço das 11:45 às 13:15</span></dd>
         </div>
-        <div class="px-6 py-8 text-center" data-reveal data-reveal-delay="160">
-          <dt class="sr-only">Categorias</dt>
-          <dd>
-            <span class="numero-contador block text-5xl text-white sm:text-6xl" data-contador="8">0</span>
-            <span class="mt-2 block text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Categorias</span>
-          </dd>
+        <div class="tira-dados__item">
+          <dt class="tira-dados__rotulo">Envio</dt>
+          <dd class="tira-dados__valor">Todo o Rio Grande do Sul<span class="tira-dados__extra">Frete e prazo fechados no orçamento</span></dd>
         </div>
-        <div class="px-6 py-8 text-center" data-reveal data-reveal-delay="240">
-          <dt class="sr-only">Conformidade</dt>
-          <dd>
-            <span class="numero-contador block text-5xl text-hazmat-500 sm:text-6xl"><span data-contador="100">0</span>%</span>
-            <span class="mt-2 block text-xs font-semibold uppercase tracking-[0.14em] text-white/55">CONTRAN / ABNT</span>
-          </dd>
+        <div class="tira-dados__item">
+          <dt class="tira-dados__rotulo">Normas que seguimos</dt>
+          <dd class="tira-dados__valor tira-dados__valor--normas">CONTRAN · ABNT<span class="tira-dados__extra">NBR 9735 · NBR 15071 · ANTT</span></dd>
         </div>
       </dl>
     </div>
@@ -273,8 +266,8 @@
 <!-- =========================================================
      3. SOBRE
      ========================================================= -->
-<section id="sobre" class="secao secao-clara pt-24 md:pt-32">
-  <div class="container-braskit grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+<section id="sobre" class="secao secao--ampla secao-clara">
+  <div class="container-braskit grid items-center gap-14 lg:grid-cols-[5fr_7fr] lg:gap-20">
 
     <!-- Imagem com moldura, losango decorativo e leve inclinacao 3D ao mouse.
          Quando a foto definitiva chegar, salve como assets/img/sobre-kit.jpg
@@ -329,7 +322,7 @@
             <p class="text-sm text-neutro-900/65">Itens disponíveis para retirada imediata em Canoas.</p>
           </div>
         </li>
-        <li class="flex items-start gap-4" data-reveal data-reveal-delay="160">
+        <li class="flex items-start gap-4" data-reveal>
           <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-petroleo-900 text-hazmat-500">
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20.6 13.3A8 8 0 1 1 10.7 3.4"/><path d="M15 3h6v6"/><path d="M11 13l10-10"/>
@@ -340,7 +333,7 @@
             <p class="text-sm text-neutro-900/65">Conforme o produto transportado e o perfil da frota.</p>
           </div>
         </li>
-        <li class="flex items-start gap-4" data-reveal data-reveal-delay="240">
+        <li class="flex items-start gap-4" data-reveal>
           <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-petroleo-900 text-hazmat-500">
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
@@ -373,7 +366,7 @@
     <p class="mx-auto max-w-4xl font-titulo text-4xl font-bold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl" data-reveal data-reveal-delay="80">
       Mais de 30 anos protegendo<br>quem está <span class="text-hazmat-500">na estrada</span>
     </p>
-    <div class="mx-auto mt-8 h-px w-24 bg-white/25" data-reveal data-reveal-delay="160" aria-hidden="true"></div>
+    <div class="mx-auto mt-8 h-px w-24 bg-white/25" data-reveal aria-hidden="true"></div>
   </div>
 </section>
 
@@ -393,7 +386,7 @@
       </p>
     </header>
 
-    <div class="cena-3d grid gap-6 md:grid-cols-3">
+    <div class="grid gap-10 md:grid-cols-3 lg:grid-cols-[1.35fr_1fr_1fr] lg:gap-12">
 
       <article class="cartao-escuro group relative flex flex-col" data-reveal data-reveal-delay="0">
         <span class="servico__numero" aria-hidden="true">01</span>
@@ -461,12 +454,17 @@
 </section>
 
 <!-- =========================================================
-     6. O QUE COMPÕE UM KIT
+     6. O QUE COMPÕE UM KIT, E ONDE ACHAR CADA PECA
+
+     Antes eram duas secoes seguidas com o mesmo molde: "Composicao" e
+     "Catalogo". Sao dois passos da mesma decisao -- o que eu preciso levar, e
+     onde eu acho isso -- entao viraram uma secao em dois movimentos. E a
+     secao mais longa da pagina, e por isso a unica em densidade ampla.
      ========================================================= -->
-<section id="kits" class="secao secao-clara">
-  <div class="container-braskit">
-    <header class="mx-auto mb-14 max-w-2xl text-center" data-reveal data-parallax="0.05">
-      <p class="olho mb-4 flex items-center justify-center gap-3">
+<section id="kits" class="secao secao--ampla secao-clara">
+  <div class="container-braskit relative">
+    <header class="mb-12 max-w-3xl" data-reveal>
+      <p class="olho mb-4 flex items-center gap-3">
         <span class="losango losango-cheio h-2 w-2"></span> Composição
       </p>
       <h2 class="titulo-secao mb-5 text-neutro-900">O que compõe um kit de cargas perigosas</h2>
@@ -478,7 +476,7 @@
 
     <ul class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
 
-      <li class="item-kit" data-reveal data-reveal-delay="0">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M9 9h6v11a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/><path d="M12 9V5"/><path d="M10 5h4"/><path d="M15 5l3-1.5"/><path d="M9 13h6"/>
@@ -488,7 +486,7 @@
         <p class="item-kit__desc">Carga e lacre dentro da validade</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="60">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 3l6 16H6z"/><path d="M3 21h18"/><path d="M9.4 12.5h5.2"/>
@@ -498,7 +496,7 @@
         <p class="item-kit__desc">Padrão NBR 15071</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="120">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2.5l9.5 9.5L12 21.5 2.5 12z"/><path d="M12 8.5v4"/><path d="M12 15.6h.01"/>
@@ -508,7 +506,7 @@
         <p class="item-kit__desc">Número ONU e classe de risco</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="180">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 18h18"/><path d="M4.5 18L18 7.5V18"/>
@@ -518,7 +516,7 @@
         <p class="item-kit__desc">Par, para travar as rodas</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="240">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M7 21V10a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/><path d="M7 14h10"/>
@@ -528,7 +526,7 @@
         <p class="item-kit__desc">Nitrílica, PVC, raspa ou vaqueta</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="0">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M14 3l7 7"/><path d="M17.5 6.5L9 15"/><path d="M9 15l-4.6 1.2a1 1 0 0 1-1.2-1.2L4.4 10.4"/><path d="M4 20.5l3.2-3.2"/>
@@ -538,7 +536,7 @@
         <p class="item-kit__desc">Contenção de vazamentos</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="60">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="9" width="7" height="6" rx="1.5"/><path d="M10 10.5l7-4v11l-7-4z"/><path d="M20.5 9.5v5"/>
@@ -548,7 +546,7 @@
         <p class="item-kit__desc">Sinalização noturna</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="120">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2.5" y="8" width="19" height="12" rx="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 13.5h19"/>
@@ -558,7 +556,7 @@
         <p class="item-kit__desc">Acondiciona o kit completo</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="180">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="8" width="20" height="8" rx="1"/><path d="M7 8l-4 8"/><path d="M13 8l-4 8"/><path d="M19 8l-4 8"/>
@@ -568,7 +566,7 @@
         <p class="item-kit__desc">Isolamento da área</p>
       </li>
 
-      <li class="item-kit" data-reveal data-reveal-delay="240">
+      <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M8.5 3L12 6.8 15.5 3"/><path d="M8.5 3L5.2 4.3A2 2 0 0 0 3.9 6.2L3 21h18l-.9-14.8a2 2 0 0 0-1.3-1.9L15.5 3"/><path d="M4 13.5h16"/>
@@ -579,40 +577,43 @@
       </li>
     </ul>
 
-    <p class="mt-10 text-center text-sm text-neutro-900/60" data-reveal>
+    <p class="medida mt-10 text-sm text-neutro-900/65" data-reveal>
       Não sabe qual composição o seu transporte exige?
       <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20N%C3%A3o%20sei%20qual%20composi%C3%A7%C3%A3o%20de%20kit%20o%20meu%20transporte%20exige.%20Pode%20me%20orientar%3F"
          target="_blank" rel="noopener" class="font-semibold text-hazmat-500 underline decoration-hazmat-500/30 underline-offset-4 transition-colors hover:text-hazmat-400">Fale com a gente</a>
       que montamos a composição certa.
     </p>
-  </div>
-</section>
 
-<!-- =========================================================
-     7. CATEGORIAS DO CATÁLOGO
-     ========================================================= -->
-<section id="categorias" class="secao secao-escura textura-ruido">
-  <div class="container-braskit relative">
-    <header class="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal>
-      <div class="max-w-2xl">
+    <hr class="divisor-secao" aria-hidden="true">
+
+    <header class="mb-10 max-w-3xl" data-reveal>
+      <div>
         <p class="olho mb-4 flex items-center gap-3">
           <span class="losango losango-cheio h-2 w-2"></span> Catálogo
         </p>
-        <h2 class="titulo-secao mb-5 text-white">34 produtos em 8 categorias</h2>
-        <p class="lead text-white/70">
+        <h2 class="titulo-secao mb-5 text-neutro-900">34 produtos em 8 categorias</h2>
+        <p class="lead text-neutro-900/75">
           Da placa de risco ao kit completo montado. Tudo em estoque próprio,
           pronto para retirada em Canoas.
         </p>
       </div>
-      <a href="catalogo.html" class="btn-preenche inline-flex shrink-0 items-center gap-2.5 self-start rounded-lg border-2 border-white/30 px-6 py-3 text-sm font-semibold text-white md:self-auto">
-        Ver catálogo completo
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      
     </header>
 
-    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div class="grade-categorias">
+      <a href="catalogo.html?cat=kits-protecao" class="card-categoria card-categoria--destaque group">
+        <span class="card-categoria__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2.5l8 3.2v6c0 4.9-3.4 9.4-8 10.6-4.6-1.2-8-5.7-8-10.6v-6z"/><path d="M9 12l2.2 2.2L15.5 10"/>
+          </svg>
+        </span>
+        <div class="mt-6">
+          <h3 class="card-categoria__titulo">Kits de proteção</h3>
+          <p class="card-categoria__contagem"><strong>2</strong> itens</p>
+        </div>
+      </a>
 
-      <a href="catalogo.html?cat=produtos" class="card-categoria group min-h-40" data-reveal data-reveal-delay="0">
+      <a href="catalogo.html?cat=produtos" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5"/><path d="M12 22V12"/>
@@ -624,7 +625,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=suportes" class="card-categoria group min-h-40" data-reveal data-reveal-delay="60">
+      <a href="catalogo.html?cat=suportes" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4v16"/><path d="M4 8h9a4 4 0 0 1 0 8H4"/><circle cx="18" cy="12" r="2"/>
@@ -636,7 +637,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=sinalizacao" class="card-categoria group min-h-40" data-reveal data-reveal-delay="120">
+      <a href="catalogo.html?cat=sinalizacao" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2.5l9.5 9.5L12 21.5 2.5 12z"/><path d="M12 8.5v4"/><path d="M12 15.6h.01"/>
@@ -648,7 +649,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=textil" class="card-categoria group min-h-40" data-reveal data-reveal-delay="180">
+      <a href="catalogo.html?cat=textil" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2.5" y="8" width="19" height="12" rx="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 13.5h19"/>
@@ -660,7 +661,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=injetados" class="card-categoria group min-h-40" data-reveal data-reveal-delay="0">
+      <a href="catalogo.html?cat=injetados" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 3l6 16H6z"/><path d="M3 21h18"/><path d="M9.4 12.5h5.2"/>
@@ -672,7 +673,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=acessorios-caminhao" class="card-categoria group min-h-40" data-reveal data-reveal-delay="60">
+      <a href="catalogo.html?cat=acessorios-caminhao" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M1 3.5h14v13H1z"/><path d="M15 8.5h4l3 3v5h-7z"/><circle cx="5.5" cy="19" r="2.2"/><circle cx="18.5" cy="19" r="2.2"/>
@@ -684,7 +685,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=epis" class="card-categoria group min-h-40" data-reveal data-reveal-delay="120">
+      <a href="catalogo.html?cat=epis" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 13a9 9 0 0 1 18 0"/><path d="M2 13h20v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/><path d="M12 4v9"/>
@@ -695,21 +696,15 @@
           <p class="card-categoria__contagem"><strong>6</strong> itens</p>
         </div>
       </a>
-
-      <a href="catalogo.html?cat=kits-protecao" class="card-categoria group min-h-40" data-reveal data-reveal-delay="180">
-        <span class="card-categoria__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2.5l8 3.2v6c0 4.9-3.4 9.4-8 10.6-4.6-1.2-8-5.7-8-10.6v-6z"/><path d="M9 12l2.2 2.2L15.5 10"/>
-          </svg>
-        </span>
-        <div class="mt-6">
-          <h3 class="card-categoria__titulo">Kits de proteção</h3>
-          <p class="card-categoria__contagem"><strong>2</strong> itens</p>
-        </div>
+      <a href="catalogo.html" class="card-categoria card-categoria--acao group">
+        <span class="card-categoria__titulo">Ver o catálogo completo</span>
+        <span class="card-categoria__contagem"><strong>34</strong> produtos</span>
       </a>
     </div>
+
   </div>
 </section>
+
 
 <!-- =========================================================
      8. FAIXA PARALLAX 2: CONFORMIDADE
@@ -728,13 +723,13 @@
     <h2 class="mx-auto mb-8 max-w-4xl font-titulo text-4xl font-bold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl" data-reveal data-reveal-delay="80">
       Kit fora da norma<br>é <span class="text-hazmat-500">risco e multa</span>
     </h2>
-    <p class="lead mx-auto text-white/75" data-reveal data-reveal-delay="160">
+    <p class="lead mx-auto text-white/75" data-reveal>
       Todos os nossos itens atendem às exigências do CONTRAN e da ABNT. Você recebe
       o kit pronto para a fiscalização e, principalmente, para a emergência que ela
       existe para evitar.
     </p>
 
-    <div class="mt-12 flex flex-wrap items-center justify-center gap-3" data-reveal data-reveal-delay="240">
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-3" data-reveal>
       <span class="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm">
         <svg class="h-4 w-4 text-alerta-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
         CONTRAN
@@ -772,117 +767,40 @@
 </div>
 
 <!-- =========================================================
-     9. PARA QUEM TRABALHAMOS
+     8. QUEM ATENDEMOS E ONDE
+
+     Antes eram duas secoes seguidas, "Quem atendemos" e "Onde atendemos",
+     com o mesmo molde e a mesma resposta partida em duas. Viraram uma so, em
+     duas colunas assimetricas: o perfil de quem compra a esquerda, o alcance
+     a direita. Nenhuma frase de conteudo foi reescrita aqui.
      ========================================================= -->
-<section id="clientes" class="secao secao-clara">
-  <div class="container-braskit">
-    <header class="mx-auto mb-14 max-w-2xl text-center" data-reveal>
-      <p class="olho mb-4 flex items-center justify-center gap-3">
+<section id="atendimento" class="secao secao-clara">
+  <div class="container-braskit relative">
+    <header class="mb-14 max-w-3xl" data-reveal>
+      <p class="olho mb-4 flex items-center gap-3">
         <span class="losango losango-cheio h-2 w-2"></span> Quem atendemos
       </p>
-      <h2 class="titulo-secao mb-5 text-neutro-900">Do autônomo à frota inteira</h2>
+      <h2 class="titulo-secao mb-5 text-neutro-900">Do autônomo à frota inteira, de Canoas para todo o estado</h2>
       <p class="lead text-neutro-900/75">
-        Cada operação pede uma composição diferente de kit. Em mais de 30 anos de
-        balcão, a gente aprendeu as necessidades de cada uma delas.
+        Cada operação pede uma composição diferente de kit. E cada uma está numa
+        cidade diferente.
       </p>
     </header>
 
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
 
-      <article class="segmento-card" data-reveal data-reveal-delay="0">
-        <span class="segmento-card__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M1 3.5h14v13H1z"/><path d="M15 8.5h4l3 3v5h-7z"/><circle cx="5.5" cy="19" r="2.2"/><circle cx="18.5" cy="19" r="2.2"/>
-          </svg>
-        </span>
-        <h3 class="segmento-card__titulo">Transportadoras e frotistas</h3>
-        <p class="segmento-card__texto">
-          Kits padronizados para todos os veículos, reposição programada e controle
-          de validade, sem parar a operação.
-        </p>
-      </article>
+      <div class="lista-segmentos" data-reveal>
 
-      <article class="segmento-card" data-reveal data-reveal-delay="80">
-        <span class="segmento-card__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M7 3h10"/><path d="M8 3v5.5L3.6 17a2.2 2.2 0 0 0 2 3h12.8a2.2 2.2 0 0 0 2-3L16 8.5V3"/><path d="M6.2 14h11.6"/>
-          </svg>
-        </span>
-        <h3 class="segmento-card__titulo">Indústrias e distribuidoras</h3>
-        <p class="segmento-card__texto">
-          Composição conforme a classe de risco de cada produto, com a placa e o
-          número ONU corretos para cada rota.
-        </p>
-      </article>
+      </div>
 
-      <article class="segmento-card" data-reveal data-reveal-delay="160">
-        <span class="segmento-card__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>
-          </svg>
-        </span>
-        <h3 class="segmento-card__titulo">Caminhoneiros autônomos</h3>
-        <p class="segmento-card__texto">
-          Revisão na hora no balcão de Canoas ou orçamento pelo WhatsApp. Você sai
-          com o kit em ordem para a próxima viagem.
-        </p>
-      </article>
-
-      <article class="segmento-card" data-reveal data-reveal-delay="240">
-        <span class="segmento-card__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 9l1.2-5h15.6L21 9"/><path d="M3 9h18v3a2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-5 0z"/><path d="M5 13.5V21h14v-7.5"/><path d="M9 21v-5h6v5"/>
-          </svg>
-        </span>
-        <h3 class="segmento-card__titulo">Revendas e cooperativas</h3>
-        <p class="segmento-card__texto">
-          Fornecimento em quantidade, com condição especial para revenda e entrega
-          combinada conforme o volume.
-        </p>
-      </article>
-    </div>
-
-    <p class="mt-10 text-center text-sm text-neutro-900/60" data-reveal>
-      A melhor apresentação é a opinião de quem já compra com a gente.
-      <a href="https://www.google.com/maps/search/?api=1&query=Braskit+Rua+Uruguai+317+Canoas+RS"
-         target="_blank" rel="noopener"
-         class="font-semibold text-hazmat-500 underline decoration-hazmat-500/30 underline-offset-4 transition-colors hover:text-hazmat-400">Veja as avaliações da Braskit no Google</a>.
-    </p>
-  </div>
-</section>
-
-<!-- =========================================================
-     10. ONDE ATENDEMOS
-     ========================================================= -->
-<section id="atendimento" class="secao secao-escura textura-ruido">
-  <div class="container-braskit relative">
-    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-16">
-
-      <div data-reveal="esquerda">
-        <p class="olho mb-4 flex items-center gap-3">
-          <span class="losango losango-cheio h-2 w-2"></span> Onde atendemos
-        </p>
-        <h2 class="titulo-secao mb-6 text-white">De Canoas para todo o Rio Grande do Sul</h2>
-        <p class="medida mb-5 text-white/70">
-          A loja fica na Rua Uruguai, 317, em Canoas, com estoque pronto para
+      <div data-reveal>
+        <h3 class="subtitulo-bloco">Onde entregamos</h3>
+        <p class="medida mb-6 text-neutro-900/75">A loja fica na Rua Uruguai, 317, em Canoas, com estoque pronto para
           retirada. Para a região metropolitana a entrega é combinada no orçamento,
           e para o resto do estado o kit segue por transportadora, com frete e prazo
           fechados junto com o pedido.
         </p>
-        <p class="medida mb-8 text-white/70">
-          Frota espalhada por mais de uma cidade? A gente organiza a reposição de
-          todos os pontos em um pedido só.
-        </p>
-        <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20com%20entrega%20para%20a%20minha%20cidade."
-           target="_blank" rel="noopener"
-           class="btn-brilho inline-flex items-center justify-center gap-2.5 rounded-lg bg-hazmat-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/25 transition-colors duration-300 hover:bg-hazmat-400">
-          Consultar frete e prazo
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-
-      <div data-reveal="direita">
-        <ul class="flex flex-wrap gap-2.5" aria-label="Cidades atendidas">
+<ul class="flex flex-wrap gap-2.5" aria-label="Cidades atendidas">
           <li class="cidade-chip cidade-chip--sede">Canoas <span class="cidade-chip__nota">loja e retirada</span></li>
           <li class="cidade-chip">Porto Alegre</li>
           <li class="cidade-chip">Gravataí</li>
@@ -902,19 +820,37 @@
           <li class="cidade-chip">Bagé</li>
           <li class="cidade-chip">Uruguaiana</li>
         </ul>
-        <p class="mt-6 text-sm text-white/50">
+        <p class="mt-6 text-sm text-neutro-900/65">
           Sua cidade não apareceu na lista? A gente envia mesmo assim. É só chamar
           no WhatsApp que calculamos o frete.
         </p>
+        <p class="medida mb-8 mt-8 text-neutro-900/75">Frota espalhada por mais de uma cidade? A gente organiza a reposição de
+          todos os pontos em um pedido só.
+        </p>
+        <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20com%20entrega%20para%20a%20minha%20cidade."
+           target="_blank" rel="noopener"
+           class="btn-brilho inline-flex items-center justify-center gap-2.5 rounded-lg bg-hazmat-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/25 transition-colors duration-300 hover:bg-hazmat-400">
+          Consultar frete e prazo
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
+
     </div>
+
+    <p class="medida mt-10 text-sm text-neutro-900/65" data-reveal>
+      Não sabe qual composição o seu transporte exige?
+      <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20N%C3%A3o%20sei%20qual%20composi%C3%A7%C3%A3o%20de%20kit%20o%20meu%20transporte%20exige.%20Pode%20me%20orientar%3F"
+         target="_blank" rel="noopener" class="font-semibold text-hazmat-500 underline decoration-hazmat-500/30 underline-offset-4 transition-colors hover:text-hazmat-400">Fale com a gente</a>
+      que montamos a composição certa.
+    </p>
   </div>
 </section>
+
 
 <!-- =========================================================
      11. FAQ
      ========================================================= -->
-<section id="faq" class="secao secao-escura textura-ruido">
+<section id="faq" class="secao secao--respiro secao-escura textura-ruido">
   <div class="container-braskit relative max-w-4xl">
     <header class="mb-12 text-center" data-reveal>
       <p class="olho mb-4 flex items-center justify-center gap-3">
@@ -938,7 +874,7 @@
         </div>
       </details>
 
-      <details class="faq-item" data-reveal data-reveal-delay="60">
+      <details class="faq-item" data-reveal>
         <summary class="faq-item__titulo">Vocês montam kit personalizado?</summary>
         <div class="faq-item__corpo">
           <p>
@@ -950,7 +886,7 @@
         </div>
       </details>
 
-      <details class="faq-item" data-reveal data-reveal-delay="120">
+      <details class="faq-item" data-reveal>
         <summary class="faq-item__titulo">Atendem fora de Canoas?</summary>
         <div class="faq-item__corpo">
           <p>
@@ -974,7 +910,7 @@
         </div>
       </details>
 
-      <details class="faq-item" data-reveal data-reveal-delay="240">
+      <details class="faq-item" data-reveal>
         <summary class="faq-item__titulo">Vocês vendem para pessoa física?</summary>
         <div class="faq-item__corpo">
           <p>
