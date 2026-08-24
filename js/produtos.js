@@ -21,207 +21,213 @@ var CATEGORIAS = [
 var PRODUTOS = [
   {
     id: 1, nome: "Abafa Chamas", categoria: "produtos", slug: "abafa-chamas",
-    descricao: "Abafador em lona tratada para conter princípios de incêndio sem uso de água.",
-    aplicacao: "Emergências com líquidos inflamáveis, onde a água espalharia o fogo.",
+    descricao: "Lona tratada. Abafa o fogo sem molhar a carga.",
+    aplicacao: "Princípio de incêndio em líquido inflamável, onde a água espalharia as chamas.",
     img: "assets/produtos/abafa-chamas.jpg"
   },
   {
     id: 2, nome: "Balde de Alumínio com Cabo Terra", categoria: "produtos", slug: "balde-aluminio-cabo-terra",
-    descricao: "Balde de alumínio com cabo de aterramento, que descarrega a eletricidade estática.",
-    aplicacao: "Coleta e transferência de combustíveis e solventes.",
+    descricao: "Alumínio com cabo de aterramento, que descarrega a estática antes de ela virar faísca.",
+    aplicacao: "Coleta e transferência de combustível e solvente.",
     img: "assets/produtos/balde-aluminio-cabo-terra.jpg"
   },
   {
     id: 3, nome: "Lanternas", categoria: "produtos", slug: "lanternas",
-    descricao: "Lanternas de sinalização com feixe direcionado e boa autonomia.",
-    aplicacao: "Parada de emergência e inspeção da carga à noite.",
+    descricao: "Feixe direcionado, autonomia para uma parada inteira.",
+    aplicacao: "Parada de emergência e conferência da carga à noite.",
     img: "assets/produtos/lanternas.jpg"
   },
   {
     id: 4, nome: "Caixa de Plástico para Extintor", categoria: "suportes", slug: "caixa-plastico-extintor",
-    descricao: "Caixa injetada que abriga o extintor protegido de sol, chuva e impacto.",
-    aplicacao: "Instalação externa, fora da cabine do veículo.",
+    descricao: "Caixa injetada. Guarda o extintor fora da cabine, protegido de sol, chuva e batida.",
+    aplicacao: "Instalação externa no veículo.",
     img: "assets/produtos/caixa-plastico-extintor.jpg"
   },
   {
     id: 5, nome: "Suporte de Ferro para Extintor", categoria: "suportes", slug: "suporte-ferro-extintor",
-    descricao: "Suporte em ferro com pintura eletrostática e cinta de fixação.",
-    aplicacao: "Fixação do extintor ao chassi ou à lateral da carroceria.",
+    descricao: "Ferro com pintura eletrostática e cinta de fixação.",
+    aplicacao: "Prende o extintor ao chassi ou à lateral da carroceria.",
     img: "assets/produtos/suporte-ferro-extintor.jpg"
   },
   {
     id: 6, nome: "Suporte de Ferro para Cone", categoria: "suportes", slug: "suporte-ferro-cone",
-    descricao: "Suporte em ferro que mantém os cones empilhados e presos durante o trajeto.",
-    aplicacao: "Transporte organizado dos cones de sinalização.",
+    descricao: "Mantém os cones empilhados e presos no trajeto.",
+    aplicacao: "Transporte dos cones sem eles rolarem pela carroceria.",
     img: "assets/produtos/suporte-ferro-cone.jpg"
   },
   {
     id: 7, nome: "Suporte de Ferro para Placa", categoria: "suportes", slug: "suporte-ferro-placa",
-    descricao: "Suporte metálico para fixar os painéis e rótulos de risco na carroceria.",
+    descricao: "Metálico, para painel e rótulo de risco.",
     aplicacao: "Sinalização fixa exigida no transporte de produtos perigosos.",
     img: "assets/produtos/suporte-ferro-placa.jpg"
   },
   {
     id: 8, nome: "Suporte de Plástico para Placa Retangular", categoria: "suportes", slug: "suporte-plastico-placa-retangular",
-    descricao: "Suporte injetado para o painel de segurança retangular, de encaixe rápido.",
-    aplicacao: "Troca ágil do painel conforme o produto transportado.",
+    descricao: "Injetado, de encaixe rápido, para o painel retangular.",
+    aplicacao: "Troca do painel quando muda o produto transportado.",
     img: "assets/produtos/suporte-plastico-placa-retangular.jpg"
   },
   {
     id: 9, nome: "Suporte de Plástico para Placa Quadrada", categoria: "suportes", slug: "suporte-plastico-placa-quadrada",
-    descricao: "Suporte injetado para o rótulo de risco quadrado, montado no losango.",
-    aplicacao: "Identificação da classe de risco na lateral e na traseira.",
+    descricao: "Injetado, para o rótulo de risco montado no losango.",
+    aplicacao: "Classe de risco na lateral e na traseira.",
     img: "assets/produtos/suporte-plastico-placa-quadrada.jpg"
   },
   {
     id: 10, nome: "Placa Perigo", categoria: "sinalizacao", slug: "placa-perigo",
-    descricao: "Placa Perigo (Afaste-se), em chapa rígida com impressão de alto contraste.",
-    aplicacao: "Isolamento da área em caso de acidente ou vazamento.",
+    descricao: "Chapa rígida com impressão de alto contraste. É a placa Afaste-se.",
+    aplicacao: "Isolamento da área em acidente ou vazamento.",
     img: "assets/produtos/placa-perigo.jpg"
   },
   {
     id: 11, nome: "Placa Laranja com Números", categoria: "sinalizacao", slug: "placa-laranja-numeros",
-    descricao: "Painel de segurança laranja com número de risco e número ONU aplicados.",
+    descricao: "Painel de segurança laranja com número de risco e número ONU já aplicados.",
     aplicacao: "Identificação obrigatória do produto transportado.",
+    detalhe: "O par de números muda conforme o produto: diga o que você transporta e a placa sai pronta. Para frota que alterna entre produtos existe a versão lisa, com numeração removível.",
     img: "assets/produtos/placa-laranja-numeros.jpg"
   },
   {
     id: 12, nome: "Placa Laranja", categoria: "sinalizacao", slug: "placa-laranja",
-    descricao: "Painel de segurança laranja liso, sem numeração, em plástico resistente.",
-    aplicacao: "Transporte de carga fracionada e uso com numeração removível.",
+    descricao: "Laranja lisa, sem numeração, em plástico resistente.",
+    aplicacao: "Carga fracionada e uso com numeração removível.",
     img: "assets/produtos/placa-laranja.jpg"
   },
   {
     id: 13, nome: "Placa Líquido Inflamável", categoria: "sinalizacao", slug: "placa-liquido-inflamavel",
-    descricao: "Rótulo de risco da classe 3, para líquidos inflamáveis.",
-    aplicacao: "Combustíveis, solventes e álcool.",
+    descricao: "Rótulo de risco da classe 3.",
+    aplicacao: "Combustível, solvente e álcool.",
     img: "assets/produtos/placa-liquido-inflamavel.jpg"
   },
   {
     id: 14, nome: "Placa Material Corrosivo", categoria: "sinalizacao", slug: "placa-material-corrosivo",
-    descricao: "Rótulo de risco da classe 8, para materiais corrosivos.",
-    aplicacao: "Ácidos, soda cáustica e demais corrosivos.",
+    descricao: "Rótulo de risco da classe 8.",
+    aplicacao: "Ácido, soda cáustica e demais corrosivos.",
     img: "assets/produtos/placa-material-corrosivo.jpg"
   },
   {
     id: 15, nome: "Bastão Sinalizador", categoria: "sinalizacao", slug: "bastao-sinalizador",
-    descricao: "Bastão luminoso para orientar o tráfego e sinalizar a posição do veículo.",
-    aplicacao: "Parada em via de pouca visibilidade e desvio de trânsito.",
+    descricao: "Bastão luminoso para orientar o tráfego e marcar onde o veículo parou.",
+    aplicacao: "Parada em trecho de pouca visibilidade e desvio de trânsito.",
     img: "assets/produtos/bastao-sinalizador.jpg"
   },
   {
     id: 16, nome: "Faixa Refletiva", categoria: "sinalizacao", slug: "faixa-refletiva",
-    descricao: "Faixa refletiva adesiva para contorno de carroceria e para-choque.",
-    aplicacao: "Aumento da visibilidade do veículo à noite.",
+    descricao: "Adesiva, para contorno de carroceria e para-choque.",
+    aplicacao: "Visibilidade do veículo à noite.",
     img: "assets/produtos/faixa-refletiva.jpg"
   },
   {
     id: 17, nome: "Bolsa de Lona para Kit", categoria: "textil", slug: "bolsa-lona-kit",
-    descricao: "Bolsa em lona reforçada, com alça e fechamento, que acomoda o kit inteiro.",
-    aplicacao: "Guarda e transporte organizado dos itens de emergência.",
+    descricao: "Lona reforçada, com alça e fechamento. Cabe o kit inteiro num lugar só.",
+    aplicacao: "Guarda e transporte dos itens de emergência.",
+    detalhe: "Item solto pela cabine é item que some — e o que some é justamente o que falta na hora da conferência.",
     img: "assets/produtos/bolsa-lona-kit.jpg"
   },
   {
     id: 18, nome: "Capa de Cone", categoria: "textil", slug: "capa-cone",
-    descricao: "Capa em tecido para cone, com área para identificação personalizada.",
-    aplicacao: "Sinalização com identidade da frota ou aviso específico.",
+    descricao: "Tecido, com área para identificação.",
+    aplicacao: "Sinalização com o nome da frota ou aviso próprio.",
     img: "assets/produtos/capa-cone.jpg"
   },
   {
     id: 19, nome: "Colete Refletivo", categoria: "textil", slug: "colete-refletivo",
-    descricao: "Colete com faixas refletivas de alta visibilidade e fecho ajustável.",
-    aplicacao: "Uso obrigatório ao descer do veículo em parada na via.",
+    descricao: "Faixas refletivas e fecho ajustável.",
+    aplicacao: "Uso obrigatório ao descer do veículo na via.",
     img: "assets/produtos/colete-refletivo.jpg"
   }
   ,
   {
     id: 20, nome: "Cone Flexível com Faixa (NBR 15071)", categoria: "injetados", slug: "cone-flexivel-nbr-15071",
-    descricao: "Cone flexível com faixa refletiva, dentro do padrão da NBR 15071.",
-    aplicacao: "Sinalização exigida em parada de emergência na rodovia.",
+    descricao: "Cone flexível com faixa refletiva, no padrão da NBR 15071.",
+    aplicacao: "Sinalização em parada de emergência na rodovia.",
+    detalhe: "Flexível porque cone rígido atropelado quebra e sai do kit; este volta ao formato. A quantidade de dispositivos de sinalização que o veículo precisa levar é tratada pela NBR 9735 — confirme com a gente quantos a sua operação exige.",
     img: "assets/produtos/cone-flexivel-nbr-15071.jpg"
   },
   {
     id: 21, nome: "Cone Pequeno Preto e Amarelo", categoria: "injetados", slug: "cone-pequeno-preto-amarelo",
-    descricao: "Cone compacto em preto e amarelo, leve e fácil de guardar.",
-    aplicacao: "Sinalização em pátio, doca e área interna de carga.",
+    descricao: "Compacto, leve, fácil de guardar.",
+    aplicacao: "Pátio, doca e área interna de carga.",
     img: "assets/produtos/cone-pequeno-preto-amarelo.jpg"
   },
   {
     id: 22, nome: "Pedestal", categoria: "injetados", slug: "pedestal",
-    descricao: "Pedestal de sinalização com base reforçada, para uso com fita ou corrente.",
+    descricao: "Base reforçada, para uso com fita ou corrente.",
     aplicacao: "Delimitação de área de risco durante a operação.",
     img: "assets/produtos/pedestal.jpg"
   },
   {
     id: 23, nome: "Fitas Zebradas", categoria: "injetados", slug: "fitas-zebradas",
-    descricao: "Fita zebrada em amarelo e preto, para isolamento rápido do perímetro.",
-    aplicacao: "Contenção da área em vazamentos e ocorrências.",
+    descricao: "Amarelo e preto, para isolar o perímetro rápido.",
+    aplicacao: "Contenção de área em vazamento e ocorrência.",
     img: "assets/produtos/fitas-zebradas.jpg"
   },
   {
     id: 24, nome: "Pá e Enxada", categoria: "injetados", slug: "pa-enxada",
-    descricao: "Conjunto de pá e enxada com cabo curto, próprio para o kit.",
+    descricao: "Cabo curto, para caber no kit.",
     aplicacao: "Contenção e recolhimento de produto derramado.",
     img: "assets/produtos/pa-enxada.jpg"
   },
   {
     id: 25, nome: "Extintor ABC", categoria: "acessorios-caminhao", slug: "extintor-abc",
-    descricao: "Extintor de pó químico ABC, com manômetro, lacre e carga na validade.",
-    aplicacao: "Item obrigatório para todos os veículos de carga.",
+    descricao: "Pó químico ABC, com manômetro, lacre e carga na validade.",
+    aplicacao: "Obrigatório em todo veículo de carga.",
+    detalhe: "É o primeiro item que a fiscalização olha e o que mais vence sem ninguém perceber. Confira o manômetro na faixa verde e a data no lacre; se estiver fora, a gente troca o item na renovação do kit.",
     img: "assets/produtos/extintor-abc.jpg"
   },
   {
     id: 26, nome: "Par de Calço de Borracha", categoria: "acessorios-caminhao", slug: "calco-borracha",
-    descricao: "Par de calços em borracha maciça, com boa aderência ao piso.",
-    aplicacao: "Travamento das rodas em parada e durante carga e descarga.",
+    descricao: "Borracha maciça, com aderência no piso.",
+    aplicacao: "Travar as rodas em parada e durante carga e descarga.",
     img: "assets/produtos/calco-borracha.jpg"
   },
   {
     id: 27, nome: "Respirador Semifacial com Filtro", categoria: "epis", slug: "respirador-semifacial",
-    descricao: "Respirador semifacial com filtro para vapores orgânicos e gases ácidos.",
-    aplicacao: "Aproximação segura em vazamentos de produtos voláteis.",
+    descricao: "Semifacial com filtro para vapor orgânico e gás ácido.",
+    aplicacao: "Aproximação em vazamento de produto volátil.",
+    detalhe: "O filtro é escolhido pelo produto, não pelo respirador: diga o que você transporta que a gente confere o cartucho certo.",
     img: "assets/produtos/respirador-semifacial.jpg"
   },
   {
     id: 28, nome: "Máscara Panorâmica com Filtro", categoria: "epis", slug: "mascara-panoramica",
-    descricao: "Máscara facial inteira com visor panorâmico, que também protege os olhos.",
-    aplicacao: "Emergências com produtos irritantes ou corrosivos.",
+    descricao: "Facial inteira, visor panorâmico. Protege também os olhos.",
+    aplicacao: "Emergência com produto irritante ou corrosivo.",
     img: "assets/produtos/mascara-panoramica.jpg"
   },
   {
     id: 29, nome: "Luvas Nitrílica e Multitato", categoria: "epis", slug: "luvas-nitrilica-multitato",
-    descricao: "Luvas nitrílica e multitato, que unem aderência e resistência química.",
+    descricao: "Aderência e resistência química no mesmo par.",
     aplicacao: "Manuseio geral da carga e dos itens do kit.",
     img: "assets/produtos/luvas-nitrilica-multitato.jpg"
   },
   {
     id: 30, nome: "Luvas de Raspa e Vaqueta", categoria: "epis", slug: "luvas-raspa-vaqueta",
-    descricao: "Luvas em raspa e vaqueta, para proteção mecânica e contra calor.",
-    aplicacao: "Amarração de carga e manuseio de peças ásperas.",
+    descricao: "Raspa e vaqueta, para proteção mecânica e contra calor.",
+    aplicacao: "Amarração de carga e manuseio de peça áspera.",
     img: "assets/produtos/luvas-raspa-vaqueta.jpg"
   },
   {
     id: 31, nome: "Luvas PVC (27, 35 e 45 cm)", categoria: "epis", slug: "luvas-pvc",
-    descricao: "Luvas em PVC nos comprimentos 27, 35 e 45 cm, com punho longo.",
-    aplicacao: "Contato com ácidos, solventes e produtos corrosivos.",
+    descricao: "PVC em três comprimentos de punho: 27, 35 e 45 cm.",
+    aplicacao: "Contato com ácido, solvente e produto corrosivo.",
     img: "assets/produtos/luvas-pvc.jpg"
   },
   {
     id: 32, nome: "Bota de PVC", categoria: "epis", slug: "bota-pvc",
-    descricao: "Bota de PVC impermeável, com cano alto e solado antiderrapante.",
-    aplicacao: "Atuação em área alagada por produto derramado.",
+    descricao: "Impermeável, cano alto, solado antiderrapante.",
+    aplicacao: "Área alagada por produto derramado.",
     img: "assets/produtos/bota-pvc.jpg"
   },
   {
     id: 33, nome: "Kit Cargas Perigosas", categoria: "kits-protecao", slug: "kit-cargas-perigosas",
-    descricao: "Kit completo dentro das normas do CONTRAN e da ABNT, montado por nós.",
-    aplicacao: "Composição definida conforme a classe de risco do produto transportado.",
+    descricao: "O kit completo, montado aqui, dentro das normas do CONTRAN e da ABNT.",
+    aplicacao: "Composição conforme a classe de risco do produto transportado.",
+    detalhe: "A composição não é uma só: muda conforme a classe de risco. Traga o número ONU e o perfil da frota que a gente monta a lista e confere item por item antes de fechar a bolsa.",
     img: "assets/produtos/kit-cargas-perigosas.jpg"
   },
   {
     id: 34, nome: "Kit de Ferramentas", categoria: "kits-protecao", slug: "kit-ferramentas",
-    descricao: "Conjunto de ferramentas para o atendimento emergencial na via.",
-    aplicacao: "Reparos simples e contenção até a chegada do socorro.",
+    descricao: "Ferramentas para o atendimento na via.",
+    aplicacao: "Reparo simples e contenção até chegar o socorro.",
     img: "assets/produtos/kit-ferramentas.jpg"
   }
 ];

@@ -23,6 +23,7 @@
   var modalTitulo = document.getElementById("modalTitulo");
   var modalCategoria = document.getElementById("modalCategoria");
   var modalDescricao = document.getElementById("modalDescricao");
+  var modalDetalhe = document.getElementById("modalDetalhe");
   var modalAplicacao = document.getElementById("modalAplicacao");
   var modalWhatsapp = document.getElementById("modalWhatsapp");
   var modalAdicionar = document.getElementById("modalAdicionar");
@@ -150,7 +151,9 @@
       if (!termo) return true;
 
       var nomeCategoria = categoriaPorSlug(produto.categoria).nome;
-      var alvo = normalizarTexto(produto.nome + " " + nomeCategoria + " " + produto.descricao);
+      var alvo = normalizarTexto(
+        produto.nome + " " + nomeCategoria + " " + produto.descricao + " " +
+        produto.aplicacao + " " + (produto.detalhe || ""));
       return alvo.indexOf(termo) !== -1;
     });
   }
@@ -198,6 +201,12 @@
     modalTitulo.textContent = produto.nome;
     modalCategoria.textContent = categoria.nome;
     modalDescricao.textContent = produto.descricao;
+    /* Nem todo produto merece texto longo. Onde ele existe, aparece so aqui na
+       ficha aberta -- no card ele espremeria a grade. */
+    if (modalDetalhe) {
+      modalDetalhe.textContent = produto.detalhe || "";
+      modalDetalhe.classList.toggle("hidden", !produto.detalhe);
+    }
     modalAplicacao.textContent = produto.aplicacao;
     modalWhatsapp.href = linkOrcamento(produto.nome);
     sincronizarModal();

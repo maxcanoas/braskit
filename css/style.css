@@ -2121,6 +2121,20 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
   color: rgb(255 255 255 / 0.6);
 }
 
+/* Nota editorial da janela do orcamento. Discreta de proposito: informa sem
+   parecer aviso de erro. */
+.janela-orcamento__nota {
+  margin-top: var(--esp-s);
+  max-width: 34rem;
+  padding-left: var(--esp-xs);
+  border-left: 2px solid var(--alerta-400);
+  font-size: var(--txt-micro);
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.66);
+}
+
+.janela-orcamento__nota strong { color: rgb(255 255 255 / 0.9); font-weight: 600; }
+
 .janela-orcamento__resumo {
   margin-top: 0.55rem;
   font-size: 0.8125rem;

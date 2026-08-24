@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Catálogo de Produtos para Cargas Perigosas | Braskit</title>
-<meta name="description" content="Catálogo Braskit: 34 produtos em 8 categorias para o transporte de cargas perigosas. Sinalização, EPIs, suportes, cones, kits e acessórios, com orçamento pelo WhatsApp e envio para todo o RS.">
+<title>Catálogo de Kit e Itens para Produtos Perigosos | Braskit</title>
+<meta name="description" content="Catálogo Braskit: 34 itens para o transporte de produtos perigosos, do cone NBR 15071 ao kit completo montado. Sinalização, EPIs, suportes e acessórios, com orçamento pelo WhatsApp e envio para todo o RS.">
 <meta name="theme-color" content="#0B3136">
 <link rel="canonical" href="https://braskitcargasperigosas.com.br/catalogo.html">
 
@@ -150,7 +150,12 @@
     <p class="olho mb-4 flex items-center gap-3">
       <span class="losango losango-cheio h-2 w-2"></span> 34 produtos · 8 categorias
     </p>
-    <h1 class="font-titulo text-6xl font-bold uppercase leading-[0.92] tracking-tight text-white sm:text-7xl lg:text-8xl">Catálogo</h1>
+    <h1 class="font-titulo text-5xl font-bold uppercase leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl">Kit e itens para<br>produtos perigosos</h1>
+    <!-- PENDENTE BRASKIT: o que fecha venda e nao existe em lugar nenhum do
+         site — faixa de preco por kit, prazo de entrega em dias, garantia dos
+         itens e o numero de CA de cada EPI (primeira pergunta de qualquer
+         frotista). O espaco esta reservado aqui e na ficha do produto; e so
+         preencher quando a informacao chegar. Ver PENDENCIAS.md. -->
     <p class="lead mt-6 text-white/75">
       Tudo o que compõe um kit de cargas perigosas, da placa de risco ao kit completo
       montado. Marque o que você precisa e mande a lista pronta pelo WhatsApp: o kit
@@ -264,8 +269,8 @@
           <span class="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-white/60">Kit para transporte de cargas perigosas</span>
         </a>
         <p class="text-sm leading-relaxed">
-          Revenda com mais de 30 anos especializada em materiais de segurança e
-          sinalização para o transporte de cargas perigosas.
+          Revenda especializada em material de segurança e
+          sinalização para o transporte de produtos perigosos.
         </p>
         <p class="mt-5 font-titulo text-lg uppercase tracking-tight text-hazmat-500">
           Protegendo vidas,<br>preservando o futuro.
@@ -393,7 +398,8 @@
         <span id="modalCategoria" class="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80"></span>
 
         <h2 id="modalTitulo" class="mb-4 text-3xl leading-none text-white"></h2>
-        <p id="modalDescricao" class="mb-6 text-sm leading-relaxed text-white/70"></p>
+        <p id="modalDescricao" class="mb-4 text-base leading-relaxed text-white/80"></p>
+        <p id="modalDetalhe" class="mb-6 hidden text-sm leading-relaxed text-white/65"></p>
 
         <div class="mb-8 rounded-xl border border-white/10 bg-white/4 p-5">
           <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-hazmat-500">Aplicação</p>
@@ -446,6 +452,16 @@
         <p class="janela-orcamento__olho">Seu pedido</p>
         <h2 id="tituloOrcamento" class="text-3xl leading-none text-white">Itens do orçamento</h2>
         <p class="janela-orcamento__resumo" id="resumoOrcamento" aria-live="polite">0 itens</p>
+        <!-- PENDENTE BRASKIT: composicao do kit minimo obrigatorio. O catalogo
+             trava extintor, um cone e um par de calcos, escolhidos pelo que a
+             fiscalizacao mais cobra -- e uma sugestao tecnica, nao a palavra da
+             empresa. A NBR 9735 pede quatro dispositivos de sinalizacao, entao
+             a quantidade do cone provavelmente muda. Ver PENDENCIAS.md e
+             KIT_MINIMO no fim de js/produtos.js. -->
+        <p class="janela-orcamento__nota">
+          Os itens com cadeado são uma <strong>sugestão de composição</strong>.
+          A Braskit confirma o kit exato para a sua carga junto com o orçamento.
+        </p>
       </div>
       <button type="button" class="janela-orcamento__fechar" id="btnFecharOrcamento" aria-label="Fechar a lista do orçamento">
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
