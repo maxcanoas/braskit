@@ -96,6 +96,53 @@
   --fonte-titulo: "Barlow Condensed", "Barlow Condensed Reserva", system-ui, sans-serif;
   --fonte-corpo: "Inter", "Inter Reserva", system-ui, -apple-system, "Segoe UI", sans-serif;
 
+  /* ------------------------------------------------------------------
+     ESCALA TIPOGRAFICA
+     Sete degraus, todos usados. O que faltava nao era tamanho grande: era
+     contraste no meio da escala. Antes, o paragrafo de abertura de secao e a
+     descricao de card viviam os dois entre 0,875 e 1rem -- lado a lado, sem
+     hierarquia nenhuma. Eram 42 font-size soltos em 16 valores distintos,
+     nenhum ligado a token.
+     ------------------------------------------------------------------ */
+  --txt-display: clamp(2.75rem, 7vw, 5.5rem);
+  --txt-titulo:  clamp(2rem, 4.5vw, 3.5rem);
+  --txt-sub:     clamp(1.3rem, 2.1vw, 1.7rem);
+  --txt-lead:    clamp(1.0625rem, 0.85rem + 0.7vw, 1.25rem);
+  --txt-corpo:   1.0625rem;
+  --txt-apoio:   0.9375rem;
+  --txt-micro:   0.75rem;
+
+  /* Largura de leitura. 34rem da cerca de 68 caracteres em Inter 17px --
+     antes os paragrafos atravessavam a coluna inteira. */
+  --medida: 34rem;
+
+  /* Tres valores de tracking no lugar dos oito que existiam. */
+  --track-olho:   0.18em;
+  --track-titulo: -0.02em;
+  --track-rotulo: 0.1em;
+
+  /* ------------------------------------------------------------------
+     ESPACO
+     Escala unica, e tres densidades de secao: nem toda secao merece o mesmo
+     padding-block. Antes eram oito faixas com exatamente o mesmo ritmo.
+     ------------------------------------------------------------------ */
+  --esp-2xs: 0.375rem;
+  --esp-xs:  0.625rem;
+  --esp-s:   1rem;
+  --esp-m:   1.5rem;
+  --esp-l:   2.5rem;
+  --esp-xl:  4rem;
+  --esp-2xl: 6rem;
+
+  /* ------------------------------------------------------------------
+     ESTRUTURA
+     Borda, separador e fundo de icone. Antes tudo isso era laranja, o que
+     tirava do laranja qualquer poder de dizer "aqui".
+     ------------------------------------------------------------------ */
+  --estrutura-escura: rgb(255 255 255 / 0.1);
+  --estrutura-clara:  rgb(16 22 23 / 0.12);
+  --estrutura-forte:  var(--petroleo-700);
+
   --radius-box: 1rem;
   --radius-field: 0.5rem;
 
@@ -140,6 +187,7 @@
     background-color: var(--petroleo-950);
     color: var(--neutro-900);
     font-family: var(--fonte-corpo);
+    font-size: var(--txt-corpo);
     line-height: 1.7;
   }
 
@@ -147,8 +195,15 @@
     font-family: var(--fonte-titulo);
     font-weight: 700;
     line-height: 0.98;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--track-titulo);
     text-transform: uppercase;
+    /* Distribui as linhas de forma equilibrada em vez de deixar uma palavra
+       orfa na ultima -- e reduz o efeito de trocar de fonte no swap. */
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
@@ -170,7 +225,7 @@
     border-radius: 99px;
     border: 3px solid var(--petroleo-950);
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--hazmat-500); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--estrutura-forte); }
 }
 
 /* Impede que a largura total estoure em qualquer breakpoint */
@@ -183,10 +238,22 @@ img, svg, video, iframe { max-width: 100%; }
   font-family: var(--fonte-titulo);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--track-titulo);
   line-height: 0.95;
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-size: var(--txt-titulo);
+  text-wrap: balance;
 }
+
+/* Paragrafo de abertura de secao: sobe um degrau para abrir distancia da
+   descricao de card, que desce. E onde nasce a hierarquia. */
+.lead {
+  font-size: var(--txt-lead);
+  line-height: 1.6;
+  max-width: var(--medida);
+}
+
+/* Largura de leitura em qualquer paragrafo longo. */
+.medida { max-width: var(--medida); }
 
 /* Laranja como texto sobre fundo claro reprova AA em qualquer tamanho de
    corpo (2,68:1). Vale para o olho, para links e para qualquer uso do
@@ -207,13 +274,20 @@ img, svg, video, iframe { max-width: 100%; }
   --laranja-legivel: var(--hazmat-500);
 }
 
+/* O olho aparece onze vezes entre as duas paginas. Em laranja, era a maior
+   fonte isolada de ruido da paleta: repetia o acento em toda secao sem que
+   ele significasse acao, dado ou destaque. Vira neutro, e o losango que o
+   acompanha herda a cor por currentColor. */
 .olho {
   font-family: var(--fonte-corpo);
-  font-size: 0.75rem;
+  font-size: var(--txt-micro);
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--track-olho);
   text-transform: uppercase;
+  color: rgb(255 255 255 / 0.62);
 }
+
+.secao-clara .olho { color: rgb(16 22 23 / 0.6); }
 
 /* Numero dos contadores */
 .numero-contador {
@@ -278,18 +352,83 @@ img, svg, video, iframe { max-width: 100%; }
 }
 
 /* Cartao escuro padrao */
+/* SERVICO -- bloco editorial, nao cartao.
+   Sem caixa, sem raio, sem elevacao: o que marca o bloco e um filete no topo
+   que varre a largura no hover, e o numeral da ordem. Era o mesmo desenho dos
+   outros cinco componentes; agora e o unico sem contorno. */
 .cartao-escuro {
-  background: color-mix(in srgb, var(--petroleo-800) 92%, #000);
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: var(--radius-box);
-  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
-    box-shadow 0.3s ease, background-color 0.3s ease;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding-top: var(--esp-l);
+  transition: background-color 0.3s ease;
 }
 
-.cartao-escuro:hover {
-  transform: translateY(-6px);
-  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
-  box-shadow: 0 22px 48px -22px rgb(0 0 0 / 0.85);
+.cartao-escuro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 2.5rem;
+  background: var(--alerta-400);
+  transition: width 0.45s var(--ease-saida);
+}
+
+.cartao-escuro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--estrutura-escura);
+  z-index: -1;
+}
+
+.cartao-escuro:hover::before,
+.cartao-escuro:focus-within::before {
+  width: 100%;
+}
+
+/* O numeral da ordem: era um fantasma em 5% de opacidade no canto. Agora e
+   elemento de composicao, alinhado ao filete. */
+.servico__numero {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-sub);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--track-rotulo);
+  color: var(--alerta-400);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Icone sem o quadrado arredondado de 3rem que se repetia em tres
+   componentes: aqui o traco fica solto, grande e discreto. */
+.servico__icone {
+  display: block;
+  margin-block: var(--esp-l) var(--esp-m);
+  color: rgb(255 255 255 / 0.32);
+  transition: color 0.3s ease;
+}
+
+.cartao-escuro:hover .servico__icone { color: var(--alerta-400); }
+
+.servico__icone svg { width: 2.25rem; height: 2.25rem; }
+
+.servico__titulo {
+  margin-bottom: var(--esp-xs);
+  font-size: var(--txt-sub);
+  color: #fff;
+}
+
+.servico__texto {
+  flex: 1;
+  margin-bottom: var(--esp-l);
+  max-width: var(--medida);
+  font-size: var(--txt-apoio);
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.62);
 }
 
 /* --------------------------------------------------------------------------
@@ -545,7 +684,7 @@ img, svg, video, iframe { max-width: 100%; }
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--hazmat-500);
+  background: rgb(255 255 255 / 0.14);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.38s var(--ease-saida);
@@ -553,7 +692,7 @@ img, svg, video, iframe { max-width: 100%; }
 }
 
 .btn-preenche:hover::before { transform: scaleX(1); }
-.btn-preenche:hover { border-color: var(--hazmat-500); color: #fff; }
+.btn-preenche:hover { border-color: rgb(255 255 255 / 0.55); color: #fff; }
 
 /* --------------------------------------------------------------------------
    11. MARQUEE DE NORMAS (CSS puro, pausa no hover)
@@ -712,7 +851,7 @@ img, svg, video, iframe { max-width: 100%; }
   bottom: 0;
   height: 2px;
   width: 100%;
-  background: var(--hazmat-500);
+  background: #fff;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.32s var(--ease-saida);
@@ -842,25 +981,36 @@ body.sem-rolagem { overflow: hidden; }
 /* --------------------------------------------------------------------------
    16. FAQ (details nativo, sem framework)
    -------------------------------------------------------------------------- */
+/* FAQ -- documento, nao cartao.
+   Sem caixa e sem raio: so um fio no topo de cada pergunta, como um sumario.
+   Aberto, ganha um fio amarelo a esquerda -- o amarelo aqui marca estado, que
+   e o papel secundario da paleta. */
 .faq-item {
-  background: color-mix(in srgb, var(--petroleo-800) 90%, #000);
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: var(--radius-box);
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--estrutura-escura);
+  border-radius: 0;
+  border-left: 2px solid transparent;
   transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.faq-item[open] {
+  border-left-color: var(--alerta-400);
+  background: rgb(255 255 255 / 0.03);
 }
 
 .faq-item[open],
 .faq-item:hover {
-  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
+  border-color: var(--estrutura-forte);
 }
 
 .faq-item__titulo {
   position: relative;
   list-style: none;
   cursor: pointer;
-  padding: 1.15rem 3.4rem 1.15rem 1.5rem;
+  padding: var(--esp-m) 3.4rem var(--esp-m) var(--esp-s);
   font-family: var(--fonte-corpo);
-  font-size: 1.05rem;
+  font-size: var(--txt-corpo);
   font-weight: 600;
   color: #fff;
   user-select: none;
@@ -878,7 +1028,7 @@ body.sem-rolagem { overflow: hidden; }
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1;
-  color: var(--hazmat-500);
+  color: rgb(255 255 255 / 0.5);
   transition: transform 0.3s var(--ease-saida);
 }
 
@@ -887,7 +1037,7 @@ body.sem-rolagem { overflow: hidden; }
 }
 
 .faq-item__corpo {
-  padding: 0 1.5rem 1.35rem;
+  padding: 0 3.4rem var(--esp-m) var(--esp-s);
   font-size: 0.875rem;
   line-height: 1.75;
   color: rgb(255 255 255 / 0.65);
@@ -985,8 +1135,13 @@ select.campo-escuro {
   --laranja-legivel: #b34900;
 }
 
+/* Tres densidades de ritmo vertical. A secao de conteudo respira mais que a
+   de passagem; a faixa de respiro e curta de proposito. */
+.secao--respiro { --ritmo: clamp(2.5rem, 5vw, 4rem); }
+.secao--ampla   { --ritmo: clamp(5.5rem, 11vw, 9.5rem); }
+
 .secao {
-  padding-block: clamp(4rem, 9vw, 7.5rem);
+  padding-block: var(--ritmo, clamp(4rem, 9vw, 7.5rem));
   position: relative;
 }
 
@@ -1007,42 +1162,45 @@ select.campo-escuro {
 /* --------------------------------------------------------------------------
    19. ITEM DE CHECKLIST (composicao do kit) E CARD DE CATEGORIA
    -------------------------------------------------------------------------- */
+/* ITEM DO KIT -- chip denso.
+   Sao dez pecas de uma lista de conteudo, nao dez cartoes: densidade alta,
+   raio de campo, sem sombra e sem elevacao. */
 .item-kit {
-  border: 1px solid rgb(16 22 23 / 0.1);
-  background: #fff;
-  border-radius: 0.75rem;
-  padding: 1.25rem;
-  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--esp-s);
+  align-items: center;
+  border: 1px solid var(--estrutura-clara);
+  background: rgb(255 255 255 / 0.6);
+  border-radius: var(--radius-field);
+  padding: var(--esp-xs) var(--esp-s);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .item-kit:hover {
-  transform: translateY(-6px);
-  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
-  box-shadow: 0 14px 30px -16px rgb(6 34 38 / 0.35);
+  border-color: var(--estrutura-forte);
+  background: #fff;
 }
 
+/* Sem o quadrado arredondado: no chip o icone e um traco solto. */
 .item-kit__icone {
+  grid-row: span 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-  background: var(--petroleo-900);
-  color: var(--hazmat-500);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 1.75rem;
+  color: var(--petroleo-700);
+  transition: color 0.25s ease;
 }
 
-.item-kit:hover .item-kit__icone {
-  background: var(--hazmat-500);
-  color: #fff;
-}
+.item-kit__icone svg { width: 1.25rem; height: 1.25rem; }
+
+.item-kit:hover .item-kit__icone { color: var(--petroleo-950); }
 
 .item-kit__nome {
+  align-self: end;
   font-family: var(--fonte-corpo);
-  font-size: 0.875rem;
+  font-size: var(--txt-apoio);
   font-weight: 600;
   text-transform: none;
   letter-spacing: normal;
@@ -1051,98 +1209,127 @@ select.campo-escuro {
 }
 
 .item-kit__desc {
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
+  align-self: start;
+  margin-top: 0.1rem;
+  font-size: var(--txt-micro);
   line-height: 1.5;
   color: rgb(16 22 23 / 0.72); /* era 0.55: 4,03:1 */
 }
 
 /* Card de categoria do catalogo */
+/* CATEGORIA -- ladrilho.
+   Sem borda e sem elevacao: o que muda no hover e o preenchimento. O canto
+   superior esquerdo fica reto e os outros tres arredondados, para o conjunto
+   ler como uma grade encaixada e nao como oito caixas soltas. */
 .card-categoria {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   overflow: hidden;
-  padding: 1.5rem;
-  border-radius: var(--radius-box);
-  border: 1px solid rgb(255 255 255 / 0.08);
-  background: color-mix(in srgb, var(--petroleo-800) 90%, #000);
-  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  padding: var(--esp-m);
+  border: 0;
+  border-radius: 0 var(--radius-box) var(--radius-box) var(--radius-box);
+  background: color-mix(in srgb, var(--petroleo-700) 30%, var(--petroleo-950));
+  transition: background-color 0.3s ease;
 }
 
 .card-categoria:hover {
-  transform: translateY(-6px);
-  border-color: color-mix(in srgb, var(--hazmat-500) 60%, transparent);
-  box-shadow: 0 20px 42px -22px rgb(0 0 0 / 0.8);
+  background: color-mix(in srgb, var(--petroleo-700) 62%, var(--petroleo-950));
 }
 
-.card-categoria__icone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.65rem;
-  background: rgb(255 107 0 / 0.12);
-  color: var(--hazmat-500);
-  transition: background-color 0.3s ease, color 0.3s ease;
+.card-categoria__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-sub);
+  line-height: 1;
+  color: #fff;
 }
+
+/* PAPEL 2 DO LARANJA: dado numerico. A contagem de itens e informacao real,
+   entao o numeral e laranja e a palavra que o acompanha nao e. */
+.card-categoria__contagem {
+  margin-top: var(--esp-2xs);
+  font-size: var(--txt-micro);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--track-rotulo);
+  color: rgb(255 255 255 / 0.6);
+}
+
+.card-categoria__contagem strong {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hazmat-500);
+  vertical-align: -0.12em;
+  margin-right: 0.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Marca-d'agua: o icone sai do quadradinho de 3rem e passa a ocupar o canto
+   do ladrilho, sangrando para fora. E o que da escala ao conjunto de oito. */
+.card-categoria__icone {
+  position: absolute;
+  right: -0.75rem;
+  bottom: -0.75rem;
+  display: block;
+  color: rgb(255 255 255 / 0.07);
+  transition: color 0.3s ease, transform 0.4s var(--ease-saida);
+  pointer-events: none;
+}
+
+.card-categoria__icone svg { width: 6.5rem; height: 6.5rem; stroke-width: 1; }
 
 .card-categoria:hover .card-categoria__icone {
-  background: var(--hazmat-500);
-  color: #fff;
+  color: rgb(255 255 255 / 0.14);
+  transform: translate(-0.35rem, -0.35rem);
 }
 
 /* --------------------------------------------------------------------------
    20. QUEM ATENDEMOS E ONDE ATENDEMOS
    -------------------------------------------------------------------------- */
+/* SEGMENTO -- deixa de ser cartao.
+   Quatro caixas brancas lado a lado eram a terceira grade identica da pagina.
+   Vira lista: filete a esquerda, sem fundo, sem raio, sem sombra. */
 .segmento-card {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1.75rem;
-  background: #fff;
-  border: 1px solid rgb(16 22 23 / 0.1);
-  border-radius: var(--radius-box);
-  transition: transform 0.3s var(--ease-saida), border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  padding: var(--esp-xs) 0 var(--esp-m) var(--esp-m);
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--estrutura-clara);
+  border-radius: 0;
+  transition: border-color 0.3s ease, border-left-width 0.2s ease;
 }
 
 .segmento-card:hover {
-  transform: translateY(-6px);
-  border-color: color-mix(in srgb, var(--hazmat-500) 45%, transparent);
-  box-shadow: 0 18px 38px -20px rgb(6 34 38 / 0.4);
+  border-left-color: var(--petroleo-900);
+  box-shadow: inset 2px 0 0 var(--petroleo-900);
 }
 
 .segmento-card__icone {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1.25rem;
-  border-radius: 0.65rem;
-  background: var(--petroleo-900);
-  color: var(--hazmat-500);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 1.5rem;
+  margin-bottom: var(--esp-s);
+  color: var(--petroleo-700);
+  transition: color 0.25s ease;
 }
 
-.segmento-card:hover .segmento-card__icone {
-  background: var(--hazmat-500);
-  color: #fff;
-}
+.segmento-card__icone svg { width: 1.5rem; height: 1.5rem; }
+
+.segmento-card:hover .segmento-card__icone { color: var(--petroleo-950); }
 
 .segmento-card__titulo {
-  font-family: var(--fonte-corpo);
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: normal;
-  line-height: 1.35;
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-sub);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--track-titulo);
+  line-height: 1;
   color: var(--neutro-900);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--esp-2xs);
 }
 
 .segmento-card__texto {
@@ -1169,14 +1356,14 @@ select.campo-escuro {
 }
 
 .cidade-chip:hover {
-  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  border-color: var(--estrutura-forte);
   background: rgb(255 255 255 / 0.07);
   transform: translateY(-1px);
 }
 
 .cidade-chip--sede {
-  border-color: color-mix(in srgb, var(--hazmat-500) 70%, transparent);
-  background: rgb(255 107 0 / 0.12);
+  border-color: color-mix(in srgb, var(--alerta-400) 55%, transparent);
+  background: rgb(255 195 0 / 0.1);
   color: #fff;
 }
 
@@ -1226,7 +1413,7 @@ select.campo-escuro {
 }
 
 .chip-filtro:hover {
-  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  border-color: var(--estrutura-forte);
   color: var(--neutro-900);
   transform: translateY(-1px);
 }
@@ -1287,13 +1474,21 @@ select.campo-escuro {
 }
 
 /* Card do produto no grid */
+/* PRODUTO -- o unico que continua cartao, porque e objeto de merchandising:
+   precisa de moldura para 34 fotos de estoque lerem como um conjunto.
+   O destaque vai para o estado de SELECAO, nao para o hover. */
 .produto-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: var(--radius-box);
-  border: 1px solid rgb(16 22 23 / 0.1);
+  border: 1px solid var(--estrutura-clara);
   background: #fff;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.produto-card:hover {
+  box-shadow: 0 16px 36px -24px rgb(6 34 38 / 0.55);
 }
 
 /* --------------------------------------------------------------------------
@@ -1395,7 +1590,7 @@ select.campo-escuro {
 label.selecao { cursor: pointer; }
 
 label.selecao:hover {
-  border-color: color-mix(in srgb, var(--hazmat-500) 55%, transparent);
+  border-color: var(--estrutura-forte);
 }
 
 /* O campo sai de vista, mas continua sendo ele quem guarda o estado e quem
@@ -1684,12 +1879,12 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 
 .janela-orcamento__olho {
   margin-bottom: 0.4rem;
-  font-family: var(--fonte-titulo);
-  font-size: 0.75rem;
+  font-family: var(--fonte-corpo);
+  font-size: var(--txt-micro);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--hazmat-500);
+  letter-spacing: var(--track-olho);
+  color: rgb(255 255 255 / 0.6);
 }
 
 .janela-orcamento__resumo {
@@ -1714,8 +1909,8 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 .janela-orcamento__fechar:hover {
-  border-color: var(--hazmat-500);
-  background: var(--hazmat-500);
+  border-color: var(--estrutura-forte);
+  background: var(--estrutura-forte);
   color: #fff;
 }
 
@@ -1874,7 +2069,7 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 .contador-qtd__botao:hover:not(:disabled) {
-  background: var(--hazmat-500);
+  background: var(--estrutura-forte);
   color: #fff;
 }
 
@@ -2046,13 +2241,20 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
   .camada-parallax,
   .faixa-parallax__fundo,
   [data-parallax],
-  .tilt-3d {
+  .tilt-3d,
+  .tilt-3d.is-inclinando {
     transform: none !important;
     will-change: auto;
   }
 
   .camada-parallax { inset: 0; height: 100%; }
   .faixa-parallax__fundo { top: 0; height: 100%; }
+
+  /* A foto do produto tambem cresce no hover: e movimento, e o reset de
+     duracao sozinho apenas o torna instantaneo em vez de suprimi-lo. */
+  .produto-card:hover .produto-foto,
+  .produto-card:focus-within .produto-foto,
+  .produto-midia--descobre:hover .produto-foto { transform: none !important; }
 
   .marquee__trilho { animation: none; transform: none; }
   .linha-mascara > span { animation: none; }
