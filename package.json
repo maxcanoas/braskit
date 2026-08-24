@@ -1,0 +1,16 @@
+{
+  "name": "braskit-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da Braskit. O site publicado e 100% estatico; estas dependencias servem apenas ao build e a verificacao, e nao vao para o servidor.",
+  "type": "module",
+  "scripts": {
+    "css": "node build/compilar-css.mjs",
+    "imagens": "node build/imagens.mjs",
+    "verificar": "node build/verificar.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0",
+    "sharp": "^0.33.5"
+  }
+}

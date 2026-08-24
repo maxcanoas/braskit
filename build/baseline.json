@@ -1,0 +1,348 @@
+{
+  "rotulo": "00-antes",
+  "gerado": "2026-08-24T15:26:51.151Z",
+  "paginas": {
+    "index.html": {
+      "scrollWidth": {
+        "390": {
+          "comoEsta": 402,
+          "real": 402,
+          "semFonte": 390,
+          "estoura": true,
+          "culpados": [
+            "div.order-1.lg:order-2 \"Quem somos Protegendo vidas,preservando \" (+12px)"
+          ]
+        },
+        "768": {
+          "comoEsta": 769,
+          "real": 769,
+          "semFonte": 768,
+          "estoura": true,
+          "culpados": [
+            "div.order-1.lg:order-2 \"Quem somos Protegendo vidas,preservando \" (+1.3px)"
+          ]
+        },
+        "1024": {
+          "comoEsta": 1024,
+          "real": 1024,
+          "semFonte": 1024,
+          "estoura": false,
+          "culpados": []
+        },
+        "1440": {
+          "comoEsta": 1440,
+          "real": 1440,
+          "semFonte": 1440,
+          "estoura": false,
+          "culpados": []
+        },
+        "1920": {
+          "comoEsta": 1920,
+          "real": 1920,
+          "semFonte": 1920,
+          "estoura": false,
+          "culpados": []
+        }
+      },
+      "peso": {
+        "semRolar": 2699200,
+        "completo": 3413578,
+        "limite": 1258291.2,
+        "maiores": [
+          {
+            "url": "assets/img/hero-rodovia.jpg",
+            "tamanho": 877108
+          },
+          {
+            "url": "assets/img/faixa-rodovia.jpg",
+            "tamanho": 766383
+          },
+          {
+            "url": "assets/img/sobre-kit.jpg",
+            "tamanho": 732426
+          },
+          {
+            "url": "assets/img/faixa-noturna.jpg",
+            "tamanho": 635731
+          },
+          {
+            "url": "index.html",
+            "tamanho": 75351
+          },
+          {
+            "url": "https://maps.gstatic.com/maps-api-v3/embed/js/66/1a/init_embed.js",
+            "tamanho": 74940
+          },
+          {
+            "url": "css/style.css",
+            "tamanho": 52279
+          },
+          {
+            "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+            "tamanho": 48256
+          }
+        ]
+      },
+      "contraste": {
+        "total": 56,
+        "reprovam": 14,
+        "sobreImagem": 6,
+        "piores": [
+          {
+            "razao": 1.07,
+            "minimo": 3,
+            "el": "span.relative.flex.items-end \"BRASKIT\"",
+            "texto": "BRAS"
+          },
+          {
+            "razao": 1.07,
+            "minimo": 4.5,
+            "el": "span.inline-flex.items-center.gap-2.5 \"CONTRAN\"",
+            "texto": "CONTRAN"
+          },
+          {
+            "razao": 1.07,
+            "minimo": 3,
+            "el": "span.relative.flex.items-end \"BRASKIT\"",
+            "texto": "BRAS"
+          },
+          {
+            "razao": 1.07,
+            "minimo": 4.5,
+            "el": "span.inline-flex.items-center.gap-2.5 \"CONTRAN\"",
+            "texto": "CONTRAN"
+          },
+          {
+            "razao": 2.68,
+            "minimo": 3,
+            "el": "span.text-hazmat-500.transition-colors.duration-300 \"KIT\"",
+            "texto": "KIT"
+          },
+          {
+            "razao": 2.68,
+            "minimo": 4.5,
+            "el": "p.olho.mb-4.flex \"Quem somos\"",
+            "texto": "Quem somos"
+          },
+          {
+            "razao": 2.68,
+            "minimo": 3,
+            "el": "span.text-hazmat-500.transition-colors.duration-300 \"KIT\"",
+            "texto": "KIT"
+          },
+          {
+            "razao": 2.68,
+            "minimo": 4.5,
+            "el": "p.olho.mb-4.flex \"Quem somos\"",
+            "texto": "Quem somos"
+          },
+          {
+            "razao": 2.86,
+            "minimo": 4.5,
+            "el": "a.btn-brilho.inline-flex.items-center \"Solicitar orçamento\"",
+            "texto": "Solicitar orçamento"
+          },
+          {
+            "razao": 2.86,
+            "minimo": 4.5,
+            "el": "a.btn-brilho.hidden.items-center \"Orçamento no WhatsApp\"",
+            "texto": "Orçamento no WhatsApp"
+          }
+        ]
+      },
+      "imagens": {
+        "total": 4,
+        "semDimensao": 4
+      },
+      "referenciasQuebradas": [
+        "assets/img/hero-rodovia-mobile.jpg",
+        "assets/img/faixa-rodovia-mobile.jpg",
+        "assets/img/faixa-noturna-mobile.jpg"
+      ]
+    },
+    "catalogo.html": {
+      "scrollWidth": {
+        "390": {
+          "comoEsta": 390,
+          "real": 390,
+          "semFonte": 390,
+          "estoura": false,
+          "culpados": []
+        },
+        "768": {
+          "comoEsta": 768,
+          "real": 768,
+          "semFonte": 768,
+          "estoura": false,
+          "culpados": []
+        },
+        "1024": {
+          "comoEsta": 1645,
+          "real": 1645,
+          "semFonte": 1584,
+          "estoura": true,
+          "culpados": [
+            "div.flex.shrink-0.items-center \"Buscar produto 34 produtos encontrados\" (+621.2px)",
+            "div.chips-rolagem.-mx-1.overflow-x-auto \"Todos34Produtos3Suportes6Sinalização7Têx\" (+137.4px)"
+          ]
+        },
+        "1440": {
+          "comoEsta": 1732,
+          "real": 1732,
+          "semFonte": 1671,
+          "estoura": true,
+          "culpados": [
+            "div.flex.shrink-0.items-center \"Buscar produto 34 produtos encontrados\" (+292.3px)"
+          ]
+        },
+        "1920": {
+          "comoEsta": 1972,
+          "real": 1972,
+          "semFonte": 1920,
+          "estoura": true,
+          "culpados": [
+            "div.flex.shrink-0.items-center \"Buscar produto 34 produtos encontrados\" (+52.3px)"
+          ]
+        }
+      },
+      "peso": {
+        "semRolar": 2807020,
+        "completo": 3348679,
+        "limite": 1572864,
+        "maiores": [
+          {
+            "url": "assets/img/faixa-noturna.jpg",
+            "tamanho": 635731
+          },
+          {
+            "url": "assets/produtos/cone-flexivel-nbr-15071.jpg",
+            "tamanho": 99803
+          },
+          {
+            "url": "assets/produtos/kit-cargas-perigosas.jpg",
+            "tamanho": 92649
+          },
+          {
+            "url": "assets/produtos/caixa-plastico-extintor.jpg",
+            "tamanho": 84546
+          },
+          {
+            "url": "assets/produtos/pedestal.jpg",
+            "tamanho": 82287
+          },
+          {
+            "url": "assets/produtos/extintor-abc.jpg",
+            "tamanho": 79132
+          },
+          {
+            "url": "assets/produtos/capa-cone.jpg",
+            "tamanho": 78593
+          },
+          {
+            "url": "assets/produtos/placa-material-corrosivo.jpg",
+            "tamanho": 76890
+          }
+        ]
+      },
+      "contraste": {
+        "total": 29,
+        "reprovam": 11,
+        "sobreImagem": 0,
+        "piores": [
+          {
+            "razao": 1.04,
+            "minimo": 4.5,
+            "el": "small \"no seu orçamento · ver e ajustar a lista\"",
+            "texto": "ver e ajustar a lista"
+          },
+          {
+            "razao": 1.04,
+            "minimo": 4.5,
+            "el": "small \"no seu orçamento · ver e ajustar a lista\"",
+            "texto": "ver e ajustar a lista"
+          },
+          {
+            "razao": 1.07,
+            "minimo": 3,
+            "el": "span.relative.flex.items-end \"BRASKIT\"",
+            "texto": "BRAS"
+          },
+          {
+            "razao": 1.07,
+            "minimo": 4.5,
+            "el": "strong#bandejaContagem \"3 itens\"",
+            "texto": "3 itens"
+          },
+          {
+            "razao": 1.07,
+            "minimo": 3,
+            "el": "span.relative.flex.items-end \"BRASKIT\"",
+            "texto": "BRAS"
+          },
+          {
+            "razao": 2.68,
+            "minimo": 3,
+            "el": "span.text-hazmat-500.transition-colors.duration-300 \"KIT\"",
+            "texto": "KIT"
+          },
+          {
+            "razao": 2.68,
+            "minimo": 3,
+            "el": "span.text-hazmat-500.transition-colors.duration-300 \"KIT\"",
+            "texto": "KIT"
+          },
+          {
+            "razao": 2.86,
+            "minimo": 4.5,
+            "el": "button.chip-filtro.is-ativo \"Todos34\"",
+            "texto": "Todos"
+          },
+          {
+            "razao": 2.86,
+            "minimo": 4.5,
+            "el": "a.btn-brilho.hidden.items-center \"Orçamento no WhatsApp\"",
+            "texto": "Orçamento no WhatsApp"
+          },
+          {
+            "razao": 3.44,
+            "minimo": 4.5,
+            "el": "small \"Item do kit mínimo\"",
+            "texto": "Item do kit mínimo"
+          }
+        ]
+      },
+      "imagens": {
+        "total": 39,
+        "semDimensao": 39
+      },
+      "referenciasQuebradas": [
+        "assets/img/faixa-noturna-mobile.jpg"
+      ]
+    }
+  },
+  "totalFalhas": 86,
+  "ordemDeFoco": [
+    "a.group.flex.w-fit \"BRASKIT Kit para transporte de cargas pe\"",
+    "a.link-nav.text-sm.font-medium \"Início\"",
+    "a.link-nav.text-sm.font-medium \"Sobre\"",
+    "a.link-nav.text-sm.font-medium \"Serviços\"",
+    "a.link-nav.text-sm.font-medium \"Kits\"",
+    "a.link-nav.text-sm.font-medium \"Catálogo\"",
+    "a.link-nav.text-sm.font-medium \"Contato\"",
+    "a.hidden.items-center.gap-2 \"(51) 3051-7997\"",
+    "a.btn-brilho.hidden.items-center \"Orçamento no WhatsApp\"",
+    "a.btn-brilho.inline-flex.items-center \"Solicitar orçamento\"",
+    "a.btn-preenche.inline-flex.items-center \"Ver catálogo\"",
+    "a.indicador-scroll.absolute.bottom-14 \"Role\"",
+    "a.inline-flex.items-center.gap-2 \"Falar com um especialista\"",
+    "a.inline-flex.items-center.gap-2 \"Falar com um especialista\"",
+    "a.inline-flex.items-center.gap-2 \"Falar com um especialista\"",
+    "a.font-semibold.text-hazmat-500.underline \"Fale com a gente\"",
+    "a.btn-preenche.inline-flex.shrink-0 \"Ver catálogo completo\"",
+    "a.card-categoria.group.min-h-40 \"Produtos 3 itens\"",
+    "a.card-categoria.group.min-h-40 \"Suportes 6 itens\"",
+    "a.card-categoria.group.min-h-40 \"Sinalização 7 itens\"",
+    "a.card-categoria.group.min-h-40 \"Têxtil 3 itens\"",
+    "a.card-categoria.group.min-h-40 \"Injetados 5 itens\""
+  ]
+}

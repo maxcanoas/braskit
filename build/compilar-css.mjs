@@ -10,12 +10,18 @@ import { chromium } from "playwright";
 
 const raiz = resolve(import.meta.dirname, "..");
 
+/* Devolve o conteudo do <body> e, separadamente, as classes da propria tag
+   <body>. Sem isso as classes escritas em <body class="..."> nunca sao
+   escaneadas pelo Tailwind, e utilitarios como .bg-neutro-50 e .font-corpo
+   somem do tw.css. */
 function corpo(arquivo) {
   const html = readFileSync(resolve(raiz, arquivo), "utf-8");
   const inicio = html.indexOf("<body");
   const aberto = html.indexOf(">", inicio) + 1;
   const fim = html.lastIndexOf("</body>");
-  return html.slice(aberto, fim);
+  const tag = html.slice(inicio, aberto);
+  const classes = (tag.match(/class="([^"]*)"/) || [, ""])[1];
+  return { html: html.slice(aberto, fim), classes };
 }
 
 const tema = `
@@ -35,8 +41,13 @@ const tema = `
   }
 `;
 
-/* Classes que so aparecem em runtime (toggles do JS) e precisam existir. */
-const listaSegura = '<div class="hidden py-2 py-4"></div>';
+const paginaIndex = corpo("index.html");
+const paginaCatalogo = corpo("catalogo.html");
+
+/* Classes que so aparecem em runtime (toggles do JS) e as da propria tag
+   <body>, que o fatiamento acima deixa de fora do conteudo. */
+const listaSegura =
+  '<div class="hidden py-2 py-4 ' + paginaIndex.classes + " " + paginaCatalogo.classes + '"></div>';
 
 const pagina = `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -47,10 +58,11 @@ const pagina = `<!DOCTYPE html>
 </head>
 <body>
 ${listaSegura}
-${corpo("index.html")}
-${corpo("catalogo.html")}
+${paginaIndex.html}
+${paginaCatalogo.html}
 <script src="../js/main.js"></script>
 <script src="../js/produtos.js"></script>
+<script src="../js/orcamento.js"></script>
 <script src="../js/catalogo.js"></script>
 </body>
 </html>`;
@@ -59,7 +71,29 @@ writeFileSync(resolve(raiz, "build/compile.html"), pagina);
 
 const navegador = await chromium.launch();
 const aba = await navegador.newPage();
+await aba.addInitScript(() => {
+  window.__errosDeConsole = [];
+  window.addEventListener("error", (e) => window.__errosDeConsole.push(String(e.message)));
+});
+aba.on("pageerror", (e) => console.error("erro na pagina: " + e.message));
 await aba.goto("file://" + resolve(raiz, "build/compile.html"), { waitUntil: "load" });
+
+/* O grid do catalogo e montado por js/catalogo.js. Se ele nao renderizar, as
+   classes que so existem no card gerado (px-2.5, bg-petroleo-900/8,
+   tracking-[0.12em], text-petroleo-700, leading-tight, text-left) somem do
+   tw.css sem nenhum erro visivel. Falhar aqui e melhor que descobrir depois. */
+await aba.waitForTimeout(600);
+const cartoes = await aba.evaluate(() => {
+  const grid = document.getElementById("gridProdutos");
+  return grid ? grid.children.length : -1;
+});
+if (cartoes < 34) {
+  const erros = await aba.evaluate(() => window.__errosDeConsole || []);
+  console.error("Grid do catalogo nao renderizou: " + cartoes + " cartoes (esperado 34).");
+  if (erros.length) console.error(erros.join(String.fromCharCode(10)));
+  await navegador.close();
+  process.exit(1);
+}
 
 /* Espera a folha injetada estabilizar. */
 let anterior = -1;
@@ -82,6 +116,21 @@ if (css.length < 20000) {
   console.error("Compilacao suspeita: apenas " + css.length + " bytes.");
   process.exit(1);
 }
+
+/* O build reescreve tw.css inteiro a partir do DOM daquele instante. Uma queda
+   grande de tamanho quase sempre quer dizer que algo nao renderizou. */
+try {
+  const anteriorCss = readFileSync(resolve(raiz, "css/tw.css"), "utf-8");
+  const queda = 1 - css.length / anteriorCss.length;
+  if (queda > 0.05) {
+    console.error(
+      "Compilacao suspeita: tw.css encolheria " + Math.round(queda * 100) + "% " +
+      "(" + anteriorCss.length + " -> " + css.length + " bytes). " +
+      "Rode com FORCAR_CSS=1 se a reducao for intencional."
+    );
+    if (!process.env.FORCAR_CSS) process.exit(1);
+  }
+} catch { /* primeira geracao: nao ha anterior */ }
 
 const cabecalho = `/* ==========================================================================
    BRASKIT | utilitarios compilados (gerado por build/compilar-css.mjs)

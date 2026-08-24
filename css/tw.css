@@ -65,8 +65,10 @@
     --color-petroleo-700: #155e63;
     --color-hazmat-500: #ff6b00;
     --color-hazmat-400: #ff8a2b;
+    --color-neutro-50: #f6f8f8;
     --color-neutro-900: #101617;
     --font-titulo: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+    --font-corpo: "Inter", system-ui, -apple-system, sans-serif;
   }
 }
 @layer base {
@@ -730,12 +732,6 @@
       border-color: color-mix(in oklab, var(--color-neutro-900) 10%, transparent);
     }
   }
-  .border-petroleo-900\/15 {
-    border-color: color-mix(in srgb, #0b3136 15%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-petroleo-900) 15%, transparent);
-    }
-  }
   .border-petroleo-900\/25 {
     border-color: color-mix(in srgb, #0b3136 25%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -780,6 +776,9 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-hazmat-500) 12%, transparent);
     }
+  }
+  .bg-neutro-50 {
+    background-color: var(--color-neutro-50);
   }
   .bg-petroleo-800 {
     background-color: var(--color-petroleo-800);
@@ -1000,6 +999,9 @@
   }
   .text-left {
     text-align: left;
+  }
+  .font-corpo {
+    font-family: var(--font-corpo);
   }
   .font-titulo {
     font-family: var(--font-titulo);
@@ -1266,6 +1268,10 @@
   .underline-offset-4 {
     text-underline-offset: 4px;
   }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   .opacity-35 {
     opacity: 35%;
   }
@@ -1354,9 +1360,6 @@
     }
     .group-hover\:text-white:is(:where(.group):hover *) {
       color: var(--color-white);
-    }
-    .hover\:border-transparent:hover {
-      border-color: transparent;
     }
     .hover\:border-white\/40:hover {
       border-color: color-mix(in srgb, #fff 40%, transparent);
