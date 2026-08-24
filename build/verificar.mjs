@@ -199,11 +199,29 @@ async function coletarPares(page) {
   return page.evaluate((fnDesc) => {
     eval(fnDesc);
 
+    /* O navegador e o unico parser de cor confiavel aqui. O Tailwind v4
+       serializa "text-white/60" como oklab(...) e color-mix() como
+       color(srgb ...); escrever um parser para cada formato e correr atras do
+       prejuizo. Pintar a cor num canvas 1x1 e ler o pixel resolve todos de uma
+       vez, inclusive lch, hwb e o que vier depois -- e devolve exatamente o
+       que a tela mostra, ja convertido para sRGB.
+
+       Valor invalido nao muda o fillStyle, entao a cor de sentinela
+       transparente permanece e a funcao devolve null. */
+    const tela = document.createElement("canvas");
+    tela.width = tela.height = 1;
+    const pincel = tela.getContext("2d", { willReadFrequently: true });
+    pincel.globalCompositeOperation = "copy";
+
     function parseCor(str) {
-      const m = String(str).match(/rgba?\(([^)]+)\)/);
-      if (!m) return null;
-      const p = m[1].split(",").map((s) => parseFloat(s.trim()));
-      return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 };
+      const texto = String(str || "").trim();
+      if (!texto || texto === "transparent" || texto === "none") return null;
+      pincel.fillStyle = "rgba(0, 0, 0, 0)";
+      pincel.fillStyle = texto;
+      pincel.fillRect(0, 0, 1, 1);
+      const d = pincel.getImageData(0, 0, 1, 1).data;
+      if (d[3] === 0) return null;
+      return { r: d[0], g: d[1], b: d[2], a: d[3] / 255 };
     }
 
     function sobrepor(frente, fundo) {
@@ -221,20 +239,24 @@ async function coletarPares(page) {
     function fundoEfetivo(el) {
       const pilha = [];
       let p = el;
-      let sobreImagem = false;
+      let indeterminado = false;
+      let opaco = false;
       while (p) {
         const cs = getComputedStyle(p);
-        if (cs.backgroundImage && cs.backgroundImage !== "none") sobreImagem = true;
+        if (cs.backgroundImage && cs.backgroundImage !== "none") indeterminado = true;
         const c = parseCor(cs.backgroundColor);
         if (c && c.a > 0) {
           pilha.push(c);
-          if (c.a >= 0.999) break;
+          if (c.a >= 0.999) { opaco = true; break; }
         }
+        /* Overlay fixo que ainda nao acumulou fundo opaco: o que aparece atras
+           e o conteudo da pagina naquele ponto, nao o ancestral no DOM. */
+        if (cs.position === "fixed" && !opaco) indeterminado = true;
         p = p.parentElement;
       }
       let base = { r: 255, g: 255, b: 255, a: 1 };
       for (let i = pilha.length - 1; i >= 0; i--) base = sobrepor(pilha[i], base);
-      return { cor: base, sobreImagem };
+      return { cor: base, indeterminado };
     }
 
     const pares = [];
@@ -262,7 +284,7 @@ async function coletarPares(page) {
       const corTexto = parseCor(cs.color);
       if (!corTexto || corTexto.a === 0) continue;
 
-      const { cor: fundo, sobreImagem } = fundoEfetivo(el);
+      const { cor: fundo, indeterminado } = fundoEfetivo(el);
       const frente = corTexto.a < 1 ? sobrepor(corTexto, fundo) : corTexto;
 
       const tamanho = parseFloat(cs.fontSize);
@@ -273,7 +295,7 @@ async function coletarPares(page) {
       const chave = [
         Math.round(frente.r), Math.round(frente.g), Math.round(frente.b),
         Math.round(fundo.r), Math.round(fundo.g), Math.round(fundo.b),
-        grande, sobreImagem
+        grande, indeterminado
       ].join("|");
       if (vistos.has(chave)) continue;
       vistos.add(chave);
@@ -286,7 +308,7 @@ async function coletarPares(page) {
         tamanho: Math.round(tamanho * 10) / 10,
         peso,
         grande,
-        sobreImagem
+        indeterminado
       });
     }
     return pares;
@@ -543,7 +565,7 @@ async function main() {
             viewport: viewport.largura,
             razao: Math.round(razao * 100) / 100,
             minimo,
-            passa: par.sobreImagem ? null : razao >= minimo
+            passa: par.indeterminado ? null : razao >= minimo
           };
           dadosPagina.contraste.push(registro);
           if (registro.passa === false) {
@@ -623,19 +645,29 @@ async function main() {
       });
       await semFonte.contexto.close();
 
-      /* Comparacao de blocos: variacao acima de 12% denuncia quebra. */
+      /* Comparacao de blocos com e sem webfont.
+
+         Refluxo nao e quebra: um titulo que ocupa uma linha a menos na fonte
+         de reserva muda a altura do bloco sem nada ficar cortado ou sobreposto
+         -- e o estouro horizontal ja e medido a parte, na propria rodada sem
+         webfont. Entao aqui: acima de 8% e registrado como desvio, acima de
+         25% (e mais de 40px) e tratado como falha. */
       const desvios = [];
       for (const chaveBloco of Object.keys(blocosCom)) {
         const a = blocosCom[chaveBloco];
         const b = blocosSem[chaveBloco];
         if (!a || !b) continue;
         const variacao = Math.abs(b - a) / Math.max(a, 1);
-        if (variacao > 0.12 && Math.abs(b - a) > 24) {
-          desvios.push({ bloco: chaveBloco, comFonte: a, semFonte: b, variacao: Math.round(variacao * 100) + "%" });
+        if (variacao > 0.08 && Math.abs(b - a) > 16) {
+          desvios.push({
+            bloco: chaveBloco, comFonte: a, semFonte: b,
+            variacao: Math.round(variacao * 100) + "%",
+            grave: variacao > 0.25 && Math.abs(b - a) > 40
+          });
         }
       }
       linha.desviosSemFonte = desvios;
-      for (const d of desvios) {
+      for (const d of desvios.filter((d) => d.grave)) {
         falhar(
           `${pagina.arquivo} @${viewport.largura}: bloco "${d.bloco}" muda ${d.variacao} ` +
           `sem webfont (${d.comFonte}px -> ${d.semFonte}px)`
@@ -688,10 +720,10 @@ async function main() {
       );
     }
     const reprovados = dados.contraste.filter((c) => c.passa === false);
-    const sobreImagem = dados.contraste.filter((c) => c.passa === null);
+    const indeterminados = dados.contraste.filter((c) => c.passa === null);
     console.log(
       `  contraste: ${dados.contraste.length} pares, ${reprovados.length} reprovam, ` +
-      `${sobreImagem.length} sobre imagem (nao calculavel)`
+      `${indeterminados.length} sobre imagem ou overlay (nao calculavel)`
     );
     for (const r of reprovados.slice(0, 8)) {
       console.log(`         ${r.razao}:1 (min ${r.minimo})  ${r.elemento}  "${r.amostra}"`);

@@ -36,8 +36,8 @@ const tema = `
     --color-perigo-500: #e2231a;
     --color-neutro-50: #f6f8f8;
     --color-neutro-900: #101617;
-    --font-titulo: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
-    --font-corpo: "Inter", system-ui, -apple-system, sans-serif;
+    --font-titulo: "Barlow Condensed", "Barlow Condensed Reserva", system-ui, sans-serif;
+    --font-corpo: "Inter", "Inter Reserva", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
 `;
 

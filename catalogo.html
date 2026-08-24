@@ -46,7 +46,7 @@
 </script>
 </head>
 
-<body class="bg-neutro-50 font-corpo antialiased">
+<body class="font-corpo antialiased">
 
 <!-- =========================================================
      HEADER (mesma marcacao nas duas paginas)
@@ -127,7 +127,7 @@
   <picture>
     <source media="(max-width: 640px)" srcset="assets/img/faixa-noturna-mobile.jpg">
     <img class="camada-parallax opacity-35" data-parallax-hero="0.22"
-         src="assets/img/faixa-noturna.jpg" data-reserva="assets/faixa-noturna.svg"
+         src="assets/img/faixa-noturna.jpg" width="1376" height="768" data-reserva="assets/faixa-noturna.svg"
          alt="" aria-hidden="true">
   </picture>
   <div class="absolute inset-0 bg-gradient-to-r from-petroleo-950 via-petroleo-950/85 to-petroleo-950/45" aria-hidden="true"></div>
@@ -138,7 +138,7 @@
     <nav aria-label="Trilha de navegação" class="mb-6">
       <ol class="flex flex-wrap items-center gap-2 text-xs text-white/50">
         <li><a href="index.html" class="transition-colors hover:text-hazmat-500">Início</a></li>
-        <li aria-hidden="true" class="text-white/25">/</li>
+        <li aria-hidden="true" class="text-white/55">/</li>
         <li aria-current="page" class="text-white/85">Catálogo</li>
       </ol>
     </nav>
@@ -165,11 +165,11 @@
     <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
       <!-- Chips de categoria (preenchidos por js/catalogo.js) -->
-      <div class="chips-rolagem -mx-1 overflow-x-auto pb-1 lg:overflow-visible lg:pb-0">
+      <div class="chips-rolagem -mx-1 pb-1">
         <div class="flex gap-2 px-1" id="listaChips" role="group" aria-label="Filtrar por categoria"></div>
       </div>
 
-      <div class="flex shrink-0 items-center gap-4">
+      <div class="flex shrink-0 items-center gap-4 busca-filtros">
         <div class="relative w-full lg:w-72">
           <svg class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutro-900/35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
@@ -177,7 +177,7 @@
           <label for="campoBusca" class="sr-only">Buscar produto</label>
           <input type="search" id="campoBusca" class="campo-busca" placeholder="Buscar produto ou categoria..." autocomplete="off">
         </div>
-        <p class="hidden shrink-0 text-sm text-neutro-900/55 sm:block" id="contadorResultados" aria-live="polite">34 produtos</p>
+        <p class="hidden shrink-0 text-sm text-neutro-900/65 sm:block" id="contadorResultados" aria-live="polite">34 produtos</p>
       </div>
     </div>
   </div>
@@ -188,7 +188,7 @@
      ========================================================= -->
 <section class="secao secao-clara pt-10">
   <div class="container-braskit">
-    <p class="mb-6 text-sm text-neutro-900/55 sm:hidden" id="contadorResultadosMobile">34 produtos</p>
+    <p class="mb-6 text-sm text-neutro-900/65 sm:hidden" id="contadorResultadosMobile">34 produtos</p>
 
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="gridProdutos"></div>
 
@@ -257,7 +257,7 @@
               <path d="M46 10c2.5 5-2 11.5-8 11.5-5 0-10-3.5-14-8.5" stroke-dasharray="4 3.4"/>
             </svg>
           </span>
-          <span class="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.18em] text-white/45">Kit para transporte de cargas perigosas</span>
+          <span class="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.18em] text-white/60">Kit para transporte de cargas perigosas</span>
         </a>
         <p class="text-sm leading-relaxed">
           Revenda com mais de 30 anos especializada em materiais de segurança e
@@ -302,8 +302,8 @@
             <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a><br>
             <a href="mailto:braskit.kit@gmail.com" class="transition-colors hover:text-hazmat-500">braskit.kit@gmail.com</a>
           </p>
-          <p>Segunda a sexta, 08:00 às 18:00<br><span class="text-white/40">Almoço das 11:45 às 13:15</span></p>
-          <p class="text-white/40">Loja em Canoas, com envio para todo o Rio Grande do Sul.</p>
+          <p>Segunda a sexta, 08:00 às 18:00<br><span class="text-white/60">Almoço das 11:45 às 13:15</span></p>
+          <p class="text-white/60">Loja em Canoas, com envio para todo o Rio Grande do Sul.</p>
         </address>
       </div>
     </div>
@@ -312,7 +312,7 @@
 
     <div class="flex flex-col gap-3 py-7 text-xs sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; 2026 Braskit. Kit para Transporte de Cargas Perigosas.</p>
-      <p class="text-white/35">Site por DEVMRMORAES.</p>
+      <p class="text-white/60">Site por DEVMRMORAES.</p>
     </div>
   </div>
 </footer>
@@ -382,7 +382,7 @@
       <div class="produto-midia produto-midia--natural">
         <!-- src e alt são preenchidos por js/catalogo.js ao abrir. Sem src vazio:
              o navegador o resolveria como a própria página e faria um request inútil. -->
-        <img id="modalImagem" class="produto-foto" alt="" decoding="async">
+        <img id="modalImagem" class="produto-foto" alt="" width="730" height="487" decoding="async">
       </div>
 
       <div class="flex flex-col p-7 md:p-9">

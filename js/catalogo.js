@@ -124,7 +124,7 @@
                 'aria-label="Ver detalhes de ' + escaparHtml(produto.nome) + '">' +
           '<div class="produto-midia" style="--cat-cor:' + categoria.cor + '">' +
             '<img class="produto-foto" src="' + produto.img + '" ' +
-                 'alt="' + escaparHtml(produto.nome) + ' | Braskit" loading="lazy" decoding="async" ' +
+                 'alt="' + escaparHtml(produto.nome) + ' | Braskit" width="730" height="487" loading="lazy" decoding="async" ' +
                  'data-nome="' + escaparHtml(produto.nome) + '" data-cat="' + produto.categoria + '">' +
           "</div>" +
         "</button>" +

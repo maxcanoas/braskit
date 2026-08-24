@@ -9,6 +9,70 @@
    para nao brigarem com os utilitarios.
    ========================================================================== */
 
+
+/* --------------------------------------------------------------------------
+   0. RESERVA METRICA DAS WEBFONTS
+
+   A pilha antiga era "Barlow Condensed", "Arial Narrow", system-ui. Em Linux
+   e Android nao existe Arial Narrow: caia em system-ui, cerca de 35% mais
+   larga. Com display=swap isso acontecia em TODA primeira visita, antes de a
+   webfont chegar -- o titulo quebrava em mais linhas, o bloco mudava de altura
+   e o layout pulava.
+
+   As faces abaixo tomam Arial emprestada e a reescalam para as metricas
+   medidas de cada webfont, de modo que o texto ocupe a mesma largura antes e
+   depois do swap. Os numeros foram MEDIDOS com as strings reais do site, em
+   caixa alta (que e como os titulos aparecem), por build/metricas-fonte.mjs.
+   Nao edite a mao: rode o script de novo.
+
+   Onde nao houver Arial, o src falha, a face e ignorada e a pilha segue para
+   o proximo nome -- sem quebrar nada.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Barlow Condensed Reserva";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Arial"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 65.44%;
+  ascent-override: 152.81%;
+  descent-override: 30.56%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Barlow Condensed Reserva";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Arial"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 66.89%;
+  ascent-override: 149.51%;
+  descent-override: 29.90%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inter Reserva";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Arial"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 105.80%;
+  ascent-override: 91.59%;
+  descent-override: 22.78%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inter Reserva";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Arial"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 101.11%;
+  ascent-override: 95.83%;
+  descent-override: 23.83%;
+  line-gap-override: 0%;
+}
+
 /* --------------------------------------------------------------------------
    1. TOKENS DA MARCA
    Espelham o tema do build do Tailwind e ficam disponiveis como var() para
@@ -29,13 +93,29 @@
   /* Cor exata amostrada do logo original da empresa */
   --braskit-logo: #0d2f39;
 
-  --fonte-titulo: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
-  --fonte-corpo: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: "Barlow Condensed", "Barlow Condensed Reserva", system-ui, sans-serif;
+  --fonte-corpo: "Inter", "Inter Reserva", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-box: 1rem;
   --radius-field: 0.5rem;
 
   --altura-header: 88px;
+
+  /* Deslocamento lateral do scroll reveal. Precisa ser MENOR que o menor
+     padding-inline do .container-braskit (1.25rem), senao o elemento passa da
+     viewport enquanto ainda nao foi revelado. Como nao existe mais
+     body{overflow-x:hidden}, isso viraria barra horizontal de verdade --
+     era exatamente a causa do estouro de 12px em 390px e de 1px em 768px. */
+  --reveal-lateral: 1rem;
+
+  /* PAPEIS DO ACENTO
+     O laranja #ff6b00 com texto branco da 2,85:1 e reprova AA. Com texto
+     petroleo da 5,82:1 e passa, sem perder a forca da marca. Ja o laranja
+     COMO TEXTO sobre fundo claro precisa escurecer: #ff6b00 sobre --neutro-50
+     da 2,68:1, e mesmo #c24f00 fica em 4,47:1 -- reprova por pouco. */
+  --acao-fundo: var(--hazmat-500);
+  --acao-texto: var(--petroleo-950);
+  --laranja-legivel: var(--hazmat-500);
   --ease-saida: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Textura de ruido: evita que os fundos escuros fiquem chapados */
@@ -53,12 +133,14 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Sem overflow-x: hidden aqui, de proposito. O curativo escondia estouro
+     real (o reveal lateral e a barra de filtros do catalogo) e teria escondido
+     os proximos tambem. Quem precisa recortar, recorta no proprio componente. */
   body {
     background-color: var(--petroleo-950);
     color: var(--neutro-900);
     font-family: var(--fonte-corpo);
     line-height: 1.7;
-    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -104,6 +186,25 @@ img, svg, video, iframe { max-width: 100%; }
   letter-spacing: -0.02em;
   line-height: 0.95;
   font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+/* Laranja como texto sobre fundo claro reprova AA em qualquer tamanho de
+   corpo (2,68:1). Vale para o olho, para links e para qualquer uso do
+   utilitario dentro de uma secao clara. */
+.secao-clara .olho,
+.secao-clara .text-hazmat-500 {
+  color: var(--laranja-legivel);
+}
+
+/* Ilhas escuras dentro de uma secao clara -- o cartao de "30+ anos na
+   estrada", por exemplo. Ali o fundo nao e claro, entao o laranja volta a ser
+   o da marca: escurecido sobre petroleo ele daria 2,57:1. */
+.secao-clara .bg-petroleo-950,
+.secao-clara .bg-petroleo-900,
+.secao-clara .bg-petroleo-800,
+.secao-clara .secao-escura,
+.secao-clara .cartao-escuro {
+  --laranja-legivel: var(--hazmat-500);
 }
 
 .olho {
@@ -318,9 +419,11 @@ img, svg, video, iframe { max-width: 100%; }
   transform: none;
 }
 
-/* Variantes laterais, para blocos em duas colunas */
-[data-reveal="esquerda"] { transform: translateX(-32px); }
-[data-reveal="direita"]  { transform: translateX(32px); }
+/* Variantes laterais, para blocos em duas colunas. O valor vem de
+   --reveal-lateral justamente para nao ultrapassar o respiro do container:
+   ver o comentario do token. */
+[data-reveal="esquerda"] { transform: translateX(calc(var(--reveal-lateral) * -1)); }
+[data-reveal="direita"]  { transform: translateX(var(--reveal-lateral)); }
 [data-reveal="escala"]   { transform: scale(0.94); }
 
 /* --------------------------------------------------------------------------
@@ -404,6 +507,8 @@ img, svg, video, iframe { max-width: 100%; }
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  /* Vence o text-white do utilitario: este arquivo esta fora de @layer. */
+  color: var(--acao-texto);
 }
 
 .btn-brilho::after {
@@ -875,6 +980,11 @@ select.campo-escuro {
   padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 
+/* 5,09:1 sobre --neutro-50, contra 2,68:1 do laranja da marca. */
+.secao-clara {
+  --laranja-legivel: #b34900;
+}
+
 .secao {
   padding-block: clamp(4rem, 9vw, 7.5rem);
   position: relative;
@@ -944,7 +1054,7 @@ select.campo-escuro {
   margin-top: 0.25rem;
   font-size: 0.75rem;
   line-height: 1.5;
-  color: rgb(16 22 23 / 0.55);
+  color: rgb(16 22 23 / 0.72); /* era 0.55: 4,03:1 */
 }
 
 /* Card de categoria do catalogo */
@@ -1075,7 +1185,10 @@ select.campo-escuro {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--hazmat-500);
+  /* Era --hazmat-500, que dava 4,32:1 no chip. Alem de reprovar, e um laranja
+     que nao cumpre nenhum dos tres papeis do acento: a nota da sede vira
+     amarelo de destaque, que passa com folga. */
+  color: var(--alerta-400);
 }
 
 /* --------------------------------------------------------------------------
@@ -1119,9 +1232,9 @@ select.campo-escuro {
 }
 
 .chip-filtro.is-ativo {
-  background: var(--hazmat-500);
-  border-color: var(--hazmat-500);
-  color: #fff;
+  background: var(--acao-fundo);
+  border-color: var(--acao-fundo);
+  color: var(--acao-texto);
 }
 
 .chip-filtro__contagem {
@@ -1134,11 +1247,23 @@ select.campo-escuro {
    nativa polui o conjunto, entao fica escondida: o corte dos chips ja
    sinaliza que ha mais conteudo ao lado. */
 .chips-rolagem {
+  /* Sem min-width:0 um flex item nao encolhe abaixo do proprio conteudo: os
+     nove chips (todos com white-space:nowrap) empurravam o bloco de busca
+     para fora da tela. Era o estouro de 1732px num viewport de 1440. */
+  min-width: 0;
+  overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
 }
 
 .chips-rolagem::-webkit-scrollbar { display: none; }
+
+/* Quem cede espaco na barra e a regua de chips, que rola. O bloco de busca
+   guarda a largura util e nao encolhe. */
+.busca-filtros {
+  min-width: 0;
+}
 
 /* Campo de busca */
 .campo-busca {
@@ -1325,7 +1450,7 @@ label.selecao:hover {
   display: block;
   font-size: 0.6875rem;
   font-weight: 500;
-  color: rgb(16 22 23 / 0.5);
+  color: rgb(16 22 23 / 0.68); /* era 0.5: 3,41:1 */
 }
 
 /* Kit mínimo: sem controle nenhum, porque não há o que decidir aqui. */
@@ -1512,7 +1637,7 @@ label.selecao:hover {
   padding: 0.8rem 1.4rem;
   border-radius: var(--radius-field);
   background: var(--hazmat-500);
-  color: #fff;
+  color: var(--acao-texto);
   font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
@@ -1798,7 +1923,7 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
   padding: 0.9rem 1.5rem;
   border-radius: var(--radius-field);
   background: var(--hazmat-500);
-  color: #fff;
+  color: var(--acao-texto);
   font-size: 0.9rem;
   font-weight: 600;
   transition: background-color 0.25s ease;

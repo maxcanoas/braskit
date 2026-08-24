@@ -206,7 +206,7 @@
 
     if (bandejaMinis) {
       bandejaMinis.innerHTML = registros.slice(0, MINIS).map(function (registro) {
-        return '<img src="' + registro.produto.img + '" alt="" loading="lazy" decoding="async" ' +
+        return '<img src="' + registro.produto.img + '" alt="" width="730" height="487" loading="lazy" decoding="async" ' +
                'data-nome="' + escaparHtml(registro.produto.nome) + '" ' +
                'data-cat="' + registro.produto.categoria + '">';
       }).join("") +
@@ -254,7 +254,7 @@
 
     return '' +
       '<li class="linha-orcamento' + (registro.obrigatorio ? " linha-orcamento--fixa" : "") + '">' +
-        '<img class="linha-orcamento__foto" src="' + produto.img + '" alt="" loading="lazy" decoding="async" ' +
+        '<img class="linha-orcamento__foto" src="' + produto.img + '" alt="" width="730" height="487" loading="lazy" decoding="async" ' +
              'data-nome="' + nome + '" data-cat="' + produto.categoria + '">' +
         '<div class="linha-orcamento__info">' +
           '<p class="linha-orcamento__nome">' + nome + "</p>" +
