@@ -183,8 +183,6 @@ orçamento salva no navegador de quem já visitou o site.
 
 ## 5. Coisas pequenas
 
-- **`vendor/daisyui.css`** (1,1 MB) não é usado por nada: nem pelo site, nem pelo
-  build. Pode ser apagado. Não apaguei porque é arquivo do cliente.
 - **O embed do Google Maps** usa um parâmetro `pb` montado à mão em vez do gerado
   pelo próprio Maps. Renderiza, mas o ideal é trocar pelo embed oficial, gerado a
   partir do perfil da empresa — o que só dá para fazer com acesso ao Google Meu
