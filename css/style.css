@@ -510,7 +510,6 @@ img, svg, video, iframe { max-width: 100%; }
   object-position: center bottom;
   pointer-events: none;
   user-select: none;
-  will-change: transform;
 }
 
 /* Faixas parallax intermediarias (secoes full-bleed com frase de impacto) */
@@ -527,7 +526,6 @@ img, svg, video, iframe { max-width: 100%; }
   width: 100%;
   height: 130%;
   object-fit: cover;
-  will-change: transform;
   pointer-events: none;
 }
 
@@ -548,7 +546,7 @@ img, svg, video, iframe { max-width: 100%; }
 }
 
 /* Elementos com deslocamento sutil, declarados via data-parallax="0.08" */
-[data-parallax] { will-change: transform; }
+/* sem will-change: quem promove a camada e o translate3d do parallax */
 
 /* --------------------------------------------------------------------------
    7. SCROLL REVEAL
@@ -1268,6 +1266,70 @@ select.campo-escuro {
 }
 
 /* --------------------------------------------------------------------------
+   ACESSIBILIDADE
+   -------------------------------------------------------------------------- */
+
+/* Fica fora da tela ate receber foco. Primeira parada do teclado. */
+.pular-para-conteudo {
+  position: fixed;
+  top: var(--esp-s);
+  left: var(--esp-s);
+  z-index: 200;
+  translate: 0 calc(-100% - var(--esp-l));
+  padding: var(--esp-xs) var(--esp-m);
+  border-radius: var(--radius-field);
+  background: var(--acao-fundo);
+  color: var(--acao-texto);
+  font-size: var(--txt-apoio);
+  font-weight: 600;
+  transition: translate 0.2s var(--ease-saida);
+}
+
+.pular-para-conteudo:focus-visible { translate: 0 0; }
+
+/* Bloco que so aparece com o JavaScript desligado. */
+.sem-script {
+  max-width: var(--medida);
+  margin-inline: auto;
+  padding: var(--esp-l);
+  border: 1px solid var(--estrutura-clara);
+  border-left: 3px solid var(--alerta-400);
+  border-radius: var(--radius-box);
+  background: #fff;
+  color: var(--neutro-900);
+}
+
+.sem-script h2 {
+  margin-bottom: var(--esp-s);
+  font-size: var(--txt-sub);
+  color: var(--neutro-900);
+}
+
+.sem-script p { margin-bottom: var(--esp-s); font-size: var(--txt-apoio); }
+.sem-script ul { margin-bottom: var(--esp-s); padding-left: var(--esp-m); list-style: disc; }
+.sem-script li { font-size: var(--txt-apoio); line-height: 1.9; }
+.sem-script a { color: var(--laranja-legivel); font-weight: 600; text-decoration: underline; }
+
+/* Saida manual do formulario, para quando o navegador bloqueia a abertura da
+   conversa. Fica visivel e com foco: e o ultimo degrau antes de o lead se
+   perder em silencio. */
+.link-manual {
+  margin-top: var(--esp-s);
+  padding: var(--esp-xs) var(--esp-s);
+  border-left: 2px solid var(--alerta-400);
+  background: rgb(255 255 255 / 0.04);
+  font-size: var(--txt-apoio);
+  color: rgb(255 255 255 / 0.8);
+}
+
+.link-manual a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
    TIRA DE DADOS
    Substitui a barra de contadores. Grade assimetrica de proposito: o endereco
    e o dado que mais importa e ocupa mais espaco; os outros tres dividem o
@@ -1724,6 +1786,11 @@ select.campo-escuro {
 .produto-card:hover {
   box-shadow: 0 16px 36px -24px rgb(6 34 38 / 0.55);
 }
+
+/* Filtro do catalogo. Precisa ser classe propria e nao o utilitario .hidden:
+   a regra .produto-card { display: flex } acima esta FORA de @layer e venceria
+   .hidden, que vive em @layer utilities. */
+.produto-card--fora { display: none !important; }
 
 /* --------------------------------------------------------------------------
    22. JANELA DE DETALHE DO PRODUTO (dialog nativo)
@@ -2469,6 +2536,47 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
    sem reveal, sem marquee, sem tilt e sem pulso. O conteudo continua 100%
    acessivel.
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   ALVOS DE TOQUE
+   Abaixo de 44x44 o dedo erra. Quatro alvos estavam abaixo disso, e todos se
+   resolvem em CSS, sem tocar em JS.
+
+   Este bloco fica NO FIM da folha de proposito: os componentes que ele ajusta
+   sao definidos mais acima e, com a mesma especificidade, quem vem depois
+   vence. No meio do arquivo estas regras nao valiam nada.
+   -------------------------------------------------------------------------- */
+
+/* Quantidade: era 28x28. O botao cresce, o desenho dentro dele nao. */
+.contador-qtd__botao {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+/* Remover item: era 32x32. */
+.linha-orcamento__remover,
+.linha-orcamento__cadeado {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+/* Chip de filtro: a altura era ~35px. */
+.chip-filtro {
+  min-height: 2.75rem;
+}
+
+/* Hamburguer: a area util era 42x34. */
+/* Cresce por padding, nao por display nem por width. Declarar display aqui
+   venceria o utilitario lg:hidden do proprio botao -- este arquivo esta fora
+   de @layer -- e o hamburguer apareceria no desktop.
+   As tres barras somam 26x18; o respiro leva o alvo a 44x44. */
+.hamburguer {
+  padding: 13px 9px;
+  box-sizing: content-box;
+}
+
+/* A caixa de selecao do card ficava a 43px por um fio. */
+.selecao { min-height: 2.75rem; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 

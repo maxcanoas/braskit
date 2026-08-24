@@ -47,6 +47,22 @@
 </head>
 
 <body class="font-corpo antialiased">
+<!-- Primeira parada do teclado nas duas paginas. O <main id="conteudo"> ja
+     existia; faltava o link. -->
+<a href="#conteudo" class="pular-para-conteudo">Pular para o conteúdo</a>
+
+<noscript>
+  <style>
+    /* Sem JS ninguem adiciona .is-visible, e [data-reveal] nasce com
+       opacity: 0 -- a pagina inteira ficaria em branco. As camadas de
+       parallax tambem precisam voltar ao lugar, porque quem as posiciona
+       durante a rolagem e o script. */
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    .camada-parallax, .faixa-parallax__fundo, [data-parallax] { transform: none !important; }
+    .linha-mascara > span { animation: none !important; }
+  </style>
+</noscript>
+
 
 <!-- =========================================================
      HEADER (mesma marcacao nas duas paginas)
@@ -93,7 +109,7 @@
         Orçamento no WhatsApp
       </a>
 
-      <button type="button" id="btnMenu" class="hamburguer relative z-[95] p-2 text-white lg:hidden"
+      <button type="button" id="btnMenu" class="hamburguer relative z-[95] text-white lg:hidden"
               aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="menuMobile">
         <span></span><span></span><span></span>
       </button>
@@ -186,7 +202,7 @@
           <label for="campoBusca" class="sr-only">Buscar produto</label>
           <input type="search" id="campoBusca" class="campo-busca" placeholder="Buscar produto ou categoria..." autocomplete="off">
         </div>
-        <p class="hidden shrink-0 text-sm text-neutro-900/65 sm:block" id="contadorResultados" aria-live="polite">34 produtos</p>
+        <p class="hidden shrink-0 text-sm text-neutro-900/65 sm:block" id="contadorResultados">34 produtos</p>
       </div>
     </div>
   </div>
@@ -198,7 +214,33 @@
 <section class="secao secao-clara pt-10">
   <div class="container-braskit">
     <p class="mb-6 text-sm text-neutro-900/65 sm:hidden" id="contadorResultadosMobile">34 produtos</p>
+    <p class="sr-only" id="avisoResultados" role="status" aria-live="polite"></p>
 
+    <noscript>
+      <div class="sem-script">
+        <h2>O catálogo precisa de JavaScript para filtrar e montar o orçamento</h2>
+        <p>
+          Com o JavaScript desligado a lista de produtos e a seleção do orçamento
+          não funcionam. São 34 itens em 8 categorias:
+        </p>
+        <ul>
+        <li><a href="catalogo.html?cat=produtos">Produtos</a> — 3 itens</li>
+        <li><a href="catalogo.html?cat=suportes">Suportes</a> — 6 itens</li>
+        <li><a href="catalogo.html?cat=sinalizacao">Sinalização</a> — 7 itens</li>
+        <li><a href="catalogo.html?cat=textil">Têxtil</a> — 3 itens</li>
+        <li><a href="catalogo.html?cat=injetados">Injetados</a> — 5 itens</li>
+        <li><a href="catalogo.html?cat=acessorios-caminhao">Acessórios para caminhão</a> — 2 itens</li>
+        <li><a href="catalogo.html?cat=epis">EPIs</a> — 6 itens</li>
+        <li><a href="catalogo.html?cat=kits-protecao">Kits de proteção</a> — 2 itens</li>
+        </ul>
+        <p>
+          Para receber o catálogo e um orçamento sem depender disso,
+          <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20Gostaria%20de%20receber%20o%20cat%C3%A1logo%20e%20um%20or%C3%A7amento.">chame no WhatsApp</a>
+          ou ligue para <a href="tel:+555130517997">(51) 3051-7997</a>. A loja fica na
+          Rua Uruguai, 317, em Canoas.
+        </p>
+      </div>
+    </noscript>
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="gridProdutos"></div>
 
     <!-- Estado vazio -->

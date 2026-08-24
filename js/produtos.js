@@ -325,7 +325,12 @@ var KIT_MINIMO = [
 ];
 
 /* Número da loja, usado por todos os links de WhatsApp montados no JS. */
-var WHATSAPP_BRASKIT = "5551993011327";
+/* Mesmo numero declarado em js/main.js. Quando main.js estiver na pagina, o
+   valor vem de la; solto, cai no literal. Assim nao existem dois numeros
+   podendo divergir. */
+var WHATSAPP_BRASKIT =
+  (typeof window !== "undefined" && window.Braskit && window.Braskit.whatsapp) ||
+  "5551993011327";
 
 /* --------------------------------------------------------------------------
    AUXILIARES DO ORÇAMENTO

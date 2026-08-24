@@ -7,6 +7,9 @@
 (function () {
   "use strict";
 
+  /* Fonte unica. js/produtos.js reexporta este valor em WHATSAPP_BRASKIT para
+     as paginas que carregam os dois arquivos; havia duas constantes com o
+     mesmo numero, o que e um lugar a mais para errar no dia em que mudar. */
   var WHATSAPP = "5551993011327";
 
   var consultaMovimentoReduzido = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -169,7 +172,12 @@
     elementosFluxo.forEach(function (item) { observadorVisibilidade.observe(item.el); });
   }
 
-  function atualizarParallax(deslocamento) {
+  /* As camadas do hero e os elementos em fluxo eram atualizados juntos, o que
+     fazia a interpolacao do mouse -- que so mexe no hero -- percorrer tambem a
+     lista inteira do fluxo a cada quadro. Separados, cada laco toca so o que
+     precisa. */
+  function atualizarCamadasHero(deslocamento) {
+    if (!heroVisivel) return;
     var i;
     for (i = 0; i < camadasHero.length; i++) {
       var camada = camadasHero[i];
@@ -184,8 +192,11 @@
       }
     }
 
+  }
+
+  function atualizarFluxo(deslocamento) {
     var centroViewport = deslocamento + window.innerHeight / 2;
-    for (i = 0; i < elementosFluxo.length; i++) {
+    for (var i = 0; i < elementosFluxo.length; i++) {
       var item = elementosFluxo[i];
       if (!item.visivel) continue;
       var diferenca = (centroViewport - item.centro) * item.velocidade;
@@ -194,6 +205,18 @@
       item.el.style.transform = "translate3d(0," + diferenca.toFixed(2) + "px,0)";
     }
   }
+
+  /* Rolada a pagina, o hero sai de vista e continuava recebendo transform em
+     todo quadro. Um observador barato resolve. */
+  var heroVisivel = true;
+
+  (function observarHero() {
+    var hero = document.querySelector(".palco-parallax");
+    if (!hero || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (entradas) {
+      heroVisivel = entradas[0].isIntersecting;
+    }, { rootMargin: "10% 0px 10% 0px" }).observe(hero);
+  })();
 
   function limparParallax() {
     camadasHero.concat(elementosFluxo).forEach(function (item) {
@@ -232,7 +255,9 @@
     mouseAtualX += (mouseAlvoX - mouseAtualX) * 0.08;
     mouseAtualY += (mouseAlvoY - mouseAtualY) * 0.08;
 
-    if (movimentoAtivo) atualizarParallax(window.scrollY || window.pageYOffset);
+    /* Perseguir o cursor so desloca as camadas do hero: passar tambem pelo
+       fluxo a cada quadro era trabalho jogado fora. */
+    if (movimentoAtivo) atualizarCamadasHero(window.scrollY || window.pageYOffset);
 
     var quieto = Math.abs(mouseAlvoX - mouseAtualX) < 0.001 &&
                  Math.abs(mouseAlvoY - mouseAtualY) < 0.001;
@@ -311,7 +336,7 @@
     var deslocamento = window.scrollY || window.pageYOffset;
     atualizarHeader(deslocamento);
     atualizarBotaoTopo(deslocamento);
-    if (movimentoAtivo) atualizarParallax(deslocamento);
+    if (movimentoAtivo) { atualizarCamadasHero(deslocamento); atualizarFluxo(deslocamento); }
   }
 
   function aoRolar() {
@@ -424,22 +449,43 @@
     var painel = document.getElementById("menuMobile");
     if (!botao || !painel) return;
 
+    /* Nao basta pôr inert no <main> e no <footer>: a bandeja do orcamento, o
+       botao de voltar ao topo, o do WhatsApp, a area de avisos e os dois
+       <dialog> sao IRMAOS deles, nao filhos. Com o menu aberto, o foco caia
+       em todos eles. Por isso a regra e "tudo o que e filho do body e nao e o
+       proprio painel nem o cabecalho que o abre". */
+    function irmaosDoPainel() {
+      var fora = [];
+      Array.prototype.forEach.call(document.body.children, function (el) {
+        if (el === painel || el.contains(painel) || el.tagName === "SCRIPT") return;
+        fora.push(el);
+      });
+      return fora;
+    }
+
     function abrir() {
       painel.classList.add("is-aberto");
       painel.removeAttribute("inert");
+      irmaosDoPainel().forEach(function (el) { el.setAttribute("inert", ""); });
       botao.classList.add("is-ativo");
       botao.setAttribute("aria-expanded", "true");
       botao.setAttribute("aria-label", "Fechar menu de navegação");
       document.body.classList.add("sem-rolagem");
+      /* O foco entra no painel; sem isso o teclado continuava no botao, que
+         acabou de ficar inerte. */
+      var primeiro = painel.querySelector("a, button");
+      if (primeiro) primeiro.focus({ preventScroll: true });
     }
 
     function fechar() {
       painel.classList.remove("is-aberto");
       painel.setAttribute("inert", "");
+      irmaosDoPainel().forEach(function (el) { el.removeAttribute("inert"); });
       botao.classList.remove("is-ativo");
       botao.setAttribute("aria-expanded", "false");
       botao.setAttribute("aria-label", "Abrir menu de navegação");
       document.body.classList.remove("sem-rolagem");
+      botao.focus({ preventScroll: true });
     }
 
     botao.addEventListener("click", function () {
@@ -539,6 +585,22 @@
      FORMULARIO DE ORCAMENTO
      Nao envia nada para servidor: monta a mensagem e abre o WhatsApp.
      ------------------------------------------------------------------------ */
+  /* Deixa na tela um link visivel para a conversa. So o clique nele limpa o
+     formulario: enquanto a pessoa nao confirmar que a mensagem abriu, o que
+     ela digitou continua ali. */
+  function mostrarLinkManual(url, formulario) {
+    var area = document.getElementById("linkManualWhatsapp");
+    if (!area) return;
+    var link = area.querySelector("a");
+    link.href = url;
+    area.hidden = false;
+    link.focus({ preventScroll: true });
+    link.onclick = function () {
+      area.hidden = true;
+      formulario.reset();
+    };
+  }
+
   (function formularioOrcamento() {
     var formulario = document.getElementById("formOrcamento");
     if (!formulario) return;
@@ -565,10 +627,27 @@
       if (mensagem) linhas.push("", mensagem);
 
       var url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(linhas.join("\n"));
-      window.open(url, "_blank", "noopener");
 
-      mostrarToast("Mensagem pronta! Abrimos o WhatsApp para você enviar.");
-      formulario.reset();
+      /* window.open(url, "_blank", "noopener") devolve null POR ESPECIFICACAO
+         sempre que "noopener" esta nas features -- testar o retorno dele nao
+         diria nada sobre o popup ter sido bloqueado. Um <a target="_blank">
+         clicado por codigo abre pelo mesmo caminho de um clique de verdade,
+         que e justamente o que o bloqueador do iOS costuma deixar passar. */
+      var atalho = document.createElement("a");
+      atalho.href = url;
+      atalho.target = "_blank";
+      atalho.rel = "noopener";
+      atalho.style.display = "none";
+      document.body.appendChild(atalho);
+      atalho.click();
+      document.body.removeChild(atalho);
+
+      /* O formulario NAO e apagado aqui. Antes ele era limpo na hora: com o
+         popup bloqueado, o que a pessoa digitou sumia e o site ainda dizia
+         que tinha dado certo -- lead perdido em silencio. Agora fica na tela
+         um link para abrir a conversa a mao, e so o clique nele limpa. */
+      mostrarToast("Mensagem pronta. Se o WhatsApp nao abrir, use o link abaixo do formulario.");
+      mostrarLinkManual(url, formulario);
     });
   })();
 

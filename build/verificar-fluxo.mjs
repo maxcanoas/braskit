@@ -120,6 +120,22 @@ await aba.waitForTimeout(200);
 const qtd = await aba.locator(".linha-orcamento .contador-qtd__valor").first().inputValue();
 checar("botao de aumentar funciona", qtd === "2", "qtd = " + qtd);
 
+/* ---- 6b. alvos de toque ---- */
+const alvos = await aba.evaluate(() => {
+  const medir = (sel) => {
+    const el = document.querySelector(sel);
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { sel, w: Math.round(r.width), h: Math.round(r.height) };
+  };
+  return [".chip-filtro", ".contador-qtd__botao", ".linha-orcamento__cadeado",
+          ".produto-abrir", ".selecao"].map(medir).filter(Boolean);
+});
+const pequenos = alvos.filter((a) => a.w < 44 || a.h < 44);
+checar("alvos de toque com 44px ou mais", pequenos.length === 0,
+  pequenos.map((a) => a.sel + " " + a.w + "x" + a.h).join(", ") ||
+  alvos.map((a) => a.sel.replace(".", "") + " " + a.w + "x" + a.h).join(" · "));
+
 /* ---- 7. link final do WhatsApp ---- */
 const href = await aba.locator("#btnEnviarLista").getAttribute("href");
 checar("link da lista aponta para o numero certo", (href || "").includes("wa.me/" + WHATSAPP));

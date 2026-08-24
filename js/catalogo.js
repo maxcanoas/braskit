@@ -108,9 +108,8 @@
       "</label>";
   }
 
-  function montarCard(produto, indice) {
+  function montarCard(produto) {
     var categoria = categoriaPorSlug(produto.categoria);
-    var atraso = Math.min(indice, 11) * 45; /* cascata que não atrasa demais o fim do grid */
 
     /* O card marcado ganha o anel laranja; o do kit mínimo, o anel petróleo,
        para a diferença entre escolha e obrigação valer também de longe. */
@@ -119,8 +118,7 @@
                : "";
 
     return '' +
-      '<article class="produto-card produto-card--entrando' + estado +
-               '" style="animation-delay:' + atraso + 'ms">' +
+      '<article class="produto-card' + estado + '" data-cat-card="' + produto.categoria + '">' +
         '<button type="button" class="produto-abrir block w-full text-left" data-id="' + produto.id + '" ' +
                 'aria-label="Ver detalhes de ' + escaparHtml(produto.nome) + '">' +
           '<div class="produto-midia" style="--cat-cor:' + categoria.cor + '">' +
@@ -158,16 +156,59 @@
     });
   }
 
-  function renderizar() {
-    var resultados = filtrarProdutos();
+  /* Os 34 cards sao montados UMA vez. Antes o grid inteiro era refeito por
+     innerHTML a cada troca de filtro e a cada 140 ms de digitacao na busca:
+     34 <article>, 34 <picture> e 34 <img> descartados e recriados, com
+     protegerFotos rodando de novo em cima de tudo.
 
-    grid.innerHTML = resultados.map(montarCard).join("");
-    protegerFotos(grid); /* foto que não carrega cai no placeholder da categoria */
+     Agora o filtro so liga e desliga uma classe. A classe e propria, definida
+     em css/style.css, e nao o utilitario .hidden: .produto-card tem
+     display:flex declarado FORA de @layer, entao venceria .hidden, que mora
+     em @layer utilities -- o card simplesmente nao sumiria.
+
+     Esconder e com display:none de proposito: opacity ou visibility deixariam
+     o checkbox e o botao de cada card escondido dentro da ordem de tabulacao. */
+  var cardsMontados = false;
+
+  function montarGridUmaVez() {
+    grid.innerHTML = PRODUTOS.map(montarCard).join("");
+    protegerFotos(grid); /* foto que nao carrega cai no placeholder da categoria */
+    cardsMontados = true;
+  }
+
+  function renderizar() {
+    if (!cardsMontados) montarGridUmaVez();
+
+    var resultados = filtrarProdutos();
+    var visiveis = Object.create(null);
+    resultados.forEach(function (p) { visiveis[p.id] = true; });
+
+    var cards = grid.children;
+    var posicao = 0;
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i];
+      var id = parseInt(card.querySelector(".produto-abrir").getAttribute("data-id"), 10);
+      var mostrar = !!visiveis[id];
+      card.classList.toggle("produto-card--fora", !mostrar);
+      if (!mostrar) { card.classList.remove("produto-card--entrando"); continue; }
+
+      /* A cascata de entrada passa a contar a posicao VISIVEL: com o indice do
+         array ela so rodaria na primeira carga e os filtros seguintes
+         entrariam sem animacao nenhuma. */
+      card.style.animationDelay = Math.min(posicao, 11) * 45 + "ms";
+      card.classList.remove("produto-card--entrando");
+      void card.offsetWidth; /* forca o reflow para a animacao poder repetir */
+      card.classList.add("produto-card--entrando");
+      posicao++;
+    }
 
     var rotulo = resultados.length === 1 ? "1 produto encontrado"
                                          : resultados.length + " produtos encontrados";
     if (contador) contador.textContent = rotulo;
     if (contadorMobile) contadorMobile.textContent = rotulo;
+    /* O anuncio sai daqui, de uma regiao que existe em qualquer largura. */
+    var aviso = document.getElementById("avisoResultados");
+    if (aviso) aviso.textContent = rotulo;
 
     var vazio = resultados.length === 0;
     grid.classList.toggle("hidden", vazio);
