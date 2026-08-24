@@ -607,6 +607,7 @@ img, svg, video, iframe { max-width: 100%; }
 }
 
 .ponto-pulsante {
+  background: var(--alerta-400);
   animation: pulso-suave 2.4s ease-in-out infinite;
 }
 
@@ -1309,6 +1310,24 @@ select.campo-escuro {
 .sem-script ul { margin-bottom: var(--esp-s); padding-left: var(--esp-m); list-style: disc; }
 .sem-script li { font-size: var(--txt-apoio); line-height: 1.9; }
 .sem-script a { color: var(--laranja-legivel); font-weight: 600; text-decoration: underline; }
+
+/* Icone dos dados de contato. Era o quarto lugar com o mesmo quadrado
+   arredondado laranja; aqui o laranja nao cumpre nenhum dos tres papeis, e
+   marcar endereco, telefone, horario e e-mail nao e acao. */
+.icone-contato {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.125rem;
+  border-radius: var(--radius-field);
+  background: rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.7);
+}
+
+.icone-contato svg { width: 1rem; height: 1rem; }
 
 /* Saida manual do formulario, para quando o navegador bloqueia a abertura da
    conversa. Fica visivel e com foco: e o ultimo degrau antes de o lead se
@@ -2626,7 +2645,9 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
   .menu-mobile,
   .aviso-area,
   .bandeja,
-  .indicador-scroll { display: none !important; }
+  .indicador-scroll__ponto { background: currentColor; }
+
+.indicador-scroll { display: none !important; }
 
   body { background: #fff !important; color: #000 !important; }
   body.com-bandeja { padding-bottom: 0 !important; }
