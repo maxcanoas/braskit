@@ -355,6 +355,23 @@ function escaparHtml(texto) {
    do DOM. Vale para o grid, para a bandeja e para a janela do orçamento:
    qualquer <img> com data-nome e data-cat cai no placeholder da categoria se
    a foto não carregar. */
+/* Monta o <picture> de uma foto de produto: avif, depois webp, e o jpg
+   original como ultimo degrau antes do placeholder desenhado.
+
+   As versoes modernas seguem o nome do arquivo original, entao nao ha dado
+   novo em PRODUTOS: assets/produtos/extintor-abc.jpg vira
+   assets/produtos/extintor-abc-400.avif e -720.avif. Se o pipeline de imagem
+   nao tiver rodado, os <source> falham e o <img> jpg assume. */
+function fontesProduto(caminhoJpg, tamanhos) {
+  var base = caminhoJpg.replace(/.jpg$/, "");
+  var html = "";
+  ["avif", "webp"].forEach(function (tipo) {
+    html += '<source type="image/' + tipo + '" sizes="' + tamanhos + '" srcset="' +
+            base + "-400." + tipo + " 400w, " + base + "-720." + tipo + ' 720w">';
+  });
+  return html;
+}
+
 function protegerFotos(raiz) {
   Array.prototype.forEach.call(raiz.querySelectorAll("img[data-nome][data-cat]"), function (img) {
     if (img.dataset.protegida === "1") return;
@@ -363,6 +380,17 @@ function protegerFotos(raiz) {
     img.addEventListener("error", function () {
       if (img.dataset.reserva === "1") return;
       img.dataset.reserva = "1";
+
+      /* Dentro de um <picture>, o <source> vence o src: sem remove-los o
+         placeholder nunca apareceria e a foto quebrada viraria caixa vazia.
+         E o mesmo cuidado que reservaDeAmbiente() ja toma em js/main.js. */
+      var caixa = img.parentElement;
+      if (caixa && caixa.tagName === "PICTURE") {
+        Array.prototype.forEach.call(caixa.querySelectorAll("source"), function (fonte) {
+          caixa.removeChild(fonte);
+        });
+      }
+      img.removeAttribute("srcset");
       img.src = placeholderProduto(img.getAttribute("data-nome"), img.getAttribute("data-cat"));
     });
   });

@@ -206,9 +206,14 @@
 
     if (bandejaMinis) {
       bandejaMinis.innerHTML = registros.slice(0, MINIS).map(function (registro) {
-        return '<img src="' + registro.produto.img + '" alt="" width="730" height="487" loading="lazy" decoding="async" ' +
+        /* Miniatura de 40px pedindo um jpg de 70KB era o maior desperdicio do
+           catalogo: como o grid usa avif, esses jpg nem vinham do cache. */
+        return "<picture>" +
+               fontesProduto(registro.produto.img, "48px") +
+               '<img src="' + registro.produto.img + '" alt="" width="720" height="480" loading="lazy" decoding="async" ' +
                'data-nome="' + escaparHtml(registro.produto.nome) + '" ' +
-               'data-cat="' + registro.produto.categoria + '">';
+               'data-cat="' + registro.produto.categoria + '">' +
+               "</picture>";
       }).join("") +
       (total > MINIS ? '<span class="bandeja__mais">+' + (total - MINIS) + "</span>" : "");
       protegerFotos(bandejaMinis);
@@ -254,8 +259,11 @@
 
     return '' +
       '<li class="linha-orcamento' + (registro.obrigatorio ? " linha-orcamento--fixa" : "") + '">' +
-        '<img class="linha-orcamento__foto" src="' + produto.img + '" alt="" width="730" height="487" loading="lazy" decoding="async" ' +
-             'data-nome="' + nome + '" data-cat="' + produto.categoria + '">' +
+        "<picture>" +
+          fontesProduto(produto.img, "72px") +
+          '<img class="linha-orcamento__foto" src="' + produto.img + '" alt="" width="720" height="480" loading="lazy" decoding="async" ' +
+               'data-nome="' + nome + '" data-cat="' + produto.categoria + '">' +
+        "</picture>" +
         '<div class="linha-orcamento__info">' +
           '<p class="linha-orcamento__nome">' + nome + "</p>" +
           '<p class="linha-orcamento__cat">' + escaparHtml(categoria) +

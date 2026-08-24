@@ -125,9 +125,13 @@
   <!-- Mesma foto da faixa de conformidade, com o recorte em pe no celular.
        A reserva em cascata fica em js/main.js. -->
   <picture>
-    <source media="(max-width: 640px)" srcset="assets/img/faixa-noturna-mobile.jpg">
+    <source type="image/avif" media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-noturna-mobile-614.avif">
+    <source type="image/webp" media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-noturna-mobile-614.webp">
+    <source media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-noturna-mobile.jpg">
+    <source type="image/avif" srcset="assets/img/faixa-noturna-768.avif 768w, assets/img/faixa-noturna-1152.avif 1152w, assets/img/faixa-noturna-1376.avif 1376w" sizes="100vw">
+    <source type="image/webp" srcset="assets/img/faixa-noturna-768.webp 768w, assets/img/faixa-noturna-1152.webp 1152w, assets/img/faixa-noturna-1376.webp 1376w" sizes="100vw">
     <img class="camada-parallax opacity-35" data-parallax-hero="0.22"
-         src="assets/img/faixa-noturna.jpg" width="1376" height="768" data-reserva="assets/faixa-noturna.svg"
+         src="assets/img/faixa-noturna-1376.jpg" width="1376" height="573" data-reserva="assets/faixa-noturna.svg"
          alt="" aria-hidden="true">
   </picture>
   <div class="absolute inset-0 bg-gradient-to-r from-petroleo-950 via-petroleo-950/85 to-petroleo-950/45" aria-hidden="true"></div>

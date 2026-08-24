@@ -159,9 +159,10 @@
        vertical ainda nao existir, js/main.js volta sozinho para a panoramica
        e, em ultimo caso, para o SVG da rodovia. -->
   <picture>
-    <source media="(max-width: 900px) and (orientation: portrait)" srcset="assets/img/hero-rodovia-mobile.jpg">
+    <source type="image/avif" srcset="assets/img/hero-rodovia-768.avif 768w, assets/img/hero-rodovia-1152.avif 1152w, assets/img/hero-rodovia-1408.avif 1408w" sizes="100vw">
+    <source type="image/webp" srcset="assets/img/hero-rodovia-768.webp 768w, assets/img/hero-rodovia-1152.webp 1152w, assets/img/hero-rodovia-1408.webp 1408w" sizes="100vw">
     <img class="camada-parallax" data-parallax-hero="0.15" data-profundidade="10"
-         src="assets/img/hero-rodovia.jpg" width="1408" height="768" data-reserva="assets/hero-estrada.svg"
+         src="assets/img/hero-rodovia-1408.jpg" width="1408" height="768" data-reserva="assets/hero-estrada.svg"
          alt="" aria-hidden="true" fetchpriority="high">
   </picture>
 
@@ -279,10 +280,14 @@
       <div class="cena-3d">
         <div class="tilt-3d relative overflow-hidden rounded-2xl border border-neutro-900/10 shadow-2xl shadow-petroleo-950/15" data-tilt>
           <div class="produto-midia produto-midia--larga produto-midia--descobre" style="--cat-cor:#0F3B3F">
-            <img src="assets/img/sobre-kit.jpg" width="1376" height="768"
-                 data-reserva="assets/produtos/kit-cargas-perigosas.jpg"
-                 alt="Kit completo para transporte de cargas perigosas montado pela Braskit, com cone, extintor, EPIs e ferramentas"
-                 class="produto-foto" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sobre-kit-512.avif 512w, assets/img/sobre-kit-768.avif 768w, assets/img/sobre-kit-1024.avif 1024w" sizes="(min-width: 1024px) 42vw, 92vw">
+              <source type="image/webp" srcset="assets/img/sobre-kit-512.webp 512w, assets/img/sobre-kit-768.webp 768w, assets/img/sobre-kit-1024.webp 1024w" sizes="(min-width: 1024px) 42vw, 92vw">
+              <img src="assets/img/sobre-kit-1024.jpg" width="1024" height="768"
+                   data-reserva="assets/produtos/kit-cargas-perigosas.jpg"
+                   alt="Kit completo para transporte de cargas perigosas montado pela Braskit, com cone, extintor, EPIs e ferramentas"
+                   class="produto-foto" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
@@ -356,9 +361,13 @@
   <!-- No celular a faixa fica quase quadrada e a panoramica perde o sentido:
        abaixo de 640px entra o recorte em pe. Reserva em cascata no main.js. -->
   <picture>
-    <source media="(max-width: 640px)" srcset="assets/img/faixa-rodovia-mobile.jpg">
+    <source type="image/avif" media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-rodovia-mobile-614.avif">
+    <source type="image/webp" media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-rodovia-mobile-614.webp">
+    <source media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-rodovia-mobile.jpg">
+    <source type="image/avif" srcset="assets/img/faixa-rodovia-768.avif 768w, assets/img/faixa-rodovia-1152.avif 1152w, assets/img/faixa-rodovia-1376.avif 1376w" sizes="100vw">
+    <source type="image/webp" srcset="assets/img/faixa-rodovia-768.webp 768w, assets/img/faixa-rodovia-1152.webp 1152w, assets/img/faixa-rodovia-1376.webp 1376w" sizes="100vw">
     <img class="faixa-parallax__fundo" data-parallax-faixa="0.2"
-         src="assets/img/faixa-rodovia.jpg" width="1376" height="768" data-reserva="assets/faixa-rodovia.svg"
+         src="assets/img/faixa-rodovia-1376.jpg" width="1376" height="573" data-reserva="assets/faixa-rodovia.svg"
          alt="" aria-hidden="true" loading="lazy" decoding="async">
   </picture>
   <div class="container-braskit relative z-10 py-24 text-center">
@@ -712,9 +721,13 @@
 <section id="conformidade" class="faixa-parallax relative flex min-h-[62vh] items-center justify-center">
   <!-- Mesma logica da outra faixa: recorte em pe abaixo de 640px. -->
   <picture>
-    <source media="(max-width: 640px)" srcset="assets/img/faixa-noturna-mobile.jpg">
+    <source type="image/avif" media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-noturna-mobile-614.avif">
+    <source type="image/webp" media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-noturna-mobile-614.webp">
+    <source media="(max-width: 640px)" width="614" height="768" srcset="assets/img/faixa-noturna-mobile.jpg">
+    <source type="image/avif" srcset="assets/img/faixa-noturna-768.avif 768w, assets/img/faixa-noturna-1152.avif 1152w, assets/img/faixa-noturna-1376.avif 1376w" sizes="100vw">
+    <source type="image/webp" srcset="assets/img/faixa-noturna-768.webp 768w, assets/img/faixa-noturna-1152.webp 1152w, assets/img/faixa-noturna-1376.webp 1376w" sizes="100vw">
     <img class="faixa-parallax__fundo" data-parallax-faixa="0.18"
-         src="assets/img/faixa-noturna.jpg" width="1376" height="768" data-reserva="assets/faixa-noturna.svg"
+         src="assets/img/faixa-noturna-1376.jpg" width="1376" height="573" data-reserva="assets/faixa-noturna.svg"
          alt="" aria-hidden="true" loading="lazy" decoding="async">
   </picture>
 

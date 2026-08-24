@@ -123,9 +123,12 @@
         '<button type="button" class="produto-abrir block w-full text-left" data-id="' + produto.id + '" ' +
                 'aria-label="Ver detalhes de ' + escaparHtml(produto.nome) + '">' +
           '<div class="produto-midia" style="--cat-cor:' + categoria.cor + '">' +
-            '<img class="produto-foto" src="' + produto.img + '" ' +
-                 'alt="' + escaparHtml(produto.nome) + ' | Braskit" width="730" height="487" loading="lazy" decoding="async" ' +
-                 'data-nome="' + escaparHtml(produto.nome) + '" data-cat="' + produto.categoria + '">' +
+            "<picture>" +
+              fontesProduto(produto.img, "(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 46vw") +
+              '<img class="produto-foto" src="' + produto.img + '" ' +
+                   'alt="' + escaparHtml(produto.nome) + ' | Braskit" width="720" height="480" loading="lazy" decoding="async" ' +
+                   'data-nome="' + escaparHtml(produto.nome) + '" data-cat="' + produto.categoria + '">' +
+            "</picture>" +
           "</div>" +
         "</button>" +
         '<div class="flex flex-1 flex-col p-5">' +
@@ -181,10 +184,14 @@
 
     var categoria = categoriaPorSlug(produto.categoria);
 
+    /* O modal mostra a foto maior; se a versao moderna nao existir, cai no
+       jpg original e, se ele tambem faltar, no placeholder desenhado. */
+    modalImagem.srcset = produto.img.replace(/.jpg$/, "-720.avif");
     modalImagem.src = produto.img;
     modalImagem.alt = produto.nome + " | Braskit";
     modalImagem.onerror = function () {
       modalImagem.onerror = null;
+      modalImagem.removeAttribute("srcset");
       modalImagem.src = placeholderProduto(produto.nome, produto.categoria);
     };
 
