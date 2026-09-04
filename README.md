@@ -1,11 +1,17 @@
 # Braskit | site institucional
 
 Site da **Braskit, Kit para Transporte de Cargas Perigosas** (Canoas/RS).
-Duas paginas, estaticas, sem framework em runtime e sem servidor.
+Estatico, sem framework em runtime e sem servidor.
+
+Sao 43 paginas: `index.html` e `catalogo.html`, escritas a mao, mais 8 de
+categoria e 33 de produto, **geradas** a partir de `js/produtos.js` por
+`npm run build`. As geradas existem por SEO: o catalogo monta o grid em
+runtime, entao para busca ele e uma `<div>` vazia -- ver "Paginas geradas".
 
 ## Como abrir
 
-De duplo clique em `index.html`. Nao ha npm, build nem servidor para rodar o site.
+De duplo clique em `index.html`. Nao ha servidor para rodar o site, e as paginas
+geradas tambem abrem por duplo clique (os caminhos delas sao relativos).
 Todo o CSS e JS e local. So as fontes do Google e o mapa precisam de internet, e
 ambos tem reserva: sem rede, o texto cai para Arial Narrow e system-ui.
 
@@ -16,6 +22,9 @@ Conferido no Chrome em 390, 768, 1024 e 1440 px.
 ```
 index.html          landing one-page com parallax e profundidade 3D
 catalogo.html       catalogo com filtros, busca, selecao e janela de detalhe
+categorias/*.html   8 paginas de categoria   -- GERADAS, nao editar a mao
+produtos/*.html     33 fichas de produto     -- GERADAS, nao editar a mao
+404.html            pagina de erro           -- GERADA, nao editar a mao
 css/tw.css          utilitarios compilados no build (nao editar a mao)
 css/style.css       tema da marca, parallax, animacoes e componentes
 js/main.js          parallax, tilt 3D, reveal, contadores, header, menu, formulario
@@ -24,7 +33,24 @@ js/orcamento.js     lista de orcamento: estado, bandeja fixa e janela da lista
 js/catalogo.js      render do grid, filtros, busca e janela de detalhe
 assets/             SVGs, icones, OG e as 33 fotos de produto
 assets/img/         pasta das fotos de ambiente (ver "Imagens" abaixo)
-build/              ferramentas de build (CSS, OG e icones)
+build/              ferramentas de build (CSS, OG, icones e paginas)
+netlify.toml        publicacao: cache, 404 e pretty_urls desligado
+sitemap.xml         43 URLs, gerado por npm run sitemap
+```
+
+### Scripts
+
+```
+npm run build       gera as paginas e o sitemap  (gerar + sitemap)
+npm run gerar       so as 42 paginas geradas
+npm run sitemap     so o sitemap.xml
+npm run css         recompila css/tw.css        (so se usar classe nova)
+npm run imagens     pipeline de avif/webp
+
+npm run paginas     43 checagens estruturais, sem navegador (rapido)
+npm run verificar   layout, contraste e peso no Chromium, em 5 viewports
+npm run fluxo       37 checagens do fluxo comercial do catalogo
+npm run tudo        tudo acima, na ordem. E o portao antes de publicar.
 ```
 
 ## Arquitetura do CSS (importante)
@@ -271,47 +297,191 @@ se o avif e o webp nao existirem, o jpg assume.
 
 ## Verificacao
 
-Dois scripts, ambos em Playwright, ambos rodando em `file://` -- que e como o
-site e aberto:
+Tres scripts. Os dois de Playwright rodam em `file://`, que e como o site e
+aberto:
 
 ```
-node build/verificar.mjs        # 2 paginas x 5 viewports, com e sem webfont
-node build/verificar-fluxo.mjs  # 34 verificacoes do caminho que vende
-node build/fatiar.mjs atual     # corta os screenshots em fatias legiveis
+node build/verificar-paginas.mjs # 43 paginas, estrutura e schema, sem navegador
+node build/verificar.mjs         # 5 paginas x 5 viewports, com e sem webfont
+node build/verificar-fluxo.mjs   # 37 verificacoes do caminho que vende
+node build/fatiar.mjs atual      # corta os screenshots em fatias legiveis
 ```
 
-O primeiro afirma: nenhum estouro horizontal (e, quando ha, PROVA quem causou,
+O `verificar-paginas` e o barato: le HTML como texto e cobre **todas** as 43
+paginas em milissegundos -- um `<h1>` por pagina, title e description unicos e
+no tamanho certo, canonical correto, `<main id="conteudo">` presente, toda
+referencia local resolvendo, todo JSON-LD fazendo parse, nenhuma classe sem
+regra no CSS, nenhum `id` colidindo com as paginas escritas a mao, a malha de
+links e o sitemap batendo exatamente com as paginas que existem.
+
+O `verificar` e o caro, e por isso roda numa **amostra**: as duas paginas
+escritas a mao mais tres das geradas (a categoria mais cheia, o nome de produto
+mais longo e a unica ficha com detalhe e kit minimo juntos). As 41 saem do
+mesmo template; rodar todas em cinco viewports custaria minutos por informacao
+nenhuma. Ele afirma: nenhum estouro horizontal (e, quando ha, PROVA quem causou,
 escondendo o candidato e remedindo o scrollWidth), contraste AA de todo par
 texto/fundo visivel, `width`/`height` em toda imagem, nenhuma referencia
 quebrada, peso dentro do limite e a ordem de foco por teclado.
 
-O segundo exercita selecao, filtro, busca com e sem acento, quantidade, kit
-minimo travado, persistencia no `localStorage` (inclusive adulterado) e o link
-final do WhatsApp.
+O `verificar-fluxo` exercita selecao, filtro, busca com e sem acento,
+quantidade, kit minimo travado, persistencia no `localStorage` (inclusive
+adulterado), o `?cat=` na URL, o card do catalogo como link para a ficha e o
+link final do WhatsApp. **Se ele passar, o orcamento nao foi afetado** -- e o
+teste que mais importa quando se mexe em `js/produtos.js`.
 
 `build/metricas-fonte.mjs` remede as fontes de reserva; so precisa rodar de
 novo se a pilha de fontes mudar.
 
+## Paginas geradas
+
+As 8 paginas de categoria, as 33 fichas de produto e a 404 sao **geradas** por
+`build/gerar-paginas.mjs`. Nao edite nenhuma delas a mao: o proximo
+`npm run build` sobrescreve. Para mudar o que aparece nelas, mexa na fonte:
+
+| Para mudar | Edite |
+|---|---|
+| nome, descricao, aplicacao, detalhe de um produto | `js/produtos.js` |
+| titulo, description e a introducao de uma categoria | `build/conteudo-seo.mjs` |
+| o layout, o schema ou a chamada final | `build/gerar-paginas.mjs` |
+| o cabecalho ou o rodape das 43 paginas | `catalogo.html` |
+
+**Por que existem.** O grid do catalogo e montado em runtime por
+`js/catalogo.js`: no HTML servido, `#gridProdutos` e uma `<div>` vazia. As
+descricoes e aplicacoes dos 33 produtos, que somam mais texto do que a home
+inteira, so existiam em JavaScript -- e a aplicacao nem no card estava, so na
+janela de detalhe, atras de um clique. Sem essas paginas, o catalogo nao existe
+para busca.
+
+**Cabecalho e rodape nao sao copiados.** Sao recortados de `catalogo.html` a
+cada build, entre os marcadores `<!-- braskit:inicio-cabecalho -->`,
+`fim-cabecalho`, `inicio-rodape` e `fim-rodape`. Existe uma copia so daquela
+marcacao, e as 42 paginas a herdam: mudar o menu ou o telefone em
+`catalogo.html` muda todas. **Se um marcador sumir, o gerador aborta** em vez
+de emitir pagina sem cabecalho.
+
+**Tres regras nao obvias**, todas cobradas por `npm run paginas`:
+
+1. **Nenhuma classe utilitaria nova.** As paginas geradas ficam fora da
+   varredura do Tailwind (`compilar-css.mjs` le so `index.html` e
+   `catalogo.html`), entao classe inedita sairia sem regra e o estrago seria
+   silencioso. O que faltar entra a mao em `css/style.css` -- ver o bloco
+   FICHA DE PRODUTO.
+2. **Nenhum `data-reveal`.** Ele nasce `opacity: 0` e depende do
+   IntersectionObserver; numa pagina gerada, isso e risco de tela em branco.
+3. **Nenhum `id` que ja exista** em `index.html` ou `catalogo.html`. Em
+   especial `gridProdutos`: `compilar-css.mjs` o procura por
+   `getElementById` e derrubaria o build com uma mensagem sem nexo.
+
+**Os `id` e os `slug` sao contrato.** O `id` e chave do orcamento salvo no
+`localStorage` de quem ja visitou; o `slug` virou URL publica. `build/dados.mjs`
+falha o build se algum deles repetir, mudar de formato ou perder a foto
+correspondente. Por isso a taxonomia proposta em `PENDENCIAS.md` 4 nunca deve
+ser aplicada no mesmo commit que outra coisa.
+
+**O `?cat=` continua valendo.** Os links internos passaram a apontar para
+`categorias/<slug>.html`, mas `catalogo.html?cat=epis` segue funcionando para
+quem tiver a URL salva -- quem le e `js/catalogo.js`, e ha checagem disso em
+`npm run fluxo`.
+
 ## Checklist de publicacao
 
-1. Suba tudo, exceto `build/`, `vendor/` e `comercial/` (a pasta `vendor/` so
-   serve ao build e pode ate ser apagada do servidor).
-2. Confirme que o dominio final e `braskitcargasperigosas.com.br`. Ele esta
-   fixado no canonical, no Open Graph, no JSON-LD e no `sitemap.xml`.
-3. `robots.txt` e `sitemap.xml` vao na raiz do dominio.
-4. Atencao ao WhatsApp: o site antigo tinha um link com o numero errado
-   (faltava o 9). Aqui todos os links usam `5551993011327`. Nao reaproveite
-   links do site antigo.
-5. Depois de publicar, valide o compartilhamento (WhatsApp e Facebook usam
+1. `npm run tudo`. E o portao: gera as paginas, gera o sitemap, roda as 43
+   checagens estruturais, o Chromium em 5 viewports e as 37 do fluxo comercial.
+   Se `verificar-fluxo` passar, o orcamento nao foi afetado.
+2. Suba tudo, exceto `build/`, `vendor/`, `comercial/` e `node_modules/`. O
+   `robots.txt` e o `netlify.toml` ja bloqueiam as tres primeiras caso subam
+   por engano -- vale sobretudo por `comercial/`, que tem pisos e margens.
+3. Hospedagem: **Netlify**, com `netlify.toml` na raiz. O
+   `pretty_urls = false` de la e obrigatorio: ligado, o Netlify redireciona
+   `/catalogo.html` para `/catalogo`, e o canonical passaria a apontar para uma
+   URL que redireciona.
+4. Confirme que o dominio final e `braskitcargasperigosas.com.br`, sem `www`.
+   Ele esta fixado no canonical, no Open Graph, no JSON-LD e no `sitemap.xml`.
+   Configure o 301 de `www` para o dominio nu e o HTTPS forçado.
+5. Confira no preview, antes de apontar o DNS:
+   ```
+   curl -sSI https://<preview>/catalogo.html            # 200, nao 301
+   curl -sSI https://<preview>/produtos/extintor-abc.html
+   curl -sSI https://<preview>/categorias/epis.html
+   curl -sSI https://<preview>/nao-existe               # 404
+   ```
+   Qualquer 301 num `.html` quer dizer `pretty_urls` ligado.
+6. `robots.txt` e `sitemap.xml` vao na raiz do dominio.
+7. Google Search Console: verifique a propriedade de **Dominio** (cobre www,
+   apex, http e https de uma vez), submeta o `sitemap.xml` e peca indexacao de
+   `/` e `/catalogo.html`.
+8. Atencao ao WhatsApp: todos os links usam `5551993011327`.
+9. Depois de publicar, valide o compartilhamento (WhatsApp e Facebook usam
    `assets/og-braskit.png`, 1200 x 630).
 
-## Notas de SEO local
+## Medicao
 
-- JSON-LD LocalBusiness com endereco, coordenadas, horario (com almoco),
-  areaServed cobrindo o Rio Grande do Sul e sameAs para o Facebook.
-- A secao Onde Atendemos lista as principais cidades do estado. Quando o plano
-  de expansao avancar, o proximo passo natural sao paginas por cidade.
-- O carro-chefe (Kit Cargas Perigosas) segue na ultima categoria do catalogo,
-  como no catalogo fisico. Vale conversar com a Braskit sobre reorganizar.
+Google Analytics 4, propriedade `G-PBNV1K928G`, nas 43 paginas. O snippet esta
+no `<head>` de `index.html` e `catalogo.html` e no template de
+`build/gerar-paginas.mjs` -- os tres precisam andar juntos se a propriedade
+mudar.
+
+O gtag e **injetado por script**, e nao carregado por `<script async src>`,
+por um motivo pratico: assim ele nao dispara em `file://`. O site e aberto por
+duplo clique o tempo todo, no desenvolvimento e nas duas verificacoes em
+Playwright, e cada abertura dessas entraria no relatorio como visita de
+hostname vazio. Servido por HTTP ele carrega normalmente -- conferido nas
+quatro formas de pagina (home, catalogo, categoria e ficha).
+
+Nao ha banner de consentimento. Se for preciso adicionar um, o ponto de
+entrada e esse mesmo bloco: basta condicionar o `if` a escolha do visitante.
+
+## Notas de SEO
+
+**Onde o conteudo mora.** A home tem ~1.330 palavras; o catalogo, ~340. O que
+carrega o peso agora sao as 8 paginas de categoria, com uma introducao propria
+de 55 a 85 palavras cada, escrita em `build/conteudo-seo.mjs`. As 33 fichas
+tem pouco texto proprio (descricao + aplicacao), e isso e conhecido: o
+`verificar-paginas.mjs` mede palavras distintas por ficha e falha abaixo de 40.
+**Suba esse numero conforme a `PENDENCIAS.md` 3.4 for respondida** -- e a forma
+de cobrar o dado que falta.
+
+**A regra editorial vale aqui tambem.** Nada em `conteudo-seo.mjs` afirma o que
+a Braskit nao confirmou: sem preco, prazo, garantia ou tempo de mercado. O que
+se diz de norma e o que a norma estabelece publicamente.
+
+**Dados estruturados.** `LocalBusiness` com `@id` e `WebSite` na home (as duas
+paginas escritas a mao repetem o `LocalBusiness` com o mesmo `@id`, porque o
+Google le cada pagina isolada); `FAQPage` so na home; `CollectionPage` +
+`BreadcrumbList` + `ItemList` nas categorias; `Product` + `BreadcrumbList` nas
+fichas.
+
+O `Product` sai **sem `offers`, sem `brand` e sem `aggregateRating`**, e isso e
+deliberado: `offers` exige `price`, e o modelo comercial e orcamento por
+WhatsApp; `brand: Braskit` num extintor de terceiro seria afirmacao de
+fabricacao, e a Braskit e revenda; nota auto-atribuida e das poucas coisas que
+o Google pune de fato. O custo e nao ter rich result de produto. Quando houver
+avaliacao real no Perfil da Empresa, ai sim.
+
+**SEO local.** `LocalBusiness` com endereco, coordenadas, horario (com almoco),
+`areaServed` cobrindo o Rio Grande do Sul e `sameAs` para o Facebook. Falta
+acrescentar ao `sameAs` a URL do Perfil da Empresa no Google, e trocar o
+parametro `pb` artesanal do mapa (`index.html`) pelo gerado com o `place_id`
+-- ver `PENDENCIAS.md` 5.
+
+Confira que o endereco no Perfil da Empresa bate caractere a caractere com o do
+site: **Rua Uruguai, 317, Sao Jose, Canoas/RS, CEP 92420-340**. Ha diretorios
+online com enderecos divergentes atribuidos a marca, e isso dilui ranqueamento
+local.
+
+**A disputa.** Os termos genericos ("kit NBR 9735") sao dominados por
+marketplace nacional. O campo aberto e local e de cauda longa: "kit cargas
+perigosas Canoas", "kit ANTT Porto Alegre", e o nome de cada um dos 33
+produtos. As 43 paginas foram montadas para essa segunda briga, nao para a
+primeira.
+
+**Proximos passos**, em ordem de retorno:
+
+1. `PENDENCIAS.md` 3.4 -- e problema de conversao *e* de conteudo ao mesmo tempo.
+2. Paginas por cidade, a partir das 18 ja listadas em Onde Atendemos.
+3. Duas ou tres paginas longas de norma ("O que a NBR 9735 exige do kit", "Kit
+   por classe de risco"). Hoje o site cita a norma como logotipo e nunca a
+   explica: `kit de emergencia`, `MOPP` e `ficha de emergencia` tem zero
+   ocorrencia no projeto inteiro.
 
 Braskit, 2026. Site por DEVMRMORAES.
