@@ -1,0 +1,110 @@
+# Publicacao no Netlify.
+#
+# O site e estatico e nao tem etapa de build no servidor: as paginas de
+# categoria e de produto sao geradas na maquina (npm run build) e versionadas
+# junto com o resto. O Netlify so serve arquivo.
+
+[build]
+  publish = "."
+  command = ""
+
+# -----------------------------------------------------------------------------
+# URLs
+# -----------------------------------------------------------------------------
+# pretty_urls vem LIGADO por padrao no Netlify, e ligado ele redireciona
+# /catalogo.html para /catalogo com um 301. Como o canonical de todas as 43
+# paginas termina em .html, isso criaria a pior combinacao possivel: canonical
+# apontando para uma URL que redireciona para outra. Desligar aqui e o que
+# mantem href, canonical e sitemap dizendo exatamente a mesma coisa.
+[build.processing]
+  skip_processing = true
+
+[build.processing.html]
+  pretty_urls = false
+
+# -----------------------------------------------------------------------------
+# Cabecalhos
+# -----------------------------------------------------------------------------
+# O HTML precisa ser sempre revalidado: e nele que estao title, canonical e
+# schema, e uma correcao de SEO presa em cache de um ano nao serve para nada.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Imagem, CSS e JS podem ficar em cache longo porque o conteudo so muda quando
+# o nome do arquivo muda (as fotos tem a largura no nome: -400, -720).
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# -----------------------------------------------------------------------------
+# Pastas de trabalho
+# -----------------------------------------------------------------------------
+# Nao deveriam nem chegar ao servidor (ver o checklist de publicacao no
+# README), mas se o deploy for feito arrastando a pasta inteira, elas viriam
+# junto. O robots.txt ja pede para nao rastrear; aqui elas deixam de responder.
+# Vale sobretudo por comercial/, que guarda pisos e margens de negociacao.
+[[redirects]]
+  from = "/comercial/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/build/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/vendor/*"
+  to = "/404.html"
+  status = 404
+
+# -----------------------------------------------------------------------------
+# Endereco antigo
+# -----------------------------------------------------------------------------
+# O site anterior, em Wix, tinha exatamente duas URLs indexadas, ambas com
+# acento. Nada daquele site foi aproveitado, mas o dominio e o mesmo: quem
+# clicar num resultado antigo do Google cai em 404 ate esses enderecos sairem
+# do indice. Descomente as quatro linhas para que caiam na pagina certa. As
+# duas formas de cada endereco existem porque o casamento de caractere
+# acentuado varia conforme o navegador envia a URL.
+#
+# [[redirects]]
+#   from = "/p%C3%A1gina-inicial"
+#   to = "/"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "/página-inicial"
+#   to = "/"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "/cat%C3%A1logo"
+#   to = "/catalogo.html"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "/catálogo"
+#   to = "/catalogo.html"
+#   status = 301
+#   force = true
+
+# Sem catch-all: quem pede uma URL que nao existe recebe 404 de verdade, com a
+# 404.html gerada por build/gerar-paginas.mjs. Mandar tudo para a home
+# esconderia link quebrado do Search Console, que e onde ele precisa aparecer.
