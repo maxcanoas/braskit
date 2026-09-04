@@ -36,8 +36,14 @@ await aba.goto(url, { waitUntil: "load" });
 await aba.waitForTimeout(600);
 
 /* ---- 1. carga inicial ---- */
+/* O esperado sai do proprio js/produtos.js, e nao de um numero escrito aqui:
+   quando um produto entra ou sai do catalogo, as tres contagens abaixo
+   acompanham sozinhas. */
+const catalogados = await aba.evaluate(() =>
+  Array.isArray(window.PRODUTOS) ? window.PRODUTOS.length : -1);
 const cartoes = await aba.locator(".produto-card").count();
-checar("34 cartoes no grid", cartoes === 34, cartoes + " encontrados");
+checar(catalogados + " cartoes no grid", catalogados > 0 && cartoes === catalogados,
+  cartoes + " encontrados");
 
 const fixos = await aba.locator(".produto-card.is-fixo").count();
 checar("3 itens do kit minimo travados no grid", fixos === 3, fixos + " encontrados");
@@ -59,8 +65,11 @@ checar("kit minimo e o esperado (25, 20, 26)",
   Array.isArray(lista) && [25, 20, 26].every((id) => lista.some((i) => i.id === id)));
 
 /* ---- 3. filtro por categoria ---- */
+/* Aqui os numeros ficam escritos de proposito, ao contrario da contagem total:
+   e o que denuncia um produto que sumiu de js/produtos.js sem querer. Quando o
+   Kit Cargas Perigosas voltar, kits-protecao volta para 2 (PENDENCIAS.md 2.1). */
 const CATEGORIAS = { produtos: 3, suportes: 6, sinalizacao: 7, textil: 3, injetados: 5,
-                     "acessorios-caminhao": 2, epis: 6, "kits-protecao": 2 };
+                     "acessorios-caminhao": 2, epis: 6, "kits-protecao": 1 };
 let filtrosOk = true;
 for (const [slug, esperado] of Object.entries(CATEGORIAS)) {
   await aba.locator(`.chip-filtro[data-cat="${slug}"]`).evaluate((el) => el.click());
@@ -72,7 +81,36 @@ checar("as 8 categorias filtram a contagem certa", filtrosOk);
 
 await aba.locator('.chip-filtro[data-cat="todos"]').evaluate((el) => el.click());
 await aba.waitForTimeout(120);
-checar("filtro Todos volta aos 34", (await aba.locator(".produto-card:visible").count()) === 34);
+checar("filtro Todos volta aos " + catalogados,
+  (await aba.locator(".produto-card:visible").count()) === catalogados);
+
+/* Os links internos passaram a apontar para categorias/<slug>.html, mas o
+   ?cat= continua existindo: e o que history.replaceState produz quando alguem
+   filtra, e ha gente com essa URL salva. Os chips ja eram testados; a URL
+   nao era. */
+await aba.goto(url + "?cat=epis", { waitUntil: "load" });
+await aba.waitForTimeout(600);
+checar("?cat=epis ainda filtra pela URL",
+  (await aba.locator(".produto-card:visible").count()) === 6,
+  (await aba.locator(".produto-card:visible").count()) + " visiveis");
+
+/* O card virou <a> para a pagina do produto. Duas coisas precisam valer ao
+   mesmo tempo: o href tem de existir (e o unico caminho do catalogo ate as
+   fichas) e o clique simples NAO pode navegar -- ele abre a janela de
+   detalhe, para nao tirar a pessoa do orcamento que ela montou. */
+await aba.goto(url, { waitUntil: "load" });
+await aba.waitForTimeout(600);
+const hrefCard = await aba.locator(".produto-abrir").first().getAttribute("href");
+checar("card do catalogo e link para a ficha do produto",
+  /^produtos\/[a-z0-9-]+\.html$/.test(hrefCard || ""), hrefCard || "sem href");
+
+await aba.locator(".produto-abrir").first().evaluate((el) => el.click());
+await aba.waitForTimeout(300);
+checar("clique simples no card abre a janela, sem navegar",
+  aba.url().indexOf("/produtos/") === -1 &&
+  (await aba.locator("#modalProduto").evaluate((el) => el.open)));
+await aba.keyboard.press("Escape");
+await aba.waitForTimeout(200);
 
 /* ---- 4. busca com e sem acento ---- */
 await aba.fill("#campoBusca", "sinalizacao");
@@ -170,7 +208,7 @@ await aba.evaluate(() => localStorage.setItem("braskit.orcamento.v1", "{isto nao
 await aba.reload({ waitUntil: "load" });
 await aba.waitForTimeout(600);
 checar("json quebrado nao derruba a pagina",
-  (await aba.locator(".produto-card").count()) === 34);
+  (await aba.locator(".produto-card").count()) === catalogados);
 
 /* ---- 10. janela de detalhe ---- */
 await aba.locator(".produto-abrir").first().evaluate((el) => el.click());

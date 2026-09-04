@@ -51,7 +51,15 @@ const VIEWPORTS = [
 
 const PAGINAS = [
   { arquivo: "index.html", limitePeso: 1.2 * 1024 * 1024 },
-  { arquivo: "catalogo.html", limitePeso: 1.5 * 1024 * 1024 }
+  { arquivo: "catalogo.html", limitePeso: 1.5 * 1024 * 1024 },
+  /* Amostra das paginas geradas por build/gerar-paginas.mjs. Sao dezenas, e
+     todas saem do mesmo template: rodar todas em cinco viewports custaria
+     minutos por informacao nenhuma. Estas tres foram escolhidas pelo que
+     estressa o layout -- a categoria mais cheia, o nome de produto mais
+     longo e a unica ficha que tem detalhe e kit minimo ao mesmo tempo. */
+  { arquivo: "categorias/sinalizacao.html", limitePeso: 900 * 1024 },
+  { arquivo: "produtos/suporte-plastico-placa-retangular.html", limitePeso: 500 * 1024 },
+  { arquivo: "produtos/extintor-abc.html", limitePeso: 500 * 1024 }
 ];
 
 /* -------------------------------------------------------------------------
