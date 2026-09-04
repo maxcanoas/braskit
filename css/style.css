@@ -2619,6 +2619,169 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 /* --------------------------------------------------------------------------
+   FICHA DE PRODUTO
+   Layout das paginas geradas por build/gerar-paginas.mjs. Escrito aqui, a mao,
+   e nao com utilitario novo no HTML: as paginas geradas nao entram na varredura
+   do Tailwind (build/compilar-css.mjs le so index.html e catalogo.html), entao
+   classe utilitaria inedita nelas sairia sem regra nenhuma no css/tw.css.
+   -------------------------------------------------------------------------- */
+.ficha-produto {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .ficha-produto { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+}
+
+.ficha-produto__foto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--cat-cor, #0f3b3f);
+  aspect-ratio: 3 / 2;
+}
+
+.ficha-produto__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ficha-produto__corpo > * + * { margin-top: 1.75rem; }
+
+.ficha-produto__lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgb(16 22 23 / 0.78);
+}
+
+.ficha-bloco {
+  border-left: 3px solid var(--cat-cor, #56980b);
+  padding-left: 1.125rem;
+}
+
+.ficha-bloco__rotulo {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(16 22 23 / 0.65);
+}
+
+.ficha-bloco p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgb(16 22 23 / 0.72);
+}
+
+/* Selo do kit minimo. So aparece nos itens de KIT_MINIMO (js/produtos.js), e
+   traz a mesma ressalva da janela do orcamento: a composicao e sugestao
+   tecnica ate a Braskit confirmar (PENDENCIAS.md 1). */
+.ficha-kit-minimo {
+  border: 1px solid rgb(86 152 11 / 0.35);
+  background: rgb(86 152 11 / 0.07);
+  border-radius: 0.75rem;
+  padding: 1.125rem 1.25rem;
+}
+
+.ficha-kit-minimo strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #3d6c08;
+  font-size: 0.9375rem;
+}
+
+.ficha-kit-minimo p {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: rgb(16 22 23 / 0.62);
+}
+
+/* Tabela de especificacao. Hoje nao renderiza para nenhum produto: os campos
+   ca, medidas, material e norma ainda nao existem em js/produtos.js. O
+   template ja esta pronto para quando a Braskit responder a PENDENCIAS.md 3.4
+   -- e ai as fichas crescem sem tocar em uma linha de codigo. */
+.ficha-especificacao { width: 100%; border-collapse: collapse; }
+
+.ficha-especificacao th,
+.ficha-especificacao td {
+  border-bottom: 1px solid rgb(16 22 23 / 0.1);
+  padding: 0.7rem 0;
+  text-align: left;
+  font-size: 0.875rem;
+  vertical-align: top;
+}
+
+.ficha-especificacao th {
+  width: 40%;
+  font-weight: 600;
+  color: rgb(16 22 23 / 0.65);
+}
+
+.ficha-especificacao td { color: rgb(16 22 23 / 0.8); }
+
+/* A ficha fica sobre branco e os itens relacionados sobre o neutro-50, para
+   uma separar visualmente da outra: com o mesmo fundo nas duas, o espaco entre
+   elas vira so um vao sem leitura. */
+.ficha-secao { background: #fff; }
+
+/* Chamada no fim das paginas geradas. E componente, e nao um punhado de
+   utilitario, justamente porque estas paginas ficam fora da varredura do
+   Tailwind: aqui a regra existe com certeza. */
+.ficha-chamada {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: 1rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background: var(--petroleo-900);
+  color: #e8f1f1;
+}
+
+.ficha-chamada .titulo-secao {
+  margin-bottom: 0.75rem;
+  color: #fff;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.ficha-chamada p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.75);
+}
+
+.ficha-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Botao secundario de contorno, nas duas versoes. O primario continua sendo o
+   .btn-brilho, que ja existe. */
+.btn-contorno {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(16 22 23 / 0.15);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neutro-900);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-contorno:hover { border-color: var(--hazmat-500); color: var(--hazmat-500); }
+
+.btn-contorno--claro { border-color: rgb(255 255 255 / 0.2); color: #fff; }
+.btn-contorno--claro:hover { border-color: var(--hazmat-500); color: var(--hazmat-500); }
+
+/* --------------------------------------------------------------------------
    26. MOVIMENTO REDUZIDO
    Quem pediu menos movimento recebe a pagina inteira estatica: sem parallax,
    sem reveal, sem marquee, sem tilt e sem pulso. O conteudo continua 100%

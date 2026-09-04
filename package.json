@@ -5,9 +5,16 @@
   "description": "Site institucional da Braskit. O site publicado e 100% estatico; estas dependencias servem apenas ao build e a verificacao, e nao vao para o servidor.",
   "type": "module",
   "scripts": {
+    "dados": "node build/dados.mjs",
+    "gerar": "node build/gerar-paginas.mjs",
+    "sitemap": "node build/sitemap.mjs",
     "css": "node build/compilar-css.mjs",
     "imagens": "node build/imagens.mjs",
-    "verificar": "node build/verificar.mjs"
+    "paginas": "node build/verificar-paginas.mjs",
+    "verificar": "node build/verificar.mjs",
+    "fluxo": "node build/verificar-fluxo.mjs",
+    "build": "npm run gerar && npm run sitemap",
+    "tudo": "npm run build && npm run paginas && npm run verificar && npm run fluxo"
   },
   "devDependencies": {
     "playwright": "^1.49.0",
