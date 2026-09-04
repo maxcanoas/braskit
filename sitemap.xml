@@ -1,13 +1,394 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://braskitcargasperigosas.com.br/</loc>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/catalogo.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/produtos.html</loc>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/suportes.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/sinalizacao.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/textil.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/injetados.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/acessorios-caminhao.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/epis.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/categorias/kits-protecao.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/abafa-chamas.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/abafa-chamas.jpg</image:loc>
+      <image:title>Abafa Chamas</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/balde-aluminio-cabo-terra.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/balde-aluminio-cabo-terra.jpg</image:loc>
+      <image:title>Balde de Alumínio com Cabo Terra</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/lanternas.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/lanternas.jpg</image:loc>
+      <image:title>Lanternas</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/caixa-plastico-extintor.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/caixa-plastico-extintor.jpg</image:loc>
+      <image:title>Caixa de Plástico para Extintor</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/suporte-ferro-extintor.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/suporte-ferro-extintor.jpg</image:loc>
+      <image:title>Suporte de Ferro para Extintor</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/suporte-ferro-cone.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/suporte-ferro-cone.jpg</image:loc>
+      <image:title>Suporte de Ferro para Cone</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/suporte-ferro-placa.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/suporte-ferro-placa.jpg</image:loc>
+      <image:title>Suporte de Ferro para Placa</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/suporte-plastico-placa-retangular.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/suporte-plastico-placa-retangular.jpg</image:loc>
+      <image:title>Suporte de Plástico para Placa Retangular</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/suporte-plastico-placa-quadrada.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/suporte-plastico-placa-quadrada.jpg</image:loc>
+      <image:title>Suporte de Plástico para Placa Quadrada</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/placa-perigo.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/placa-perigo.jpg</image:loc>
+      <image:title>Placa Perigo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/placa-laranja-numeros.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/placa-laranja-numeros.jpg</image:loc>
+      <image:title>Placa Laranja com Números</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/placa-laranja.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/placa-laranja.jpg</image:loc>
+      <image:title>Placa Laranja</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/placa-liquido-inflamavel.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/placa-liquido-inflamavel.jpg</image:loc>
+      <image:title>Placa Líquido Inflamável</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/placa-material-corrosivo.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/placa-material-corrosivo.jpg</image:loc>
+      <image:title>Placa Material Corrosivo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/bastao-sinalizador.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/bastao-sinalizador.jpg</image:loc>
+      <image:title>Bastão Sinalizador</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/faixa-refletiva.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/faixa-refletiva.jpg</image:loc>
+      <image:title>Faixa Refletiva</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/bolsa-lona-kit.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/bolsa-lona-kit.jpg</image:loc>
+      <image:title>Bolsa de Lona para Kit</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/capa-cone.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/capa-cone.jpg</image:loc>
+      <image:title>Capa de Cone</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/colete-refletivo.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/colete-refletivo.jpg</image:loc>
+      <image:title>Colete Refletivo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/cone-flexivel-nbr-15071.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/cone-flexivel-nbr-15071.jpg</image:loc>
+      <image:title>Cone Flexível com Faixa (NBR 15071)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/cone-pequeno-preto-amarelo.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/cone-pequeno-preto-amarelo.jpg</image:loc>
+      <image:title>Cone Pequeno Preto e Amarelo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/pedestal.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/pedestal.jpg</image:loc>
+      <image:title>Pedestal</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/fitas-zebradas.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/fitas-zebradas.jpg</image:loc>
+      <image:title>Fitas Zebradas</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/pa-enxada.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/pa-enxada.jpg</image:loc>
+      <image:title>Pá e Enxada</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/extintor-abc.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/extintor-abc.jpg</image:loc>
+      <image:title>Extintor ABC</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/calco-borracha.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/calco-borracha.jpg</image:loc>
+      <image:title>Par de Calço de Borracha</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/respirador-semifacial.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/respirador-semifacial.jpg</image:loc>
+      <image:title>Respirador Semifacial com Filtro</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/mascara-panoramica.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/mascara-panoramica.jpg</image:loc>
+      <image:title>Máscara Panorâmica com Filtro</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/luvas-nitrilica-multitato.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/luvas-nitrilica-multitato.jpg</image:loc>
+      <image:title>Luvas Nitrílica e Multitato</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/luvas-raspa-vaqueta.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/luvas-raspa-vaqueta.jpg</image:loc>
+      <image:title>Luvas de Raspa e Vaqueta</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/luvas-pvc.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/luvas-pvc.jpg</image:loc>
+      <image:title>Luvas PVC (27, 35 e 45 cm)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/bota-pvc.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/bota-pvc.jpg</image:loc>
+      <image:title>Bota de PVC</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/kit-ferramentas.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/kit-ferramentas.jpg</image:loc>
+      <image:title>Kit de Ferramentas</image:title>
+    </image:image>
   </url>
 </urlset>
