@@ -83,13 +83,19 @@ await aba.goto("file://" + resolve(raiz, "build/compile.html"), { waitUntil: "lo
    tracking-[0.12em], text-petroleo-700, leading-tight, text-left) somem do
    tw.css sem nenhum erro visivel. Falhar aqui e melhor que descobrir depois. */
 await aba.waitForTimeout(600);
-const cartoes = await aba.evaluate(() => {
+const { cartoes, catalogados } = await aba.evaluate(() => {
   const grid = document.getElementById("gridProdutos");
-  return grid ? grid.children.length : -1;
+  return {
+    cartoes: grid ? grid.children.length : -1,
+    catalogados: Array.isArray(window.PRODUTOS) ? window.PRODUTOS.length : -1
+  };
 });
-if (cartoes < 34) {
+/* O esperado sai do proprio js/produtos.js (grid.innerHTML = PRODUTOS.map(...)),
+   e nao de um numero escrito aqui: quando um produto entra ou sai do catalogo,
+   este guarda acompanha sozinho. */
+if (catalogados < 1 || cartoes !== catalogados) {
   const erros = await aba.evaluate(() => window.__errosDeConsole || []);
-  console.error("Grid do catalogo nao renderizou: " + cartoes + " cartoes (esperado 34).");
+  console.error("Grid do catalogo nao renderizou: " + cartoes + " cartoes (esperado " + catalogados + ").");
   if (erros.length) console.error(erros.join(String.fromCharCode(10)));
   await navegador.close();
   process.exit(1);
