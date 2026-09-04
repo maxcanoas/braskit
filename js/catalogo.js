@@ -119,8 +119,8 @@
 
     return '' +
       '<article class="produto-card' + estado + '" data-cat-card="' + produto.categoria + '">' +
-        '<button type="button" class="produto-abrir block w-full text-left" data-id="' + produto.id + '" ' +
-                'aria-label="Ver detalhes de ' + escaparHtml(produto.nome) + '">' +
+        '<a href="produtos/' + produto.slug + '.html" class="produto-abrir block w-full text-left" data-id="' + produto.id + '" ' +
+           'aria-label="Ver detalhes de ' + escaparHtml(produto.nome) + '">' +
           '<div class="produto-midia" style="--cat-cor:' + categoria.cor + '">' +
             "<picture>" +
               fontesProduto(produto.img, "(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 46vw") +
@@ -129,7 +129,7 @@
                    'data-nome="' + escaparHtml(produto.nome) + '" data-cat="' + produto.categoria + '">' +
             "</picture>" +
           "</div>" +
-        "</button>" +
+        "</a>" +
         '<div class="flex flex-1 flex-col p-5">' +
           '<span class="mb-3 inline-flex w-fit rounded-full bg-petroleo-900/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-petroleo-700">' +
             escaparHtml(categoria.nome) +
@@ -302,6 +302,14 @@
 
     var gatilho = evento.target.closest(".produto-abrir");
     if (!gatilho) return;
+
+    /* O card e um <a> para a pagina do produto, mas o clique simples abre a
+       janela de detalhe, que e mais rapida e nao tira a pessoa do catalogo
+       (nem do orcamento que ela ja montou). Com Ctrl, Cmd, Shift ou Alt o
+       link segue seu caminho normal e abre em aba nova -- o href existe para
+       ser usado, tanto por quem navega quanto por quem rastreia. */
+    if (evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey) return;
+    evento.preventDefault();
     abrirDetalhe(parseInt(gatilho.getAttribute("data-id"), 10));
   });
 

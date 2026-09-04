@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Catálogo de Kit e Itens para Produtos Perigosos | Braskit</title>
-<meta name="description" content="Catálogo Braskit: 33 itens para o transporte de produtos perigosos, do cone NBR 15071 ao kit completo montado. Sinalização, EPIs, suportes e acessórios, com orçamento pelo WhatsApp e envio para todo o RS.">
+<title>Catálogo de Kit para Produtos Perigosos | Braskit Canoas</title>
+<meta name="description" content="33 itens para o transporte de produtos perigosos: sinalização, EPIs, suportes e cones NBR 15071. Loja em Canoas/RS, orçamento pelo WhatsApp.">
 <meta name="theme-color" content="#0B3136">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://braskitcargasperigosas.com.br/catalogo.html">
 
 <meta property="og:type" content="website">
@@ -19,6 +20,24 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- Google Analytics (GA4). O gtag e injetado por script em vez de vir num
+     <script async src>: assim ele NAO carrega em file://, e o site e aberto
+     por duplo clique o tempo todo -- no desenvolvimento e nas duas
+     verificacoes em Playwright. Cada abertura dessas entraria no relatorio
+     como visita de hostname vazio e sujaria a medicao desde o primeiro dia. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  if (location.protocol !== "file:") {
+    gtag("js", new Date());
+    gtag("config", "G-PBNV1K928G");
+    var medicao = document.createElement("script");
+    medicao.async = true;
+    medicao.src = "https://www.googletagmanager.com/gtag/js?id=G-PBNV1K928G";
+    document.head.appendChild(medicao);
+  }
+</script>
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -37,6 +56,42 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://braskitcargasperigosas.com.br/#organizacao",
+  "name": "Braskit",
+  "alternateName": "Braskit | Kit para Transporte de Cargas Perigosas",
+  "description": "Revenda especializada em material de segurança e sinalização para o transporte de produtos perigosos, com kits montados conforme a carga, dentro das normas do CONTRAN e da ABNT.",
+  "url": "https://braskitcargasperigosas.com.br/",
+  "telephone": "+555130517997",
+  "email": "braskit.kit@gmail.com",
+  "image": "https://braskitcargasperigosas.com.br/assets/og-braskit.png",
+  "sameAs": ["https://www.facebook.com/braskit"],
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Uruguai, 317",
+    "addressLocality": "Canoas",
+    "addressRegion": "RS",
+    "postalCode": "92420-340",
+    "addressCountry": "BR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -29.8874, "longitude": -51.1777 },
+  "areaServed": [
+    { "@type": "City", "name": "Canoas" },
+    { "@type": "City", "name": "Porto Alegre" },
+    { "@type": "AdministrativeArea", "name": "Região Metropolitana de Porto Alegre" },
+    { "@type": "State", "name": "Rio Grande do Sul" }
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "11:45" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "13:15", "closes": "18:00" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://braskitcargasperigosas.com.br/" },
@@ -47,6 +102,12 @@
 </head>
 
 <body class="font-corpo antialiased">
+<!-- Os marcadores braskit: abaixo delimitam o cabecalho e o rodape que
+     build/gerar-paginas.mjs recorta para as paginas de categoria e de
+     produto. Existe UMA copia dessa marcacao, esta, e as paginas geradas a
+     herdam -- mexer aqui muda as 43 de uma vez. Se um marcador sumir, o
+     gerador falha em vez de emitir pagina sem cabecalho. -->
+<!-- braskit:inicio-cabecalho -->
 <!-- Primeira parada do teclado nas duas paginas. O <main id="conteudo"> ja
      existia; faltava o link. -->
 <a href="#conteudo" class="pular-para-conteudo">Pular para o conteúdo</a>
@@ -131,6 +192,8 @@
        class="menu-mobile__item mt-6 rounded-lg bg-hazmat-500 px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-hazmat-400">Orçamento no WhatsApp</a>
   </nav>
 </div>
+
+<!-- braskit:fim-cabecalho -->
 
 <main id="conteudo">
 
@@ -224,14 +287,14 @@
           não funcionam. São 33 itens em 8 categorias:
         </p>
         <ul>
-        <li><a href="catalogo.html?cat=produtos">Produtos</a> — 3 itens</li>
-        <li><a href="catalogo.html?cat=suportes">Suportes</a> — 6 itens</li>
-        <li><a href="catalogo.html?cat=sinalizacao">Sinalização</a> — 7 itens</li>
-        <li><a href="catalogo.html?cat=textil">Têxtil</a> — 3 itens</li>
-        <li><a href="catalogo.html?cat=injetados">Injetados</a> — 5 itens</li>
-        <li><a href="catalogo.html?cat=acessorios-caminhao">Acessórios para caminhão</a> — 2 itens</li>
-        <li><a href="catalogo.html?cat=epis">EPIs</a> — 6 itens</li>
-        <li><a href="catalogo.html?cat=kits-protecao">Kits de proteção</a> — 1 item</li>
+        <li><a href="categorias/produtos.html">Produtos</a> — 3 itens</li>
+        <li><a href="categorias/suportes.html">Suportes</a> — 6 itens</li>
+        <li><a href="categorias/sinalizacao.html">Sinalização</a> — 7 itens</li>
+        <li><a href="categorias/textil.html">Têxtil</a> — 3 itens</li>
+        <li><a href="categorias/injetados.html">Injetados</a> — 5 itens</li>
+        <li><a href="categorias/acessorios-caminhao.html">Acessórios para caminhão</a> — 2 itens</li>
+        <li><a href="categorias/epis.html">EPIs</a> — 6 itens</li>
+        <li><a href="categorias/kits-protecao.html">Kits de proteção</a> — 1 item</li>
         </ul>
         <p>
           Para receber o catálogo e um orçamento sem depender disso,
@@ -292,6 +355,7 @@
 
 </main>
 
+<!-- braskit:inicio-rodape -->
 <!-- =========================================================
      FOOTER (mesma marcacao nas duas paginas)
      ========================================================= -->
@@ -336,19 +400,19 @@
       <nav aria-label="Categorias do catálogo">
         <h2 class="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-white">Categorias</h2>
         <ul class="space-y-3 text-sm">
-          <li><a href="catalogo.html?cat=sinalizacao" class="transition-colors hover:text-hazmat-500">Sinalização</a></li>
-          <li><a href="catalogo.html?cat=epis" class="transition-colors hover:text-hazmat-500">EPIs</a></li>
-          <li><a href="catalogo.html?cat=suportes" class="transition-colors hover:text-hazmat-500">Suportes</a></li>
-          <li><a href="catalogo.html?cat=injetados" class="transition-colors hover:text-hazmat-500">Injetados</a></li>
-          <li><a href="catalogo.html?cat=textil" class="transition-colors hover:text-hazmat-500">Têxtil</a></li>
-          <li><a href="catalogo.html?cat=kits-protecao" class="transition-colors hover:text-hazmat-500">Kits de proteção</a></li>
+          <li><a href="categorias/sinalizacao.html" class="transition-colors hover:text-hazmat-500">Sinalização</a></li>
+          <li><a href="categorias/epis.html" class="transition-colors hover:text-hazmat-500">EPIs</a></li>
+          <li><a href="categorias/suportes.html" class="transition-colors hover:text-hazmat-500">Suportes</a></li>
+          <li><a href="categorias/injetados.html" class="transition-colors hover:text-hazmat-500">Injetados</a></li>
+          <li><a href="categorias/textil.html" class="transition-colors hover:text-hazmat-500">Têxtil</a></li>
+          <li><a href="categorias/kits-protecao.html" class="transition-colors hover:text-hazmat-500">Kits de proteção</a></li>
         </ul>
       </nav>
 
       <div>
         <h2 class="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-white">Contato</h2>
         <address class="space-y-4 text-sm not-italic">
-          <p>Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-170</p>
+          <p>Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-340</p>
           <p>
             <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997</a><br>
             <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a><br>
@@ -364,7 +428,7 @@
 
     <div class="flex flex-col gap-3 py-7 text-xs sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; 2026 Braskit. Kit para Transporte de Cargas Perigosas.</p>
-      <p class="text-white/60">Site por DEVMRMORAES.</p>
+      <p class="text-white/60">Site por <a href="https://devmrmoraes.com.br" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">DEVMRMORAES</a>.</p>
     </div>
   </div>
 </footer>
@@ -384,6 +448,7 @@
     <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.2-4.6-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/>
   </svg>
 </a>
+<!-- braskit:fim-rodape -->
 
 <!-- =========================================================
      BANDEJA DO ORÇAMENTO

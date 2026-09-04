@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Pastas de trabalho. Nenhuma delas precisa ir para o servidor (ver o
+# checklist de publicacao no README), mas se a pasta subir inteira por
+# engano, aqui elas ficam fora do rastreamento. Vale sobretudo por
+# comercial/, que guarda pisos e margens de negociacao.
+Disallow: /build/
+Disallow: /comercial/
+Disallow: /vendor/
+Disallow: /node_modules/
+
 Sitemap: https://braskitcargasperigosas.com.br/sitemap.xml

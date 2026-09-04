@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Kit para Transporte de Produtos Perigosos em Canoas/RS | Braskit</title>
-<meta name="description" content="Kit para transporte de produtos perigosos montado conforme a sua carga, dentro do CONTRAN, da ABNT e da NBR 9735. Renovação, revisão e montagem em Canoas/RS, com envio para todo o Rio Grande do Sul.">
+<meta name="description" content="Kit para transporte de produtos perigosos montado conforme a sua carga, dentro do CONTRAN e da ABNT. Loja em Canoas/RS, com envio para todo o estado.">
 <meta name="theme-color" content="#0B3136">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://braskitcargasperigosas.com.br/">
 
 <!-- Open Graph -->
@@ -20,6 +21,24 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- Google Analytics (GA4). O gtag e injetado por script em vez de vir num
+     <script async src>: assim ele NAO carrega em file://, e o site e aberto
+     por duplo clique o tempo todo -- no desenvolvimento e nas duas
+     verificacoes em Playwright. Cada abertura dessas entraria no relatorio
+     como visita de hostname vazio e sujaria a medicao desde o primeiro dia. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  if (location.protocol !== "file:") {
+    gtag("js", new Date());
+    gtag("config", "G-PBNV1K928G");
+    var medicao = document.createElement("script");
+    medicao.async = true;
+    medicao.src = "https://www.googletagmanager.com/gtag/js?id=G-PBNV1K928G";
+    document.head.appendChild(medicao);
+  }
+</script>
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -39,6 +58,7 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://braskitcargasperigosas.com.br/#organizacao",
   "name": "Braskit",
   "alternateName": "Braskit | Kit para Transporte de Cargas Perigosas",
   "description": "Revenda especializada em material de segurança e sinalização para o transporte de produtos perigosos, com kits montados conforme a carga, dentro das normas do CONTRAN e da ABNT.",
@@ -46,7 +66,6 @@
   "telephone": "+555130517997",
   "email": "braskit.kit@gmail.com",
   "image": "https://braskitcargasperigosas.com.br/assets/og-braskit.png",
-  "slogan": "Protegendo vidas, preservando o futuro",
   "sameAs": ["https://www.facebook.com/braskit"],
   "priceRange": "$$",
   "address": {
@@ -54,7 +73,7 @@
     "streetAddress": "Rua Uruguai, 317",
     "addressLocality": "Canoas",
     "addressRegion": "RS",
-    "postalCode": "92420-170",
+    "postalCode": "92420-340",
     "addressCountry": "BR"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": -29.8874, "longitude": -51.1777 },
@@ -68,6 +87,18 @@
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "11:45" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "13:15", "closes": "18:00" }
   ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://braskitcargasperigosas.com.br/#site",
+  "url": "https://braskitcargasperigosas.com.br/",
+  "name": "Braskit",
+  "inLanguage": "pt-BR",
+  "publisher": { "@id": "https://braskitcargasperigosas.com.br/#organizacao" }
 }
 </script>
 
@@ -288,7 +319,7 @@
   </div>
 
   <!-- Indicador de rolagem -->
-  <a href="#numeros" class="indicador-scroll absolute bottom-14 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/55 transition-colors hover:text-white md:flex" aria-label="Rolar para o conteúdo">
+  <a href="#onde-estamos" class="indicador-scroll absolute bottom-14 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/55 transition-colors hover:text-white md:flex" aria-label="Rolar para o conteúdo">
     <span class="text-[10px] font-semibold uppercase tracking-[0.14em]">Role</span>
     <span class="flex h-9 w-[22px] items-start justify-center rounded-full border border-white/35 pt-2">
       <span class="indicador-scroll__ponto block h-1.5 w-1.5 rounded-full"></span>
@@ -681,7 +712,7 @@
     </header>
 
     <div class="grade-categorias">
-      <a href="catalogo.html?cat=kits-protecao" class="card-categoria card-categoria--destaque group">
+      <a href="categorias/kits-protecao.html" class="card-categoria card-categoria--destaque group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2.5l8 3.2v6c0 4.9-3.4 9.4-8 10.6-4.6-1.2-8-5.7-8-10.6v-6z"/><path d="M9 12l2.2 2.2L15.5 10"/>
@@ -693,7 +724,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=produtos" class="card-categoria group">
+      <a href="categorias/produtos.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5"/><path d="M12 22V12"/>
@@ -705,7 +736,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=suportes" class="card-categoria group">
+      <a href="categorias/suportes.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4v16"/><path d="M4 8h9a4 4 0 0 1 0 8H4"/><circle cx="18" cy="12" r="2"/>
@@ -717,7 +748,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=sinalizacao" class="card-categoria group">
+      <a href="categorias/sinalizacao.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2.5l9.5 9.5L12 21.5 2.5 12z"/><path d="M12 8.5v4"/><path d="M12 15.6h.01"/>
@@ -729,7 +760,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=textil" class="card-categoria group">
+      <a href="categorias/textil.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2.5" y="8" width="19" height="12" rx="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 13.5h19"/>
@@ -741,7 +772,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=injetados" class="card-categoria group">
+      <a href="categorias/injetados.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 3l6 16H6z"/><path d="M3 21h18"/><path d="M9.4 12.5h5.2"/>
@@ -753,7 +784,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=acessorios-caminhao" class="card-categoria group">
+      <a href="categorias/acessorios-caminhao.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M1 3.5h14v13H1z"/><path d="M15 8.5h4l3 3v5h-7z"/><circle cx="5.5" cy="19" r="2.2"/><circle cx="18.5" cy="19" r="2.2"/>
@@ -765,7 +796,7 @@
         </div>
       </a>
 
-      <a href="catalogo.html?cat=epis" class="card-categoria group">
+      <a href="categorias/epis.html" class="card-categoria group">
         <span class="card-categoria__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 13a9 9 0 0 1 18 0"/><path d="M2 13h20v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/><path d="M12 4v9"/>
@@ -1148,7 +1179,7 @@
             </span>
             <div>
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">Endereço</p>
-              <p class="mt-1 text-sm text-white/85">Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-170</p>
+              <p class="mt-1 text-sm text-white/85">Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-340</p>
             </div>
           </li>
 
@@ -1259,19 +1290,19 @@
       <nav aria-label="Categorias do catálogo">
         <h2 class="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-white">Categorias</h2>
         <ul class="space-y-3 text-sm">
-          <li><a href="catalogo.html?cat=sinalizacao" class="transition-colors hover:text-hazmat-500">Sinalização</a></li>
-          <li><a href="catalogo.html?cat=epis" class="transition-colors hover:text-hazmat-500">EPIs</a></li>
-          <li><a href="catalogo.html?cat=suportes" class="transition-colors hover:text-hazmat-500">Suportes</a></li>
-          <li><a href="catalogo.html?cat=injetados" class="transition-colors hover:text-hazmat-500">Injetados</a></li>
-          <li><a href="catalogo.html?cat=textil" class="transition-colors hover:text-hazmat-500">Têxtil</a></li>
-          <li><a href="catalogo.html?cat=kits-protecao" class="transition-colors hover:text-hazmat-500">Kits de proteção</a></li>
+          <li><a href="categorias/sinalizacao.html" class="transition-colors hover:text-hazmat-500">Sinalização</a></li>
+          <li><a href="categorias/epis.html" class="transition-colors hover:text-hazmat-500">EPIs</a></li>
+          <li><a href="categorias/suportes.html" class="transition-colors hover:text-hazmat-500">Suportes</a></li>
+          <li><a href="categorias/injetados.html" class="transition-colors hover:text-hazmat-500">Injetados</a></li>
+          <li><a href="categorias/textil.html" class="transition-colors hover:text-hazmat-500">Têxtil</a></li>
+          <li><a href="categorias/kits-protecao.html" class="transition-colors hover:text-hazmat-500">Kits de proteção</a></li>
         </ul>
       </nav>
 
       <div>
         <h2 class="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-white">Contato</h2>
         <address class="space-y-4 text-sm not-italic">
-          <p>Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-170</p>
+          <p>Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-340</p>
           <p>
             <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997</a><br>
             <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a><br>
@@ -1287,7 +1318,7 @@
 
     <div class="flex flex-col gap-3 py-7 text-xs sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; 2026 Braskit. Kit para Transporte de Cargas Perigosas.</p>
-      <p class="text-white/60">Site por DEVMRMORAES.</p>
+      <p class="text-white/60">Site por <a href="https://devmrmoraes.com.br" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">DEVMRMORAES</a>.</p>
     </div>
   </div>
 </footer>
