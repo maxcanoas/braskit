@@ -156,9 +156,9 @@
     });
   }
 
-  /* Os 34 cards sao montados UMA vez. Antes o grid inteiro era refeito por
+  /* Os 33 cards sao montados UMA vez. Antes o grid inteiro era refeito por
      innerHTML a cada troca de filtro e a cada 140 ms de digitacao na busca:
-     34 <article>, 34 <picture> e 34 <img> descartados e recriados, com
+     33 <article>, 33 <picture> e 33 <img> descartados e recriados, com
      protegerFotos rodando de novo em cima de tudo.
 
      Agora o filtro so liga e desliga uma classe. A classe e propria, definida

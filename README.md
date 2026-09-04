@@ -19,10 +19,10 @@ catalogo.html       catalogo com filtros, busca, selecao e janela de detalhe
 css/tw.css          utilitarios compilados no build (nao editar a mao)
 css/style.css       tema da marca, parallax, animacoes e componentes
 js/main.js          parallax, tilt 3D, reveal, contadores, header, menu, formulario
-js/produtos.js      os 34 produtos, as 8 categorias, o kit minimo e a imagem de reserva
+js/produtos.js      os 33 produtos, as 8 categorias, o kit minimo e a imagem de reserva
 js/orcamento.js     lista de orcamento: estado, bandeja fixa e janela da lista
 js/catalogo.js      render do grid, filtros, busca e janela de detalhe
-assets/             SVGs, icones, OG e as 34 fotos de produto
+assets/             SVGs, icones, OG e as 33 fotos de produto
 assets/img/         pasta das fotos de ambiente (ver "Imagens" abaixo)
 build/              ferramentas de build (CSS, OG e icones)
 ```
@@ -190,11 +190,14 @@ Tudo e gerado por `node build/imagens.mjs`, com sharp. **A regra e nunca
 ampliar**: as fotos de ambiente tem 1376 a 1408 px no lado maior e as de
 produto tem 730, e upscale so engorda o arquivo fingindo nitidez.
 
-As 34 fotos de produto sao reais, do acervo da empresa. O slot do card e **3:2**,
-que e a proporcao nativa delas (730x487) -- por isso 32 das 34 aparecem sem
-corte nenhum, e as duas em retrato aparecem inteiras sobre o chapado neutro em
-vez de cortadas na faixa central. O tratamento e leve, so o suficiente para
-igualar 34 fundos de estoque diferentes sem apagar a cor real do produto.
+As 33 fotos de produto sao reais, do acervo da empresa, e **todas foram feitas
+em estudio, sobre fundo branco**. Chegam com 1264x843 e sao normalizadas na
+importacao para 730x487, que e o que o slot pede.
+
+O slot do card e **3:2**, que e a proporcao nativa delas (730x487) -- por isso
+31 das 33 aparecem sem corte nenhum, e as duas em retrato aparecem inteiras
+sobre o chapado neutro em vez de cortadas na faixa central. O tratamento e
+leve, so o suficiente para nao apagar a cor real do produto.
 
 Cada foto tem versao **avif** e **webp** em duas larguras (400 e 720); o jpg
 original continua sendo o ultimo degrau antes do placeholder desenhado.
@@ -261,7 +264,7 @@ se o avif e o webp nao existirem, o jpg assume.
 3. **Ano de fundacao, CNPJ e razao social.**
 4. **Numero de CA de cada EPI, faixa de preco, prazo em dias, garantia e prova
    social** -- nada disso existe hoje no site.
-5. **Revisao tecnica das 34 fichas de produto.**
+5. **Revisao tecnica das 33 fichas de produto.**
 6. **Aprovar (ou nao) a proposta de taxonomia por uso** registrada no
    `PENDENCIAS.md`.
 7. **Avaliacoes no Google**, que dependem do acesso ao Meu Negocio.

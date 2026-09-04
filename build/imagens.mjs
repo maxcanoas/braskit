@@ -27,7 +27,7 @@
    verdade: ver PENDENCIAS.md.
 
    FOTOS DE PRODUTO. 730x487 e exatamente 3:2, que passa a ser a proporcao do
-   slot do card -- por isso 32 das 34 saem sem corte nenhum. As duas em
+   slot do card -- por isso 31 das 33 saem sem corte nenhum. As duas em
    retrato (capa-cone e pedestal) sao reduzidas pela altura e ficam contidas
    no slot, sobre chapado neutro, em vez de cortadas ao meio.
 

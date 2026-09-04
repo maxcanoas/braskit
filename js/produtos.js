@@ -1,7 +1,12 @@
 /* ==========================================================================
    BRASKIT | dados do catálogo
-   34 produtos em 8 categorias. As fotos vieram do acervo da empresa e são
-   exibidas com tratamento (ver .produto-midia em css/style.css).
+   33 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
+   branco. O tratamento do slot está em .produto-midia, em css/style.css.
+
+   Não existe id 33: é o Kit Cargas Perigosas, fora do site até a foto nova
+   chegar. O número fica reservado para ele — os id são a chave do orçamento
+   salvo no navegador de quem já visitou, então nenhum outro produto pode
+   ocupar o 33, e o kit volta com ele. Receita em PENDENCIAS.md 2.1.
    ========================================================================== */
 
 /* Cada categoria tem uma cor de fundo própria, usada no tratamento das fotos.
@@ -216,13 +221,6 @@ var PRODUTOS = [
     descricao: "Impermeável, cano alto, solado antiderrapante.",
     aplicacao: "Área alagada por produto derramado.",
     img: "assets/produtos/bota-pvc.jpg"
-  },
-  {
-    id: 33, nome: "Kit Cargas Perigosas", categoria: "kits-protecao", slug: "kit-cargas-perigosas",
-    descricao: "O kit completo, montado aqui, dentro das normas do CONTRAN e da ABNT.",
-    aplicacao: "Composição conforme a classe de risco do produto transportado.",
-    detalhe: "A composição não é uma só: muda conforme a classe de risco. Traga o número ONU e o perfil da frota que a gente monta a lista e confere item por item antes de fechar a bolsa.",
-    img: "assets/produtos/kit-cargas-perigosas.jpg"
   },
   {
     id: 34, nome: "Kit de Ferramentas", categoria: "kits-protecao", slug: "kit-ferramentas",

@@ -58,25 +58,49 @@ O que vale mais, em ordem:
 Os arquivos entram com os mesmos nomes em `assets/img/` e depois é só rodar
 `node build/imagens.mjs` — os recortes, o avif e o webp saem sozinhos.
 
-### 2.1 Fotos de produto: recorte de fundo
+### 2.1 Fotos de produto: fundo branco — resolvido, falta a do kit
 
-As 34 fotos de produto são reais e da empresa, o que é bom. O problema é o cenário:
-prateleira de aço, caixa de papelão, saco plástico, banquinho de madeira e flash
-duro.
+Foi feito o que esta seção pedia: **as fotos de produto foram refeitas em estúdio,
+sobre fundo branco**, e substituíram as antigas em `assets/produtos/`. Chegam com
+1264x843 e são normalizadas para 730x487, a medida que o pipeline já usava. O catálogo
+ficou mais leve pela metade, porque fundo liso comprime melhor que prateleira.
 
-Já melhorou o que dependia só de código: o slot passou de 1:1 para 3:2 (a proporção
-nativa das fotos — o corte quadrado jogava fora um terço da largura de cada uma) e o
-duotone laranja pesado virou uma correção leve, de modo que o extintor volta a ser
-vermelho e a luva, verde.
+A única que não foi refeita era a do **Kit Cargas Perigosas**, e a substituta está
+prevista. **A saída dele do site é temporária**: em vez de ficar como a única foto de
+prateleira no meio de 33 limpas, o produto sai até a foto nova chegar. Saiu de
+`PRODUTOS`, os cinco arquivos saíram de `assets/produtos/`, o `data-reserva` da seção
+Sobre em `index.html` ficou sem ele e a categoria Kits de proteção passou de 2 itens
+para 1. As contagens visíveis do site foram de 34 para 33.
 
-O passo seguinte é recortar o fundo. O script está pronto e **não foi executado**:
-`build/recortar-fundos.mjs`. Ele não rodou de propósito — recorte automático em foto
-de estoque com flash duro produz halo na borda e come a ponta fina do cone, e 34
-arquivos sem revisão humana sairiam piores que os atuais. Instruções completas no
-cabeçalho do arquivo.
+O **id 33 fica reservado para ele**. Os id são chave do orçamento salvo no navegador de
+quem já visitou (ver seção 4), então nenhum outro produto pode ocupar o 33 — mas o
+próprio Kit Cargas Perigosas volta com esse número, porque é o mesmo produto de sempre.
 
-**A alternativa boa continua sendo fotografar de novo, sobre fundo branco.** Custa
-menos que revisar 34 recortes automáticos.
+#### Como devolver o kit quando a foto nova chegar
+
+1. Salve a foto como `assets/produtos/kit-cargas-perigosas.jpg`. Se vier em 1264x843,
+   como as outras, reduza antes para **730x487** — `sharp(origem).resize({ width: 730 })`
+   com `jpeg({ quality: 92, mozjpeg: true })`. O pipeline nunca amplia, e o slot é 3:2.
+2. `node build/imagens.mjs` — o avif e o webp em 400 e 720 saem sozinhos.
+3. Devolva o bloco do produto a `PRODUTOS`, em `js/produtos.js`, com **id 33** e
+   `categoria: "kits-protecao"`. O texto original está no commit `e72d49b`
+   (`git show e72d49b:js/produtos.js`).
+4. Contagens de volta para 34, e Kits de proteção de 1 para 2 itens. Em
+   `catalogo.html`: meta description, og:description, olho do hero, os dois
+   contadores e as duas linhas do `noscript`. Em `index.html`: título da seção
+   Catálogo, card da categoria e card "Ver o catálogo completo". Os chips de filtro
+   se ajustam sozinhos, porque saem de `contarPorCategoria()`.
+5. Se quiser, devolva o `data-reserva` da foto na seção Sobre do `index.html`.
+6. `node build/verificar.mjs` para fechar: ele acusa referência para arquivo
+   inexistente e imagem sem `width`/`height`.
+
+Com o fundo resolvido já na fotografia, `build/recortar-fundos.mjs` perdeu a função:
+ele existia para recortar o cenário das fotos de estoque. Segue sem nunca ter rodado.
+
+O véu da cor da categoria sobre a foto (`.produto-midia::after`) também saiu. Ele
+existia para amarrar 34 fundos de estoque diferentes; com os fundos já brancos e
+iguais, só tingia esse branco — em Sinalização o branco puro saía como
+rgb(237,241,233). Ficou só a vinheta discreta das bordas.
 
 ### 2.2 Resolução das fotos de ambiente
 
@@ -126,7 +150,7 @@ Nenhuma destas informações aparece hoje, e todas são perguntas que o cliente 
 O espaço está reservado no layout com marcadores `<!-- PENDENTE BRASKIT -->` em
 `catalogo.html`. É só preencher quando a informação chegar.
 
-### 3.5 Revisão técnica das 34 fichas de produto
+### 3.5 Revisão técnica das 33 fichas de produto
 
 As descrições e aplicações foram reescritas para variar de tamanho e falar como
 balcão, mas **nenhuma especificação nova foi inventada** — não há medida, capacidade,

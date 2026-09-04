@@ -783,10 +783,11 @@ img, svg, video, iframe { max-width: 100%; }
    produto de verdade. Feito com filtros, e nao mix-blend-mode, porque as
    fotos sao escuras e com blend o produto sumia junto com o fundo.
    -------------------------------------------------------------------------- */
-/* 3:2, nao 1:1. As 34 fotos sao 730x487, que e 3:2 exato -- o slot quadrado
+/* 3:2, nao 1:1. As 33 fotos sao 730x487, que e 3:2 exato -- o slot quadrado
    jogava fora um terco da largura de cada uma e frequentemente descentrava o
-   produto. O chapado atras e neutro da marca, nao a cor da categoria: e ele
-   que faz 34 fundos de estoque diferentes lerem como um conjunto. */
+   produto. O chapado atras e neutro da marca, nao a cor da categoria: com as
+   fotos de estudio ele quase nao aparece, e so emoldura as duas em retrato,
+   que ficam contidas no slot. */
 .produto-midia {
   position: relative;
   aspect-ratio: 3 / 2;
@@ -812,17 +813,21 @@ img, svg, video, iframe { max-width: 100%; }
   transition: filter 0.4s ease, transform 0.5s var(--ease-saida);
 }
 
-/* Vinheta: tira o aspecto chapado das bordas */
-/* Vinheta discreta mais um veu da cor da categoria em opacidade baixa: e o
-   que ainda amarra o conjunto, agora sem cobrir o produto. Some no hover. */
+/* Vinheta discreta: tira o aspecto chapado das bordas. Some no hover.
+
+   O veu da cor da categoria saiu daqui. Ele existia para amarrar 34 fundos
+   de estoque diferentes -- prateleira, papelao, saco plastico. Agora que as
+   fotos vem de estudio, com fundo branco e igual, o veu so tingia esse
+   branco: em Sinalizacao o branco puro saia como rgb(237,241,233), e em
+   Suportes como cinza azulado. A categoria continua identificada pela
+   etiqueta de texto do card. O --cat-cor segue sendo escrito no elemento,
+   caso um dia se queira a cor de volta. */
 .produto-midia::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
-  background:
-    radial-gradient(108% 108% at 50% 45%, transparent 58%, rgb(6 34 38 / 0.16) 100%),
-    color-mix(in srgb, var(--cat-cor, var(--petroleo-800)) 9%, transparent);
+  background: radial-gradient(108% 108% at 50% 45%, transparent 58%, rgb(6 34 38 / 0.16) 100%);
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
@@ -1854,7 +1859,7 @@ select.campo-escuro {
 
 /* Card do produto no grid */
 /* PRODUTO -- o unico que continua cartao, porque e objeto de merchandising:
-   precisa de moldura para 34 fotos de estoque lerem como um conjunto.
+   precisa de moldura para as 33 fotos lerem como um conjunto.
    O destaque vai para o estado de SELECAO, nao para o hover. */
 .produto-card {
   display: flex;
