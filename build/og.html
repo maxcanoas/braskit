@@ -15,8 +15,8 @@
     transform: rotate(45deg); border-radius: 10px;
   }
   .losango--cheio {
-    background: rgba(255,107,0,.12);
-    border-color: rgba(255,107,0,.55);
+    background: rgba(86,152,11,.12);
+    border-color: rgba(86,152,11,.55);
   }
   .conteudo { position: absolute; left: 84px; top: 118px; }
   .marca { position: relative; display: inline-block; }
@@ -25,9 +25,13 @@
     letter-spacing: -4px; transform: scaleX(.84); transform-origin: left;
     display: inline-block; white-space: nowrap;
   }
-  .marca__texto b { color: #FF6B00; font-weight: bold; }
+  .marca__texto b {
+    color: #56980B; font-weight: bold;
+    font-size: .64em; position: relative;
+  }
   .marca svg.infinito {
-    position: absolute; top: -46px; right: 46px; width: 120px; color: rgba(255,255,255,.9);
+    position: absolute; left: 50%; bottom: 1.107em; width: 116%;
+    transform: translateX(-50%); color: rgba(255,255,255,.9);
   }
   .sub {
     margin-top: 26px; font-size: 26px; letter-spacing: 7px; font-weight: 600;
@@ -41,7 +45,7 @@
     color: rgba(255,255,255,.9); background: rgba(255,255,255,.05);
   }
   .chip i {
-    width: 10px; height: 10px; background: #FF6B00; transform: rotate(45deg);
+    width: 10px; height: 10px; background: #56980B; transform: rotate(45deg);
     display: inline-block;
   }
   .zebra {
@@ -57,11 +61,10 @@
 
   <div class="conteudo">
     <div class="marca">
-      <span class="marca__texto">BRAS<b>KIT</b></span>
-      <svg class="infinito" viewBox="0 0 52 26" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
-        <path d="M24 13C18 4.5 6 4.5 6 13c0 8.5 12 8.5 18 0 6-8.5 18-8.5 22-3"/>
-        <path d="M46 10c2.5 5-2 11.5-8 11.5-5 0-10-3.5-14-8.5" stroke-dasharray="4 3.4"/>
-      </svg>
+      <span class="marca__texto">BRAS<b>KIT<svg class="infinito" viewBox="0 0 81 36" fill="none" stroke="currentColor" stroke-width="5.5">
+        <path d="M40.5 18C28.2-2 3-2 3 18c0 20 25.2 20 37.5 0 12.3-20 37.5-20 37.5 0" stroke-linecap="round"/>
+        <path d="M78 18c0 20-25.2 20-37.5 0" stroke-dasharray="15.2 6.8 5 5 5 6.9 8.4"/>
+      </svg></b></span>
     </div>
     <div class="sub">Kit para transporte de cargas perigosas</div>
   </div>

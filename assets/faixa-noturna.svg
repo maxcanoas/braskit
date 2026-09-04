@@ -47,7 +47,7 @@
     <circle cx="1240" cy="668" r="52" fill="url(#farol)"/>
     <rect x="1176" y="596" width="132" height="76" rx="8" fill="#02181D"/>
     <rect x="1176" y="662" width="132" height="8" fill="#E2231A" opacity=".75"/>
-    <rect x="1188" y="606" width="108" height="6" fill="#FF6B00" opacity=".5"/>
+    <rect x="1188" y="606" width="108" height="6" fill="#56980B" opacity=".5"/>
   </g>
   <g opacity=".82">
     <circle cx="820" cy="650" r="38" fill="url(#farol)"/>

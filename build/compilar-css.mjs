@@ -30,8 +30,8 @@ const tema = `
     --color-petroleo-900: #0b3136;
     --color-petroleo-800: #0f3b3f;
     --color-petroleo-700: #155e63;
-    --color-hazmat-500: #ff6b00;
-    --color-hazmat-400: #ff8a2b;
+    --color-hazmat-500: #56980b;
+    --color-hazmat-400: #6cbe0e;
     --color-alerta-400: #ffc300;
     --color-perigo-500: #e2231a;
     --color-neutro-50: #f6f8f8;

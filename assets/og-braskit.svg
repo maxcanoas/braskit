@@ -8,8 +8,8 @@
       <stop offset="1"   stop-color="#03161A"/>
     </linearGradient>
     <radialGradient id="ogGlow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#FF6B00" stop-opacity=".34"/>
-      <stop offset="1" stop-color="#FF6B00" stop-opacity="0"/>
+      <stop offset="0" stop-color="#56980B" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#56980B" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -23,12 +23,12 @@
   </g>
 
   <!-- Marca -->
-  <text x="80" y="250" font-family="Arial Narrow, Arial, sans-serif" font-size="128" font-weight="bold" fill="#FFFFFF" letter-spacing="-2">BRAS<tspan fill="#FF6B00">KIT</tspan></text>
+  <text x="80" y="250" font-family="Arial Narrow, Arial, sans-serif" font-size="128" font-weight="bold" fill="#FFFFFF" letter-spacing="-2">BRAS<tspan fill="#56980B" font-size="82">KIT</tspan></text>
   <text x="84" y="292" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#8FB3B3" letter-spacing="4.5">KIT PARA TRANSPORTE DE CARGAS PERIGOSAS</text>
 
   <!-- Chamada -->
   <text x="80" y="404" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="bold" fill="#FFFFFF">SEGURANÇA QUE ACOMPANHA</text>
-  <text x="80" y="470" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="bold" fill="#FF6B00">CADA QUILÔMETRO</text>
+  <text x="80" y="470" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="bold" fill="#56980B">CADA QUILÔMETRO</text>
   <text x="80" y="524" font-family="Arial, sans-serif" font-size="25" fill="#B9D1D1">Kits, EPIs e sinalização dentro das normas CONTRAN e ABNT</text>
   <text x="80" y="566" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#FFC300">Canoas/RS · há mais de 30 anos</text>
 

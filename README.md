@@ -60,6 +60,82 @@ classes de componente de `css/style.css`, nunca utilitario novo. O conteudo da
 janela do orcamento so existe depois que ela abre, entao qualquer utilitario
 usado la nao estaria no DOM na hora da amostragem.
 
+## Cores da marca
+
+O acento e o verde **#56980B**, informado pela Braskit. Ele vive em tres
+lugares, e os tres precisam andar juntos:
+
+```
+css/style.css              :root  --hazmat-500 / --hazmat-400
+build/compilar-css.mjs     @theme --color-hazmat-500 / --color-hazmat-400
+css/tw.css                 GERADO -- sai do arquivo acima, nao edite a mao
+```
+
+Trocou a cor? Edite os dois primeiros e rode `node build/compilar-css.mjs`.
+
+**O verde cheio so pinta FUNDO.** Com texto petroleo em cima ele da 4,66:1 e
+passa AA; como texto ele reprova dos dois lados da pagina (3,34:1 sobre o claro,
+3,91:1 sobre o petroleo). Por isso existem dois tons legiveis, e
+`--acento-legivel` aponta para o do contexto:
+
+| token | valor | onde | contraste |
+|---|---|---|---|
+| `--hazmat-500` | `#56980B` | fundo de botao, chip, anel de selecao | 4,66:1 com texto petroleo |
+| `--hazmat-400` | `#6CBE0E` | hover de fundo e de texto | 7,12:1 sobre petroleo-950 |
+| `--acento-sobre-escuro` | `#61AB0C` | texto e icone sobre petroleo | 4,87:1 sobre petroleo-900 |
+| `--acento-sobre-claro` | `#3B6808` | texto e icone na `.secao-clara` | 6,22:1 sobre neutro-50 |
+
+Os quatro foram derivados do matiz e da saturacao do #56980B, e espelham os
+contrastes que o laranja anterior tinha -- a hierarquia da pagina nao mudou, so
+o matiz. `node build/verificar.mjs` confere isso a cada rodada.
+
+**Dois laranjas ficaram de proposito**, e nenhum dos dois e a marca:
+
+- o **painel de seguranca** (numero de risco / numero ONU) e as **placas de
+  risco** do catalogo sao laranja por norma. Estao nas fotos reais dos produtos
+  e em `assets/hero-caminhao.svg`;
+- o **entardecer** de `assets/faixa-rodovia.svg` e `assets/hero-ceu.svg` e luz,
+  nao marca. Essas SVGs sao a reserva de fotos reais de por do sol: pintar o sol
+  de verde brigaria com a foto que elas substituem.
+
+O amarelo `--alerta-400: #FFC300` tambem fica: e a faixa zebrada de sinalizacao
+rodoviaria, um segundo sinal ao lado do acento, nunca a marca.
+
+## O logo
+
+A marca no header e no rodape reproduz o logo da empresa: **BRAS** grande,
+**KIT** menor na MESMA linha de base, e o infinito centrado logo acima do KIT.
+As proporcoes nao foram estimadas -- saem medidas do arquivo original, onde
+"BRAS" tem 62,5 px de altura de caixa alta:
+
+| medida | no original | no CSS |
+|---|---|---|
+| KIT / BRAS | 40 / 62,5 px | `font-size: 0.64em` em `.marca-kit` |
+| largura do infinito / do KIT | 81 / 70 px | `width: 116%` em `.marca-infinito` |
+| folga entre o infinito e o KIT | 9 px = 0,225 da caixa alta | entra no `bottom` |
+| proporcao do infinito | 81 x 36 px | `viewBox="0 0 81 36"` |
+
+O `bottom: 1.06em` vem da metrica da Barlow Condensed, nao de tentativa e erro:
+numa caixa inline a altura e ascent+descent (1,2em) e a linha de base fica a 1em
+do topo, entao o topo da caixa alta esta a 1,2 - 1 + 0,7 = 0,9em do pe da caixa;
+somando a folga de 0,225 x 0,7em chega-se a 1,0575em. **Se a fonte do titulo
+mudar, esse numero muda junto** -- em `build/og.html`, que usa DejaVu, ele ja e
+outro (1,107em).
+
+O container usa `align-items: baseline`, e nao `items-end`: as caixas de texto
+tem descida proporcional ao tamanho da fonte, entao alinhar pelo pe faria o KIT,
+que e menor, afundar em relacao ao BRAS.
+
+**A armadilha que custou tempo:** `css/style.css` tem um
+`img, svg, video, iframe { max-width: 100% }` global. Ele cortava os 116% do
+infinito em 100%, e o resultado ficava exatamente da largura do KIT, sem a
+sobra dos lados -- sem erro nenhum, so um logo levemente errado. Por isso
+`.marca-infinito` traz `max-width: none`.
+
+O infinito e o unico desenho da marca em SVG: dois lacos simetricos com a cauda
+inferior direita tracejada, como no original. O tracejado sai de um
+`stroke-dasharray` de sete valores que soma o comprimento exato daquela curva.
+
 ## Orcamento por selecao (catalogo)
 
 Cada card do catalogo tem uma caixa de selecao no rodape. O que a pessoa

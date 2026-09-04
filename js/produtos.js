@@ -10,12 +10,12 @@
 var CATEGORIAS = [
   { slug: "produtos",            nome: "Produtos",                cor: "#155E63" },
   { slug: "suportes",            nome: "Suportes",                cor: "#0F3B3F" },
-  { slug: "sinalizacao",         nome: "Sinalização",             cor: "#9A4A05" },
+  { slug: "sinalizacao",         nome: "Sinalização",             cor: "#366007" },
   { slug: "textil",              nome: "Têxtil",                  cor: "#123C4A" },
-  { slug: "injetados",           nome: "Injetados",               cor: "#7A3B00" },
+  { slug: "injetados",           nome: "Injetados",               cor: "#2B4B05" },
   { slug: "acessorios-caminhao", nome: "Acessórios para caminhão", cor: "#0B3136" },
   { slug: "epis",                nome: "EPIs",                    cor: "#1A5A5F" },
-  { slug: "kits-protecao",       nome: "Kits de proteção",        cor: "#8A3A00" }
+  { slug: "kits-protecao",       nome: "Kits de proteção",        cor: "#2E5106" }
 ];
 
 var PRODUTOS = [

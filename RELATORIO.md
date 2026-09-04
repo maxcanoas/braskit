@@ -67,6 +67,29 @@ combinação; o valor real é 5,82:1 — passa AA com folga, mas o número estav
 E `#c24f00` sobre `--neutro-50` dá **4,47:1**, reprovando por pouco: o laranja de
 texto em fundo claro ficou em `#b34900` (5,09:1).
 
+#### Nota de 03/09/2026 — a marca virou verde
+
+A Braskit informou que a cor da empresa é o verde **#56980B**, não o laranja que
+o site trazia. A paleta inteira foi retraçada a partir dele, mantendo cada
+contraste no mesmo patamar que o laranja tinha:
+
+| papel | antes | depois | contraste |
+|---|---|---|---|
+| fundo de ação (CTA) | `#FF6B00` | `#56980B` | 5,82:1 → **4,66:1** com texto petróleo |
+| hover de fundo e texto | `#FF8A2B` | `#6CBE0E` | 7,06:1 → **7,12:1** sobre petróleo-950 |
+| texto sobre petróleo | `#FF6B00` | `#61AB0C` | 4,88:1 → **4,87:1** sobre petróleo-900 |
+| texto em seção clara | `#B34900` | `#3B6808` | 5,09:1 → **6,22:1** sobre neutro-50 |
+
+O verde cheio é mais escuro que o laranja que substituiu, então o papel de
+*texto sobre fundo escuro* passou a precisar de um tom próprio — antes o laranja
+da marca dava conta sozinho. Sem isso, "Renovar o meu kit" caía para 3,91:1 e a
+contagem dos cards para 2,99:1. Com os dois tons legíveis, `verificar.mjs`
+voltou a **0 reprovações de 155 pares** nas duas páginas.
+
+Ficaram laranja, de propósito, o painel de segurança normativo (nº de risco / nº
+ONU), as placas de risco do catálogo e o entardecer das SVGs de reserva: nenhum
+dos três é a marca.
+
 ### Imagens e referências
 
 | | antes | depois |

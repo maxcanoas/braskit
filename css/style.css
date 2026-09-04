@@ -83,8 +83,8 @@
   --petroleo-900: #0b3136;
   --petroleo-800: #0f3b3f;
   --petroleo-700: #155e63;
-  --hazmat-500: #ff6b00;
-  --hazmat-400: #ff8a2b;
+  --hazmat-500: #56980b;
+  --hazmat-400: #6cbe0e;
   --alerta-400: #ffc300;
   --perigo-500: #e2231a;
   --neutro-50: #f6f8f8;
@@ -136,8 +136,8 @@
 
   /* ------------------------------------------------------------------
      ESTRUTURA
-     Borda, separador e fundo de icone. Antes tudo isso era laranja, o que
-     tirava do laranja qualquer poder de dizer "aqui".
+     Borda, separador e fundo de icone. Antes tudo isso era o acento, o que
+     tirava dele qualquer poder de dizer "aqui".
      ------------------------------------------------------------------ */
   --estrutura-escura: rgb(255 255 255 / 0.1);
   --estrutura-clara:  rgb(16 22 23 / 0.12);
@@ -156,13 +156,22 @@
   --reveal-lateral: 1rem;
 
   /* PAPEIS DO ACENTO
-     O laranja #ff6b00 com texto branco da 2,85:1 e reprova AA. Com texto
-     petroleo da 5,82:1 e passa, sem perder a forca da marca. Ja o laranja
-     COMO TEXTO sobre fundo claro precisa escurecer: #ff6b00 sobre --neutro-50
-     da 2,68:1, e mesmo #c24f00 fica em 4,47:1 -- reprova por pouco. */
+     O verde #56980b da marca serve como FUNDO: com texto petroleo em cima da
+     4,66:1 e passa AA (com texto branco daria 3,56:1 e reprovaria).
+     COMO TEXTO ele nao se sustenta em nenhum dos dois lados da pagina --
+     3,34:1 sobre --neutro-50 e 3,91:1 sobre --petroleo-900. Por isso o acento
+     tem dois tons legiveis, e --acento-legivel aponta para o do contexto:
+
+       claro  #3b6808  ->  6,22:1 sobre --neutro-50
+       escuro #61ab0c  ->  4,87:1 sobre --petroleo-900
+
+     Os dois espelham o que o laranja anterior fazia (5,09:1 e 4,88:1), entao
+     a hierarquia da pagina nao muda -- so o matiz. */
   --acao-fundo: var(--hazmat-500);
   --acao-texto: var(--petroleo-950);
-  --laranja-legivel: var(--hazmat-500);
+  --acento-sobre-claro: #3b6808;
+  --acento-sobre-escuro: #61ab0c;
+  --acento-legivel: var(--acento-sobre-escuro);
   --ease-saida: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Textura de ruido: evita que os fundos escuros fiquem chapados */
@@ -255,31 +264,38 @@ img, svg, video, iframe { max-width: 100%; }
 /* Largura de leitura em qualquer paragrafo longo. */
 .medida { max-width: var(--medida); }
 
-/* Laranja como texto sobre fundo claro reprova AA em qualquer tamanho de
-   corpo (2,68:1). Vale para o olho, para links e para qualquer uso do
-   utilitario dentro de uma secao clara. */
-.secao-clara .olho,
-.secao-clara .text-hazmat-500 {
-  color: var(--laranja-legivel);
+/* O verde da marca so vira texto pelo tom legivel do contexto. A regra vale
+   para o olho, para links e para qualquer uso do utilitario -- e nao apenas
+   na secao clara, porque sobre petroleo o verde puro tambem reprova. Quem
+   pinta FUNDO (bg-hazmat-500) segue com a cor cheia da marca. */
+.text-hazmat-500,
+.secao-clara .olho {
+  color: var(--acento-legivel);
+}
+
+/* O hover clareia. Sem isto ele herdaria a regra acima e nada mudaria. */
+.text-hazmat-500:hover,
+.hover:text-hazmat-400:hover {
+  color: var(--hazmat-400);
 }
 
 /* Ilhas escuras dentro de uma secao clara -- o cartao de "30+ anos na
-   estrada", por exemplo. Ali o fundo nao e claro, entao o laranja volta a ser
-   o da marca: escurecido sobre petroleo ele daria 2,57:1. */
+   estrada", por exemplo. Ali o fundo nao e claro, entao vale o tom de fundo
+   escuro: o tom claro sobre petroleo daria 2,51:1. */
 .secao-clara .bg-petroleo-950,
 .secao-clara .bg-petroleo-900,
 .secao-clara .bg-petroleo-800,
 .secao-clara .secao-escura,
 .secao-clara .cartao-escuro,
 .secao-clara .card-categoria {
-  --laranja-legivel: var(--hazmat-500);
+  --acento-legivel: var(--acento-sobre-escuro);
 }
 
 .secao-clara .card-categoria.card-categoria--acao {
-  --laranja-legivel: #b34900;
+  --acento-legivel: var(--acento-sobre-claro);
 }
 
-/* O olho aparece onze vezes entre as duas paginas. Em laranja, era a maior
+/* O olho aparece onze vezes entre as duas paginas. No acento, era a maior
    fonte isolada de ruido da paleta: repetia o acento em toda secao sem que
    ele significasse acao, dado ou destaque. Vira neutro, e o losango que o
    acompanha herda a cor por currentColor. */
@@ -871,7 +887,55 @@ img, svg, video, iframe { max-width: 100%; }
 }
 
 /* --------------------------------------------------------------------------
-   13. HEADER STICKY
+   13. MARCA
+
+   Reproducao do logo da empresa, medida no arquivo original (373x373 px):
+   "BRAS" com 62,5 px de altura de caixa alta, "KIT" com 40 px na MESMA linha
+   de base, e o infinito centrado logo acima do KIT, com 81x36 px e 9 px de
+   folga. Dai saem as tres proporcoes abaixo, todas relativas:
+
+     KIT / BRAS          40 / 62,5   = 0,64  -> font-size do .marca-kit
+     infinito / KIT      81 / 70     = 1,16  -> largura do .marca-infinito
+     folga / caixa alta   9 / 40     = 0,225 -> entra no bottom, ver abaixo
+
+   O que estava errado antes: KIT saia do mesmo tamanho de BRAS e o infinito
+   ficava no canto superior direito do bloco inteiro, longe do KIT.
+
+   O bottom de 1,06em vem da metrica da fonte, nao de tentativa e erro. Numa
+   caixa inline a altura e ascent+descent (1,2em na Barlow Condensed) e a
+   linha de base fica a 1em do topo, entao o topo da caixa alta esta a
+   1,2 - 1 + 0,7 = 0,9em do pe da caixa. Somando a folga de 0,225 x 0,7em:
+   0,9 + 0,1575 = 1,0575em, arredondado para 1,06em.
+   -------------------------------------------------------------------------- */
+
+/* O container alinha pela LINHA DE BASE. Com items-end o KIT, sendo menor,
+   afundaria: as caixas tem descidas proporcionais ao tamanho da fonte. */
+.marca {
+  display: flex;
+  align-items: baseline;
+}
+
+.marca-kit {
+  position: relative;
+  font-size: 0.64em;
+}
+
+.marca-infinito {
+  position: absolute;
+  left: 50%;
+  bottom: 1.06em;
+  width: 116%;
+  height: auto;
+  transform: translateX(-50%);
+  /* O infinito e o UNICO svg do site que precisa passar da caixa do pai: ele
+     sobra 8% para cada lado do KIT, como no logo original. Sem isto o
+     "img, svg, video, iframe { max-width: 100% }" la de cima corta os 116%
+     em 100% e o infinito fica exatamente da largura do KIT, sem sobra. */
+  max-width: none;
+}
+
+/* --------------------------------------------------------------------------
+   14. HEADER STICKY
    -------------------------------------------------------------------------- */
 .header-braskit {
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
@@ -911,7 +975,7 @@ img, svg, video, iframe { max-width: 100%; }
 .link-nav.is-ativo::after { transform: scaleX(1); }
 
 /* --------------------------------------------------------------------------
-   14. MENU MOBILE (tela cheia)
+   15. MENU MOBILE (tela cheia)
    -------------------------------------------------------------------------- */
 .menu-mobile {
   position: fixed;
@@ -972,7 +1036,7 @@ body.sem-rolagem { overflow: hidden; }
 .hamburguer.is-ativo span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* --------------------------------------------------------------------------
-   15. ELEMENTOS FLUTUANTES E AVISOS
+   16. ELEMENTOS FLUTUANTES E AVISOS
    -------------------------------------------------------------------------- */
 
 /* Voltar ao topo */
@@ -1028,7 +1092,7 @@ body.sem-rolagem { overflow: hidden; }
 }
 
 /* --------------------------------------------------------------------------
-   16. FAQ (details nativo, sem framework)
+   17. FAQ (details nativo, sem framework)
    -------------------------------------------------------------------------- */
 /* FAQ -- documento, nao cartao.
    Sem caixa e sem raio: so um fio no topo de cada pergunta, como um sumario.
@@ -1101,7 +1165,7 @@ body.sem-rolagem { overflow: hidden; }
 }
 
 /* --------------------------------------------------------------------------
-   17. FORMULARIO E MAPA
+   18. FORMULARIO E MAPA
    -------------------------------------------------------------------------- */
 .campo-escuro {
   width: 100%;
@@ -1137,12 +1201,12 @@ body.sem-rolagem { overflow: hidden; }
 }
 
 /* A seta nativa nasce escura e some no campo escuro. Troca pela nossa, no
-   laranja da marca, com folga a direita para o texto nao passar por baixo. */
+   verde da marca, com folga a direita para o texto nao passar por baixo. */
 select.campo-escuro {
   -webkit-appearance: none;
   appearance: none;
   padding-right: 2.6rem;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff6b00' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2356980b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 0.85rem;
@@ -1309,10 +1373,10 @@ select.campo-escuro {
 .sem-script p { margin-bottom: var(--esp-s); font-size: var(--txt-apoio); }
 .sem-script ul { margin-bottom: var(--esp-s); padding-left: var(--esp-m); list-style: disc; }
 .sem-script li { font-size: var(--txt-apoio); line-height: 1.9; }
-.sem-script a { color: var(--laranja-legivel); font-weight: 600; text-decoration: underline; }
+.sem-script a { color: var(--acento-legivel); font-weight: 600; text-decoration: underline; }
 
 /* Icone dos dados de contato. Era o quarto lugar com o mesmo quadrado
-   arredondado laranja; aqui o laranja nao cumpre nenhum dos tres papeis, e
+   arredondado do acento; aqui o acento nao cumpre nenhum dos tres papeis, e
    marcar endereco, telefone, horario e e-mail nao e acao. */
 .icone-contato {
   display: flex;
@@ -1426,7 +1490,7 @@ select.campo-escuro {
 }
 
 /* --------------------------------------------------------------------------
-   18. GRADE DE APOIO
+   19. GRADE DE APOIO
    -------------------------------------------------------------------------- */
 .container-braskit {
   width: 100%;
@@ -1435,9 +1499,9 @@ select.campo-escuro {
   padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 
-/* 5,09:1 sobre --neutro-50, contra 2,68:1 do laranja da marca. */
+/* 6,22:1 sobre --neutro-50, contra 3,34:1 do verde cheio da marca. */
 .secao-clara {
-  --laranja-legivel: #b34900;
+  --acento-legivel: var(--acento-sobre-claro);
 }
 
 /* Tres densidades de ritmo vertical. A secao de conteudo respira mais que a
@@ -1465,7 +1529,7 @@ select.campo-escuro {
 }
 
 /* --------------------------------------------------------------------------
-   19. ITEM DE CHECKLIST (composicao do kit) E CARD DE CATEGORIA
+   20. ITEM DE CHECKLIST (composicao do kit) E CARD DE CATEGORIA
    -------------------------------------------------------------------------- */
 /* ITEM DO KIT -- chip denso.
    Sao dez pecas de uma lista de conteudo, nao dez cartoes: densidade alta,
@@ -1550,8 +1614,8 @@ select.campo-escuro {
   color: #fff;
 }
 
-/* PAPEL 2 DO LARANJA: dado numerico. A contagem de itens e informacao real,
-   entao o numeral e laranja e a palavra que o acompanha nao e. */
+/* PAPEL 2 DO ACENTO: dado numerico. A contagem de itens e informacao real,
+   entao o numeral e verde e a palavra que o acompanha nao e. */
 .card-categoria__contagem {
   margin-top: var(--esp-2xs);
   font-size: var(--txt-micro);
@@ -1565,7 +1629,7 @@ select.campo-escuro {
   font-family: var(--fonte-titulo);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--laranja-legivel);
+  color: var(--acento-legivel);
   vertical-align: -0.12em;
   margin-right: 0.15rem;
   font-variant-numeric: tabular-nums;
@@ -1591,7 +1655,7 @@ select.campo-escuro {
 }
 
 /* --------------------------------------------------------------------------
-   20. QUEM ATENDEMOS E ONDE ATENDEMOS
+   21. QUEM ATENDEMOS E ONDE ATENDEMOS
    -------------------------------------------------------------------------- */
 /* SEGMENTO -- deixa de ser cartao.
    Quatro caixas brancas lado a lado eram a terceira grade identica da pagina.
@@ -1677,14 +1741,14 @@ select.campo-escuro {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  /* Era --hazmat-500, que dava 4,32:1 no chip. Alem de reprovar, e um laranja
+  /* Era --hazmat-500, que dava 4,32:1 no chip. Alem de reprovar, e um verde
      que nao cumpre nenhum dos tres papeis do acento: a nota da sede vira
      amarelo de destaque, que passa com folga. */
   color: var(--alerta-400);
 }
 
 /* --------------------------------------------------------------------------
-   21. CATALOGO: barra de filtros, chips, busca e cards
+   22. CATALOGO: barra de filtros, chips, busca e cards
    -------------------------------------------------------------------------- */
 .filtros-sticky {
   position: sticky;
@@ -1812,7 +1876,7 @@ select.campo-escuro {
 .produto-card--fora { display: none !important; }
 
 /* --------------------------------------------------------------------------
-   22. JANELA DE DETALHE DO PRODUTO (dialog nativo)
+   23. JANELA DE DETALHE DO PRODUTO (dialog nativo)
    O dialog ocupa a tela inteira de forma transparente; a caixa fica no
    centro e o formulario de fundo, com method="dialog", fecha ao clique
    fora. O ::backdrop escurece a pagina por tras.
@@ -1881,11 +1945,11 @@ select.campo-escuro {
 }
 
 /* --------------------------------------------------------------------------
-   23. ORÇAMENTO POR SELEÇÃO
+   24. ORÇAMENTO POR SELEÇÃO
    O seletor de cada card, a bandeja fixa e a janela da lista.
 
    Regra de cor da seção: o kit mínimo obrigatório fala em petróleo (é norma,
-   não é escolha) e o que a pessoa marcou fala no laranja da marca. Dentro da
+   não é escolha) e o que a pessoa marcou fala no verde da marca. Dentro da
    janela escura, o obrigatório troca o petróleo pelo amarelo de alerta, que
    é o mesmo da faixa zebrada e sobrevive ao fundo.
    -------------------------------------------------------------------------- */
@@ -2518,7 +2582,7 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 /* --------------------------------------------------------------------------
-   24. RESPONSIVO
+   25. RESPONSIVO
    -------------------------------------------------------------------------- */
 
 /* Abaixo de 1024px o parallax e desligado (ver js/main.js): as camadas
@@ -2550,7 +2614,7 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 /* --------------------------------------------------------------------------
-   25. MOVIMENTO REDUZIDO
+   26. MOVIMENTO REDUZIDO
    Quem pediu menos movimento recebe a pagina inteira estatica: sem parallax,
    sem reveal, sem marquee, sem tilt e sem pulso. O conteudo continua 100%
    acessivel.
@@ -2637,7 +2701,7 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 /* --------------------------------------------------------------------------
-   26. IMPRESSAO
+   27. IMPRESSAO
    -------------------------------------------------------------------------- */
 @media print {
   .btn-topo,

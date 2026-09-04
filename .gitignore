@@ -1,6 +1,7 @@
 node_modules/
 package-lock.json
 build/compile.html
+build/icone.html
 build/screens/
 build/relatorio.json
 # build/baseline.json e versionado: e a prova do "antes" no RELATORIO.md
