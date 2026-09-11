@@ -1,6 +1,6 @@
 /* Gera o sitemap.xml a partir do que existe no disco.
 
-   As 46 URLs saem de js/produtos.js pelo mesmo carregador que o gerador de
+   As 47 URLs saem de js/produtos.js pelo mesmo carregador que o gerador de
    paginas usa, entao o sitemap nunca lista uma pagina que nao foi gerada nem
    esquece uma que foi. build/verificar-paginas.mjs confere os dois conjuntos.
 
@@ -42,7 +42,7 @@ const entradas = [
     prioridade: "0.8"
   })),
 
-  /* Cada ficha declara a propria foto. Sao 36 fotos de estudio, e num catalogo
+  /* Cada ficha declara a propria foto. Sao 37 fotos de estudio, e num catalogo
      visual a extensao de imagem custa quase nada e abre o Google Imagens. */
   ...PRODUTOS.map((p) => ({
     loc: SITE + "/produtos/" + p.slug + ".html",

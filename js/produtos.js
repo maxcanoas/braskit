@@ -1,6 +1,6 @@
 /* ==========================================================================
    BRASKIT | dados do catálogo
-   36 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
+   37 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
    branco. O tratamento do slot está em .produto-midia, em css/style.css.
 
    Não existe id 33: é o Kit Cargas Perigosas, fora do site até a foto nova
@@ -124,6 +124,15 @@ var PRODUTOS = [
     material: "Adesivo, chapa de PVC ou chapa galvanizada",
     marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/placa-material-corrosivo.jpg"
+  },
+  {
+    id: 38, nome: "Placa Perigoso ao Meio Ambiente", categoria: "sinalizacao", slug: "placa-perigoso-meio-ambiente",
+    descricao: "Marca de substância perigosa ao meio ambiente: árvore seca e peixe em preto, no losango branco.",
+    aplicacao: "Carga classificada como perigosa ao meio ambiente, como a dos números ONU 3077 e 3082.",
+    detalhe: "Não é rótulo de risco e não substitui o da classe: vai junto dele. Se a sua carga pede a marca, quem diz é a ficha de segurança do produto (FDS), na seção de transporte. Diga o que você transporta que a gente confere.",
+    material: "Adesivo, chapa de PVC ou chapa galvanizada",
+    marca: "Braskit", fabricacaoPropria: true,
+    img: "assets/produtos/placa-perigoso-meio-ambiente.jpg"
   },
   {
     id: 15, nome: "Bastão Sinalizador", categoria: "sinalizacao", slug: "bastao-sinalizador",

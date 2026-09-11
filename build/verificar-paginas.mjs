@@ -1,7 +1,7 @@
 /* Verificacao das paginas geradas, sem navegador.
 
    build/verificar.mjs abre Chromium em cinco viewports e e caro: roda numa
-   amostra. Este aqui e o oposto -- le HTML como texto e cobre TODAS as 46
+   amostra. Este aqui e o oposto -- le HTML como texto e cobre TODAS as 47
    paginas em milissegundos. Um pega layout, o outro pega estrutura.
 
    O que ele afirma, e por que cada coisa importa:

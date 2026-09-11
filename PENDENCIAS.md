@@ -93,7 +93,7 @@ próprio Kit Cargas Perigosas volta com esse número, porque é o mesmo produto 
 3. Devolva o bloco do produto a `PRODUTOS`, em `js/produtos.js`, com **id 33** e
    `categoria: "kits-protecao"`. O texto original está no commit `e72d49b`
    (`git show e72d49b:js/produtos.js`).
-4. Somar 1 às contagens (hoje 36), e Kits de proteção de 1 para 2 itens. Em
+4. Somar 1 às contagens (hoje 37), e Kits de proteção de 1 para 2 itens. Em
    `catalogo.html`: meta description, og:description, olho do hero, os dois
    contadores e as duas linhas do `noscript`. Em `index.html`: título da seção
    Catálogo, card da categoria e card "Ver o catálogo completo". Os chips de filtro
@@ -165,7 +165,7 @@ Formas de pagamento (Pix, débito, crédito em até 5x, dinheiro e boleto para
 empresa) e o atendimento de sábado, que também faltavam, vieram nos textos de
 2026-09-11 e estão no FAQ da home e no JSON-LD.
 
-### 3.5 Revisão técnica das 36 fichas de produto
+### 3.5 Revisão técnica das 37 fichas de produto
 
 As descrições e aplicações foram reescritas para variar de tamanho e falar como
 balcão, mas **nenhuma especificação nova foi inventada** — não há medida, capacidade,
@@ -176,6 +176,13 @@ altura do cone, espessura da luva).
 Os três itens que entraram em setembro de 2026 — **Calçado de Segurança (id 35),
 Lanterna de Cabeça (id 36) e Máscara de Fuga (id 37)** — foram escritos só a partir da
 foto, sem ficha do fornecedor. Precisam da mesma revisão.
+
+**Placa Perigoso ao Meio Ambiente (id 38)**, também de setembro de 2026. A foto
+chegou como `placa-produto-toxico.jpg`, mas a placa não é de tóxico: tóxico é a
+classe 6.1, com a caveira. Árvore seca e peixe é a marca de substância perigosa ao
+meio ambiente, e o site a trata assim. Material e fabricação própria foram
+estendidos das outras placas, porque a Braskit disse que as placas são produção
+dela; vale confirmar que esta também é, e nos mesmos três materiais.
 
 **A foto da Lanterna de Cabeça mostra a caixa de um modelo intrinsecamente seguro**
 (Class I Div 1, Zone 0: não gera faísca em atmosfera com vapor inflamável). Para quem
@@ -217,7 +224,7 @@ Reagrupar por uso, na ordem em que a pessoa decide:
 |---|---|---|
 | 1 | **Kit completo** | Kit Cargas Perigosas, Kit de Ferramentas |
 | 2 | **Sinalização da via** | cones (os dois), pedestal, fita zebrada, bastão sinalizador, faixa refletiva, capa de cone |
-| 3 | **Placas e rótulos de risco** | placa laranja, placa laranja com números, líquido inflamável, material corrosivo, placa perigo |
+| 3 | **Placas e rótulos de risco** | placa laranja, placa laranja com números, líquido inflamável, material corrosivo, perigoso ao meio ambiente, placa perigo |
 | 4 | **Combate a incêndio** | extintor ABC, abafa chamas, caixa plástica para extintor, suporte de ferro para extintor |
 | 5 | **Proteção do operador (EPI)** | luvas (as três), bota, colete, respirador, máscara panorâmica |
 | 6 | **Contenção e limpeza** | pá e enxada, balde de alumínio com cabo terra |

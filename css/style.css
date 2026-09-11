@@ -783,7 +783,7 @@ img, svg, video, iframe { max-width: 100%; }
    produto de verdade. Feito com filtros, e nao mix-blend-mode, porque as
    fotos sao escuras e com blend o produto sumia junto com o fundo.
    -------------------------------------------------------------------------- */
-/* 3:2, nao 1:1. As 36 fotos sao 730x487, que e 3:2 exato -- o slot quadrado
+/* 3:2, nao 1:1. As 37 fotos sao 730x487, que e 3:2 exato -- o slot quadrado
    jogava fora um terco da largura de cada uma e frequentemente descentrava o
    produto. O chapado atras e neutro da marca, nao a cor da categoria: com as
    fotos de estudio ele quase nao aparece, e so emoldura as duas em retrato,
@@ -802,7 +802,7 @@ img, svg, video, iframe { max-width: 100%; }
    tratamento sem apagar a cor real.
 
    object-fit: contain, e nao cover, porque 730/487 = 1,4990 -- diferenca de
-   0,07% para 3:2, invisivel nas 34 fotos em paisagem. Em compensacao as duas
+   0,07% para 3:2, invisivel nas 35 fotos em paisagem. Em compensacao as duas
    em retrato (capa-cone e pedestal) aparecem inteiras, contidas no chapado,
    em vez de cortadas na faixa central. */
 .produto-foto {
@@ -1859,7 +1859,7 @@ select.campo-escuro {
 
 /* Card do produto no grid */
 /* PRODUTO -- o unico que continua cartao, porque e objeto de merchandising:
-   precisa de moldura para as 36 fotos lerem como um conjunto.
+   precisa de moldura para as 37 fotos lerem como um conjunto.
    O destaque vai para o estado de SELECAO, nao para o hover. */
 .produto-card {
   display: flex;

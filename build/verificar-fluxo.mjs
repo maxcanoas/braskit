@@ -79,7 +79,7 @@ checar("cone do kit sai com " + CONES_NO_KIT,
 /* Aqui os numeros ficam escritos de proposito, ao contrario da contagem total:
    e o que denuncia um produto que sumiu de js/produtos.js sem querer. Quando o
    Kit Cargas Perigosas voltar, kits-protecao volta para 2 (PENDENCIAS.md 2.1). */
-const CATEGORIAS = { produtos: 4, suportes: 6, sinalizacao: 7, textil: 3, injetados: 5,
+const CATEGORIAS = { produtos: 4, suportes: 6, sinalizacao: 8, textil: 3, injetados: 5,
                      "acessorios-caminhao": 2, epis: 8, "kits-protecao": 1 };
 let filtrosOk = true;
 for (const [slug, esperado] of Object.entries(CATEGORIAS)) {

@@ -31,7 +31,7 @@ export const CATEGORIA_SEO = {
     h1: "Placas de risco e sinalização para cargas perigosas",
     titulo: "Placas de Risco e Sinalização | Braskit Canoas",
     descricao: "Painel de segurança laranja, rótulo de risco, faixa refletiva e bastão sinalizador para o transporte de produtos perigosos. Loja em Canoas/RS.",
-    intro: "É a parte do kit que fala antes de qualquer pessoa chegar perto: o painel de segurança laranja, com número de risco e número ONU, e o rótulo de risco da classe do produto. A simbologia segue a NBR 7500, e o par de números do painel muda conforme o que está sendo transportado — para frota que alterna entre produtos existe a versão lisa, com numeração removível. Entram aqui também a faixa refletiva de contorno e o bastão para orientar o tráfego numa parada. Placas e rótulos saem da produção própria da Braskit, em adesivo, chapa de PVC ou chapa galvanizada."
+    intro: "É a parte do kit que fala antes de qualquer pessoa chegar perto: o painel de segurança laranja, com número de risco e número ONU, o rótulo de risco da classe do produto e, quando a carga é perigosa ao meio ambiente, a marca da árvore e do peixe. A simbologia segue a NBR 7500, e o par de números do painel muda conforme o que está sendo transportado — para frota que alterna entre produtos existe a versão lisa, com numeração removível. Entram aqui também a faixa refletiva de contorno e o bastão para orientar o tráfego numa parada. Placas e rótulos saem da produção própria da Braskit, em adesivo, chapa de PVC ou chapa galvanizada."
   },
 
   "textil": {
