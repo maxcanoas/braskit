@@ -58,7 +58,7 @@ export const CATEGORIA_SEO = {
   "epis": {
     h1: "EPIs para transporte de produtos perigosos",
     titulo: "EPIs para Transporte de Produtos Perigosos | Braskit",
-    descricao: "Respirador, máscara panorâmica, luvas nitrílica, PVC e raspa, e bota de PVC para o kit de cargas perigosas. Canoas/RS, orçamento no WhatsApp.",
+    descricao: "Respirador, máscaras panorâmica e de fuga, luvas, bota de PVC e calçado de segurança para o kit de cargas perigosas. Canoas/RS, orçamento no WhatsApp.",
     intro: "O equipamento de proteção individual do kit não é escolhido pelo equipamento, e sim pelo produto transportado: o filtro do respirador, o material da luva e a altura do punho seguem o que a ficha de emergência da carga indica. Uma luva nitrílica resolve contato químico onde a de raspa resolve calor, e trocar uma pela outra deixa o motorista desprotegido justamente no cenário para o qual o kit existe. Diga o que você transporta e a composição é conferida item por item."
   },
 

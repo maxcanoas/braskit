@@ -85,7 +85,7 @@ próprio Kit Cargas Perigosas volta com esse número, porque é o mesmo produto 
 3. Devolva o bloco do produto a `PRODUTOS`, em `js/produtos.js`, com **id 33** e
    `categoria: "kits-protecao"`. O texto original está no commit `e72d49b`
    (`git show e72d49b:js/produtos.js`).
-4. Contagens de volta para 34, e Kits de proteção de 1 para 2 itens. Em
+4. Somar 1 às contagens (hoje 36), e Kits de proteção de 1 para 2 itens. Em
    `catalogo.html`: meta description, og:description, olho do hero, os dois
    contadores e as duas linhas do `noscript`. Em `index.html`: título da seção
    Catálogo, card da categoria e card "Ver o catálogo completo". Os chips de filtro
@@ -144,19 +144,29 @@ Nenhuma destas informações aparece hoje, e todas são perguntas que o cliente 
 | **Faixa de preço do kit** | é a primeira pergunta de todo mundo |
 | **Prazo de entrega em dias** | hoje o site só diz "frete e prazo fechados no orçamento" |
 | **Garantia dos itens** | zero menção no site inteiro |
-| **Número de CA de cada EPI** | primeira pergunta de qualquer frotista, e obrigatório para uso profissional. Vale para luvas, colete, respirador, máscara panorâmica e bota |
+| **Número de CA de cada EPI** | primeira pergunta de qualquer frotista, e obrigatório para uso profissional. Vale para luvas, colete, respirador, máscara panorâmica, máscara de fuga, bota e calçado de segurança |
 | **Prova social** | nenhum depoimento, nenhum cliente citado, nenhuma avaliação |
 
 O espaço está reservado no layout com marcadores `<!-- PENDENTE BRASKIT -->` em
 `catalogo.html`. É só preencher quando a informação chegar.
 
-### 3.5 Revisão técnica das 33 fichas de produto
+### 3.5 Revisão técnica das 36 fichas de produto
 
 As descrições e aplicações foram reescritas para variar de tamanho e falar como
 balcão, mas **nenhuma especificação nova foi inventada** — não há medida, capacidade,
 material ou norma que já não estivesse no texto anterior. Alguém que conheça o
 produto precisa revisar, e é aí que entram as medidas reais (litragem do extintor,
 altura do cone, espessura da luva).
+
+Os três itens que entraram em setembro de 2026 — **Calçado de Segurança (id 35),
+Lanterna de Cabeça (id 36) e Máscara de Fuga (id 37)** — foram escritos só a partir da
+foto, sem ficha do fornecedor. Precisam da mesma revisão.
+
+**A foto da Lanterna de Cabeça mostra a caixa de um modelo intrinsecamente seguro**
+(Class I Div 1, Zone 0: não gera faísca em atmosfera com vapor inflamável). Para quem
+transporta inflamável, é o melhor argumento do item, e o site não o usa porque a Braskit
+não confirmou que vende esse modelo. Se confirmar, a informação entra como `detalhe` do
+id 36 em `js/produtos.js`.
 
 ### 3.6 Avaliações no Google
 

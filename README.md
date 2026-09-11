@@ -3,8 +3,8 @@
 Site da **Braskit, Kit para Transporte de Cargas Perigosas** (Canoas/RS).
 Estatico, sem framework em runtime e sem servidor.
 
-Sao 43 paginas: `index.html` e `catalogo.html`, escritas a mao, mais 8 de
-categoria e 33 de produto, **geradas** a partir de `js/produtos.js` por
+Sao 46 paginas: `index.html` e `catalogo.html`, escritas a mao, mais 8 de
+categoria e 36 de produto, **geradas** a partir de `js/produtos.js` por
 `npm run build`. As geradas existem por SEO: o catalogo monta o grid em
 runtime, entao para busca ele e uma `<div>` vazia -- ver "Paginas geradas".
 
@@ -23,31 +23,31 @@ Conferido no Chrome em 390, 768, 1024 e 1440 px.
 index.html          landing one-page com parallax e profundidade 3D
 catalogo.html       catalogo com filtros, busca, selecao e janela de detalhe
 categorias/*.html   8 paginas de categoria   -- GERADAS, nao editar a mao
-produtos/*.html     33 fichas de produto     -- GERADAS, nao editar a mao
+produtos/*.html     36 fichas de produto     -- GERADAS, nao editar a mao
 404.html            pagina de erro           -- GERADA, nao editar a mao
 css/tw.css          utilitarios compilados no build (nao editar a mao)
 css/style.css       tema da marca, parallax, animacoes e componentes
 js/main.js          parallax, tilt 3D, reveal, contadores, header, menu, formulario
-js/produtos.js      os 33 produtos, as 8 categorias, o kit minimo e a imagem de reserva
+js/produtos.js      os 36 produtos, as 8 categorias, o kit minimo e a imagem de reserva
 js/orcamento.js     lista de orcamento: estado, bandeja fixa e janela da lista
 js/catalogo.js      render do grid, filtros, busca e janela de detalhe
-assets/             SVGs, icones, OG e as 33 fotos de produto
+assets/             SVGs, icones, OG e as 36 fotos de produto
 assets/img/         pasta das fotos de ambiente (ver "Imagens" abaixo)
 build/              ferramentas de build (CSS, OG, icones e paginas)
 netlify.toml        publicacao: cache, 404 e pretty_urls desligado
-sitemap.xml         43 URLs, gerado por npm run sitemap
+sitemap.xml         46 URLs, gerado por npm run sitemap
 ```
 
 ### Scripts
 
 ```
 npm run build       gera as paginas e o sitemap  (gerar + sitemap)
-npm run gerar       so as 42 paginas geradas
+npm run gerar       so as 45 paginas geradas
 npm run sitemap     so o sitemap.xml
 npm run css         recompila css/tw.css        (so se usar classe nova)
 npm run imagens     pipeline de avif/webp
 
-npm run paginas     43 checagens estruturais, sem navegador (rapido)
+npm run paginas     46 checagens estruturais, sem navegador (rapido)
 npm run verificar   layout, contraste e peso no Chromium, em 5 viewports
 npm run fluxo       37 checagens do fluxo comercial do catalogo
 npm run tudo        tudo acima, na ordem. E o portao antes de publicar.
@@ -216,12 +216,12 @@ Tudo e gerado por `node build/imagens.mjs`, com sharp. **A regra e nunca
 ampliar**: as fotos de ambiente tem 1376 a 1408 px no lado maior e as de
 produto tem 730, e upscale so engorda o arquivo fingindo nitidez.
 
-As 33 fotos de produto sao reais, do acervo da empresa, e **todas foram feitas
+As 36 fotos de produto sao reais, do acervo da empresa, e **todas foram feitas
 em estudio, sobre fundo branco**. Chegam com 1264x843 e sao normalizadas na
 importacao para 730x487, que e o que o slot pede.
 
 O slot do card e **3:2**, que e a proporcao nativa delas (730x487) -- por isso
-31 das 33 aparecem sem corte nenhum, e as duas em retrato aparecem inteiras
+34 das 36 aparecem sem corte nenhum, e as duas em retrato aparecem inteiras
 sobre o chapado neutro em vez de cortadas na faixa central. O tratamento e
 leve, so o suficiente para nao apagar a cor real do produto.
 
@@ -301,7 +301,7 @@ Tres scripts. Os dois de Playwright rodam em `file://`, que e como o site e
 aberto:
 
 ```
-node build/verificar-paginas.mjs # 43 paginas, estrutura e schema, sem navegador
+node build/verificar-paginas.mjs # 46 paginas, estrutura e schema, sem navegador
 node build/verificar.mjs         # 5 paginas x 5 viewports, com e sem webfont
 node build/verificar-fluxo.mjs   # 37 verificacoes do caminho que vende
 node build/fatiar.mjs atual      # corta os screenshots em fatias legiveis
@@ -343,11 +343,11 @@ As 8 paginas de categoria, as 33 fichas de produto e a 404 sao **geradas** por
 | nome, descricao, aplicacao, detalhe de um produto | `js/produtos.js` |
 | titulo, description e a introducao de uma categoria | `build/conteudo-seo.mjs` |
 | o layout, o schema ou a chamada final | `build/gerar-paginas.mjs` |
-| o cabecalho ou o rodape das 43 paginas | `catalogo.html` |
+| o cabecalho ou o rodape das 46 paginas | `catalogo.html` |
 
 **Por que existem.** O grid do catalogo e montado em runtime por
 `js/catalogo.js`: no HTML servido, `#gridProdutos` e uma `<div>` vazia. As
-descricoes e aplicacoes dos 33 produtos, que somam mais texto do que a home
+descricoes e aplicacoes dos 36 produtos, que somam mais texto do que a home
 inteira, so existiam em JavaScript -- e a aplicacao nem no card estava, so na
 janela de detalhe, atras de um clique. Sem essas paginas, o catalogo nao existe
 para busca.
@@ -416,7 +416,7 @@ quem tiver a URL salva -- quem le e `js/catalogo.js`, e ha checagem disso em
 
 ## Medicao
 
-Google Analytics 4, propriedade `G-PBNV1K928G`, nas 43 paginas. O snippet esta
+Google Analytics 4, propriedade `G-PBNV1K928G`, nas 46 paginas. O snippet esta
 no `<head>` de `index.html` e `catalogo.html` e no template de
 `build/gerar-paginas.mjs` -- os tres precisam andar juntos se a propriedade
 mudar.
@@ -472,7 +472,7 @@ local.
 **A disputa.** Os termos genericos ("kit NBR 9735") sao dominados por
 marketplace nacional. O campo aberto e local e de cauda longa: "kit cargas
 perigosas Canoas", "kit ANTT Porto Alegre", e o nome de cada um dos 33
-produtos. As 43 paginas foram montadas para essa segunda briga, nao para a
+produtos. As 46 paginas foram montadas para essa segunda briga, nao para a
 primeira.
 
 **Proximos passos**, em ordem de retorno:

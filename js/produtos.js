@@ -1,6 +1,6 @@
 /* ==========================================================================
    BRASKIT | dados do catálogo
-   33 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
+   36 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
    branco. O tratamento do slot está em .produto-midia, em css/style.css.
 
    Não existe id 33: é o Kit Cargas Perigosas, fora do site até a foto nova
@@ -41,6 +41,12 @@ var PRODUTOS = [
     descricao: "Feixe direcionado, autonomia para uma parada inteira.",
     aplicacao: "Parada de emergência e conferência da carga à noite.",
     img: "assets/produtos/lanternas.jpg"
+  },
+  {
+    id: 36, nome: "Lanterna de Cabeça", categoria: "produtos", slug: "lanterna-cabeca",
+    descricao: "Presa na cabeça por elástico ajustável: a luz vai aonde o olhar vai e as duas mãos ficam livres.",
+    aplicacao: "Conferência de lacre, válvula e amarração à noite, e atendimento de emergência na via.",
+    img: "assets/produtos/lanterna-cabeca.jpg"
   },
   {
     id: 4, nome: "Caixa de Plástico para Extintor", categoria: "suportes", slug: "caixa-plastico-extintor",
@@ -199,6 +205,13 @@ var PRODUTOS = [
     img: "assets/produtos/mascara-panoramica.jpg"
   },
   {
+    id: 37, nome: "Máscara de Fuga", categoria: "epis", slug: "mascara-fuga",
+    descricao: "Máscara com filtro, de colocação rápida. É feita para sair da área contaminada, não para trabalhar nela.",
+    aplicacao: "Abandono do local em vazamento de gás ou vapor tóxico, até alcançar ar limpo.",
+    detalhe: "Nem toda carga pede máscara de fuga: é o produto transportado que decide, e a ficha de emergência da carga diz se ela precisa estar a bordo. Diga o que você transporta que a gente confere.",
+    img: "assets/produtos/mascara-fuga.jpg"
+  },
+  {
     id: 29, nome: "Luvas Nitrílica e Multitato", categoria: "epis", slug: "luvas-nitrilica-multitato",
     descricao: "Aderência e resistência química no mesmo par.",
     aplicacao: "Manuseio geral da carga e dos itens do kit.",
@@ -221,6 +234,12 @@ var PRODUTOS = [
     descricao: "Impermeável, cano alto, solado antiderrapante.",
     aplicacao: "Área alagada por produto derramado.",
     img: "assets/produtos/bota-pvc.jpg"
+  },
+  {
+    id: 35, nome: "Calçado de Segurança", categoria: "epis", slug: "calcado-seguranca",
+    descricao: "Sem cadarço, com elástico nas laterais: calça e tira rápido, sem laço para desamarrar ou enroscar.",
+    aplicacao: "Uso diário do motorista na cabine, no pátio e durante a carga e descarga.",
+    img: "assets/produtos/calcado-seguranca.jpg"
   },
   {
     id: 34, nome: "Kit de Ferramentas", categoria: "kits-protecao", slug: "kit-ferramentas",

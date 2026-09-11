@@ -1,6 +1,6 @@
 /* Gera as paginas estaticas de categoria a partir de js/produtos.js.
 
-   Por que existir: o catalogo e servido como uma <div> vazia -- os 33
+   Por que existir: o catalogo e servido como uma <div> vazia -- os
    produtos so entram no DOM em runtime, por js/catalogo.js. Para busca, o
    catalogo inteiro nao existe. Estas paginas dao a cada categoria uma URL
    propria, com o texto ja no HTML, sem tocar no funcionamento do catalogo.
@@ -239,7 +239,7 @@ function tituloProduto(prod, cat) {
 /* Especificacao tecnica. Hoje nenhum produto tem estes campos em
    js/produtos.js, entao a tabela nao renderiza para ninguem -- e de proposito:
    o que falta e o DADO, nao o template. Preenchida a PENDENCIAS.md 3.4 (numero
-   de CA, medida, material, norma), as 33 fichas crescem so com um novo
+   de CA, medida, material, norma), as fichas crescem so com um novo
    `node build/gerar-paginas.mjs`. */
 const CAMPOS_ESPECIFICACAO = [
   ["ca", "Certificado de Aprovação (CA)"],
@@ -441,7 +441,7 @@ ${irmaos.map((x) => cardProduto(x, p, ctx)).join("\n")}
     : `
 <section class="secao secao-clara">
   <div class="container-braskit">
-    <p class="medida text-base leading-relaxed text-neutro-900/75">Este é o único item de ${esc(cat.nome)} no catálogo. <a href="${p}catalogo.html" class="font-semibold text-hazmat-500 underline decoration-hazmat-500/30 underline-offset-4 transition-colors hover:text-hazmat-400">Ver os 33 produtos</a>.</p>
+    <p class="medida text-base leading-relaxed text-neutro-900/75">Este é o único item de ${esc(cat.nome)} no catálogo. <a href="${p}catalogo.html" class="font-semibold text-hazmat-500 underline decoration-hazmat-500/30 underline-offset-4 transition-colors hover:text-hazmat-400">Ver os ${PRODUTOS.length} produtos</a>.</p>
   </div>
 </section>`;
 

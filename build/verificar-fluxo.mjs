@@ -68,8 +68,8 @@ checar("kit minimo e o esperado (25, 20, 26)",
 /* Aqui os numeros ficam escritos de proposito, ao contrario da contagem total:
    e o que denuncia um produto que sumiu de js/produtos.js sem querer. Quando o
    Kit Cargas Perigosas voltar, kits-protecao volta para 2 (PENDENCIAS.md 2.1). */
-const CATEGORIAS = { produtos: 3, suportes: 6, sinalizacao: 7, textil: 3, injetados: 5,
-                     "acessorios-caminhao": 2, epis: 6, "kits-protecao": 1 };
+const CATEGORIAS = { produtos: 4, suportes: 6, sinalizacao: 7, textil: 3, injetados: 5,
+                     "acessorios-caminhao": 2, epis: 8, "kits-protecao": 1 };
 let filtrosOk = true;
 for (const [slug, esperado] of Object.entries(CATEGORIAS)) {
   await aba.locator(`.chip-filtro[data-cat="${slug}"]`).evaluate((el) => el.click());
@@ -91,7 +91,7 @@ checar("filtro Todos volta aos " + catalogados,
 await aba.goto(url + "?cat=epis", { waitUntil: "load" });
 await aba.waitForTimeout(600);
 checar("?cat=epis ainda filtra pela URL",
-  (await aba.locator(".produto-card:visible").count()) === 6,
+  (await aba.locator(".produto-card:visible").count()) === CATEGORIAS.epis,
   (await aba.locator(".produto-card:visible").count()) + " visiveis");
 
 /* O card virou <a> para a pagina do produto. Duas coisas precisam valer ao

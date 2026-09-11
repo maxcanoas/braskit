@@ -3,19 +3,19 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://braskitcargasperigosas.com.br/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/catalogo.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/categorias/produtos.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,7 +51,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/categorias/epis.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,7 +63,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/abafa-chamas.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -73,7 +73,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/balde-aluminio-cabo-terra.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -83,12 +83,22 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/lanternas.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/lanternas.jpg</image:loc>
       <image:title>Lanternas</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/lanterna-cabeca.html</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/lanterna-cabeca.jpg</image:loc>
+      <image:title>Lanterna de Cabeça</image:title>
     </image:image>
   </url>
   <url>
@@ -323,7 +333,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/respirador-semifacial.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -333,7 +343,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/mascara-panoramica.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -342,8 +352,18 @@
     </image:image>
   </url>
   <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/mascara-fuga.html</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/mascara-fuga.jpg</image:loc>
+      <image:title>Máscara de Fuga</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/luvas-nitrilica-multitato.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -353,7 +373,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/luvas-raspa-vaqueta.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -363,7 +383,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/luvas-pvc.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -373,7 +393,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/bota-pvc.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -382,8 +402,18 @@
     </image:image>
   </url>
   <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/calcado-seguranca.html</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/calcado-seguranca.jpg</image:loc>
+      <image:title>Calçado de Segurança</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/kit-ferramentas.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
