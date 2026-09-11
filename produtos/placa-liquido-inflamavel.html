@@ -57,6 +57,13 @@
   "description": "Rótulo de risco da classe 3. Combustível, solvente e álcool.",
   "image": "https://braskitcargasperigosas.com.br/assets/produtos/placa-liquido-inflamavel.jpg",
   "category": "Sinalização",
+  "brand": {
+    "@type": "Brand",
+    "name": "Braskit"
+  },
+  "manufacturer": {
+    "@id": "https://braskitcargasperigosas.com.br/#organizacao"
+  },
   "url": "https://braskitcargasperigosas.com.br/produtos/placa-liquido-inflamavel.html",
   "isRelatedTo": {
     "@id": "https://braskitcargasperigosas.com.br/#organizacao"
@@ -145,11 +152,11 @@
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href="tel:+555130517997" class="hidden items-center gap-2 text-sm font-medium text-white/85 transition-colors hover:text-white xl:flex">
+      <a href="tel:+5551993011327" class="hidden items-center gap-2 text-sm font-medium text-white/85 transition-colors hover:text-white xl:flex">
         <svg class="h-4 w-4 text-hazmat-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
         </svg>
-        (51) 3051-7997
+        (51) 99301-1327
       </a>
 
       <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20kit%20para%20cargas%20perigosas."
@@ -233,10 +240,15 @@
         <span class="ficha-bloco__rotulo">Quando se usa</span>
         <p>Combustível, solvente e álcool.</p>
       </div>
-      <!-- PENDENTE BRASKIT: numero de CA, medidas, material, capacidade e norma
-           deste item. Ver PENDENCIAS.md 3.4. O template da tabela ja existe em
-           build/gerar-paginas.mjs e o estilo em css/style.css: basta o dado
-           entrar em js/produtos.js e a ficha cresce sozinha. -->
+      <div class="ficha-bloco">
+        <span class="ficha-bloco__rotulo">Especificação</span>
+        <table class="ficha-especificacao">
+          <tbody>
+          <tr><th scope="row">Marca</th><td>Braskit (fabricação própria)</td></tr>
+          <tr><th scope="row">Material</th><td>Adesivo, chapa de PVC ou chapa galvanizada</td></tr>
+          </tbody>
+        </table>
+      </div>
 
         <div class="flex flex-wrap gap-3 pt-2">
           <a href="https://wa.me/5551993011327?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Placa%20L%C3%ADquido%20Inflam%C3%A1vel.%20Poderia%20me%20enviar%20um%20or%C3%A7amento%3F" target="_blank" rel="noopener"
@@ -284,7 +296,7 @@
           <div class="flex flex-1 flex-col p-5">
             <span class="mb-3 inline-flex w-fit rounded-full bg-petroleo-900/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-petroleo-700">Sinalização</span>
             <h2 class="mb-2 text-lg leading-tight text-neutro-900">Placa Laranja</h2>
-            <p class="flex-1 text-sm leading-relaxed text-neutro-900/60">Laranja lisa, sem numeração, em plástico resistente.</p>
+            <p class="flex-1 text-sm leading-relaxed text-neutro-900/60">Laranja lisa, sem numeração.</p>
           </div>
         </a>
       </article>
@@ -349,8 +361,8 @@
           <span class="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-white/60">Kit para transporte de cargas perigosas</span>
         </a>
         <p class="text-sm leading-relaxed">
-          Revenda especializada em material de segurança e
-          sinalização para o transporte de produtos perigosos.
+          Material de segurança e sinalização para o
+          transporte de produtos perigosos, em Canoas desde 1985.
         </p>
         <p class="mt-5 font-titulo text-lg uppercase tracking-tight text-white/85">
           Protegendo vidas,<br>preservando o futuro.
@@ -387,11 +399,11 @@
         <address class="space-y-4 text-sm not-italic">
           <p>Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-340</p>
           <p>
-            <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997</a><br>
             <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a><br>
+            <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997 (fixo)</a><br>
             <a href="mailto:braskit.kit@gmail.com" class="transition-colors hover:text-hazmat-500">braskit.kit@gmail.com</a>
           </p>
-          <p>Segunda a sexta, 08:00 às 18:00<br><span class="text-white/60">Almoço das 11:45 às 13:15</span></p>
+          <p>Segunda a sexta, 08:00 às 18:00<br><span class="text-white/60">Almoço das 11:45 às 13:30<br>Sábado, só atendimento de emergência</span></p>
           <p class="text-white/60">Loja em Canoas, com envio para todo o Rio Grande do Sul.</p>
         </address>
       </div>
@@ -400,7 +412,7 @@
     <div class="faixa-zebrada faixa-zebrada-fina" aria-hidden="true"></div>
 
     <div class="flex flex-col gap-3 py-7 text-xs sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; 2026 Braskit. Kit para Transporte de Cargas Perigosas.</p>
+      <p>&copy; 2026 Braskit · J C Rodrigues-O Canha ME · CNPJ 90.402.959/0001-46</p>
       <p class="text-white/60">Site por <a href="https://devmrmoraes.com.br" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">DEVMRMORAES</a>.</p>
     </div>
   </div>

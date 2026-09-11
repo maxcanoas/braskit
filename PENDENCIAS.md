@@ -8,33 +8,36 @@ Ordenado por impacto. Os três primeiros mudam o que o visitante lê; o resto me
 
 ---
 
-## 1. Qual é, de verdade, o kit mínimo obrigatório
+## 1. Qual é, de verdade, o kit mínimo obrigatório — resolvido em 2026-09-11
 
-**Onde afeta:** o catálogo trava três itens no orçamento de todo visitante, e eles
-chegam ao cliente com cara de informação oficial da Braskit.
-
-Hoje `KIT_MINIMO`, no fim de `js/produtos.js`, trava:
+A Braskit mandou o **kit básico** que ela monta conforme a NBR 9735 (documento
+"KIT BASICO", de 07/09/2026), e ele virou o `KIT_MINIMO` de `js/produtos.js`:
 
 | Item | Quantidade |
 |---|---|
-| Extintor ABC (id 25) | 1 |
-| Cone Flexível com Faixa, NBR 15071 (id 20) | 1 |
+| Respirador Semifacial com Filtro VO/GA (id 27) | 1 |
+| Luvas PVC, com forro (id 31) | 1 |
+| Bota de PVC (id 32) | 1 |
+| Colete Refletivo tipo X (id 19) | 1 |
+| Bolsa de Lona para Kit (id 17) | 1 |
+| Cone Flexível com Faixa, NBR 15071 (id 20) | **4** |
+| Kit de Ferramentas (id 34) | 1 |
 | Par de Calço de Borracha (id 26) | 1 |
 
-**Essa composição é uma sugestão técnica, montada pelo que a fiscalização mais cobra.
-Ninguém da Braskit validou.** O próprio comentário no arquivo já dizia isso. Duas
-coisas precisam de resposta:
+O `qtd` é também o mínimo: o botão de diminuir do cone para em 4, e a lista salva de
+quem visitou antes sobe para 4 na carga. A seção "Composição" da home mostra o kit
+inteiro, e a nota da janela do orçamento e o selo das fichas deixaram de falar em
+"sugestão".
 
-1. **Quais itens** entram no kit mínimo obrigatório.
-2. **Quantos de cada um.** A NBR 9735 trata da quantidade de dispositivos de
-   sinalização que o veículo precisa levar, e é provável que a quantidade do cone
-   não seja 1.
+O que ainda depende da empresa:
 
-Enquanto não vier a resposta, a janela do orçamento mostra uma nota discreta dizendo
-que a composição é sugerida e que a Braskit confirma o kit exato junto com o
-orçamento. Trocar item, quantidade ou número de itens é mexer só naquela lista: o
-resto (card travado, cadeado na janela, grupo separado na mensagem do WhatsApp)
-acompanha sozinho.
+- **Capacete e óculos ampla visão** estão no kit, mas não no catálogo: falta foto
+  para virarem produto. Os CAs já vieram no documento (capacete 31469, óculos
+  11285) e entram na ficha junto. Quando entrarem, vão também para o `KIT_MINIMO`.
+- A "bolsa de EPI" do documento foi tomada como a **Bolsa de Lona para Kit**
+  (id 17). Confirmar.
+- **Extintor (8 kg ABC) e capa de cone** o documento lista à parte, como "outros
+  equipamentos", e por isso ficaram opcionais no orçamento.
 
 ---
 
@@ -42,11 +45,16 @@ acompanha sozinho.
 
 **Uma tarde de fotografia resolve mais do que todo o resto desta lista.**
 
-As quatro fotos de ambiente (`assets/img/`) foram geradas por IA e têm os defeitos
-clássicos: em `sobre-kit.jpg` a costura da luva não fecha, o extintor está preso na
-bolsa de um jeito que não existe e as ferramentas do painel de fundo flutuam; em
-`faixa-noturna.jpg` os cones estão numa fila geometricamente perfeita e as faixas
-refletivas não batem entre um cone e outro. **Nenhuma das quatro mostra a Braskit.**
+As fotos de ambiente (`assets/img/`) foram geradas por IA e têm os defeitos
+clássicos: em `faixa-noturna.jpg` os cones estão numa fila geometricamente perfeita e
+as faixas refletivas não batem entre um cone e outro. **Nenhuma delas mostra a
+Braskit.**
+
+A exceção é `sobre-kit.jpg`, trocada em 2026-09-11 por uma foto do kit montado:
+bolsa, botas, capacete, cones, capa de cone, extintor, calços, ferramentas e colete.
+Mas os textos impressos nela saem deformados (o extintor lê "ERYINPEL" em vez de
+Extinpel, e o logo na bolsa e no estojo sai incompleto), o que é típico de imagem
+gerada ou retocada. Se a Braskit fotografar o próprio kit, essa é a primeira a trocar.
 
 O que vale mais, em ordem:
 
@@ -117,23 +125,26 @@ mais para baixo e céu livre em cima.
 
 ## 3. Dados cadastrais e o que fecha venda
 
-### 3.1 Ano de fundação
+### 3.1 Ano de fundação — resolvido
 
-O site antigo dizia **"mais de 30 anos"** em cinco lugares e também **"desde os anos
-90"**. Em 2026 isso vai de 26 a 36 anos — são afirmações diferentes. Todas foram
-retiradas. Confirmado o ano, ele volta em **um** lugar, com a data exata, e o selo da
-seção Sobre volta a ser um número.
+**1985**, informado pela Braskit e confirmado pela abertura do CNPJ (05/09/1985).
+Está no selo da seção Sobre ("Desde 1985"), no texto do Sobre, no rodapé e no
+JSON-LD (`foundingDate`).
 
-### 3.2 CNPJ e razão social
+### 3.2 CNPJ e razão social — resolvido
 
-Não constam no site antigo e não foram inventados. Faltam no rodapé. **Existem dois
-CNPJs em aberto** — é preciso confirmar qual é o correto.
+Razão social **J C Rodrigues-O Canha ME**, nome fantasia Braskit Comércio de
+Material de Segurança, **CNPJ 90.402.959/0001-46**: ativo, conferido na Receita
+(BrasilAPI), mesmo CEP do site. Estão no rodapé e no JSON-LD (`legalName`,
+`taxID`). O outro CNPJ que circulava, 08.432.867/0001-28, está **baixado** e não
+deve aparecer em lugar nenhum.
 
-### 3.3 Telefone fixo
+### 3.3 Telefone — resolvido
 
-O site usa **(51) 3051-7997** no header, no rodapé e no JSON-LD. Confirmar se ainda
-está ativo. O WhatsApp `5551993011327` está certo e é o único número usado em todos
-os 19 links de conversa.
+O principal é o celular **(51) 99301-1327**, que também é o WhatsApp: está no
+header, no JSON-LD e em primeiro no contato e no rodapé. O fixo (51) 3051-7997
+segue como secundário. O WhatsApp continua sendo o único número dos links de
+conversa.
 
 ### 3.4 O que fecha venda e não existe em lugar nenhum do site
 
@@ -144,11 +155,15 @@ Nenhuma destas informações aparece hoje, e todas são perguntas que o cliente 
 | **Faixa de preço do kit** | é a primeira pergunta de todo mundo |
 | **Prazo de entrega em dias** | hoje o site só diz "frete e prazo fechados no orçamento" |
 | **Garantia dos itens** | zero menção no site inteiro |
-| **Número de CA de cada EPI** | primeira pergunta de qualquer frotista, e obrigatório para uso profissional. Vale para luvas, colete, respirador, máscara panorâmica, máscara de fuga, bota e calçado de segurança |
+| **Número de CA dos EPIs que faltam** | primeira pergunta de qualquer frotista, e obrigatório para uso profissional. Já estão nas fichas os do respirador (37401), da luva PVC (21420 / 41917) e da bota (36025 / 51112). Faltam luvas nitrílica e de raspa, colete, máscara panorâmica, máscara de fuga e calçado de segurança |
 | **Prova social** | nenhum depoimento, nenhum cliente citado, nenhuma avaliação |
 
 O espaço está reservado no layout com marcadores `<!-- PENDENTE BRASKIT -->` em
 `catalogo.html`. É só preencher quando a informação chegar.
+
+Formas de pagamento (Pix, débito, crédito em até 5x, dinheiro e boleto para
+empresa) e o atendimento de sábado, que também faltavam, vieram nos textos de
+2026-09-11 e estão no FAQ da home e no JSON-LD.
 
 ### 3.5 Revisão técnica das 36 fichas de produto
 
@@ -223,3 +238,37 @@ orçamento salva no navegador de quem já visitou o site.
   Negócio.
 - **O peso 500 do Barlow Condensed** é baixado do Google Fonts e não é usado por
   nada. Sai da URL quando alguém confirmar que nenhum texto novo vai precisar dele.
+- **`priceRange` diverge** entre as duas páginas escritas à mão: `"$$"` na home e
+  `"$"` no catálogo.
+
+---
+
+## 6. Dos textos da Braskit (2026-09-11): o que ficou de fora ou pede confirmação
+
+Os documentos "Perguntas Braskit" e "KIT BASICO" resolveram os itens 1, 3.1, 3.2 e
+3.3. O que sobrou deles:
+
+- **Entrega.** A resposta ficou ambígua ("dependendo do valor, é sem custo" e
+  "entregamos encomendas a partir de R$ 500", por aplicativo ou transportadora). Por
+  decisão, **nada disso foi publicado**; o site segue com "frete e prazo fechados no
+  orçamento".
+- **"CONTRAN 5998".** A Braskit citou assim, mas a 5.998/2022 é **resolução da ANTT**
+  (o regulamento do transporte rodoviário de produtos perigosos). O FAQ cita a ANTT.
+  Vale confirmar com a empresa que é essa a norma que ela quis dizer.
+- **Edição da NBR 9735.** O documento do kit diz "NBR 9735/2025". O site não cita
+  ano de edição de norma nenhuma até alguém confirmar.
+- **CAs.** Publicados só com o número, sem a validade (que vence e desatualizaria o
+  site). Não foi possível conferi-los no CAEPI de forma automática: vale a Braskit
+  conferir respirador 37401, luva PVC 21420 / 41917 e bota 36025 / 51112.
+- **Marcas.** A resposta diz "luvas e óculos: Kalipso", e a marca foi aplicada às três
+  luvas do catálogo. Confirmar se vale para todas. Extintor (Extinpel) e respirador
+  (Destra) vieram sem ambiguidade.
+- **Ficha de emergência.** Vários textos do site dizem que "a ficha de emergência da
+  carga" indica EPI e filtro. Até onde se sabe, a regulamentação da ANTT deixou de
+  exigir a ficha em 2016, mas a composição ainda depende do produto. Revisar com a
+  Braskit se o termo continua certo antes de reescrever.
+- **Feriados, Natal, Ano Novo e férias coletivas** são informação para o Perfil da
+  Empresa no Google, não para o site.
+- **Quem responde o WhatsApp** foi informado, mas não é citado no site, por decisão.
+- **Mais vendidos** (placas, cones e kits): subsídio para a taxonomia da seção 4, que
+  não se aplica junto com outra mudança.

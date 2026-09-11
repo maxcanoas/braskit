@@ -61,13 +61,17 @@
   "@id": "https://braskitcargasperigosas.com.br/#organizacao",
   "name": "Braskit",
   "alternateName": "Braskit | Kit para Transporte de Cargas Perigosas",
-  "description": "Revenda especializada em material de segurança e sinalização para o transporte de produtos perigosos, com kits montados conforme a carga, dentro das normas do CONTRAN e da ABNT.",
+  "legalName": "J C Rodrigues-O Canha ME",
+  "taxID": "90.402.959/0001-46",
+  "foundingDate": "1985",
+  "description": "Material de segurança e sinalização para o transporte de produtos perigosos, em Canoas desde 1985. Placas, adesivos e bolsas de fabricação própria, EPIs direto das fábricas e kits montados conforme a carga, pela NBR 9735.",
   "url": "https://braskitcargasperigosas.com.br/",
-  "telephone": "+555130517997",
+  "telephone": "+5551993011327",
   "email": "braskit.kit@gmail.com",
   "image": "https://braskitcargasperigosas.com.br/assets/og-braskit.png",
   "sameAs": ["https://www.facebook.com/braskit"],
   "priceRange": "$$",
+  "paymentAccepted": "Pix, cartão de débito, cartão de crédito, dinheiro, boleto bancário",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Rua Uruguai, 317",
@@ -81,11 +85,16 @@
     { "@type": "City", "name": "Canoas" },
     { "@type": "City", "name": "Porto Alegre" },
     { "@type": "AdministrativeArea", "name": "Região Metropolitana de Porto Alegre" },
-    { "@type": "State", "name": "Rio Grande do Sul" }
+    { "@type": "State", "name": "Rio Grande do Sul" },
+    { "@type": "State", "name": "Paraná" },
+    { "@type": "State", "name": "Santa Catarina" },
+    { "@type": "State", "name": "Minas Gerais" },
+    { "@type": "State", "name": "Bahia" },
+    { "@type": "State", "name": "Espírito Santo" }
   ],
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "11:45" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "13:15", "closes": "18:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "13:30", "closes": "18:00" }
   ]
 }
 </script>
@@ -102,9 +111,9 @@
 }
 </script>
 
-<!-- FAQPage. O FAQ ja existia pronto na pagina e nao aparecia no schema.
-     Gerado a partir do proprio DOM por um passo do build, entao pergunta e
-     resposta nao divergem do que esta na tela. -->
+<!-- FAQPage. Espelha, pergunta por pergunta, a secao FAQ do <body>: o texto de
+     cada resposta aqui e o mesmo da tela, so sem as quebras de linha. E
+     mantido a mao -- mudou la, muda aqui. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -115,7 +124,7 @@
       "name": "O kit é obrigatório?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim. O transporte rodoviário de produtos perigosos exige o conjunto de equipamentos de emergência previsto na regulamentação do CONTRAN e da ANTT. A composição muda conforme a classe de risco do produto, mas circular sem o kit, ou com itens vencidos, sujeita o transportador a multa e retenção do veículo na fiscalização."
+        "text": "Sim. O transporte rodoviário de produtos perigosos exige o conjunto de equipamentos de emergência previsto na Resolução ANTT nº 5.998/2022, com a composição detalhada pela NBR 9735. Ela muda conforme a classe de risco do produto, mas circular sem o kit, ou com itens vencidos, sujeita o transportador a multa e retenção do veículo na fiscalização."
       }
     },
     {
@@ -128,10 +137,26 @@
     },
     {
       "@type": "Question",
-      "name": "Atendem fora de Canoas?",
+      "name": "Para que servem os EPIs e os cones?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim, atendemos o estado inteiro. Na região metropolitana a entrega é combinada conforme o volume do pedido. Para as demais cidades do Rio Grande do Sul o kit segue por transportadora, com frete e prazo fechados junto com o orçamento no WhatsApp."
+        "text": "Os EPIs são para o motorista se proteger do produto numa emergência: capacete, óculos, respirador, luva e bota. Os cones sinalizam a área e evitam que as pessoas cheguem perto do veículo parado. Os dois fazem parte do kit básico que montamos conforme a NBR 9735."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como colocar as placas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do produto e de como ele viaja. O painel de segurança laranja leva o número de risco e o número ONU da carga, o rótulo de risco mostra a classe, e a simbologia segue a NBR 7500. Para cada carga a placa precisa ser específica e o suporte, de uma medida determinada: diga o que você transporta que indicamos a placa, o suporte e onde cada um vai no veículo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Onde guardar o kit e como usar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Num lugar de acesso rápido, que o motorista alcance sem precisar mexer na carga: a bolsa reúne os EPIs e as ferramentas num volume só, e o extintor fica preso no suporte. O jeito certo de usar cada item depende do produto transportado, então a gente orienta caso a caso, no balcão ou pelo WhatsApp."
       }
     },
     {
@@ -139,7 +164,31 @@
       "name": "Como funciona a revisão?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Conferimos item por item: validade do extintor, estado dos cones e placas, integridade dos EPIs e presença de tudo o que a norma exige. Você recebe a relação do que precisa ser trocado e um orçamento só do que falta. Não é preciso comprar o kit inteiro de novo."
+        "text": "Conferimos item por item: validade do extintor, estado dos cones e placas, integridade dos EPIs e presença de tudo o que a norma exige. Você recebe a relação do que precisa ser trocado e um orçamento só do que falta: vendemos cada item avulso, e muitas vezes a revisão mostra que pouca coisa precisa mudar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Atendem fora de Canoas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Além de Canoas e do resto do Rio Grande do Sul, já atendemos clientes no Paraná, em Santa Catarina, Minas Gerais, Bahia e Espírito Santo. Na região metropolitana a entrega é combinada conforme o volume do pedido; para as demais cidades o kit segue por transportadora, com frete e prazo fechados junto com o orçamento no WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais as formas de pagamento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pix, cartão de débito, cartão de crédito, dinheiro e boleto para empresa. No crédito dá para parcelar em até 5x, com os juros da maquininha."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Atendem fora do horário?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A loja abre de segunda a sexta, das 8h às 11h45 e das 13h30 às 18h. No sábado, só atendimento de emergência. Fora do horário comercial, chame no WhatsApp: a gente avalia a situação e diz se consegue atender."
       }
     },
     {
@@ -203,11 +252,11 @@
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href="tel:+555130517997" class="hidden items-center gap-2 text-sm font-medium text-white/85 transition-colors hover:text-white xl:flex">
+      <a href="tel:+5551993011327" class="hidden items-center gap-2 text-sm font-medium text-white/85 transition-colors hover:text-white xl:flex">
         <svg class="h-4 w-4 text-hazmat-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
         </svg>
-        (51) 3051-7997
+        (51) 99301-1327
       </a>
 
       <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20kit%20para%20cargas%20perigosas."
@@ -349,7 +398,7 @@
         </div>
         <div class="tira-dados__item">
           <dt class="tira-dados__rotulo">Atendimento</dt>
-          <dd class="tira-dados__valor">Seg a sex, 8h às 18h<span class="tira-dados__extra">Almoço das 11:45 às 13:15</span></dd>
+          <dd class="tira-dados__valor">Seg a sex, 8h às 18h<span class="tira-dados__extra">Almoço das 11:45 às 13:30 · sábado, só emergência</span></dd>
         </div>
         <div class="tira-dados__item">
           <dt class="tira-dados__rotulo">Envio</dt>
@@ -357,7 +406,7 @@
         </div>
         <div class="tira-dados__item">
           <dt class="tira-dados__rotulo">Normas que seguimos</dt>
-          <dd class="tira-dados__valor tira-dados__valor--normas">CONTRAN · ABNT<span class="tira-dados__extra">NBR 9735 · NBR 15071 · ANTT</span></dd>
+          <dd class="tira-dados__valor tira-dados__valor--normas">CONTRAN · ABNT<span class="tira-dados__extra">NBR 9735 · NBR 7500 · NBR 15071 · ANTT</span></dd>
         </div>
       </dl>
     </div>
@@ -385,18 +434,17 @@
               <source type="image/avif" srcset="assets/img/sobre-kit-512.avif 512w, assets/img/sobre-kit-768.avif 768w, assets/img/sobre-kit-1024.avif 1024w" sizes="(min-width: 1024px) 42vw, 92vw">
               <source type="image/webp" srcset="assets/img/sobre-kit-512.webp 512w, assets/img/sobre-kit-768.webp 768w, assets/img/sobre-kit-1024.webp 1024w" sizes="(min-width: 1024px) 42vw, 92vw">
               <img src="assets/img/sobre-kit-1024.jpg" width="1024" height="768"
-                   alt="Kit completo para transporte de cargas perigosas montado pela Braskit, com cone, extintor, EPIs e ferramentas"
+                   alt="Kit completo para transporte de cargas perigosas montado pela Braskit: bolsa, botas, capacete, cones, extintor, calços, ferramentas e colete"
                    class="produto-foto" loading="lazy" decoding="async">
             </picture>
           </div>
         </div>
       </div>
-      <!-- PENDENTE BRASKIT: ano de fundacao. O site antigo dizia "mais de 30 anos"
-           e tambem "desde os anos 90", que em 2026 vao de 26 a 36 anos. Confirmado
-           o ano, este selo volta com a data exata no lugar do numero redondo. -->
+      <!-- Ano de fundacao informado pela Braskit e confirmado pela abertura do
+           CNPJ 90.402.959/0001-46, em 05/09/1985. -->
       <div class="absolute -bottom-6 -right-4 rounded-xl bg-petroleo-900 px-6 py-5 text-white shadow-xl sm:-right-6">
-        <span class="block font-titulo text-2xl uppercase leading-none text-alerta-400">Canoas/RS</span>
-        <span class="mt-1 block text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">Rua Uruguai, 317</span>
+        <span class="block font-titulo text-2xl uppercase leading-none text-alerta-400">Desde 1985</span>
+        <span class="mt-1 block text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">Rua Uruguai, 317 · Canoas/RS</span>
       </div>
     </div>
 
@@ -407,14 +455,17 @@
       <h2 class="titulo-secao mb-6 text-neutro-900">A gente monta o kit,<br>não só vende as peças</h2>
 
       <p class="medida mb-5 text-neutro-900/75">
-        A Braskit é uma revenda especializada em material de segurança e sinalização
-        para o transporte de produtos perigosos. Trabalhamos com estoque próprio em
-        Canoas: você chega com o que transporta e a composição é conferida item por
-        item, dentro das normas do CONTRAN e da ABNT.
+        A Braskit é especializada em material de segurança e sinalização para o
+        transporte de produtos perigosos, e está em Canoas desde 1985. Placas,
+        adesivos e bolsas saem da nossa própria produção; os EPIs vêm direto das
+        fábricas.
       </p>
       <p class="medida mb-8 text-neutro-900/75">
-        Precisa renovar seu kit? Fazer a revisão? Ou personalizar? Fale com a gente e
-        solicite o seu orçamento.
+        O que a gente mais faz é indicar o material certo. Dependendo da carga, a
+        placa precisa ser específica e o suporte precisa ter uma medida
+        determinada: você chega com o que transporta e a composição é conferida
+        item por item, pela norma exata. Ficou dúvida sobre alguma norma? É só
+        chamar no WhatsApp.
       </p>
 
       <ul class="space-y-4">
@@ -509,8 +560,9 @@
         </span>
         <h3 class="servico__titulo">Renovação de kit</h3>
         <p class="servico__texto">
-          Trocamos os itens vencidos, como extintor, cones, placas e EPIs, e o kit
-          volta à conformidade sem você precisar comprar tudo de novo.
+          Repomos os itens vencidos ou gastos, como cones, placas e EPIs, e o kit
+          volta à conformidade sem você precisar comprar tudo de novo. Extintor,
+          vendemos novo: recarga e troca do vencido a gente não faz.
         </p>
         <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20Preciso%20renovar%20os%20itens%20vencidos%20do%20meu%20kit%20de%20cargas%20perigosas.%20Pode%20me%20ajudar%3F"
            target="_blank" rel="noopener"
@@ -580,21 +632,85 @@
       </p>
       <h2 class="titulo-secao mb-5 text-neutro-900">O que compõe um kit de cargas perigosas</h2>
       <p class="lead text-neutro-900/75">
-        A composição varia conforme a classe de risco do produto transportado.
-        Estes são os itens presentes na maioria dos kits.
+        Este é o kit básico que a Braskit monta conforme a NBR 9735. Dependendo do
+        produto transportado, a composição ganha outros itens.
       </p>
     </header>
 
+    <!-- O kit basico da Braskit, na ordem do documento dela (KIT BASICO,
+         07/09/2026). Os oito que tem produto no catalogo sao os mesmos que o
+         orcamento trava (KIT_MINIMO em js/produtos.js); capacete e oculos
+         ainda nao tem foto. -->
     <ul class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
 
       <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M9 9h6v11a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/><path d="M12 9V5"/><path d="M10 5h4"/><path d="M15 5l3-1.5"/><path d="M9 13h6"/>
+            <path d="M3 13a9 9 0 0 1 18 0"/><path d="M2 13h20v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/><path d="M12 4v9"/>
           </svg>
         </span>
-        <h3 class="item-kit__nome">Extintor ABC</h3>
-        <p class="item-kit__desc">Carga e lacre dentro da validade</p>
+        <h3 class="item-kit__nome">Capacete de segurança</h3>
+        <p class="item-kit__desc">Proteção da cabeça</p>
+      </li>
+
+      <li class="item-kit">
+        <span class="item-kit__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8.5C6 6 8.7 4 12 4s6 2 6 4.5V12c0 3.9-2.7 7-6 7s-6-3.1-6-7z"/><circle cx="9.5" cy="13" r="1.8"/><circle cx="14.5" cy="13" r="1.8"/><path d="M6 9H3"/><path d="M18 9h3"/>
+          </svg>
+        </span>
+        <h3 class="item-kit__nome">Respirador com filtro</h3>
+        <p class="item-kit__desc">Filtro VO/GA: vapor orgânico e gás ácido</p>
+      </li>
+
+      <li class="item-kit">
+        <span class="item-kit__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 21V10a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/><path d="M7 14h10"/>
+          </svg>
+        </span>
+        <h3 class="item-kit__nome">Luva de PVC</h3>
+        <p class="item-kit__desc">Com forro, para contato químico</p>
+      </li>
+
+      <li class="item-kit">
+        <span class="item-kit__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 3h6v9.5l5.2 2.2A2.5 2.5 0 0 1 20 17v3H7z"/><path d="M7 16.5h13"/>
+          </svg>
+        </span>
+        <h3 class="item-kit__nome">Bota de PVC</h3>
+        <p class="item-kit__desc">Impermeável, cano alto</p>
+      </li>
+
+      <li class="item-kit">
+        <span class="item-kit__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 9h19v4.5A2.5 2.5 0 0 1 19 16h-3.2L14 14h-4l-1.8 2H5a2.5 2.5 0 0 1-2.5-2.5z"/>
+          </svg>
+        </span>
+        <h3 class="item-kit__nome">Óculos ampla visão</h3>
+        <p class="item-kit__desc">Proteção dos olhos</p>
+      </li>
+
+      <li class="item-kit">
+        <span class="item-kit__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8.5 3L12 6.8 15.5 3"/><path d="M8.5 3L5.2 4.3A2 2 0 0 0 3.9 6.2L3 21h18l-.9-14.8a2 2 0 0 0-1.3-1.9L15.5 3"/><path d="M4 13.5h16"/>
+          </svg>
+        </span>
+        <h3 class="item-kit__nome">Colete refletivo</h3>
+        <p class="item-kit__desc">Tipo X, visibilidade do condutor</p>
+      </li>
+
+      <li class="item-kit">
+        <span class="item-kit__icone">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="8" width="19" height="12" rx="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 13.5h19"/>
+          </svg>
+        </span>
+        <h3 class="item-kit__nome">Bolsa de EPI</h3>
+        <p class="item-kit__desc">Guarda o kit num volume só</p>
       </li>
 
       <li class="item-kit">
@@ -603,18 +719,18 @@
             <path d="M12 3l6 16H6z"/><path d="M3 21h18"/><path d="M9.4 12.5h5.2"/>
           </svg>
         </span>
-        <h3 class="item-kit__nome">Cones flexíveis</h3>
+        <h3 class="item-kit__nome">4 cones refletivos</h3>
         <p class="item-kit__desc">Padrão NBR 15071</p>
       </li>
 
       <li class="item-kit">
         <span class="item-kit__icone">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2.5l9.5 9.5L12 21.5 2.5 12z"/><path d="M12 8.5v4"/><path d="M12 15.6h.01"/>
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
           </svg>
         </span>
-        <h3 class="item-kit__nome">Placas de risco</h3>
-        <p class="item-kit__desc">Número ONU e classe de risco</p>
+        <h3 class="item-kit__nome">Kit de ferramentas</h3>
+        <p class="item-kit__desc">Alicate, chaves de fenda, Philips e 12/13</p>
       </li>
 
       <li class="item-kit">
@@ -626,69 +742,14 @@
         <h3 class="item-kit__nome">Calços de borracha</h3>
         <p class="item-kit__desc">Par, para travar as rodas</p>
       </li>
-
-      <li class="item-kit">
-        <span class="item-kit__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M7 21V10a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/><path d="M7 14h10"/>
-          </svg>
-        </span>
-        <h3 class="item-kit__nome">Luvas de proteção</h3>
-        <p class="item-kit__desc">Nitrílica, PVC, raspa ou vaqueta</p>
-      </li>
-
-      <li class="item-kit">
-        <span class="item-kit__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 3l7 7"/><path d="M17.5 6.5L9 15"/><path d="M9 15l-4.6 1.2a1 1 0 0 1-1.2-1.2L4.4 10.4"/><path d="M4 20.5l3.2-3.2"/>
-          </svg>
-        </span>
-        <h3 class="item-kit__nome">Pá e enxada</h3>
-        <p class="item-kit__desc">Contenção de vazamentos</p>
-      </li>
-
-      <li class="item-kit">
-        <span class="item-kit__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="9" width="7" height="6" rx="1.5"/><path d="M10 10.5l7-4v11l-7-4z"/><path d="M20.5 9.5v5"/>
-          </svg>
-        </span>
-        <h3 class="item-kit__nome">Lanterna</h3>
-        <p class="item-kit__desc">Sinalização noturna</p>
-      </li>
-
-      <li class="item-kit">
-        <span class="item-kit__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2.5" y="8" width="19" height="12" rx="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 13.5h19"/>
-          </svg>
-        </span>
-        <h3 class="item-kit__nome">Bolsa de lona</h3>
-        <p class="item-kit__desc">Acondiciona o kit completo</p>
-      </li>
-
-      <li class="item-kit">
-        <span class="item-kit__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="8" width="20" height="8" rx="1"/><path d="M7 8l-4 8"/><path d="M13 8l-4 8"/><path d="M19 8l-4 8"/>
-          </svg>
-        </span>
-        <h3 class="item-kit__nome">Fita zebrada</h3>
-        <p class="item-kit__desc">Isolamento da área</p>
-      </li>
-
-      <li class="item-kit">
-        <span class="item-kit__icone">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M8.5 3L12 6.8 15.5 3"/><path d="M8.5 3L5.2 4.3A2 2 0 0 0 3.9 6.2L3 21h18l-.9-14.8a2 2 0 0 0-1.3-1.9L15.5 3"/><path d="M4 13.5h16"/>
-          </svg>
-        </span>
-        <h3 class="item-kit__nome">Colete refletivo</h3>
-        <p class="item-kit__desc">Visibilidade do condutor</p>
-      </li>
     </ul>
 
-    <p class="medida mt-10 text-sm text-neutro-900/65" data-reveal>
+    <p class="medida mt-10 text-sm text-neutro-900/75" data-reveal>
+      <strong class="font-semibold text-neutro-900">Outros equipamentos:</strong>
+      extintor ABC de 8 kg e capa de cone.
+    </p>
+
+    <p class="medida mt-4 text-sm text-neutro-900/65" data-reveal>
       Não sabe qual composição o seu transporte exige?
       <a href="https://wa.me/5551993011327?text=Ol%C3%A1%21%20N%C3%A3o%20sei%20qual%20composi%C3%A7%C3%A3o%20de%20kit%20o%20meu%20transporte%20exige.%20Pode%20me%20orientar%3F"
          target="_blank" rel="noopener" class="font-semibold text-hazmat-500 underline decoration-hazmat-500/30 underline-offset-4 transition-colors hover:text-hazmat-400">Fale com a gente</a>
@@ -857,6 +918,10 @@
         <svg class="h-4 w-4 text-alerta-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
         NBR 15071
       </span>
+      <span class="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm">
+        <svg class="h-4 w-4 text-alerta-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        NBR 7500
+      </span>
     </div>
   </div>
 </section>
@@ -870,6 +935,7 @@
       <span class="marquee__item">NBR 9735 <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
       <span class="marquee__item">ANTT <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
       <span class="marquee__item">NBR 15071 <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
+      <span class="marquee__item">NBR 7500 <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
     </div>
     <div class="flex shrink-0">
       <span class="marquee__item">CONTRAN <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
@@ -877,6 +943,7 @@
       <span class="marquee__item">NBR 9735 <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
       <span class="marquee__item">ANTT <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
       <span class="marquee__item">NBR 15071 <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
+      <span class="marquee__item">NBR 7500 <span class="losango h-2.5 w-2.5 text-alerta-400"></span></span>
     </div>
   </div>
 </div>
@@ -986,8 +1053,9 @@
           <li class="cidade-chip">Uruguaiana</li>
         </ul>
         <p class="mt-6 text-sm text-neutro-900/65">
-          Sua cidade não apareceu na lista? A gente envia mesmo assim. É só chamar
-          no WhatsApp que calculamos o frete.
+          Sua cidade não apareceu na lista? A gente envia mesmo assim, e já atende
+          clientes no Paraná, em Santa Catarina, Minas Gerais, Bahia e Espírito
+          Santo. É só chamar no WhatsApp que calculamos o frete.
         </p>
         <p class="medida mb-8 mt-8 text-neutro-900/75">Frota espalhada por mais de uma cidade? A gente organiza a reposição de
           todos os pontos em um pedido só.
@@ -1031,10 +1099,10 @@
         <div class="faq-item__corpo">
           <p>
             Sim. O transporte rodoviário de produtos perigosos exige o conjunto de
-            equipamentos de emergência previsto na regulamentação do CONTRAN e da ANTT.
-            A composição muda conforme a classe de risco do produto, mas circular sem o
-            kit, ou com itens vencidos, sujeita o transportador a multa e retenção
-            do veículo na fiscalização.
+            equipamentos de emergência previsto na Resolução ANTT nº 5.998/2022, com
+            a composição detalhada pela NBR 9735. Ela muda conforme a classe de risco
+            do produto, mas circular sem o kit, ou com itens vencidos, sujeita o
+            transportador a multa e retenção do veículo na fiscalização.
           </p>
         </div>
       </details>
@@ -1052,13 +1120,39 @@
       </details>
 
       <details class="faq-item" data-reveal>
-        <summary class="faq-item__titulo">Atendem fora de Canoas?</summary>
+        <summary class="faq-item__titulo">Para que servem os EPIs e os cones?</summary>
         <div class="faq-item__corpo">
           <p>
-            Sim, atendemos o estado inteiro. Na região metropolitana a entrega é
-            combinada conforme o volume do pedido. Para as demais cidades do Rio
-            Grande do Sul o kit segue por transportadora, com frete e prazo fechados
-            junto com o orçamento no WhatsApp.
+            Os EPIs são para o motorista se proteger do produto numa emergência:
+            capacete, óculos, respirador, luva e bota. Os cones sinalizam a área e
+            evitam que as pessoas cheguem perto do veículo parado. Os dois fazem parte
+            do kit básico que montamos conforme a NBR 9735.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__titulo">Como colocar as placas?</summary>
+        <div class="faq-item__corpo">
+          <p>
+            Depende do produto e de como ele viaja. O painel de segurança laranja leva
+            o número de risco e o número ONU da carga, o rótulo de risco mostra a
+            classe, e a simbologia segue a NBR 7500. Para cada carga a placa precisa
+            ser específica e o suporte, de uma medida determinada: diga o que você
+            transporta que indicamos a placa, o suporte e onde cada um vai no veículo.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__titulo">Onde guardar o kit e como usar?</summary>
+        <div class="faq-item__corpo">
+          <p>
+            Num lugar de acesso rápido, que o motorista alcance sem precisar mexer na
+            carga: a bolsa reúne os EPIs e as ferramentas num volume só, e o extintor
+            fica preso no suporte. O jeito certo de usar cada item depende do produto
+            transportado, então a gente orienta caso a caso, no balcão ou pelo
+            WhatsApp.
           </p>
         </div>
       </details>
@@ -1069,8 +1163,43 @@
           <p>
             Conferimos item por item: validade do extintor, estado dos cones e placas,
             integridade dos EPIs e presença de tudo o que a norma exige. Você recebe a
-            relação do que precisa ser trocado e um orçamento só do que falta. Não é
-            preciso comprar o kit inteiro de novo.
+            relação do que precisa ser trocado e um orçamento só do que falta: vendemos
+            cada item avulso, e muitas vezes a revisão mostra que pouca coisa precisa
+            mudar.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__titulo">Atendem fora de Canoas?</summary>
+        <div class="faq-item__corpo">
+          <p>
+            Sim. Além de Canoas e do resto do Rio Grande do Sul, já atendemos clientes
+            no Paraná, em Santa Catarina, Minas Gerais, Bahia e Espírito Santo. Na
+            região metropolitana a entrega é combinada conforme o volume do pedido;
+            para as demais cidades o kit segue por transportadora, com frete e prazo
+            fechados junto com o orçamento no WhatsApp.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__titulo">Quais as formas de pagamento?</summary>
+        <div class="faq-item__corpo">
+          <p>
+            Pix, cartão de débito, cartão de crédito, dinheiro e boleto para empresa.
+            No crédito dá para parcelar em até 5x, com os juros da maquininha.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__titulo">Atendem fora do horário?</summary>
+        <div class="faq-item__corpo">
+          <p>
+            A loja abre de segunda a sexta, das 8h às 11h45 e das 13h30 às 18h. No
+            sábado, só atendimento de emergência. Fora do horário comercial, chame no
+            WhatsApp: a gente avalia a situação e diz se consegue atender.
           </p>
         </div>
       </details>
@@ -1192,8 +1321,8 @@
             <div>
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">Telefone e WhatsApp</p>
               <p class="mt-1 text-sm text-white/85">
-                <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997</a><br>
-                <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a>
+                <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a><br>
+                <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997 (fixo)</a>
               </p>
             </div>
           </li>
@@ -1207,7 +1336,8 @@
             <div>
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">Horário</p>
               <p class="mt-1 text-sm text-white/85">Segunda a sexta, 08:00 às 18:00</p>
-              <p class="text-xs text-white/50">Almoço das 11:45 às 13:15</p>
+              <p class="text-xs text-white/50">Almoço das 11:45 às 13:30</p>
+              <p class="text-xs text-white/50">Sábado, só atendimento de emergência</p>
             </div>
           </li>
 
@@ -1266,8 +1396,8 @@
           <span class="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-white/60">Kit para transporte de cargas perigosas</span>
         </a>
         <p class="text-sm leading-relaxed">
-          Revenda especializada em material de segurança e
-          sinalização para o transporte de produtos perigosos.
+          Material de segurança e sinalização para o
+          transporte de produtos perigosos, em Canoas desde 1985.
         </p>
         <p class="mt-5 font-titulo text-lg uppercase tracking-tight text-white/85">
           Protegendo vidas,<br>preservando o futuro.
@@ -1304,11 +1434,11 @@
         <address class="space-y-4 text-sm not-italic">
           <p>Rua Uruguai, 317, São José<br>Canoas/RS · CEP 92420-340</p>
           <p>
-            <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997</a><br>
             <a href="https://wa.me/5551993011327" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">(51) 99301-1327 (WhatsApp)</a><br>
+            <a href="tel:+555130517997" class="transition-colors hover:text-hazmat-500">(51) 3051-7997 (fixo)</a><br>
             <a href="mailto:braskit.kit@gmail.com" class="transition-colors hover:text-hazmat-500">braskit.kit@gmail.com</a>
           </p>
-          <p>Segunda a sexta, 08:00 às 18:00<br><span class="text-white/60">Almoço das 11:45 às 13:15</span></p>
+          <p>Segunda a sexta, 08:00 às 18:00<br><span class="text-white/60">Almoço das 11:45 às 13:30<br>Sábado, só atendimento de emergência</span></p>
           <p class="text-white/60">Loja em Canoas, com envio para todo o Rio Grande do Sul.</p>
         </address>
       </div>
@@ -1317,7 +1447,7 @@
     <div class="faixa-zebrada faixa-zebrada-fina" aria-hidden="true"></div>
 
     <div class="flex flex-col gap-3 py-7 text-xs sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; 2026 Braskit. Kit para Transporte de Cargas Perigosas.</p>
+      <p>&copy; 2026 Braskit · J C Rodrigues-O Canha ME · CNPJ 90.402.959/0001-46</p>
       <p class="text-white/60">Site por <a href="https://devmrmoraes.com.br" target="_blank" rel="noopener" class="transition-colors hover:text-hazmat-500">DEVMRMORAES</a>.</p>
     </div>
   </div>

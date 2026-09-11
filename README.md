@@ -49,7 +49,7 @@ npm run imagens     pipeline de avif/webp
 
 npm run paginas     46 checagens estruturais, sem navegador (rapido)
 npm run verificar   layout, contraste e peso no Chromium, em 5 viewports
-npm run fluxo       37 checagens do fluxo comercial do catalogo
+npm run fluxo       40 checagens do fluxo comercial do catalogo
 npm run tudo        tudo acima, na ordem. E o portao antes de publicar.
 ```
 
@@ -169,21 +169,30 @@ marca entra numa lista que fica numa bandeja fixa no pe da pagina; de la ela
 abre a janela da lista, ajusta a quantidade de cada item e manda tudo pelo
 WhatsApp numa mensagem so, com o kit minimo separado do resto.
 
-**Kit minimo obrigatorio.** Tres itens ja entram marcados e nao podem ser
-tirados. A composicao esta em `KIT_MINIMO`, no fim de `js/produtos.js`:
+**Kit minimo obrigatorio.** Os oito itens do kit basico que a Braskit monta
+conforme a NBR 9735 ja entram marcados e nao podem ser tirados. A composicao
+veio da propria empresa (setembro de 2026) e esta em `KIT_MINIMO`, no fim de
+`js/produtos.js`:
 
 ```js
 var KIT_MINIMO = [
-  { id: 25, qtd: 1 },  /* Extintor ABC */
-  { id: 20, qtd: 1 },  /* Cone Flexivel com Faixa (NBR 15071) */
+  { id: 27, qtd: 1 },  /* Respirador Semifacial com Filtro (VO/GA) */
+  { id: 31, qtd: 1 },  /* Luvas PVC, com forro */
+  { id: 32, qtd: 1 },  /* Bota de PVC */
+  { id: 19, qtd: 1 },  /* Colete Refletivo, tipo X */
+  { id: 17, qtd: 1 },  /* Bolsa de Lona para Kit */
+  { id: 20, qtd: 4 },  /* Cone Flexivel com Faixa (NBR 15071): quatro */
+  { id: 34, qtd: 1 },  /* Kit de Ferramentas */
   { id: 26, qtd: 1 }   /* Par de Calco de Borracha */
 ];
 ```
 
 Trocar item, quantidade ou o numero de itens e mexer so nessa lista: o resto
-(card travado, cadeado na janela, grupo separado na mensagem) acompanha
-sozinho. **Esses tres itens sao uma sugestao tecnica e precisam da palavra
-final da Braskit** (ver "O que ainda depende da Braskit").
+(card travado, cadeado na janela, grupo separado na mensagem, selo na ficha)
+acompanha sozinho. **O `qtd` e tambem o minimo**: o botao de diminuir do cone
+para em 4, e uma lista salva com menos e corrigida na carga (`qtdMinima()`).
+Capacete e oculos estao no kit da Braskit mas ainda nao no catalogo (falta
+foto); extintor e capa de cone ela lista a parte, e ficaram opcionais.
 
 Detalhes que importam:
 
@@ -285,7 +294,7 @@ se o avif e o webp nao existirem, o jpg assume.
 
 **A lista completa e detalhada esta em `PENDENCIAS.md`, na raiz.** Resumo:
 
-1. **Quais sao os itens do kit minimo obrigatorio**, e quantos de cada um.
+1. **Fotos de capacete e oculos**, os dois itens do kit basico que ainda nao sao produto.
 2. **Fotos de verdade** -- kit montado, fachada, balcao, equipe.
 3. **Ano de fundacao, CNPJ e razao social.**
 4. **Numero de CA de cada EPI, faixa de preco, prazo em dias, garantia e prova
@@ -451,12 +460,14 @@ Google le cada pagina isolada); `FAQPage` so na home; `CollectionPage` +
 `BreadcrumbList` + `ItemList` nas categorias; `Product` + `BreadcrumbList` nas
 fichas.
 
-O `Product` sai **sem `offers`, sem `brand` e sem `aggregateRating`**, e isso e
-deliberado: `offers` exige `price`, e o modelo comercial e orcamento por
-WhatsApp; `brand: Braskit` num extintor de terceiro seria afirmacao de
-fabricacao, e a Braskit e revenda; nota auto-atribuida e das poucas coisas que
-o Google pune de fato. O custo e nao ter rich result de produto. Quando houver
-avaliacao real no Perfil da Empresa, ai sim.
+O `Product` sai **sem `offers` e sem `aggregateRating`**, e isso e deliberado:
+`offers` exige `price`, e o modelo comercial e orcamento por WhatsApp; nota
+auto-atribuida e das poucas coisas que o Google pune de fato. O `brand` so
+aparece onde a Braskit informou a marca (Extinpel no extintor, Destra no
+respirador, Kalipso nas luvas), e `manufacturer` Braskit so no que ela fabrica
+(as cinco placas e a bolsa, campo `fabricacaoPropria` em `js/produtos.js`).
+Marca inventada seria afirmacao de fabricacao. O custo e nao ter rich result de
+produto. Quando houver avaliacao real no Perfil da Empresa, ai sim.
 
 **SEO local.** `LocalBusiness` com endereco, coordenadas, horario (com almoco),
 `areaServed` cobrindo o Rio Grande do Sul e `sameAs` para o Facebook. Falta

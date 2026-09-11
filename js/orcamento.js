@@ -67,6 +67,11 @@
     return n > QTD_MAX ? QTD_MAX : n;
   }
 
+  /* Quantidade válida para aquele item: nunca abaixo do mínimo do kit. */
+  function qtdDoItem(id, valor) {
+    return Math.max(qtdMinima(id), normalizarQtd(valor));
+  }
+
   /* O kit mínimo entra sempre, e na frente, mesmo que a composição tenha
      mudado depois da última visita ou que alguém mexa no armazenamento. */
   function garantirKitMinimo() {
@@ -74,7 +79,7 @@
       var fixo = KIT_MINIMO[i];
       if (!produtoPorId(fixo.id)) continue; /* id sem par em PRODUTOS: ignora */
       if (indiceDe(fixo.id) !== -1) continue;
-      itens.unshift({ id: fixo.id, qtd: normalizarQtd(fixo.qtd) });
+      itens.unshift({ id: fixo.id, qtd: qtdDoItem(fixo.id, fixo.qtd) });
     }
   }
 
@@ -96,7 +101,9 @@
       if (!registro || typeof registro !== "object") return;
       var id = parseInt(registro.id, 10);
       if (isNaN(id) || !produtoPorId(id) || indiceDe(id) !== -1) return;
-      itens.push({ id: id, qtd: normalizarQtd(registro.qtd) });
+      /* qtdDoItem, e nao so normalizarQtd: quem salvou a lista quando o kit
+         pedia menos cones sobe para o mínimo atual. */
+      itens.push({ id: id, qtd: qtdDoItem(id, registro.qtd) });
     });
 
     garantirKitMinimo();
@@ -168,7 +175,7 @@
     var pos = indiceDe(id);
     if (pos === -1) return;
 
-    var nova = normalizarQtd(valor);
+    var nova = qtdDoItem(id, valor);
     if (itens[pos].qtd === nova) return;
     itens[pos].qtd = nova;
     aplicar("qtd");
@@ -243,7 +250,7 @@
       '<div class="contador-qtd">' +
         '<button type="button" class="contador-qtd__botao" data-acao="menos" data-id="' + produto.id + '" ' +
                 'aria-label="Diminuir a quantidade de ' + nome + '"' +
-                (registro.qtd <= 1 ? " disabled" : "") + ">" + MENOS + "</button>" +
+                (registro.qtd <= qtdMinima(produto.id) ? " disabled" : "") + ">" + MENOS + "</button>" +
         '<input type="text" class="contador-qtd__valor" inputmode="numeric" maxlength="2" ' +
                'value="' + registro.qtd + '" data-id="' + produto.id + '" ' +
                'aria-label="Quantidade de ' + nome + '">' +
@@ -295,7 +302,7 @@
     var escolhidos = registros.filter(function (r) { return !r.obrigatorio; });
 
     var html =
-      montarGrupo("Kit mínimo obrigatório", "Estes itens acompanham todo pedido e não saem da lista.", fixos) +
+      montarGrupo("Kit mínimo obrigatório", "O kit básico, montado conforme a NBR 9735. Estes itens acompanham todo pedido e não saem da lista.", fixos) +
       montarGrupo("Itens que você escolheu", "", escolhidos);
 
     if (!escolhidos.length) {
@@ -363,7 +370,7 @@
 
     var menos = corpoLista.querySelector('[data-acao="menos"][data-id="' + id + '"]');
     var mais = corpoLista.querySelector('[data-acao="mais"][data-id="' + id + '"]');
-    if (menos) menos.disabled = quantidade <= 1;
+    if (menos) menos.disabled = quantidade <= qtdMinima(id);
     if (mais) mais.disabled = quantidade >= QTD_MAX;
   }
 
@@ -404,6 +411,9 @@
       if (!limpo) return; /* deixa apagar para digitar outro número */
 
       var id = parseInt(campo.getAttribute("data-id"), 10);
+      /* Abaixo do mínimo do kit pode ser só o começo de um número maior ("1"
+         antes de "12"): espera o blur, que devolve o valor válido. */
+      if (parseInt(limpo, 10) < qtdMinima(id)) return;
       definirQtd(id, limpo);
       sincronizarContador(id);
     });

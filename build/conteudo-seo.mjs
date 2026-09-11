@@ -31,14 +31,14 @@ export const CATEGORIA_SEO = {
     h1: "Placas de risco e sinalização para cargas perigosas",
     titulo: "Placas de Risco e Sinalização | Braskit Canoas",
     descricao: "Painel de segurança laranja, rótulo de risco, faixa refletiva e bastão sinalizador para o transporte de produtos perigosos. Loja em Canoas/RS.",
-    intro: "É a parte do kit que fala antes de qualquer pessoa chegar perto: o painel de segurança laranja, com número de risco e número ONU, e o rótulo de risco da classe do produto. A simbologia segue a NBR 7500, e o par de números do painel muda conforme o que está sendo transportado — para frota que alterna entre produtos existe a versão lisa, com numeração removível. Entram aqui também a faixa refletiva de contorno e o bastão para orientar o tráfego numa parada."
+    intro: "É a parte do kit que fala antes de qualquer pessoa chegar perto: o painel de segurança laranja, com número de risco e número ONU, e o rótulo de risco da classe do produto. A simbologia segue a NBR 7500, e o par de números do painel muda conforme o que está sendo transportado — para frota que alterna entre produtos existe a versão lisa, com numeração removível. Entram aqui também a faixa refletiva de contorno e o bastão para orientar o tráfego numa parada. Placas e rótulos saem da produção própria da Braskit, em adesivo, chapa de PVC ou chapa galvanizada."
   },
 
   "textil": {
     h1: "Bolsa de kit, colete refletivo e capa de cone",
     titulo: "Bolsa de Kit e Colete Refletivo | Braskit Canoas",
     descricao: "Bolsa de lona para o kit de cargas perigosas, colete refletivo e capa de cone. Loja em Canoas/RS, com envio para todo o Rio Grande do Sul.",
-    intro: "O kit precisa caber em algum lugar, e esse lugar não pode ser o assoalho da cabine. A bolsa de lona reúne o conjunto inteiro num volume só, o que resolve a conferência na fiscalização e a checagem antes da viagem. O colete refletivo é o que torna o condutor visível no momento em que ele desce para sinalizar a via — a hora em que a chance de ser atropelado é maior."
+    intro: "O kit precisa caber em algum lugar, e esse lugar não pode ser o assoalho da cabine. A bolsa de lona reúne o conjunto inteiro num volume só, o que resolve a conferência na fiscalização e a checagem antes da viagem. O colete refletivo é o que torna o condutor visível no momento em que ele desce para sinalizar a via — a hora em que a chance de ser atropelado é maior. A bolsa é produção própria da Braskit."
   },
 
   "injetados": {
@@ -66,6 +66,6 @@ export const CATEGORIA_SEO = {
     h1: "Kit de ferramentas para atendimento na via",
     titulo: "Kit de Ferramentas para Emergência | Braskit Canoas",
     descricao: "Kit de ferramentas para o atendimento de emergência no transporte rodoviário de produtos perigosos. Loja em Canoas/RS, envio para todo o RS.",
-    intro: "É a parte do conjunto que resolve o problema mecânico no acostamento — apertar, soltar, cortar e improvisar a contenção até a chegada do socorro. A NBR 9735 trata do conjunto de equipamentos para emergência que o veículo precisa portar, e a composição fechada depende da classe de risco do produto e do perfil da operação."
+    intro: "É a parte do conjunto que resolve o problema mecânico no acostamento — apertar, soltar, cortar e improvisar a contenção até a chegada do socorro. No kit básico da Braskit ele leva alicate universal, chaves de fenda e Philips e chave 12/13. A NBR 9735 trata do conjunto de equipamentos para emergência que o veículo precisa portar, e a composição fechada depende da classe de risco do produto e do perfil da operação."
   }
 };

@@ -19,6 +19,14 @@ const raiz = resolve(import.meta.dirname, "..");
 const url = pathToFileURL(resolve(raiz, "catalogo.html")).href;
 const WHATSAPP = "5551993011327";
 
+/* O kit basico da Braskit (KIT_MINIMO em js/produtos.js), escrito aqui de
+   proposito: e o que denuncia uma troca de composicao feita sem querer. O
+   cone e o unico item com quantidade minima acima de 1. */
+const KIT = [27, 31, 32, 19, 17, 20, 34, 26];
+const CONE = 20;
+const CONES_NO_KIT = 4;
+const contagem = (n) => new RegExp("^\\s*" + n + "\\s*it", "i");
+
 const resultados = [];
 function checar(nome, condicao, detalhe = "") {
   resultados.push({ nome, ok: !!condicao, detalhe });
@@ -46,10 +54,11 @@ checar(catalogados + " cartoes no grid", catalogados > 0 && cartoes === cataloga
   cartoes + " encontrados");
 
 const fixos = await aba.locator(".produto-card.is-fixo").count();
-checar("3 itens do kit minimo travados no grid", fixos === 3, fixos + " encontrados");
+checar(KIT.length + " itens do kit minimo travados no grid", fixos === KIT.length, fixos + " encontrados");
 
 const contagemInicial = await aba.locator("#bandejaContagem").textContent();
-checar("bandeja abre com 3 itens", /3\s*it/i.test(contagemInicial || ""), (contagemInicial || "").trim());
+checar("bandeja abre com " + KIT.length + " itens", contagem(KIT.length).test(contagemInicial || ""),
+  (contagemInicial || "").trim());
 
 const bandejaVisivel = await aba.locator("#bandejaOrcamento").evaluate((el) => el.classList.contains("is-visivel"));
 checar("bandeja visivel na carga", bandejaVisivel);
@@ -58,11 +67,13 @@ checar("bandeja visivel na carga", bandejaVisivel);
 const salvo = await aba.evaluate(() => localStorage.getItem("braskit.orcamento.v1"));
 let lista = [];
 try { lista = JSON.parse(salvo); } catch { /* segue */ }
-checar("chave braskit.orcamento.v1 gravada", Array.isArray(lista) && lista.length === 3, salvo || "vazio");
+checar("chave braskit.orcamento.v1 gravada", Array.isArray(lista) && lista.length === KIT.length, salvo || "vazio");
 checar("formato [{id,qtd}] preservado",
   Array.isArray(lista) && lista.every((i) => typeof i.id === "number" && typeof i.qtd === "number"));
-checar("kit minimo e o esperado (25, 20, 26)",
-  Array.isArray(lista) && [25, 20, 26].every((id) => lista.some((i) => i.id === id)));
+checar("kit minimo e o esperado (" + KIT.join(", ") + ")",
+  Array.isArray(lista) && KIT.every((id) => lista.some((i) => i.id === id)));
+checar("cone do kit sai com " + CONES_NO_KIT,
+  Array.isArray(lista) && (lista.find((i) => i.id === CONE) || {}).qtd === CONES_NO_KIT);
 
 /* ---- 3. filtro por categoria ---- */
 /* Aqui os numeros ficam escritos de proposito, ao contrario da contagem total:
@@ -129,12 +140,12 @@ const primeiroLivre = aba.locator(".produto-card:not(.is-fixo) .selecao__campo")
 await primeiroLivre.evaluate((el) => el.click());
 await aba.waitForTimeout(300);
 checar("selecionar item avulso atualiza a bandeja",
-  /4\s*it/i.test((await aba.locator("#bandejaContagem").textContent()) || ""));
+  contagem(KIT.length + 1).test((await aba.locator("#bandejaContagem").textContent()) || ""));
 
 await primeiroLivre.evaluate((el) => el.click());
 await aba.waitForTimeout(300);
-checar("desmarcar volta para 3",
-  /3\s*it/i.test((await aba.locator("#bandejaContagem").textContent()) || ""));
+checar("desmarcar volta para " + KIT.length,
+  contagem(KIT.length).test((await aba.locator("#bandejaContagem").textContent()) || ""));
 
 /* ---- 6. janela da lista, quantidade e item travado ---- */
 await aba.locator("#btnVerLista").evaluate((el) => el.click());
@@ -142,15 +153,18 @@ await aba.waitForTimeout(350);
 checar("janela da lista abre", await aba.locator("#modalOrcamento").evaluate((el) => el.open));
 
 const linhas = await aba.locator(".linha-orcamento").count();
-checar("3 linhas na lista", linhas === 3, linhas + " encontradas");
+checar(KIT.length + " linhas na lista", linhas === KIT.length, linhas + " encontradas");
 
 const cadeados = await aba.locator(".linha-orcamento__cadeado").count();
-checar("itens do kit minimo tem cadeado e nao botao de remover", cadeados === 3, cadeados + " cadeados");
+checar("itens do kit minimo tem cadeado e nao botao de remover", cadeados === KIT.length, cadeados + " cadeados");
 checar("nenhum item obrigatorio pode ser removido",
   (await aba.locator(".linha-orcamento--fixa .linha-orcamento__remover").count()) === 0);
 
 const menos = aba.locator('.linha-orcamento .contador-qtd__botao[data-acao="menos"]').first();
 checar("botao de diminuir trava em 1", await menos.isDisabled());
+
+const menosCone = aba.locator('.contador-qtd__botao[data-acao="menos"][data-id="' + CONE + '"]');
+checar("botao de diminuir do cone trava em " + CONES_NO_KIT, await menosCone.isDisabled());
 
 const mais = aba.locator('.linha-orcamento .contador-qtd__botao[data-acao="mais"]').first();
 await mais.evaluate((el) => el.click());
@@ -179,7 +193,7 @@ const href = await aba.locator("#btnEnviarLista").getAttribute("href");
 checar("link da lista aponta para o numero certo", (href || "").includes("wa.me/" + WHATSAPP));
 const texto = decodeURIComponent((href || "").split("?text=")[1] || "");
 checar("mensagem separa o kit minimo dos outros itens", texto.includes("*Kit mínimo obrigatório*"));
-checar("mensagem lista o extintor", /Extintor ABC/i.test(texto));
+checar("mensagem lista os " + CONES_NO_KIT + " cones do kit", new RegExp(CONES_NO_KIT + "x Cone Flex", "i").test(texto));
 checar("mensagem conta as unidades", /unidades no total/.test(texto) || /\ditens?\./.test(texto));
 
 await aba.locator("#btnFecharOrcamento").evaluate((el) => el.click());
@@ -191,18 +205,22 @@ await aba.waitForTimeout(600);
 const depois = await aba.evaluate(() => localStorage.getItem("braskit.orcamento.v1"));
 const listaDepois = JSON.parse(depois || "[]");
 checar("lista sobrevive a recarga com a quantidade ajustada",
-  listaDepois.length === 3 && listaDepois.some((i) => i.qtd === 2));
+  listaDepois.length === KIT.length && listaDepois.some((i) => i.qtd === 2));
 
 /* ---- 9. localStorage adulterado ---- */
-await aba.evaluate(() => localStorage.setItem("braskit.orcamento.v1",
-  JSON.stringify([{ id: 9999, qtd: 3 }, { id: 25, qtd: "abc" }, null, "lixo"])));
+/* O cone salvo com 1 e a lista de quem visitou antes do kit basico: tem de
+   subir para o minimo atual. */
+await aba.evaluate((cone) => localStorage.setItem("braskit.orcamento.v1",
+  JSON.stringify([{ id: 9999, qtd: 3 }, { id: 25, qtd: "abc" }, { id: cone, qtd: 1 }, null, "lixo"])), CONE);
 await aba.reload({ waitUntil: "load" });
 await aba.waitForTimeout(600);
 const saneado = JSON.parse(await aba.evaluate(() => localStorage.getItem("braskit.orcamento.v1")) || "[]");
 checar("id inexistente e descartado em silencio", !saneado.some((i) => i.id === 9999));
 checar("quantidade invalida vira 1", saneado.every((i) => i.qtd >= 1 && i.qtd <= 99));
 checar("kit minimo e reposto apos adulteracao",
-  [25, 20, 26].every((id) => saneado.some((i) => i.id === id)));
+  KIT.every((id) => saneado.some((i) => i.id === id)));
+checar("cone salvo com menos de " + CONES_NO_KIT + " sobe para " + CONES_NO_KIT,
+  (saneado.find((i) => i.id === CONE) || {}).qtd === CONES_NO_KIT);
 
 await aba.evaluate(() => localStorage.setItem("braskit.orcamento.v1", "{isto nao e json"));
 await aba.reload({ waitUntil: "load" });

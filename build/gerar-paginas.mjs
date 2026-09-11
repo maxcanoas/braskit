@@ -236,23 +236,29 @@ function tituloProduto(prod, cat) {
   return comCategoria.length <= 60 ? comCategoria : prod.nome + " | Braskit";
 }
 
-/* Especificacao tecnica. Hoje nenhum produto tem estes campos em
-   js/produtos.js, entao a tabela nao renderiza para ninguem -- e de proposito:
-   o que falta e o DADO, nao o template. Preenchida a PENDENCIAS.md 3.4 (numero
-   de CA, medida, material, norma), as fichas crescem so com um novo
-   `node build/gerar-paginas.mjs`. */
+/* Especificacao tecnica. Cada linha so aparece no produto que tem o campo em
+   js/produtos.js: hoje sao o CA de tres EPIs, a marca informada pela Braskit e
+   o material das placas. O que falta e o DADO, nao o template -- preenchida a
+   PENDENCIAS.md 3.4 (CA, medida, material, norma), as fichas crescem so com
+   um novo `node build/gerar-paginas.mjs`. */
 const CAMPOS_ESPECIFICACAO = [
   ["ca", "Certificado de Aprovação (CA)"],
+  ["marca", "Marca"],
   ["medidas", "Medidas"],
   ["material", "Material"],
   ["capacidade", "Capacidade"],
   ["norma", "Norma"]
 ];
 
+function valorEspecificacao(prod, campo) {
+  if (campo === "marca" && prod.fabricacaoPropria) return prod.marca + " (fabricação própria)";
+  return prod[campo];
+}
+
 function blocoEspecificacao(prod) {
   const linhas = CAMPOS_ESPECIFICACAO
     .filter(([campo]) => prod[campo])
-    .map(([campo, rotulo]) => "          <tr><th scope=\"row\">" + esc(rotulo) + "</th><td>" + esc(prod[campo]) + "</td></tr>");
+    .map(([campo, rotulo]) => "          <tr><th scope=\"row\">" + esc(rotulo) + "</th><td>" + esc(valorEspecificacao(prod, campo)) + "</td></tr>");
 
   if (!linhas.length) {
     return `      <!-- PENDENTE BRASKIT: numero de CA, medidas, material, capacidade e norma
@@ -412,12 +418,13 @@ for (const prod of PRODUTOS) {
 
   const fontes = reprofundar(ctx.fontesProduto(prod.img, "(min-width: 900px) 42vw, 92vw"), p);
 
-  /* O selo do kit minimo repete a ressalva da janela do orcamento: e sugestao
-     tecnica ate a Braskit confirmar (PENDENCIAS.md 1). */
+  /* O selo repete a nota da janela do orcamento: e o kit basico que a Braskit
+     monta conforme a NBR 9735 (KIT_MINIMO em js/produtos.js). */
+  const noKit = ctx.qtdMinima(prod.id);
   const kitMinimo = ctx.ehItemObrigatorio(prod.id)
     ? `      <div class="ficha-kit-minimo">
-        <strong>Faz parte do kit mínimo sugerido</strong>
-        <p>Este item entra marcado por padrão no orçamento do catálogo. A composição do kit mínimo é uma sugestão técnica, montada a partir do que a fiscalização mais cobra; a composição exata da sua operação é confirmada junto com o orçamento.</p>
+        <strong>Faz parte do kit básico</strong>
+        <p>Este item vem no kit básico que a Braskit monta conforme a NBR 9735${noKit > 1 ? ", em " + noKit + " unidades" : ""}, e entra marcado por padrão no orçamento do catálogo. Dependendo do produto transportado, a composição ganha outros itens, e a Braskit confirma junto com o orçamento.</p>
       </div>`
     : "";
 
@@ -478,16 +485,19 @@ ${relacionados}`;
   const jsonld = [
     /* Product sem offers de proposito: Offer exige price, e o modelo comercial
        e orcamento por WhatsApp -- nao ha preco e nao vai haver. Declarar zero
-       seria afirmar o que a empresa nao confirmou. Sem brand tambem: a Braskit
-       e revenda, e dizer brand: Braskit num extintor de terceiro seria
-       afirmacao de fabricacao. Sem aggregateRating: nota auto-atribuida e das
-       poucas coisas que o Google pune de fato. */
+       seria afirmar o que a empresa nao confirmou. brand so onde a Braskit
+       informou a marca (Extinpel, Destra, Kalipso), e manufacturer Braskit so
+       no que ela fabrica (placas e bolsa): marca inventada seria afirmacao de
+       fabricacao. Sem aggregateRating: nota auto-atribuida e das poucas coisas
+       que o Google pune de fato. */
     {
       "@context": "https://schema.org", "@type": "Product",
       "name": prod.nome,
       "description": prod.descricao + " " + prod.aplicacao,
       "image": SITE + "/" + prod.img,
       "category": cat.nome,
+      ...(prod.marca ? { "brand": { "@type": "Brand", "name": prod.marca } } : {}),
+      ...(prod.fabricacaoPropria ? { "manufacturer": { "@id": SITE + "/#organizacao" } } : {}),
       "url": canonical,
       "isRelatedTo": { "@id": SITE + "/#organizacao" }
     },

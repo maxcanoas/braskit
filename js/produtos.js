@@ -88,31 +88,41 @@ var PRODUTOS = [
     id: 10, nome: "Placa Perigo", categoria: "sinalizacao", slug: "placa-perigo",
     descricao: "Chapa rígida com impressão de alto contraste. É a placa Afaste-se.",
     aplicacao: "Isolamento da área em acidente ou vazamento.",
+    material: "Adesivo, chapa de PVC ou chapa galvanizada",
+    marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/placa-perigo.jpg"
   },
   {
     id: 11, nome: "Placa Laranja com Números", categoria: "sinalizacao", slug: "placa-laranja-numeros",
     descricao: "Painel de segurança laranja com número de risco e número ONU já aplicados.",
     aplicacao: "Identificação obrigatória do produto transportado.",
-    detalhe: "O par de números muda conforme o produto: diga o que você transporta e a placa sai pronta. Para frota que alterna entre produtos existe a versão lisa, com numeração removível.",
+    detalhe: "O par de números muda conforme o produto: diga o que você transporta e a placa sai pronta. É feita sob encomenda, porque a numerada não fica à pronta entrega. Para frota que alterna entre produtos existe a versão lisa, com numeração removível.",
+    material: "Adesivo, chapa de PVC ou chapa galvanizada",
+    marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/placa-laranja-numeros.jpg"
   },
   {
     id: 12, nome: "Placa Laranja", categoria: "sinalizacao", slug: "placa-laranja",
-    descricao: "Laranja lisa, sem numeração, em plástico resistente.",
+    descricao: "Laranja lisa, sem numeração.",
     aplicacao: "Carga fracionada e uso com numeração removível.",
+    material: "Adesivo, chapa de PVC ou chapa galvanizada",
+    marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/placa-laranja.jpg"
   },
   {
     id: 13, nome: "Placa Líquido Inflamável", categoria: "sinalizacao", slug: "placa-liquido-inflamavel",
     descricao: "Rótulo de risco da classe 3.",
     aplicacao: "Combustível, solvente e álcool.",
+    material: "Adesivo, chapa de PVC ou chapa galvanizada",
+    marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/placa-liquido-inflamavel.jpg"
   },
   {
     id: 14, nome: "Placa Material Corrosivo", categoria: "sinalizacao", slug: "placa-material-corrosivo",
     descricao: "Rótulo de risco da classe 8.",
     aplicacao: "Ácido, soda cáustica e demais corrosivos.",
+    material: "Adesivo, chapa de PVC ou chapa galvanizada",
+    marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/placa-material-corrosivo.jpg"
   },
   {
@@ -132,6 +142,7 @@ var PRODUTOS = [
     descricao: "Lona reforçada, com alça e fechamento. Cabe o kit inteiro num lugar só.",
     aplicacao: "Guarda e transporte dos itens de emergência.",
     detalhe: "Item solto pela cabine é item que some — e o que some é justamente o que falta na hora da conferência.",
+    marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/bolsa-lona-kit.jpg"
   },
   {
@@ -142,7 +153,7 @@ var PRODUTOS = [
   },
   {
     id: 19, nome: "Colete Refletivo", categoria: "textil", slug: "colete-refletivo",
-    descricao: "Faixas refletivas e fecho ajustável.",
+    descricao: "Tipo X, com faixas refletivas e fecho ajustável.",
     aplicacao: "Uso obrigatório ao descer do veículo na via.",
     img: "assets/produtos/colete-refletivo.jpg"
   }
@@ -151,7 +162,7 @@ var PRODUTOS = [
     id: 20, nome: "Cone Flexível com Faixa (NBR 15071)", categoria: "injetados", slug: "cone-flexivel-nbr-15071",
     descricao: "Cone flexível com faixa refletiva, no padrão da NBR 15071.",
     aplicacao: "Sinalização em parada de emergência na rodovia.",
-    detalhe: "Flexível porque cone rígido atropelado quebra e sai do kit; este volta ao formato. A quantidade de dispositivos de sinalização que o veículo precisa levar é tratada pela NBR 9735 — confirme com a gente quantos a sua operação exige.",
+    detalhe: "Flexível porque cone rígido atropelado quebra e sai do kit; este volta ao formato. O kit básico que a Braskit monta conforme a NBR 9735 leva quatro cones refletivos.",
     img: "assets/produtos/cone-flexivel-nbr-15071.jpg"
   },
   {
@@ -182,7 +193,8 @@ var PRODUTOS = [
     id: 25, nome: "Extintor ABC", categoria: "acessorios-caminhao", slug: "extintor-abc",
     descricao: "Pó químico ABC, com manômetro, lacre e carga na validade.",
     aplicacao: "Obrigatório em todo veículo de carga.",
-    detalhe: "É o primeiro item que a fiscalização olha e o que mais vence sem ninguém perceber. Confira o manômetro na faixa verde e a data no lacre; se estiver fora, a gente troca o item na renovação do kit.",
+    detalhe: "É o primeiro item que a fiscalização olha e o que mais vence sem ninguém perceber: confira o manômetro na faixa verde e a data no lacre. Vencido, ele precisa de recarga ou de um extintor novo. A Braskit vende o novo (no kit básico vai o de 8 kg), mas não faz recarga nem troca do vencido.",
+    marca: "Extinpel",
     img: "assets/produtos/extintor-abc.jpg"
   },
   {
@@ -196,6 +208,8 @@ var PRODUTOS = [
     descricao: "Semifacial com filtro para vapor orgânico e gás ácido.",
     aplicacao: "Aproximação em vazamento de produto volátil.",
     detalhe: "O filtro é escolhido pelo produto, não pelo respirador: diga o que você transporta que a gente confere o cartucho certo.",
+    ca: "37401",
+    marca: "Destra",
     img: "assets/produtos/respirador-semifacial.jpg"
   },
   {
@@ -215,24 +229,29 @@ var PRODUTOS = [
     id: 29, nome: "Luvas Nitrílica e Multitato", categoria: "epis", slug: "luvas-nitrilica-multitato",
     descricao: "Aderência e resistência química no mesmo par.",
     aplicacao: "Manuseio geral da carga e dos itens do kit.",
+    marca: "Kalipso",
     img: "assets/produtos/luvas-nitrilica-multitato.jpg"
   },
   {
     id: 30, nome: "Luvas de Raspa e Vaqueta", categoria: "epis", slug: "luvas-raspa-vaqueta",
     descricao: "Raspa e vaqueta, para proteção mecânica e contra calor.",
     aplicacao: "Amarração de carga e manuseio de peça áspera.",
+    marca: "Kalipso",
     img: "assets/produtos/luvas-raspa-vaqueta.jpg"
   },
   {
     id: 31, nome: "Luvas PVC (27, 35 e 45 cm)", categoria: "epis", slug: "luvas-pvc",
-    descricao: "PVC em três comprimentos de punho: 27, 35 e 45 cm.",
+    descricao: "PVC com forro, em três comprimentos de punho: 27, 35 e 45 cm.",
     aplicacao: "Contato com ácido, solvente e produto corrosivo.",
+    ca: "21420 / 41917",
+    marca: "Kalipso",
     img: "assets/produtos/luvas-pvc.jpg"
   },
   {
     id: 32, nome: "Bota de PVC", categoria: "epis", slug: "bota-pvc",
     descricao: "Impermeável, cano alto, solado antiderrapante.",
     aplicacao: "Área alagada por produto derramado.",
+    ca: "36025 / 51112",
     img: "assets/produtos/bota-pvc.jpg"
   },
   {
@@ -243,7 +262,7 @@ var PRODUTOS = [
   },
   {
     id: 34, nome: "Kit de Ferramentas", categoria: "kits-protecao", slug: "kit-ferramentas",
-    descricao: "Ferramentas para o atendimento na via.",
+    descricao: "Alicate universal, chaves de fenda e Philips e chave 12/13, numa bolsinha própria.",
     aplicacao: "Reparo simples e contenção até chegar o socorro.",
     img: "assets/produtos/kit-ferramentas.jpg"
   }
@@ -328,16 +347,24 @@ function linkOrcamento(nomeProduto) {
    e que ela não consegue desmarcar. A regra inteira mora nesta lista: para
    trocar a composição, mexa só aqui (id conforme PRODUTOS, acima).
 
-   ATENÇÃO, PENDÊNCIA COM A BRASKIT: a composição abaixo é uma sugestão
-   técnica, montada a partir do que a fiscalização mais cobra (extintor e
-   cones pela NBR 9735, calço de roda pelo CONTRAN). Confirme com a empresa
-   qual é o kit mínimo real. A quantidade inicial também é editável: a NBR
-   9735 pede quatro dispositivos de sinalização, por exemplo, então "qtd: 4"
-   no cone é uma troca de um caractere.
+   É o KIT BÁSICO que a Braskit monta conforme a NBR 9735, informado pela
+   própria empresa em setembro de 2026, na ordem do documento dela. Dois
+   itens do documento ainda não estão aqui porque não têm produto no
+   catálogo: capacete e óculos ampla visão (entram quando houver foto, ver
+   PENDENCIAS.md). Extintor e capa de cone o documento lista à parte, como
+   "outros equipamentos", e por isso ficam opcionais.
+
+   O qtd é também o MÍNIMO do item no orçamento: o cone sai com 4 e não desce
+   disso, e uma lista salva com menos é corrigida na carga (ver qtdMinima).
    -------------------------------------------------------------------------- */
 var KIT_MINIMO = [
-  { id: 25, qtd: 1 },  /* Extintor ABC */
-  { id: 20, qtd: 1 },  /* Cone Flexível com Faixa (NBR 15071) */
+  { id: 27, qtd: 1 },  /* Respirador Semifacial com Filtro (VO/GA) */
+  { id: 31, qtd: 1 },  /* Luvas PVC, com forro */
+  { id: 32, qtd: 1 },  /* Bota de PVC */
+  { id: 19, qtd: 1 },  /* Colete Refletivo, tipo X */
+  { id: 17, qtd: 1 },  /* Bolsa de Lona para Kit ("bolsa de EPI" no documento) */
+  { id: 20, qtd: 4 },  /* Cone Flexível com Faixa (NBR 15071): quatro */
+  { id: 34, qtd: 1 },  /* Kit de Ferramentas */
   { id: 26, qtd: 1 }   /* Par de Calço de Borracha */
 ];
 
@@ -367,6 +394,15 @@ function ehItemObrigatorio(id) {
     if (KIT_MINIMO[i].id === id) return true;
   }
   return false;
+}
+
+/* Quantidade mínima do item no orçamento: o qtd do kit para item travado, 1
+   para os outros. É o que impede o kit de sair com um cone só. */
+function qtdMinima(id) {
+  for (var i = 0; i < KIT_MINIMO.length; i++) {
+    if (KIT_MINIMO[i].id === id) return KIT_MINIMO[i].qtd;
+  }
+  return 1;
 }
 
 /* Texto seguro para entrar em HTML montado com string (nome de produto com
