@@ -18,9 +18,10 @@
                             nao subir demais
      faixa-noturna   12:5   corta mais do ceu, porque o assunto (os cones)
                             esta na metade de baixo
-     sobre-kit        4:3   desloca para a esquerda, onde estao a bolsa e o
-                            extintor -- a parte critivel da imagem. A fileira
-                            de miudezas da direita sai do quadro.
+     sobre-kit        4:3   centralizado. A foto do kit montado (set/2026)
+                            vai da bolsa, na esquerda, ao extintor, na
+                            direita, quase no meio do quadro: o corte de 3:2
+                            para 4:3 tira so fundo liso dos dois lados.
 
    Os dois recortes verticais que faltavam sao derivados do panoramico, com a
    estrategia de atencao do sharp. Nao substituem um recorte composto de
@@ -90,7 +91,7 @@ const AMBIENTE = [
   },
   {
     arquivo: "sobre-kit.jpg",
-    recorte: { proporcao: 4 / 3, ancoraX: 0.42 },
+    recorte: { proporcao: 4 / 3 },     /* centralizado, ver o topo */
     larguras: [512, 768, 1024]
   }
 ];
