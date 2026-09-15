@@ -173,7 +173,7 @@ var PRODUTOS = [
     descricao: "Pasta de tecido com fechamento em velcro, para levar as placas de reserva juntas e protegidas.",
     aplicacao: "Placas a bordo para a troca da sinalização quando muda o produto transportado.",
     detalhe: "Placa solta na cabine risca e entorta. Na pasta, o painel de segurança e os rótulos de risco da próxima carga viajam juntos e retos.",
-    medidas: "45 cm de largura, 35 cm de altura e 5 cm de espessura",
+    medidas: "35 cm de largura e 45 cm de altura",
     marca: "Braskit", fabricacaoPropria: true,
     img: "assets/produtos/pasta-placas.jpg",
     imgMedidas: "assets/produtos/medidas/pasta-placas.jpg"
