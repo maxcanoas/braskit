@@ -237,8 +237,9 @@ function tituloProduto(prod, cat) {
 }
 
 /* Especificacao tecnica. Cada linha so aparece no produto que tem o campo em
-   js/produtos.js: hoje sao o CA de tres EPIs, a marca informada pela Braskit e
-   o material das placas. O que falta e o DADO, nao o template -- preenchida a
+   js/produtos.js: hoje sao o CA de tres EPIs, a marca informada pela Braskit,
+   o material das placas e do cone pequeno, as cargas do extintor e as medidas
+   das bolsas e da pasta. O que falta e o DADO, nao o template -- preenchida a
    PENDENCIAS.md 3.4 (CA, medida, material, norma), as fichas crescem so com
    um novo `node build/gerar-paginas.mjs`. */
 const CAMPOS_ESPECIFICACAO = [
@@ -275,6 +276,29 @@ ${linhas.join("\n")}
           </tbody>
         </table>
       </div>`;
+}
+
+/* Quadro de medidas: a imagem com as cotas desenhadas que a Braskit fez para
+   alguns produtos (campo imgMedidas). Vai abaixo da ficha, na largura do
+   conteudo, e nao na coluna da foto: la ficaria com uns 500 px e as cotas nao
+   se leriam. O texto das medidas fica na tabela de especificacao, logo acima,
+   e no alt, que e o que a busca e o leitor de tela alcancam; a legenda nao o
+   repete. No celular as cotas ficam pequenas, por isso o link abre a imagem
+   inteira. Os arquivos sao normalizados em 1200x675 (build/imagens.mjs). */
+function blocoMedidas(prod, p) {
+  if (!prod.imgMedidas) return "";
+  const base = p + prod.imgMedidas.replace(/\.jpg$/, "");
+  const tamanhos = "(min-width: 960px) 896px, 92vw";
+  const fontes = ["avif", "webp"].map((tipo) =>
+    `<source type="image/${tipo}" sizes="${tamanhos}" srcset="${base}-720.${tipo} 720w, ${base}-1200.${tipo} 1200w">`).join("");
+
+  return `
+    <figure class="ficha-medidas">
+      <figcaption class="ficha-medidas__legenda"><span class="ficha-bloco__rotulo">Quadro de medidas</span>Abra a imagem para ver em tamanho maior.</figcaption>
+      <a href="${p}${prod.imgMedidas}" class="ficha-medidas__imagem" target="_blank" rel="noopener">
+        <picture>${fontes}<img src="${p}${prod.imgMedidas}" alt="Quadro de medidas de ${esc(prod.nome)}: ${esc(prod.medidas)}" width="1200" height="675" loading="lazy" decoding="async"></picture>
+      </a>
+    </figure>`;
 }
 
 function blocoChamada(p) {
@@ -477,7 +501,7 @@ ${[detalhe, kitMinimo, blocoEspecificacao(prod)].filter(Boolean).join("\n")}
           <a href="${p}categorias/${cat.slug}.html" class="btn-contorno">Ver ${esc(cat.nome)}</a>
         </div>
       </div>
-    </div>
+    </div>${blocoMedidas(prod, p)}
   </div>
 </section>
 ${relacionados}`;

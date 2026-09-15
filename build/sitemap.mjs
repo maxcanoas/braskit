@@ -1,6 +1,6 @@
 /* Gera o sitemap.xml a partir do que existe no disco.
 
-   As 47 URLs saem de js/produtos.js pelo mesmo carregador que o gerador de
+   As 49 URLs saem de js/produtos.js pelo mesmo carregador que o gerador de
    paginas usa, entao o sitemap nunca lista uma pagina que nao foi gerada nem
    esquece uma que foi. build/verificar-paginas.mjs confere os dois conjuntos.
 
@@ -42,23 +42,26 @@ const entradas = [
     prioridade: "0.8"
   })),
 
-  /* Cada ficha declara a propria foto. Sao 37 fotos de estudio, e num catalogo
-     visual a extensao de imagem custa quase nada e abre o Google Imagens. */
+  /* Cada ficha declara a propria foto. Sao 39 fotos de estudio, e num catalogo
+     visual a extensao de imagem custa quase nada e abre o Google Imagens. As
+     fichas com quadro de medidas declaram o quadro tambem. */
   ...PRODUTOS.map((p) => ({
     loc: SITE + "/produtos/" + p.slug + ".html",
     arquivo: "produtos/" + p.slug + ".html",
     prioridade: "0.7",
-    imagem: { url: SITE + "/" + p.img, titulo: p.nome }
+    imagens: [
+      { url: SITE + "/" + p.img, titulo: p.nome },
+      ...(p.imgMedidas ? [{ url: SITE + "/" + p.imgMedidas, titulo: "Medidas de " + p.nome }] : [])
+    ]
   }))
 ];
 
 const corpo = entradas.map((e) => {
-  const img = e.imagem
-    ? "\n    <image:image>\n" +
-      "      <image:loc>" + xmlEscape(e.imagem.url) + "</image:loc>\n" +
-      "      <image:title>" + xmlEscape(e.imagem.titulo) + "</image:title>\n" +
-      "    </image:image>"
-    : "";
+  const img = (e.imagens || []).map((i) =>
+    "\n    <image:image>\n" +
+    "      <image:loc>" + xmlEscape(i.url) + "</image:loc>\n" +
+    "      <image:title>" + xmlEscape(i.titulo) + "</image:title>\n" +
+    "    </image:image>").join("");
 
   return "  <url>\n" +
          "    <loc>" + e.loc + "</loc>\n" +

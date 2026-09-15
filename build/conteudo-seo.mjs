@@ -16,8 +16,8 @@ export const CATEGORIA_SEO = {
   "produtos": {
     h1: "Itens de emergência para transporte de produtos perigosos",
     titulo: "Itens de Emergência para Produtos Perigosos | Braskit",
-    descricao: "Abafa chamas, balde com cabo terra e lanterna para o kit de emergência do transporte rodoviário. Loja em Canoas/RS, orçamento pelo WhatsApp.",
-    intro: "São os itens que entram em uso quando alguma coisa sai do previsto na estrada: abafar um princípio de incêndio sem molhar a carga, transferir combustível sem que a estática vire faísca, enxergar o que se está fazendo numa parada noturna. A composição exigida muda conforme a classe de risco do produto transportado, e é a ficha de emergência da carga que diz o que precisa estar a bordo."
+    descricao: "Abafa chamas de escapamento, balde com cabo terra e lanterna para o transporte rodoviário de produtos perigosos. Loja em Canoas/RS.",
+    intro: "São os itens que evitam o acidente ou ajudam quando alguma coisa sai do previsto na estrada: reter a faísca do escapamento antes que ela encontre vapor inflamável, transferir combustível sem que a estática vire faísca, enxergar o que se está fazendo numa parada noturna. A composição exigida muda conforme a classe de risco do produto transportado, e é a ficha de emergência da carga que diz o que precisa estar a bordo."
   },
 
   "suportes": {
@@ -35,10 +35,10 @@ export const CATEGORIA_SEO = {
   },
 
   "textil": {
-    h1: "Bolsa de kit, colete refletivo e capa de cone",
-    titulo: "Bolsa de Kit e Colete Refletivo | Braskit Canoas",
-    descricao: "Bolsa de lona para o kit de cargas perigosas, colete refletivo e capa de cone. Loja em Canoas/RS, com envio para todo o Rio Grande do Sul.",
-    intro: "O kit precisa caber em algum lugar, e esse lugar não pode ser o assoalho da cabine. A bolsa de lona reúne o conjunto inteiro num volume só, o que resolve a conferência na fiscalização e a checagem antes da viagem. O colete refletivo é o que torna o condutor visível no momento em que ele desce para sinalizar a via — a hora em que a chance de ser atropelado é maior. A bolsa é produção própria da Braskit."
+    h1: "Bolsas para o kit, pasta para placas e colete refletivo",
+    titulo: "Bolsas para Kit, Pasta para Placas e Colete | Braskit",
+    descricao: "Bolsa para o kit de cargas perigosas, bolsa de EPI, pasta para placas, colete refletivo e capa de cone. Loja em Canoas/RS, envio para todo o RS.",
+    intro: "O kit precisa caber em algum lugar, e esse lugar não pode ser o assoalho da cabine. A bolsa do kit reúne o conjunto num volume só, a bolsa de EPI separa a proteção do condutor e a pasta leva as placas de reserva sem entortar. O colete refletivo torna o condutor visível quando ele desce para sinalizar a via, a hora em que o risco de atropelamento é maior. As bolsas e a pasta são produção própria da Braskit."
   },
 
   "injetados": {

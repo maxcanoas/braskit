@@ -186,6 +186,34 @@ console.log(`  ${arquivosProduto.length} produtos, ${LARGURAS_PRODUTO.length} la
 console.log(`  em retrato (exibidos contidos, nao cortados): ${retratos.join(", ")}`);
 
 /* -------------------------------------------------------------------------
+   QUADROS DE MEDIDAS
+
+   A imagem com as cotas desenhadas que a Braskit fez para alguns produtos
+   (as bolsas e a pasta). Aparece na ficha, abaixo da foto, em largura bem
+   maior que o card: o texto das cotas precisa ser lido. Chegam perto de 16:9
+   e sao normalizadas na importacao para 1200x675, com o mesmo nome do slug.
+   Ficam numa subpasta para o laco das fotos de produto, acima, nao as pegar.
+   ------------------------------------------------------------------------- */
+
+console.log("\nQUADROS DE MEDIDAS\n");
+
+const dirMedidas = join(dirProdutos, "medidas");
+const LARGURAS_MEDIDAS = [720, 1200];
+const arquivosMedidas = existsSync(dirMedidas)
+  ? readdirSync(dirMedidas).filter((f) => f.endsWith(".jpg")).sort()
+  : [];
+
+for (const arquivo of arquivosMedidas) {
+  const origem = join(dirMedidas, arquivo);
+  const nome = basename(arquivo, ".jpg");
+  for (const largura of LARGURAS_MEDIDAS) {
+    const t = await doisFormatos(() => sharp(origem).resize({ width: largura, withoutEnlargement: true }),
+                                 join(dirMedidas, `${nome}-${largura}`));
+    console.log(`  ${nome}  ${largura}w  avif ${kb(t.avif)}  webp ${kb(t.webp)}`);
+  }
+}
+
+/* -------------------------------------------------------------------------
    LOGO
    ------------------------------------------------------------------------- */
 

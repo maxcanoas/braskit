@@ -24,6 +24,7 @@
   var modalCategoria = document.getElementById("modalCategoria");
   var modalDescricao = document.getElementById("modalDescricao");
   var modalDetalhe = document.getElementById("modalDetalhe");
+  var modalMedidas = document.getElementById("modalMedidas");
   var modalAplicacao = document.getElementById("modalAplicacao");
   var modalWhatsapp = document.getElementById("modalWhatsapp");
   var modalAdicionar = document.getElementById("modalAdicionar");
@@ -247,6 +248,12 @@
     if (modalDetalhe) {
       modalDetalhe.textContent = produto.detalhe || "";
       modalDetalhe.classList.toggle("hidden", !produto.detalhe);
+    }
+    /* Nas bolsas e na pasta a medida decide a compra, então ela aparece aqui
+       também; o quadro com as cotas desenhadas fica só na ficha. */
+    if (modalMedidas) {
+      modalMedidas.textContent = produto.medidas ? "Medidas: " + produto.medidas + "." : "";
+      modalMedidas.classList.toggle("hidden", !produto.medidas);
     }
     modalAplicacao.textContent = produto.aplicacao;
     modalWhatsapp.href = linkOrcamento(produto.nome);

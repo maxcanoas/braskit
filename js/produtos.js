@@ -1,6 +1,6 @@
 /* ==========================================================================
    BRASKIT | dados do catálogo
-   37 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
+   39 produtos em 8 categorias, todos fotografados em estúdio sobre fundo
    branco. O tratamento do slot está em .produto-midia, em css/style.css.
 
    Não existe id 33: é o Kit Cargas Perigosas, fora do site até a foto nova
@@ -26,8 +26,8 @@ var CATEGORIAS = [
 var PRODUTOS = [
   {
     id: 1, nome: "Abafa Chamas", categoria: "produtos", slug: "abafa-chamas",
-    descricao: "Lona tratada. Abafa o fogo sem molhar a carga.",
-    aplicacao: "Princípio de incêndio em líquido inflamável, onde a água espalharia as chamas.",
+    descricao: "Dispositivo de segurança acoplado à ponteira do escapamento para reter faíscas e partículas incandescentes.",
+    aplicacao: "Circulação em área com vapor ou pó inflamável, onde uma faísca saída do escapamento basta para começar um incêndio.",
     img: "assets/produtos/abafa-chamas.jpg"
   },
   {
@@ -151,8 +151,32 @@ var PRODUTOS = [
     descricao: "Lona reforçada, com alça e fechamento. Cabe o kit inteiro num lugar só.",
     aplicacao: "Guarda e transporte dos itens de emergência.",
     detalhe: "Item solto pela cabine é item que some — e o que some é justamente o que falta na hora da conferência.",
+    medidas: "52 cm de comprimento, 28 cm de largura e 40 cm de altura",
     marca: "Braskit", fabricacaoPropria: true,
-    img: "assets/produtos/bolsa-lona-kit.jpg"
+    img: "assets/produtos/bolsa-lona-kit.jpg",
+    imgMedidas: "assets/produtos/medidas/bolsa-lona-kit.jpg"
+  },
+  /* A foto de card da bolsa de EPI e da pasta saiu do quadro de medidas que a
+     Braskit mandou, com as cotas apagadas. O quadro inteiro fica na ficha. */
+  {
+    id: 39, nome: "Bolsa de EPI", categoria: "textil", slug: "bolsa-epi",
+    descricao: "Menor que a bolsa do kit, com zíper, alças de mão e bolso transparente na frente.",
+    aplicacao: "Guarda dos EPIs do condutor num volume só, à mão quando o veículo para na via.",
+    detalhe: "Com os EPIs numa bolsa própria, eles não se misturam às ferramentas e à sinalização, e ficam fáceis de achar na hora da emergência.",
+    medidas: "35 cm de comprimento, 30 cm de largura e 30 cm de altura",
+    marca: "Braskit", fabricacaoPropria: true,
+    img: "assets/produtos/bolsa-epi.jpg",
+    imgMedidas: "assets/produtos/medidas/bolsa-epi.jpg"
+  },
+  {
+    id: 40, nome: "Pasta para Placas", categoria: "textil", slug: "pasta-placas",
+    descricao: "Pasta de tecido com fechamento em velcro, para levar as placas de reserva juntas e protegidas.",
+    aplicacao: "Placas a bordo para a troca da sinalização quando muda o produto transportado.",
+    detalhe: "Placa solta na cabine risca e entorta. Na pasta, o painel de segurança e os rótulos de risco da próxima carga viajam juntos e retos.",
+    medidas: "45 cm de largura, 35 cm de altura e 5 cm de espessura",
+    marca: "Braskit", fabricacaoPropria: true,
+    img: "assets/produtos/pasta-placas.jpg",
+    imgMedidas: "assets/produtos/medidas/pasta-placas.jpg"
   },
   {
     id: 18, nome: "Capa de Cone", categoria: "textil", slug: "capa-cone",
@@ -162,8 +186,9 @@ var PRODUTOS = [
   },
   {
     id: 19, nome: "Colete Refletivo", categoria: "textil", slug: "colete-refletivo",
-    descricao: "Tipo X, com faixas refletivas e fecho ajustável.",
+    descricao: "Dois modelos, os dois com faixas refletivas: o tipo X, de fecho ajustável, e o de vestir, com ou sem bolso.",
     aplicacao: "Uso obrigatório ao descer do veículo na via.",
+    detalhe: "No kit básico que a Braskit monta vai o tipo X.",
     img: "assets/produtos/colete-refletivo.jpg"
   }
   ,
@@ -174,10 +199,13 @@ var PRODUTOS = [
     detalhe: "Flexível porque cone rígido atropelado quebra e sai do kit; este volta ao formato. O kit básico que a Braskit monta conforme a NBR 9735 leva quatro cones refletivos.",
     img: "assets/produtos/cone-flexivel-nbr-15071.jpg"
   },
+  /* O slug ainda diz preto-amarelo porque ele é a URL da ficha: o nome perdeu a
+     cor quando a Braskit informou a versão laranja e branca, o endereço não. */
   {
-    id: 21, nome: "Cone Pequeno Preto e Amarelo", categoria: "injetados", slug: "cone-pequeno-preto-amarelo",
-    descricao: "Compacto, leve, fácil de guardar.",
+    id: 21, nome: "Cone Pequeno", categoria: "injetados", slug: "cone-pequeno-preto-amarelo",
+    descricao: "Compacto e leve. Preto e amarelo ou laranja e branco, rígido ou flexível, com ou sem faixa refletiva.",
     aplicacao: "Pátio, doca e área interna de carga.",
+    material: "PVC rígido ou flexível",
     img: "assets/produtos/cone-pequeno-preto-amarelo.jpg"
   },
   {
@@ -200,9 +228,10 @@ var PRODUTOS = [
   },
   {
     id: 25, nome: "Extintor ABC", categoria: "acessorios-caminhao", slug: "extintor-abc",
-    descricao: "Pó químico ABC, com manômetro, lacre e carga na validade.",
+    descricao: "Pó químico ABC, de 1, 2, 4, 6, 8 e 12 kg, com manômetro, lacre e carga na validade.",
     aplicacao: "Obrigatório em todo veículo de carga.",
-    detalhe: "É o primeiro item que a fiscalização olha e o que mais vence sem ninguém perceber: confira o manômetro na faixa verde e a data no lacre. Vencido, ele precisa de recarga ou de um extintor novo. A Braskit vende o novo (no kit básico vai o de 8 kg), mas não faz recarga nem troca do vencido.",
+    detalhe: "É o primeiro item que a fiscalização olha e o que mais vence sem ninguém perceber: confira o manômetro na faixa verde e a data no lacre. Vencido, ele precisa de recarga ou de um extintor novo. A Braskit vende o extintor novo (no kit básico vai o de 8 kg) e a capa para protegê-lo, mas não faz recarga nem troca do vencido.",
+    capacidade: "1, 2, 4, 6, 8 e 12 kg",
     marca: "Extinpel",
     img: "assets/produtos/extintor-abc.jpg"
   },

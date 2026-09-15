@@ -35,7 +35,13 @@ O que ainda depende da empresa:
   para virarem produto. Os CAs já vieram no documento (capacete 31469, óculos
   11285) e entram na ficha junto. Quando entrarem, vão também para o `KIT_MINIMO`.
 - A "bolsa de EPI" do documento foi tomada como a **Bolsa de Lona para Kit**
-  (id 17). Confirmar.
+  (id 17). Confirmar. **Ficou mais importante em 2026-09-15**, quando a Braskit
+  mandou os quadros de medidas e passou a existir no catálogo uma **Bolsa de EPI**
+  própria (id 39, 35×30×30 cm), menor que a do kit (52×28×40 cm). O kit continua
+  com a bolsa grande, porque é ela que aparece na foto do kit montado. Mas o
+  arquivo do quadro da bolsa grande veio com o nome `medida-bolsa-epi2.png`, então
+  talvez a Braskit chame as duas de bolsa de EPI. Se o kit leva a menor, basta
+  trocar `{ id: 17 }` por `{ id: 39 }` no `KIT_MINIMO`.
 - **Extintor (8 kg ABC) e capa de cone** o documento lista à parte, como "outros
   equipamentos", e por isso ficaram opcionais no orçamento.
 
@@ -93,7 +99,7 @@ próprio Kit Cargas Perigosas volta com esse número, porque é o mesmo produto 
 3. Devolva o bloco do produto a `PRODUTOS`, em `js/produtos.js`, com **id 33** e
    `categoria: "kits-protecao"`. O texto original está no commit `e72d49b`
    (`git show e72d49b:js/produtos.js`).
-4. Somar 1 às contagens (hoje 37), e Kits de proteção de 1 para 2 itens. Em
+4. Somar 1 às contagens (hoje 39), e Kits de proteção de 1 para 2 itens. Em
    `catalogo.html`: meta description, og:description, olho do hero, os dois
    contadores e as duas linhas do `noscript`. Em `index.html`: título da seção
    Catálogo, card da categoria e card "Ver o catálogo completo". Os chips de filtro
@@ -165,13 +171,45 @@ Formas de pagamento (Pix, débito, crédito em até 5x, dinheiro e boleto para
 empresa) e o atendimento de sábado, que também faltavam, vieram nos textos de
 2026-09-11 e estão no FAQ da home e no JSON-LD.
 
-### 3.5 Revisão técnica das 37 fichas de produto
+### 3.5 Revisão técnica das 39 fichas de produto
 
 As descrições e aplicações foram reescritas para variar de tamanho e falar como
 balcão, mas **nenhuma especificação nova foi inventada** — não há medida, capacidade,
 material ou norma que já não estivesse no texto anterior. Alguém que conheça o
-produto precisa revisar, e é aí que entram as medidas reais (litragem do extintor,
-altura do cone, espessura da luva).
+produto precisa revisar, e é aí que entram as medidas reais (altura do cone,
+espessura da luva).
+
+**Correções da Braskit em 2026-09-15:**
+
+- **Extintor:** ela vende extintores de 1, 2, 4, 6, 8 e 12 kg e a capa para o
+  extintor. A capa entrou só no texto da ficha do extintor, não como produto
+  próprio, porque não há foto dela.
+- **Abafa Chamas:** não é lona tratada, e a Braskit não trabalha com lona. É o
+  dispositivo acoplado à ponteira do escapamento que retém faíscas e partículas
+  incandescentes, e a foto confirma. A descrição é a da proprietária. A aplicação
+  ("Quando se usa") e a introdução da categoria Produtos foram reescritas a partir
+  dela e ainda pedem confirmação.
+- **Colete Refletivo:** são dois modelos, o tipo X e o de vestir, com ou sem bolso.
+  A foto já mostra os dois. O kit básico continua levando o tipo X, como no
+  documento do kit.
+- **Cone Pequeno:** além do preto e amarelo, tem laranja e branco, em PVC rígido ou
+  flexível, com ou sem faixa refletiva. O nome perdeu o "Preto e Amarelo", mas o
+  slug `cone-pequeno-preto-amarelo` ficou, porque é a URL da ficha. A foto mostra
+  só o preto e amarelo rígido.
+- **Bolsas e pasta:** a Braskit mandou três quadros de medidas: a bolsa do kit
+  (52×28×40 cm), a **Bolsa de EPI** (35×30×30 cm) e a **Pasta para Placas**
+  (45×35 cm, 5 cm de espessura). As duas últimas viraram produto (ids 39 e 40, em
+  Têxtil), e as três fichas ganharam o quadro. A confirmar:
+  - **Fabricação própria.** Foi estendida às duas novas porque elas levam o logo da
+    Braskit e a bolsa do kit já é produção dela.
+  - **O que marca a cota de 10 cm na pasta.** Parece a aba de velcro, e por isso
+    ficou só no quadro, fora do texto.
+  - **Os textos das duas fichas novas** (zíper, bolso transparente, fechamento em
+    velcro) foram lidos das imagens, sem ficha do fornecedor.
+  - **Fotos sem as cotas.** A foto de card das duas saiu do quadro, com as marcações
+    apagadas. Na pasta, de perto, ainda dá para notar. Se a Braskit tiver a foto
+    original, ela entra no lugar, com o mesmo nome (`bolsa-epi.jpg`,
+    `pasta-placas.jpg`).
 
 Os três itens que entraram em setembro de 2026 — **Calçado de Segurança (id 35),
 Lanterna de Cabeça (id 36) e Máscara de Fuga (id 37)** — foram escritos só a partir da
@@ -225,7 +263,7 @@ Reagrupar por uso, na ordem em que a pessoa decide:
 | 1 | **Kit completo** | Kit Cargas Perigosas, Kit de Ferramentas |
 | 2 | **Sinalização da via** | cones (os dois), pedestal, fita zebrada, bastão sinalizador, faixa refletiva, capa de cone |
 | 3 | **Placas e rótulos de risco** | placa laranja, placa laranja com números, líquido inflamável, material corrosivo, perigoso ao meio ambiente, placa perigo |
-| 4 | **Combate a incêndio** | extintor ABC, abafa chamas, caixa plástica para extintor, suporte de ferro para extintor |
+| 4 | **Prevenção e combate a incêndio** | extintor ABC, abafa chamas de escapamento, caixa plástica para extintor, suporte de ferro para extintor |
 | 5 | **Proteção do operador (EPI)** | luvas (as três), bota, colete, respirador, máscara panorâmica |
 | 6 | **Contenção e limpeza** | pá e enxada, balde de alumínio com cabo terra |
 | 7 | **Suportes e fixação** | suportes de ferro e de plástico para placa e cone |

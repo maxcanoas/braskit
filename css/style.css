@@ -783,7 +783,7 @@ img, svg, video, iframe { max-width: 100%; }
    produto de verdade. Feito com filtros, e nao mix-blend-mode, porque as
    fotos sao escuras e com blend o produto sumia junto com o fundo.
    -------------------------------------------------------------------------- */
-/* 3:2, nao 1:1. As 37 fotos sao 730x487, que e 3:2 exato -- o slot quadrado
+/* 3:2, nao 1:1. As 39 fotos sao 730x487, que e 3:2 exato -- o slot quadrado
    jogava fora um terco da largura de cada uma e frequentemente descentrava o
    produto. O chapado atras e neutro da marca, nao a cor da categoria: com as
    fotos de estudio ele quase nao aparece, e so emoldura as duas em retrato,
@@ -1859,7 +1859,7 @@ select.campo-escuro {
 
 /* Card do produto no grid */
 /* PRODUTO -- o unico que continua cartao, porque e objeto de merchandising:
-   precisa de moldura para as 37 fotos lerem como um conjunto.
+   precisa de moldura para as 39 fotos lerem como um conjunto.
    O destaque vai para o estado de SELECAO, nao para o hover. */
 .produto-card {
   display: flex;
@@ -2724,6 +2724,38 @@ body.com-bandeja .aviso-area { bottom: 6.75rem; }
 }
 
 .ficha-especificacao td { color: rgb(16 22 23 / 0.8); }
+
+/* Quadro de medidas, abaixo da ficha (blocoMedidas em build/gerar-paginas.mjs).
+   896 px e a largura em que as cotas desenhadas na imagem ficam legiveis sem
+   ampliar; o sizes do <picture> conta com esse teto. A borda separa do branco
+   da secao o fundo da propria imagem, que em algumas e cinza-claro. */
+.ficha-medidas {
+  max-width: 56rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.ficha-medidas__legenda {
+  margin-bottom: 0.9rem;
+  border-left: 3px solid var(--cat-cor, #56980b);
+  padding-left: 1.125rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgb(16 22 23 / 0.72);
+}
+
+.ficha-medidas__imagem {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgb(16 22 23 / 0.1);
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.ficha-medidas__imagem img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* A ficha fica sobre branco e os itens relacionados sobre o neutro-50, para
    uma separar visualmente da outra: com o mesmo fundo nas duas, o espaco entre

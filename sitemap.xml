@@ -3,19 +3,19 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://braskitcargasperigosas.com.br/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/catalogo.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/categorias/produtos.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -33,19 +33,19 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/categorias/textil.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/categorias/injetados.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/categorias/acessorios-caminhao.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,7 +63,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/abafa-chamas.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -73,7 +73,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/balde-aluminio-cabo-terra.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -83,7 +83,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/lanternas.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -93,7 +93,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/lanterna-cabeca.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -243,17 +243,49 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/bolsa-lona-kit.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/bolsa-lona-kit.jpg</image:loc>
       <image:title>Bolsa de Lona para Kit</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/medidas/bolsa-lona-kit.jpg</image:loc>
+      <image:title>Medidas de Bolsa de Lona para Kit</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/bolsa-epi.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/bolsa-epi.jpg</image:loc>
+      <image:title>Bolsa de EPI</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/medidas/bolsa-epi.jpg</image:loc>
+      <image:title>Medidas de Bolsa de EPI</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://braskitcargasperigosas.com.br/produtos/pasta-placas.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/pasta-placas.jpg</image:loc>
+      <image:title>Pasta para Placas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/medidas/pasta-placas.jpg</image:loc>
+      <image:title>Medidas de Pasta para Placas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/capa-cone.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -263,7 +295,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/colete-refletivo.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -273,7 +305,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/cone-flexivel-nbr-15071.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -283,17 +315,17 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/cone-pequeno-preto-amarelo.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://braskitcargasperigosas.com.br/assets/produtos/cone-pequeno-preto-amarelo.jpg</image:loc>
-      <image:title>Cone Pequeno Preto e Amarelo</image:title>
+      <image:title>Cone Pequeno</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/pedestal.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -303,7 +335,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/fitas-zebradas.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -313,7 +345,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/pa-enxada.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -323,7 +355,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/extintor-abc.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -333,7 +365,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/calco-borracha.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -423,7 +455,7 @@
   </url>
   <url>
     <loc>https://braskitcargasperigosas.com.br/produtos/kit-ferramentas.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
